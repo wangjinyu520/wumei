@@ -1,0 +1,91 @@
+<!--pages/setprice/setprice.wxml-->
+<view class="setprice">
+
+  <view class="list">
+    <view class="preter">默认</view>
+    <navigator url="/pages/" hover-class="none" class="free-from">
+      <view class="free">
+        <text>免费</text>
+        <image src="/assets/common/setprice.png" class="fimg"></image>
+      </view>
+    </navigator>
+  </view>
+  <view class="list" wx:for="{{arrtickets}}" wx:key="{{index}}">
+    <view class="preter">{{item}}</view>
+    <navigator url="/pages/" hover-class="none" class="free-from">
+      <view class="free">
+        <view class="body-view">
+          <switch checked="{{switch1Checked}}" bindchange="switch1Change" data-name="{{item}}" data-id="{{index}}" />
+        </view>
+      </view>
+    </navigator>
+  </view>
+
+
+  <view class="btn" bindtap="powerDrawer" data-statu="open">
+    <button class="frombtn">
+      <image class="fromimg" src="/assets/common/from-add.png" />
+      <text class="fromtext">添加票种</text>
+    </button>
+  </view>
+
+  <!--mask-->
+  <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+  <!--content-->
+  <!--使用animation属性指定需要执行的动画-->
+  <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+
+    <!--drawer content-->
+    <view class="drawer_title">添加票种</view>
+    <form bindsubmit="formSubmit" bindreset="formReset" class="drawer_content">
+      <!-- <view class="drawer_content"> -->
+      <view class="top grid">
+        <label class="tTitle col-0">*票种名称</label>
+        <input class="input_base input_h30 col-1" name="ticketName" bindblur="requirename"></input>
+      </view>
+      <view class="top grid">
+        <label class="tTitle col-0">*票价</label>
+        <input class="input_base input_h30 col-1" name="ticketFee" type="digit" bindblur="requirename"></input>
+      </view>
+      <view class="top grid">
+        <label class="tTitle col-0">数量</label>
+        <input class="input_base input_h30 col-1" name="amount" bindblur="numberRsg" type="number"></input>
+      </view>
+      <view class="top grid">
+        <label class="tTitle col-0">限购</label>
+        <input class="input_base input_h30 col-1 input_xg" name="purchaseLimit" type="number"></input>
+        <label class="tTitle col-0">张起售</label>
+      </view>
+      <view class="top grid">
+        <label class="tTitle col-0">每人最多购买</label>
+        <input class="input_base input_h30 col-1 " name="startingAt" type="number"></input>
+        <label class="tTitle col-0">张</label>
+      </view>
+      <view class="top grid">
+        <label class="tTitle col-0">售票时间</label>
+        <picker class="input_base input_h30 col-1" name="startTime" mode="date" value="{{startTime}}" bindchange="bindDateChange">
+          <view class="picker">
+            {{startTime}}
+          </view>
+        </picker>
+      </view>
+      <view class="top grid">
+        <label class="tTitle col-0"></label>
+        <picker class="input_base input_h30 col-1" mode="date" name="endTime" value="{{endTime}}" bindchange="bindDateChanges">
+          <view class="picker">
+            {{endTime}}
+          </view>
+        </picker>
+      </view>
+      <view class="btn-box">
+        <button class="btn_ok" bindtap="cancelDrawer" data-statu="close">取消</button>
+        <button formType="submit" class="btn_ok" bindtap="powerDrawer" data-statu="close">确定</button>
+      </view>
+    </form>
+
+    <!-- <view class="btn_ok" bindtap="powerDrawer" data-statu="close">确定</view> -->
+  </view>
+
+
+
+</view>

@@ -1,0 +1,172 @@
+/* pages/joinfrom/joinfrom.wxss */
+
+page{
+  background: #F7F7F7;
+}
+
+
+.lable{
+  background: #FFFFFF;
+  border-top: 1px solid #eee;
+}
+.name{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  font-size: 30rpx;
+  color: #222222;
+  border-bottom: 1px solid #eee;
+}
+.text{
+  margin-top: 15px;
+  margin-left: 14px;
+}
+.check{
+  font-size: 30rpx;
+  color: #222222;
+  margin-top: 12px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+.phone{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  font-size: 30rpx;
+  color: #222222;
+  border-bottom: 1px solid #eee;
+}
+
+
+
+.btn{
+  height: 73px;
+  text-align: center;
+  align-items: center;
+}
+.frombtn{
+  margin:12px 12px 11px 11px;
+  background-color: #2184E3;
+}
+.fromimg{
+  width: 16px;
+  height: 16px;
+}
+.fromtext{
+  margin-left: 10px;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  align-items: center;
+}
+
+
+
+/* 弹框 */
+
+/*mask*/
+
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+/*content*/
+
+.drawer_box {
+  width: 650rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 1001;
+  background: #fafafa;
+  margin: -150px 50rpx 0 50rpx;
+  border-radius: 3px;
+}
+
+.drawer_title {
+  padding: 15px;
+  font: 30rpx "microsoft yahei";
+  text-align: center;
+}
+
+.drawer_content {
+  height: 210px;
+  overflow-y: scroll; /*超出父盒子高度可滚动*/
+}
+
+.btn_ok {
+  padding: 10px;
+  font: 15px "microsoft yahei";
+  text-align: center;
+  border-top: 1px solid #e8e8ea;
+  background: #2184E3;
+  color: #FFFFFF;
+}
+
+
+.use{
+
+}
+.use-title{
+  font-size: 26rpx;
+  color: #999999;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+.use-content{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.use-content>view{
+  width:80px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  background: #EDEDED;
+  margin-left: 10px;
+  margin-bottom: 8px;
+}
+.use-content text{
+  font-size: 26rpx;
+  color: #444444;
+  margin-top: 8px;
+}
+
+.custom-title{
+  font-size: 26rpx;
+  color: #999999;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+.custom-content{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.custom-content>view{
+  width:96px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  background: #EDEDED;
+  margin-left: 10px;
+  margin-bottom: 8px;
+}
+.custom-content text{
+  font-size: 26rpx;
+  color: #444444;
+  margin-top: 8px;
+}

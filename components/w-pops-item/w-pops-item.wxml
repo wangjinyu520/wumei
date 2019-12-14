@@ -1,0 +1,13 @@
+<!--components/w-pops-item/w-pops-item.wxml-->
+<view class="pops-item">
+  <image class="image" src="{{item.show.img}}" mode="widthFix"/>
+  <view class="desc-info">
+    <view class="name">{{item.name}}</view>
+    <view class="occu">{{item.occu}}</view>
+    <view class="info">
+      <text class="worktime">{{item.worktime}}</text>
+      <text class="rank">{{item.rank}}</text>
+    </view>
+  </view>
+</view>
+

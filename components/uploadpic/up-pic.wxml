@@ -1,0 +1,10 @@
+<view class="picture_list">
+  <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
+    <image src="{{item.path}}" mode="aspectFill" data-src="{{item}}"  bindtap='previewImg'></image>
+    <!-- <image  src="{{item.path_server}}" mode="aspectFill"></image> -->
+    <text class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
+  </view>
+  <view class="picture_item">
+    <image src="../../assets/images/bossregister/add.png" class="addIcon" bindtap="uploadpic"></image>
+  </view>
+</view>

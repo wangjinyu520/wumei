@@ -1,0 +1,58 @@
+<!--pages/joinfrom/joinfrom.wxml-->
+<view class="joinfrom">
+
+  <view class="lable">
+    <view class="name">
+      <text class="text">姓名</text>
+      <checkbox class="check">必填</checkbox>
+    </view>
+    <view class="phone">
+      <text class="text">手机号</text>
+      <checkbox class="check" checked= 'true'>必填</checkbox>
+    </view>
+  </view>
+
+  <view class="btn">
+    <button class="frombtn" bindtap="powerDrawer" data-statu="open">
+      <image class="fromimg" src="/assets/common/from-add.png"/>
+      <text class="fromtext">添加表单项</text>
+    </button>
+  </view>
+
+
+<!--mask-->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<!--content-->
+<!--使用animation属性指定需要执行的动画-->
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+
+  <!--drawer content-->
+  <view class="drawer_title">添加表单项</view>
+  <view class="drawer_content">
+    <view class="use">
+      <view class="use-title">常用表单项</view>
+      <view class="use-content">
+        <view><text>微信</text></view>
+        <view><text>公司</text></view>
+        <view><text>职位</text></view>
+        <view><text>年龄</text></view>
+        <view><text>性别</text></view>
+        <view><text>邮箱</text></view>
+        <view><text>附件</text></view>
+      </view>
+    </view>
+    <view class="custom">
+      <view class="custom-title">自定义填写项</view>
+      <view class="custom-content">
+        <view><text>单行文本</text></view>
+        <view><text>多行文本</text></view>
+        <view><text>单选问题</text></view>
+        <view><text>多选问题</text></view>
+      </view>
+    </view>
+  </view>
+  <view class="btn_ok" bindtap="powerDrawer" data-statu="close">确定
+  </view>
+</view>
+
+</view>

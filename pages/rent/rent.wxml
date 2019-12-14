@@ -1,0 +1,27 @@
+<!--pages/rent/rent.wxml-->
+<view class="rent">
+  <!--背景图-->
+  <block class="background-position">
+    <image class="background" src="/assets/common/rectangle.png"></image>
+  </block>
+  <!--搜索框-->
+  <view>
+    <SearchBar id="SearchBar" addflag="{{addflag}}" addimg="{{addimg}}" bind:addhandle="addhandle" searchstr="{{searchstr}}" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear">
+    </SearchBar>
+  </view>
+  <!--展示轮播图-->
+  <w-swiper list="{{banners}}" />
+
+  <!--推荐数据-->
+  <view class="recommend">
+    <view class="tab-control">
+      <w-tab-control class='tab-control' titles="{{titles}}" bind:tabclick="tabClick" />
+    </view>
+    <w-select prop-array='{{selectArray}}' class="w-select" />
+    <w-select1 prop-array='{{selectArray1}}' class="w-select1" />
+  </view>
+
+  <commodity commoditylist="{{commodity[currentType].list}}"/>
+
+</view>
+

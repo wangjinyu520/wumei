@@ -1,0 +1,17 @@
+<!--pages/videolist/videolist.wxml-->
+<view class="videolist">
+  <view class="nav">
+    <w-tab-control class='tab-control' titles="{{titles}}" bind:tabclick="tabClick" />
+    <w-select prop-array='{{selectArray}}' class="w-select" />
+  </view>
+
+  <view class="video">
+    <block wx:for="{{videolist}}" wx:key="index">
+      <view class="video-item" videoitem="{{item}}" bindtap='itemClick'>
+        <image class="img" src="{{videoitem.image}}" />
+        <view class="title">{{videoitem.title}}</view>
+      </view>
+    </block>
+  </view>
+
+</view>

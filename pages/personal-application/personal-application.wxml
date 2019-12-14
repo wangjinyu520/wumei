@@ -1,0 +1,54 @@
+<!--pages/personal-application/personal-application.wxml-->
+<view class="personal-application">
+  <view class="nav">
+    <image class="nav-img" src="{{}}" />
+    <view class="nav-name">六二</view>
+    <button class="nav-btn">
+      <text>联系TA</text>
+    </button>
+  </view>
+
+  <view class="appli-detail">
+  <view class="appli-desc">
+    <view class="desc">
+      <view>姓名</view>
+      <view class="item">刘二</view>
+    </view>
+    <view class="desc">
+      <view>手机号</view>
+
+
+      <view class="item">137888990000</view>
+    </view>
+    <view class="desc">
+      <view>报名时间</view>
+      <view class="item">2019-12-12 13:00:00</view>
+    </view>
+    <view class="desc">
+      <view>票种</view>
+      <view class="item">免费</view>
+    </view>
+  </view>
+  </view>
+
+  <view class="problem">
+    <view class="from-problem">
+      <view class="from-left">设置的表单问题</view>
+      <view class="from-right">用户问题</view>
+    </view>
+    <view class="from-problem">
+      <view class="from-left">设置的表单问题</view>
+      <view class="from-right">用户问题</view>
+    </view>
+    <view class="from-problem">
+      <view class="from-left">设置的表单问题</view>
+      <view class="from-right">用户问题</view>
+    </view>
+    <view class="from-problem">
+      <view class="from-left">设置的表单问题</view>
+      <view class="from-right">用户问题</view>
+    </view>
+  </view>
+
+
+</view>

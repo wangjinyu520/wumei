@@ -1,0 +1,6 @@
+<!--pages/rent/childCpns/commodity/commodity.wxml-->
+<view class='commodity'>
+  <block wx:for="{{commoditylist}}" wx:key="index">
+    <commodity-item class="commodity-item" commodityitem="{{item}}"/>
+  </block>
+</view>

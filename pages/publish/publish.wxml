@@ -1,0 +1,131 @@
+<!--pages/publish/publish.wxml-->
+<view class="publish">
+  <form bindsubmit="fromSubmit" id="1" bindreset="fromReset">
+    <!--上传活动封面-->
+    <view class="picture">
+      <view class='item-ot'>
+        <view class="item">
+          <!-- 添加按钮 -->
+          <view class="addIcon" bindtap="chooseImage" wx:if="{{imgBoolean}}">
+            <view class='' data-name='headImage'>+</view>
+          </view>
+          <!-- 上传的图 -->
+          <view class='itemImg'>
+            <image src="{{item}}" data-src="{{item}}" bindtap="previewImage" mode="aspectFill" />
+            <!-- 删除按钮 -->
+            <view class="delete" bindtap="deleteImg" data-index="{{index}}">X</view>
+          </view>
+          <view class='boxStyle'></view>
+        </view>
+      </view>
+    </view>
+
+    <!--输入框-->
+    <view class="topic">
+      <view class="title">主题</view>
+      <input type="text" name="title" placeholder="招聘人数" />
+    </view>
+
+    <view class="begin">
+      <view class="title">开始时间</view>
+      <picker mode="date" value="{{beginTime}}" bindchange="bindDateChange">
+        <view class="picker">
+          {{beginTime}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="end">
+      <view class="title">结束时间</view>
+      <picker mode="date" value="{{endTime}}" bindchange="bindDateChanges">
+        <view class="picker">
+          {{endTime}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="price">
+      <view class="price-title">费用</view>
+      <navigator url="/pages/setprice/setprice" class="set">
+        <view class=" ">
+          <text>设置</text>
+          <image src="/assets/common/more.png" class="icon-set"></image>
+        </view>
+      </navigator>
+    </view>
+    <view class="locale">
+      <view class="locale-title">地点</view>
+      <navigator url="/pages/" hover-class="none" class="set">
+        <view class="address" bindtap="map">
+          <text>请选择</text>
+          <image src="/assets/common/more.png" class="icon-set"></image>
+        </view>
+      </navigator>
+    </view>
+
+    <view class="active">
+      <view class="active-title">
+        <text>活动详情</text>
+      </view>
+      <view class="active-decr">
+        <view class="active-input">
+          <input name="desc" placeholder="请输入文字内容"></input>
+        </view>
+      </view>
+    </view>
+
+    <view class="collect">
+      <view class="collect-title">报名表单收集</view>
+      <navigator url="/pages/joinfrom/joinfrom" hover-class="none" class="from">
+        <view class="from">
+          <text>姓名、手机号</text>
+          <image src="/assets/common/more.png" class="icon-set"></image>
+        </view>
+      </navigator>
+    </view>
+
+    <view class="advice">
+      <view class="advice-title">报名咨询</view>
+      <input type="advice-text" name="advice" placeholder="手机号/座机电话-分机号码" />
+    </view>
+
+    <view class="refund">
+      <view class="refund-title">退票规则</view>
+      <view class="refund-msg" bindtap="bindShowMsg">
+        <text>{{msg}}</text>
+        <image src="/assets/common/more.png" class="icon-set" />
+      </view>
+      <!-- 下拉需要显示的列表 -->
+      <view class="select_box" wx:if="{{select}}">
+        <view wx:for="{{selectmsg}}" wx:key="unique">
+          <view class="select_one" bindtap="mySelect" data-name="{{item}}">{{item}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="join">
+      <view class="join-title">加入流量增长计划</view>
+      <w-select prop-array='{{selectArray}}' class="w-select" />
+    </view>
+
+    <view class="agree">
+      <view class="container-agreement">
+        <checkbox-group bindchange="agreeMent" class="info">
+          <checkbox value="true" checked="false" class="iagree" />
+          <text class="iagree-text">我同意</text>
+          <text class="user-agree" catchtap="showAgreement"> 《舞美之家活动发布协议》</text>
+        </checkbox-group>
+        <view wx:if="{{isAgreement}}" class="agreement-text"></view>
+        <view class="btn-box">
+          <button class="pre-btn" data-type="1" formType="submit">
+            <text>预览</text>
+          </button>
+          <button class="pub-btn" data-type="2" formType="submit">
+            <text>发布</text>
+          </button>
+        </view>
+      </view>
+    </view>
+
+  </form>
+</view>

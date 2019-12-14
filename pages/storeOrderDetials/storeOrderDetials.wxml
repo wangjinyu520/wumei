@@ -1,0 +1,58 @@
+<!--pages/storeOrderDetials/storeOrderDetials.wxml-->
+<view>
+
+  <view class="order-time">
+    <view class="time-top">待发货</view>
+    <view class="time-bottom">剩余9天23小时自动确认</view>
+  </view>
+
+  <view class="order-massage">
+    <image class="msg-img" src="/assets/common/loc.png"></image>
+    <view class="msg-info">
+      <view class="info"> 
+        <text class="info-name">收货人:乐乐乐</text>
+        <text class="info-phone">152168213636</text>
+      </view>
+      <view class="address">上海市浦东新区德州路400号893号</view>
+    </view>
+  </view>
+
+  <view class="shop">
+    <view class="shop-top">
+      <image class="shop-img" src="{{}}"></image>
+      <view class="shop-name">出出小店</view>
+      <image class="more" src="/assets/common/more.png"></image>
+    </view>
+    <view class="order-goods">
+      <image class="goods-img" src="{{}}"></image>
+      <view class="goods-detail">
+        <view class="goods-title">
+          <text>流星灯光线条A</text>
+          <view class="goods-num">×1</view>
+        </view>
+        <view class="goods-desc">规格：1条装</view>
+        <view class="goods-price">¥99.00</view>
+      </view>
+    </view>
+    <view class="order-gather">
+      <view class="order-num">总2件</view>
+      <view class="order-express">小计（快递：¥34.00）:</view>
+      <view class="order-price">¥99.00</view>
+    </view>
+  </view>
+
+  <view class="order-msg">
+    <view class="msg-title">订单信息</view>
+    <view class="msg-list">
+      <view>订单号：321031201012301</view>
+      <view>下单时间：2018-12-13 12 :31 :00</view>
+      <view>付款时间：2018-12-13 12 :31 :00</view>
+    </view>
+  </view>
+
+  <view class="btn">
+    <button>联系用户</button>
+    <button>发货</button>
+  </view>
+
+</view>

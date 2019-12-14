@@ -1,0 +1,143 @@
+/* pages/report/report.wxss */
+page{
+  background: #F9F9F9;
+}
+
+.reason{
+  margin: 18rpx 22rpx;
+  font-size: 24rpx;
+  color: #A7A7A7;
+}
+.all{
+  background: #FFFFFF;
+}
+
+/*checkbox 选项框大小  */
+checkbox .wx-checkbox-input {
+  width: 36rpx;
+  height: 36rpx;
+}
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #2184E3;
+}
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 28rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+.checkbox{
+  background: #FFFFFF;
+  display: flex;
+  font-size: 28rpx;
+  color: #000000;
+}
+.itembox{
+  display: flex;
+  height: 50px;
+  margin-left: 11px;
+  text-align: center;
+}
+
+
+.uploader{
+  height: 500rpx;
+  width: 94%;
+  background: #F7F7F7;
+  margin-left: 22rpx;
+  border-radius: 8rpx;
+}
+.desc{
+  padding-left: 22rpx;
+  padding-top: 26rpx;
+  font-size: 24rpx;
+  color: #A7A7A2;
+}
+.detail{
+  height: 27px;
+  background-color: #F7F7F7;
+}
+.detail input{
+  height: 27px;
+  padding-top: 8px;
+  padding-left: 22px;
+}
+
+
+/* 上传图片 */
+.flex{
+  display: flex;
+}
+.uploaderbox{
+  /* padding:20rpx 24rpx; */
+  width: 100%;
+  justify-content: center;
+}
+.pic-box{
+  margin-top:20rpx;
+  flex-flow:wrap;
+  width:95%; 
+}
+.ap-box{
+   position: relative;
+}
+.add-pic{
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+  position: relative;
+  margin: 20rpx 30rpx 20rpx 30rpx;
+}
+/* 删除图片 */
+.img-de{
+  width:45rpx;
+  height:45rpx;
+  border-radius:50%;
+  position:absolute;
+  right:-41rpx;
+  top:5rpx;
+}
+.hong-contant .teamwork-btn{
+  width: 360rpx;
+  height: 88rpx;
+  border-radius: 50rpx;
+  color: white;
+  background-color:#14a1fd;
+  margin: 0 auto;
+  margin-top: 80rpx;
+  margin-bottom: 40rpx;
+}
+.img{
+  width:164rpx;
+  height: 164rpx;
+}
+
+
+.btn{
+  height: 146rpx;
+  margin-top: 20rpx;
+  background: #FFFFFF;
+}
+
+.rbtn{
+  height: 100rpx;
+  margin: 12px 12px 11px 11px;
+  background-color: #2184E3;
+  border-radius: 8px;
+}
+
+.rbtn>text{
+  
+  text-align: center;
+  align-items: center;
+  font-size: 15px; 
+  color: #FFFFFF;
+}
+

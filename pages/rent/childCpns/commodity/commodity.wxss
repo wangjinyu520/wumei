@@ -1,0 +1,5 @@
+/* pages/rent/childCpns/commodity/commodity.wxss */
+
+.commodity-item{
+  align-items: center;
+}

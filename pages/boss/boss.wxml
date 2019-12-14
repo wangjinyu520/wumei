@@ -1,0 +1,102 @@
+<!--pages/boss/boss.wxml-->
+<!--pages/profile/profile.wxml-->
+<view class="profile">
+  <!--背景图-->
+  <block class="background-position">
+    <image class="background" src="/assets/common/rectangle.png"></image>
+  </block>
+  <!--header-->
+  <view class="">
+    <view class="header">
+      <view class="avatar">
+        <image src="/assets/images/profile/avatar.png" />
+      </view>
+      <view class='login-info'>
+        <view class='login'>{{title}}</view>
+        <!-- <button open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
+        <view class='phone'>
+         我是主办方我是主办方…
+        </view>
+        <view class="change" bindtap="toUser">
+          <image class="change-img" src="/assets/images/profile/replace.png" />
+          <view class="change-desc">更换为普通用户</view>
+        </view>
+      </view>
+      <view class='arrow' bindtap="toMassage">
+        <image src="/assets/images/profile/news.png" />
+      </view>
+    </view>
+  </view>
+  <!--info-->
+  <view class='info'>
+    <view class='info-money info-item' bindtap="toCoupon">
+      <view>
+        <text class='count'>0</text>
+      </view>
+      <view class="count-title">优惠券</view>
+    </view>
+    <view class="cut"></view>
+    <view class='info-discount info-item' bindtap="toCollect">
+      <view>
+        <text class='count'>0</text>
+      </view>
+      <view class="count-title">收藏</view>
+    </view>
+    <view class="cut"></view>
+    <view class='info-pointer info-item' bindtap="toFocus">
+      <view>
+        <text class='count'>0</text>
+      </view>
+      <view class="count-title">关注</view>
+    </view>
+  </view>
+
+  <!--商家-->
+  <view class="store" bindtap="toStorecenter">
+    <image class='store-img' src="/assets/images/profile/business.png" />
+    <text>商家中心</text>
+    <image class="more" src="/assets/images/profile/more.png" />
+  </view>
+
+  <!--list-->
+  <!-- <view class="list-top">
+    <view class="order-list" bindtap="toOrder" data-type="0">
+      <image class='order-img' src="/assets/images/profile/order.png" />
+      <text>我的订单</text>
+      <image class="more" src="/assets/images/profile/more.png" />
+    </view>
+    <view class="order-list" bindtap="toActivity" data-type="1">
+      <image class='order-img' src="/assets/images/profile/myactive.png" />
+      <text>我的活动</text>
+      <image class="more" src="/assets/images/profile/more.png" />
+    </view>
+    <view class="order-list" bindtap="toAccount" data-type="2">
+      <image class='order-img' src="/assets/images/profile/myaccount.png" />
+      <text>我的账户</text>
+      <image class="more" src="/assets/images/profile/more.png" />
+    </view>
+  </view> -->
+
+  <!-- <view class="list-bottom">
+    <view class="order-list" bindtap="toCertification" data-type="3">
+      <image class='order-img' src="/assets/images/profile/realname.png" />
+      <text>实名认证</text>
+      <image class="more" src="/assets/images/profile/more.png" />
+    </view>
+    <view class="order-list" bindtap="toAddress" data-type="4">
+      <image class='order-img' src="/assets/images/profile/address.png" />
+      <text>收货地址</text>
+      <image class="more" src="/assets/images/profile/more.png" />
+    </view>
+    <view class="order-list" bindtap="toAdvice" data-type="5">
+      <image class='order-img' src="/assets/images/profile/advise.png" />
+      <text>反馈建议</text>
+      <image class="more" src="/assets/images/profile/more.png" />
+    </view>
+    <view class="order-list" bindtap="toSetup" data-type="6">
+      <image class='order-img' src="/assets/images/profile/setup.png" />
+      <text>设置</text>
+      <image class="more" src="/assets/images/profile/more.png" />
+    </view>
+  </view> -->
+</view>

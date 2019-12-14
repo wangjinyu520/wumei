@@ -1,0 +1,18 @@
+<!--pages/withdrawrecord/withdrawrecord.wxml-->
+
+<view>
+
+  <block wx:for="{{recordlist}}" wx:key="index">
+    <view class="record">
+      <view class="withdraw">
+        <text class="withdraw-title">提现</text>
+        <text class="withdraw-price">-¥200.00</text>
+      </view>
+      <view class="serial">
+        <text class="serial-number">流水号983749823</text>
+        <text class="serial-time">2019-10-09 20:00:00</text>
+      </view>
+    </view>
+  </block>
+
+</view>

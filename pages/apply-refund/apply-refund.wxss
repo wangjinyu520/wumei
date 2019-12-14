@@ -1,0 +1,137 @@
+/* pages/apply-refund/apply-refund.wxss */
+page{
+  background: #F9F9F9;
+}
+
+/**/
+.goods{
+  margin-top: 2rpx;
+  background: #FFFFFF;
+  height: 236rpx;
+}
+
+.order-goods{
+  display: flex;
+  padding: 30rpx 26rpx 0 26rpx;
+}
+.goods-img{
+  width: 256rpx;
+  height: 176rpx;
+  background: #D8D8D8;
+  margin-bottom: 28rpx;
+}
+.goods-detail{
+  margin-top: 8rpx;
+  margin-left: 24rpx;
+}
+.goods-title{
+  display: flex;
+}
+.goods-title>text{
+  font-size: 30rpx;
+  color: #000000;
+  font-weight: 550px;
+}
+.goods-title .goods-num{
+  margin-left: auto;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.goods-desc{
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.goods-price{
+  margin-top: 22rpx;
+  font-size: 28rpx;
+  color: #FF2525;
+}
+
+
+
+/**/
+.refund-top{
+  border-top: 20rpx solid #F9F9F9;
+}
+.refund-list{
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #fff;
+  font-size: 32rpx;
+  border-bottom: 1px solid #f8f8f8;
+}
+.refund-list>text{
+  vertical-align: middle;
+  margin-left: 18rpx;
+}
+
+.section{
+  float: right;
+  margin-right: 12px;
+  display: flex;
+}
+
+.picker{
+  margin-right: 20rpx;
+  font-size: 30rpx;
+  color: #A7A7A7;
+}
+
+.more{
+  width: 16rpx;
+  height: 28rpx;
+  text-align: center;
+  margin-top: 18px;
+  
+}
+
+/**/
+.most{
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 26rpx;
+  color: #A7A7A7;
+  margin-left: 24rpx;
+}
+
+
+
+
+
+/**/
+.explain{
+  background: #FFFFFF;
+  height: 550rpx;
+}
+.explain-title{
+  padding: 30rpx 0 0 28rpx;
+  font-size: 30rpx;
+  color: #222222;
+}
+.explain-content{
+  margin: 22rpx;
+  height: 300rpx;
+  background: #F7F7F7;
+}
+.explain-content>input{
+  padding: 26rpx;
+}
+.explain-content>input[placeholder]{
+  font-size: 24rpx;
+  color: #A7A7A7
+}
+
+.btn{
+  margin: 0 24rpx;
+  height: 100rpx;
+  background: #2184E3;
+}
+
+.btn>text{
+  font-size: 30rpx;
+  color: #FFFFFF;
+  line-height: 100rpx;
+}

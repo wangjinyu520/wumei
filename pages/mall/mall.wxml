@@ -1,0 +1,139 @@
+<!--pages/mall/mall.wxml-->
+
+<view class="mall">
+  <block class="background-position">
+    <image class="background" src="/assets/common/rectangle.png"></image>
+  </block>
+  <!--搜索框-->
+  <view class="search">
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <!-- 最初始时的搜索框 -->
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" />
+        </view>
+        <!-- 可编辑时的搜索框 -->
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">搜索</view>
+        </label>
+      </view>
+      <!-- 取消搜索 -->
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+    </view>
+    <view class="cartright" bindtap="">
+      <image class="img" src="/assets/images/mall/cart.png" />
+    </view>
+  </view>
+
+  <!--轮播图-->
+  <w-swiper class="swiper" list="{{banners}}" />
+
+  <!--icon展示-->
+  <view class="icons">
+    <view class="icon-classify">
+      <view class="icon-top">
+        <view class="icon-item" bindtap="goLight" data-type="0">
+          <image class="icon-icon" src="/assets/images/mall/light.png"></image>
+          <view class="text">灯光</view>
+        </view>
+        <view class="icon-item" bindtap="goLight" data-type="1">
+          <image class="icon-icon" src="/assets/images/mall/audio.png"></image>
+          <view class="text">音响</view>
+        </view>
+        <view class="icon-item" bindtap="goLight" data-type="2">
+          <image class="icon-icon" src="/assets/images/mall/video.png"></image>
+          <view class="text">视频</view>
+        </view>
+        <view class="icon-item" bindtap="goLight" data-type="3">
+          <image class="icon-icon" src="/assets/images/mall/truss.png"></image>
+          <view class="text">舞台桁架</view>
+        </view>
+      </view>
+      <view class="icon-bottom">
+        <view class="icon-item" bindtap="goLight" data-type="4">
+          <image class="icon-icon" src="/assets/images/mall/ambitus.png"></image>
+          <view class="text">耗材周边</view>
+        </view>
+        <view class="icon-item" bindtap="goLight" data-type="5">
+          <image class="icon-icon" src="/assets/images/mall/all.png"></image>
+          <view class="text">全部</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--厂家推荐-->
+  <view class="factory">
+    <view class="factory-tab">
+      <view class="factory-title">
+        <text>厂家推荐</text>
+      </view>
+      <view class="more" bindtap="goFactory">
+        <text>更多</text>
+        <image src="/assets/common/master-right.png" class="icon-more" />
+      </view>
+    </view>
+
+    <view class="factory-list">
+    </view>
+  </view>
+
+  <!--好货推荐-->
+  <view class="goods">
+    <view class="goods-tab">
+      <view class="goods-title">
+        <text>好货推荐</text>
+      </view>
+      <view class="more" bindtap="goGoods">
+        <text>更多</text>
+        <image src="/assets/common/master-right.png" class="icon-more" />
+      </view>
+    </view>
+
+    <view class="goods-list" bindtap="toDetailsGoods">
+      <block wx:for="goodsList" wx:key="{{index}}">
+        <view class="goods-content">
+          <image class="goods-img" src="{{}}"></image>
+          <view class="goods-desc">
+            <view class="goods-name">流星灯光线条A</view>
+            <view class="goods-price">¥99.00/天</view>
+            <view class="goods-shop">星光灯具店</view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+  </view>
+
+  <!--拼团采购-->
+  <view class="assemble">
+    <view class="assemble-tab">
+      <view class="assemble-title">
+        <text>拼团采购</text>
+      </view>
+        <view class="more" bindtap="toAssemble">
+          <text>更多</text>
+          <image src="/assets/common/master-right.png" class="icon-more" />
+        </view>
+    </view>
+
+    <view class="assemble-list">
+      <view class="assemble-content">
+        <image class="assemble-img" src="{{}}"></image>
+        <view class="assemble-desc">
+          <view class="assemble-name">流星灯光线条A</view>
+          <view class="assemble-type"><text>寿命长</text><text>寿命长</text></view>
+          <view class="assemble-bottom">
+            <view class="price">
+              <view class="assemble-evey">日常价 ¥300</view>
+              <view class="assemble-price">拼团价 ¥</view>
+            </view>
+            <button class="assemble-btn" bindtap="toDetailsAssemble"><text>去拼团</text></button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

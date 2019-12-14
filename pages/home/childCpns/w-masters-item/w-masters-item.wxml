@@ -1,0 +1,13 @@
+<!--pages/home/childCpns/w-masters-item/w-masters-item.wxml-->
+<view class='masters-item' data-id="{{mastersitem.userId}}" bindtap="toDetailsMaster">
+  <image class='image' src="{{item.userIcon}}"  mode='widthFix'/>
+  <view class='desc-info'>
+    <view class='title'>
+      <text class="name">{{mastersitem.nickName}}</text>
+      <text class="occu">{{mastersitem.technologyOccupation}}</text>
+    </view>
+    <view class='info'>
+      <text class='expe'>{{mastersitem.workExperience}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "w-select": "./childCpns/w-select/w-select"
+  },
+  "navigationBarTitleText": "发布活动"
+}

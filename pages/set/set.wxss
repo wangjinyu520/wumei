@@ -1,0 +1,6 @@
+/* pages/set/set.wxss */
+.btn{
+  margin:60rpx 32rpx 16rpx;
+  text-align: center;
+  font-size: 32rpx;
+}

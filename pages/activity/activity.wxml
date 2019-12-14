@@ -1,0 +1,66 @@
+<!--pages/activity/activity.wxml-->
+
+<view class="">
+  <!--搜索框-->
+  <view class="search-bar">
+    <view class="search-left">
+      <icon class="search-icon" type="search" size="13"></icon>
+      <input type="text" class="search-input" placeholder="搜索" bindtap="turn_search" disabled/>
+    </view>
+    <view class="search-right">
+      <text class="search-text">取消</text>
+    </view>
+  </view>
+  
+  <!--选择picker-bar-->
+  <view class='picker-bar'>
+    <dropdownmenu dropDownMenuTitle='{{dropDownMenuTitle}}' dropDownMenuSourceData='{{data2}}' dropDownMenuStyleData='{{data3}}' dropDownMenuFilterData='{{data4}}' bind:selectedItem='selectedItem' />
+
+
+    <!--<view class='fenlei'>
+  <!-- 下拉框 
+    <view class='select_box'>
+      <view class='select' catchtap='selectTaps'>
+        <text class='select_text'>{{selectDatas[indexs]}}</text>
+        <image class='select_img {{shows&&"select_img_rotate"}}' src=''></image>
+      </view>
+      <view class='option_box' style='height:{{shows?(selectDatas.length>5?300:selectDatas.length*60):0}}rpx;'>
+        <text class='option' style='{{indexs==selectDatas.length-1&&"border:0;"}}' wx:for='{{selectDatas}}' wx:key='this' data-index='{{index}}' catchtap='optionTaps'>{{item}}</text>
+      </view>
+    </view>
+    
+</view>
+-->
+
+  </view>
+
+  <!--展示数据-->
+  <view class="activity-list">
+  <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" 
+        class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
+    <view class="item" wx:for="{{activityList}}" wx:key="{{index}}">
+      <view class="act-top">
+        <image class="act-img" src="{{activityLogo}}" />
+        <view class="act-desc">
+          <view class="act-tltle">即刻融资 专业的线下投融资对接活动</view>
+          <view class="act-content">
+            <view class="content-left">
+              <text class="content-loc">上海 静安</text>
+              <text class="content-time">10/24 周五</text>
+            </view>
+            <view class="content-right">
+              <text class="content-price">¥9.9</text>
+              <button class="content-btn" >
+                <text>立即抢票</text>
+              </button>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+    </view>
+    </scroll-view>
+  </view>
+
+
+</view>

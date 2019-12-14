@@ -1,0 +1,86 @@
+/* pages/shop-set/shop-set.wxss */
+.shop{}
+
+.logo{
+  height: 53px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border-bottom: 1px solid #F9F9F9;
+}
+.logo-title{
+  margin-left: 14px;
+  font-size: 15px;
+  color: #222222;
+}
+.logo-img{
+  margin-left: auto;
+  margin-right: 11px;
+  width: 42px;
+  height: 42px;
+  background: #E5E5E5;
+}
+
+.onload{
+  height: 195px;
+  border-bottom: 10px solid #F9F9F9;
+}
+.onload-title{
+  margin: 14px;
+  font-size: 15px;
+  color: #222222;
+}
+.onload-img{
+  height: 132px;
+  background: #F9F9F9;
+  margin: 14px;
+}
+
+.desc{
+  height: 50px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.desc-title{
+  font-size: 15px;
+  color: #222222;
+  margin-left: 14px;
+}
+.desc-input{
+  margin-left: auto;
+  margin-right: 12px;
+  text-align: right;
+}
+.desc-input[placeholder]{
+  font-size: 15px;
+  color:#444444;
+}
+
+
+/*头像上传*/
+.addimg{
+  height: 132px;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+}
+.itemImg {
+  height: 132px;
+}
+.itemImg image {
+  height: 132px;
+  width: 100%;
+}
+.delete{
+  position: absolute;
+  right: 15px;
+  top: 100px;
+  /* background:#ccc; */
+  opacity: 1;
+  height: 36rpx;
+  font-size: 10px;
+  padding: 0 8rpx 0 10rpx;
+  color: #999;
+}
+

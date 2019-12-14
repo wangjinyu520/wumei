@@ -1,0 +1,44 @@
+<!--pages/report/report.wxml-->
+<view class="report">
+<form bindsubmit="fromReport">
+  <view class="reason">请选择举报该内容的原因：</view>
+  <view class="all">
+    <view class="checkbox">
+      <checkbox-group bindchange="checkboxChange" name="checkbox">
+        <view style="flex-direction:column;" wx:for="{{items}}" wx:key="{{index}}">
+          <checkbox class="itembox" value="{{item.name}},{{item.id}}" checked="{{item.checked}}">{{item.name}}</checkbox>
+        </view>
+      </checkbox-group>
+    </view>
+
+    <view class="uploader">
+      <view class="detail">
+        <input class="desc" name="input" placeholder="举报描述"></input>
+      </view>
+      <view class="uploaderbox">
+        <view class='flex pic-box' name="imgbox">
+          <block wx:key="imgbox" wx:for="{{imgbox}}" >
+            <view class='ap-box'>
+              <view class='add-pic'>
+                <image class='add-pic' src='{{item}}' ></image>
+                <view class='img-de' data-deindex='{{index}}' bindtap='imgDelete1'>
+                  <image class='img' src=''></image>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class='add-pic' bindtap='addPic1' wx:if="{{imgbox.length<9}}">
+            <image class='img' src='/assets/common/add.png'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view class="btn">
+    <button class="rbtn" bindtap="click" data-value="{{value}}" formType="submit" type='primary'>
+      <text>举报</text>
+    </button>
+  </view>
+</form>
+</view>

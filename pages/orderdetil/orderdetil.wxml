@@ -1,0 +1,51 @@
+<!--pages/orderdetil/orderdetil.wxml-->
+<view class="orderdetil">
+  <view class="lable">
+    <view class="image">
+      <image src="" />
+    </view>
+    <view class="content">
+      <view class="title">
+        <text>即刻融资 专业的线下投融资对接活动</text>
+      </view>
+      <view class="active">线下活动 丨10/24 12:00</view>
+    </view>
+  </view>
+
+  <view class="address">
+    <image class="localimg" src="/assets/common/local.png" />
+    <view class="local">上海静安区愚园路123号</view>
+  </view>
+
+  <view class="message">
+    <view class="infor">
+      <view>黎明 17890600400</view>
+    </view>
+
+    <view class="vip">
+      <view class="vipticket">VIP票</view>
+      <view class="vipprice">¥19.9</view>
+    </view>
+
+    <view class="ticket">
+      <view class="ticketnum">票号
+        <view class=""></view>
+      </view>
+      <view class="code">
+        <image class="ticketimg" />
+        <view class="ticketcode">票号二维码</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="order">
+    <view class="orderlist">
+    <view class="ordernum">订单编号：201910220011</view>
+    <view class="ordertime">创建时间：2019-10-22 15：38</view>
+    </view>
+  </view>
+
+  <view class="btn">
+  <button class="cancel"><text>取消报名</text></button>
+  </view>
+</view>

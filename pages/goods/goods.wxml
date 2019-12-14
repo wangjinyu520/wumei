@@ -1,0 +1,125 @@
+<!--pages/goods/goods.wxml-->
+
+<view>
+
+  <swiper class="swiper" circular autoplay interval="5000" duration="300" indicator-dots indicator-active-color="#ff5777">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+      <swiper-item class="swiper-item">
+        <image src="{{item.image}}" mode="widthFix" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="content">
+    <view class="goods-title">流星灯光线条A流星灯光线条A流星灯光线条A流星灯光线条A流星灯光线条A</view>
+    <view class="goods-price">¥
+      <text>9999</text>.00</view>
+    <view class="goods-desc">
+      <view>运费: 0.00</view>
+      <view>已售9899件</view>
+      <view>发货地: 上海</view>
+    </view>
+  </view>
+
+  <view class="chose{{showView? '' : 'show'}}" bindtap="change">
+    <view class="chose-title">选择</view>
+    <view class="chose-desc">
+      <view class="chose-type">请选择商品型号</view>
+      <view class="hide{{showView?'':'show'}}">
+        <!--遮罩层  -->
+        <view class="shade">
+          <!--面板内容  -->
+          <view class="conts">
+            <view class="top">
+              <image class="top-img" src="{{}}"></image>
+              <view class="top-detail">
+                <view class="top-name">流星灯光线条A</view>
+                <view class="top-price">¥9999.00</view>
+              </view>
+            </view>
+            <view class="center">
+              <text>型号尺寸</text>
+              <view class="center-num">
+                <text class="num-one">一条</text>
+                <text class="num-one">一条</text>
+                <text class="num-one">一条</text>
+              </view>
+            </view>
+            <view class="number">
+              <view>数量</view>
+              <view class="num-desc"></view>
+            </view>
+            <view class="btn">
+              <button class="btn-jion" bindtap="">加入购物车</button>
+              <button class="btn-rightnow" bindtap="">立即购买</button>
+            </view>
+          </view>
+          <!--右上角的关闭按钮（用于关闭整个conts)  -->
+          <image class="closeImg" src="/assets/common/close.png" bindtap="close"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="shop">
+    <image class="shop-img" src="{{}}"></image>
+    <view>
+      <view class="shop-name">出出小店</view>
+      <view class="shop-assess">好评率 99%</view>
+    </view>
+    <button class="shop-btn" bindtap="toShop">
+      <text>进店看看</text>
+    </button>
+  </view>
+
+  <view class="assess">
+    <view class="assess-title">
+      <view class="assess-num">评价（78）</view>
+      <view class="assess-more">
+        <text>查看更多</text>
+        <image src="/assets/common/more.png"></image>
+      </view>
+    </view>
+    <view class="assess-content">
+      <block wx:for="assessList" wx:key="{{index}}">
+        <view class="assess-list">
+          <view class="list-top">
+            <image src="{{}}"></image>
+            <view class="name">小瓶子**渐入</view>
+          </view>
+          <view class="list-bottom">11111111111111111111</view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="goods-info">
+    <view class="info-title">商品详情</view>
+    <view class="info">
+    </view>
+  </view>
+
+  <view class="bottom">
+    <view class='collect'>
+      <view>
+        <image class="collect-img" src="{{isClick?'/assets/common/collect-yes.png':'/assets/common/collect-no.png'}}" bindtap="haveSave"></image>
+      </view>
+      <view>
+        <text>{{isClick?'已收藏':'收藏'}}</text>
+      </view>
+    </view>
+    <view class="cut"></view>
+    <view class="customer">
+      <view>
+        <image class="customer-img" src="/assets/common/customer.png"></image>
+      </view>
+      <view>
+        <text>客服</text>
+      </view>
+    </view>
+    <button class="jion"><text>加入购物车</text></button>
+    <button class="rightnow"><text>立即购买</text></button>
+  </view>
+
+
+</view>

@@ -1,0 +1,37 @@
+<!--pages/order/order.wxml-->
+<view>
+  <view class="order-box">
+		<view class="order-label{{index== currentType?'.active':''}}"
+		 wx:for-items="{{orderType}}" 
+		 wx:key="{{index}}" data-index="{{index}}" bindtap="orderTap" >
+		 {{item}}
+		</view>
+	</view>
+
+  <view class="my-order">
+    <view class="order-title">
+      <view class="order-time">下单时间：2018-12-13 12:31:00</view>
+      <view class="order-or">未付款</view>
+    </view>
+    <view class="order-list">
+      <view class="order-goods">
+        <image class="goods-img" src="{{}}"></image>
+        <view class="goods-detail">
+          <view class="goods-title">
+            <text>流星灯光线条A</text>
+            <view class="goods-num">×1</view>
+          </view>
+          <view class="goods-desc">规格：1条装</view>
+          <view class="goods-price">¥99.00</view>
+        </view>
+      </view>
+      <view class="order-btn">
+        <button class="info">联系客服</button>
+        <button class="cancel">取消订单</button>
+        <button class="pay">付款</button>
+        <button class="" bindtap="toRefund">退款</button>
+      </view>
+    </view>
+  </view>
+
+</view>

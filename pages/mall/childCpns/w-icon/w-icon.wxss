@@ -1,0 +1,20 @@
+/* pages/mall/childCpns/w-icon/w-icon.wxss */
+.w-icon{
+  display: flex;
+  margin-top: 30rpx;
+  height: 180rpx;
+  line-height: 50rpx;
+}
+.icon-item{
+  flex: 1;
+  text-align: center;
+}
+.image-item{
+  width: 120rpx;
+  height: 120rpx;
+}
+.text-item{
+  text-align: center;
+  font-size: 32rpx;
+}
+

@@ -1,0 +1,112 @@
+<!--pages/activityDetails/activityDetails.wxml-->
+<view>
+  <image class="img" src="{{}}"></image>
+
+  <view class="activity">
+    <view class="price">免费</view>
+    <view class="title">即刻融资 专业的线下投融资对接活动</view>
+    <view class="act">
+      <text>线下活动</text>
+      <view class="act-num">
+        <view class="browse">
+          <image class="act-img" src="/assets/images/activity/browse.png"></image>
+          <text>6997</text>
+        </view>
+        <view class="collect">
+          <image class="act-img" src="/assets/images/activity/collect.png"></image>
+          <text>6997</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="time-loc">
+    <view class="time">
+      <image class="time-img" src="/assets/images/activity/time.png"></image>
+      <text>2019/10/25 周五</text>
+    </view>
+    <view class="location">
+      <image class="location-img" src="/assets/images/activity/location.png"></image>
+      <text>上海静安区愚园路123号</text>
+    </view>
+  </view>
+
+  <view class="msg">
+    <view class="mag-top">
+      <image class="msg-img" src=""></image>
+      <view class="msg-desc">
+        <view class="msg-title">信息服务有限公司</view>
+        <view class="msg-introduce">是一家汽车领域的全国性金融服务公全国国性金…</view>
+        <view class="msg-act">
+          <text>活动:89</text>
+          <text>粉丝:908</text>
+        </view>
+      </view>
+    </view>
+    <view class="msg-btn">
+      <button class=" remove-btn">取消关注</button>
+      <button class="chat-btn">联系主办方</button>
+      <button class="show-btn">关注</button>
+    </view>
+  </view>
+
+  <view class="act-desc">
+    <view class="act-title">活动介绍</view>
+    <view class="act-content"></view>
+  </view>
+
+  <view class="pop-act">
+    <text>热门活动</text>
+  </view>
+  <view class="pop-content">
+    <view class="active-list">
+      <scroll-view scroll-x="true" class="">
+        <view wx:for="{{activityList}}" wx:key="{{index}}" bindtap="toDetailsTap">
+          <view class="active-desc">
+            <image class="active-img" src="{{}}" />
+            <view class="active-right">
+              <view class="a-rightnow">即刻融资 专业的线下投融资对接活动</view>
+              <view class="active-text">
+                <view class="a-text">
+                  <text class="a-loca">上海 静安</text>
+                  <text class="a-time">10/24 周五</text>
+                </view>
+                <view class="active-b">
+                  <text class="active-free">免费</text>
+                  <button class="active-btn">
+                    <text>立即报名</text>
+                  </button>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="bottom">
+    <view class='collect'>
+      <view>
+        <image class="collect-img" src="{{isClick?'/assets/common/collect-yes.png':'/assets/images/activity/collect.png'}}" bindtap="haveSave"></image>
+      </view>
+      <view>
+        <text>{{isClick?'已收藏':'收藏'}}</text>
+      </view>
+    </view>
+    <view class="cut"></view>
+    <view class="share">
+      <view>
+        <image class="share-img" src="/assets/images/activity/share.png"></image>
+      </view>
+      <view>
+        <text>分享</text>
+      </view>
+    </view>
+    <button class="chat" bindtap="toBuy">
+      <text>立即抢票</text>
+    </button>
+  </view>
+
+
+</view>

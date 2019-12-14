@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "w-search":"./childCpns/w-search/w-search",
+    "w-icon":"./childCpns/w-icon/w-icon",
+
+    "w-swiper": "/components/w-swiper/w-swiper"
+
+    
+  },
+  "navigationBarTitleText": "商城"
+}

@@ -1,0 +1,9 @@
+<!--pages/mall/childCpns/w-icon/w-icon.wxml-->
+<view class="w-icon">
+  <block wx:for="{{titles}}" wx:key="{{index}}">
+    <view class="icon-item">
+      <image class="image-item" src="../assets/images/icon/light.png" bindload="onImageLoad" mode="withFix"/>
+      <view class="text-item">灯光师</view>
+    </view>
+  </block>
+</view>

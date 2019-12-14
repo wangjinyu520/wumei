@@ -1,0 +1,7 @@
+<!--pages/light/light.wxml-->
+<view class="light">
+  <w-tab-control class='tab-control' titles="{{titles}}" bind:tabclick="tabClick"/>
+
+  <w-gaffers gafferslist="{{gaffers[currentType].list}}" bindtap="dispath"/>
+
+</view>

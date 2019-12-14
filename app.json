@@ -1,0 +1,112 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/rent/rent",
+    "pages/mall/mall",
+    "pages/profile/profile",
+    "pages/publish/publish",
+    "pages/register/register",
+    "pages/forget1/forget1",
+    "pages/forget2/forget2",
+    "pages/pref-inf1/pref-inf1",
+    "pages/logs/logs",
+    "pages/center/center",
+    "pages/activity/activity",
+    "pages/myactivity/myactivity",
+    "pages/set/set",
+    "pages/login/login",
+    "pages/buyticket/buyticket",
+    "pages/report/report",
+    "pages/joinfrom/joinfrom",
+    "pages/orderconfirm/orderconfirm",
+    "pages/orderdetil/orderdetil",
+    "pages/setprice/setprice",
+    "pages/videolist/videolist",
+    "pages/light/light",
+    "pages/technology/technology",
+    "pages/company/company",
+    "pages/allactivity/allactivity",
+    "pages/search/search",
+    "pages/personal/personal",
+    "pages/address/address",
+    "pages/shop/shop",
+    "pages/shop-set/shop-set",
+    "pages/application/application",
+    "pages/personal-application/personal-application",
+    "pages/account/account",
+    "pages/cashout/cashout",
+    "pages/withdrawrecord/withdrawrecord",
+    "pages/bill/bill",
+    "pages/coupon/coupon",
+    "pages/focus/focus",
+    "pages/order/order",
+    "pages/certification/certification",
+    "pages/myaddress/myaddress",
+    "pages/advice/advice",
+    "pages/collect/collect",
+    "pages/assembledetails/assembledetails",
+    "pages/order-manage/order-manage",
+    "pages/storeOrderDetials/storeOrderDetials",
+    "pages/assemble-confirm/assemble-confirm",
+    "pages/pay-success/pay-success",
+    "pages/goods/goods",
+    "pages/massage/massage",
+    "pages/refund/refund",
+    "pages/apply-refund/apply-refund",
+    "pages/refund-success/refund-success",
+    "pages/refund-fail/refund-fail",
+    "pages/contact/contact",
+    "pages/product/product",
+    "pages/activityDetails/activityDetails",
+    "pages/sqlogin/sqlogin",
+    "pages/bossCertification/bossCertification",
+    "pages/boss/boss"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#44A3FF",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "selectedColor": "#2184E3",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/assets/images/tabbar/home.png",
+        "selectedIconPath": "/assets/images/tabbar/home_active.png"
+      },
+      {
+        "pagePath": "pages/rent/rent",
+        "text": "严选租赁",
+        "iconPath": "/assets/images/tabbar/rent.png",
+        "selectedIconPath": "/assets/images/tabbar/rent_active.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "",
+        "iconPath": "/assets/images/tabbar/publish.png",
+        "selectedIconPath": "/assets/images/tabbar/publish.png"
+      },
+      {
+        "pagePath": "pages/mall/mall",
+        "text": "商城",
+        "iconPath": "/assets/images/tabbar/mall.png",
+        "selectedIconPath": "/assets/images/tabbar/mall_active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "/assets/images/tabbar/profile.png",
+        "selectedIconPath": "/assets/images/tabbar/profile_active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+<!--pages/orderconfirm/orderconfirm.wxml-->
+<view class="orderconfirm">
+
+  <view class="lable">
+    <view class="image">
+      <image src="" />
+    </view>
+    <view class="content">
+      <view class="title">
+        <text>即刻融资 专业的线下投融资对接活动</text>
+      </view>
+      <view class="address">上海 静安</view>
+      <view class="active">线下活动 丨10/24 12:00</view>
+    </view>
+  </view>
+
+  <view class="vip">
+    <text>VIP</text>
+    <view class="price">¥19.9 x 4</view>
+  </view>
+
+  <view class="pay">
+    <view class="explain">付款说明</view>
+    <image class="payimg" src="/assets/common/orderpay.png" />
+  </view>
+
+  <view class="refund">
+    <view class="explain">退款说明</view>
+    <view class="detil">不接受退款，由于本活动各项资源提前采购，一经售出不接受退款，请确认后购买。</view>
+  </view>
+
+  <view class="change">
+    <text>选择支付方式</text>
+  </view>
+  <view class="style">
+    <view class="zfb">
+      <image src="/assets/common/zfb.png"/>
+      <text>支付宝支付</text>
+      <label class="checked-lable" catchtap='checkedTap1'>
+        <radio checked="{{checked1}}"></radio>
+      </label>
+    </view>
+  </view>
+  <view class="style">
+    <view class="wx">
+      <image src="/assets/common/wx.png"/>
+      <text>微信支付</text>
+      <label class="checked-lable" catchtap='checkedTap'>
+        <radio checked="{{checked}}"></radio>
+      </label>
+    </view>
+  </view>
+
+  <view class="bottom">
+    <view class="sum">合计：
+      <view>{{item.price}}</view>
+    </view>    
+    <button class="btn"><text>确认支付</text></button>
+  </view>
+
+
+</view>
