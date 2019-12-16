@@ -174,11 +174,16 @@ picker{
   border-top: 1px solid #eee;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 30rpx;
 }
 
 .locale-title {
   margin-left: 14px;
+}
+.locale-input{
+  text-align: right;
+  margin-right: 16px;
 }
 
 /*活动详情*/
@@ -217,17 +222,15 @@ picker{
   border-top: 10px solid #eee;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 30rpx;
+  padding: 0 16px 0 12px;
+  box-sizing: border-box;
 }
-
-.collect-title {
-  margin-left: 14px;
-}
-
 .from {
-  margin-left: auto;
+  /* margin-left: auto; */
+  text-align: right;
   color: #222;
-  margin-right: 14px;
 }
 
 /*报名咨询*/
@@ -251,6 +254,7 @@ picker{
 }
 
 .refund {
+  position: relative;
   height: 50px;
   border-top: 1px solid #eee;
   display: flex;
@@ -273,12 +277,14 @@ picker{
 }
 
 .select_box {
-    background-color: #FFFFFF;
+    /* background-color: #FFFFFF; */
     padding: 0 5px;
-    width: 50%;
+    /* width: 50%; */
     float: right;
     position: absolute;
     right: 0;
+    top:20px;
+    background-color: red;
     z-index: 1;
     overflow: hidden;
     /*animation: myfirst 0.5s;*/

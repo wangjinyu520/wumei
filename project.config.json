@@ -628,6 +628,13 @@
 					"pathName": "pages/boss/boss",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/joinfrom/joinfrom",
+					"pathName": "pages/joinfrom/joinfrom",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

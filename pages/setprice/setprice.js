@@ -1,20 +1,17 @@
 // pages/setprice/setprice.js
-const app = getApp();//在小程序中通过getapp获取全局的数据、方法（类似vue中的this.store）
+const app = getApp(); //在小程序中通过getapp获取全局的数据、方法（类似vue中的this.store）
 let globalData = app.globalData;
-let arrticket=[];
+let arrticket = [];
 Page({
   data: {
     showModalStatus: false,
     startTime: '售票开始时间',
     endTime: '售票结束时间',
-    arrtickets:[],
-    switch1Checked:false
+    arrtickets: [],
+    switch1Checked: false,
+    currentId: -1
   },
-  onLoad: function(options) {
-    // 页面初始化 options为页面跳转所带来的参数
 
-    //this.tempData();
-  },
   // 自定义弹框
   deployed: function() {
     wx.navigateTo({
@@ -88,8 +85,8 @@ Page({
       endTime: e.detail.value
     })
   },
-  requirename:function(e){
-    if (e.detail.value.trim()=='') {
+  requirename: function(e) {
+    if (e.detail.value.trim() == '') {
       wx.showToast({
         title: '名称必填',
         icon: 'loading',
@@ -98,7 +95,7 @@ Page({
       return;
     }
   },
-  numberRsg:function(e){
+  numberRsg: function(e) {
     var regNum = new RegExp('[0-9]', 'g');
     var rsNum = regNum.exec(e.detail.value);
     if (!rsNum) {
@@ -111,23 +108,37 @@ Page({
     }
   },
   //开关的变化
-  switch1Change:function(e){
+  switch1Change: function(e) {
     this.setData({
-      switch1Checked:e.detail.value
+      switch1Checked: e.detail.value,
+      currentId: e.currentTarget.dataset.id
     })
-    console.log(this.data.switch1Checked);
-    console.log(e.currentTarget.dataset.name);
-
-
+    // this.setData({
+    //   curentTicket
+    // })
+    // globalData.curentTicket=
+    let id = e.currentTarget.dataset.id;
+    globalData.curentTicket = this.data.arrtickets[id].ticketFee;
+    wx.switchTab({
+      url: '/pages/publish/publish',
+    })
   },
   //提交表单
   formSubmit: function(e) {
-    globalData=e.detail.value;
-    arrticket.push(e.detail.value.ticketName);
+    globalData.ticket = e.detail.value;
+    if (e.detail.value.ticketName.trim() == '') {
+      return;
+    } else {
+      arrticket.push({
+        'ticketName': e.detail.value.ticketName,
+        'ticketFee': e.detail.value.ticketFee
+      });
+    }
+
     this.setData({
-      arrtickets:arrticket
+      arrtickets: arrticket
     })
-    console.log(this.data.arrtickets);
+    // console.log(this.data.arrtickets);
 
     // if (e.detail.value.mobile.length == 0 || e.detail.value.password.length == 0) {
 
@@ -190,6 +201,12 @@ Page({
 
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+
+  },
 
 
   /**

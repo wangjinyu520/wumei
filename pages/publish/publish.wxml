@@ -48,19 +48,14 @@
       <view class="price-title">费用</view>
       <navigator url="/pages/setprice/setprice" class="set">
         <view class=" ">
-          <text>设置</text>
+          <text>{{currentTicket?currentTicket:'设置'}}</text>
           <image src="/assets/common/more.png" class="icon-set"></image>
         </view>
       </navigator>
     </view>
     <view class="locale">
       <view class="locale-title">地点</view>
-      <navigator url="/pages/" hover-class="none" class="set">
-        <view class="address" bindtap="map">
-          <text>请选择</text>
-          <image src="/assets/common/more.png" class="icon-set"></image>
-        </view>
-      </navigator>
+      <input type="text" name="address" placeholder="活动地址" class="locale-input" />
     </view>
 
     <view class="active">
@@ -76,9 +71,9 @@
 
     <view class="collect">
       <view class="collect-title">报名表单收集</view>
-      <navigator url="/pages/joinfrom/joinfrom" hover-class="none" class="from">
+      <navigator url="/pages/joinfrom/joinfrom" class="from">
         <view class="from">
-          <text>姓名、手机号</text>
+          <text>姓名等</text>
           <image src="/assets/common/more.png" class="icon-set"></image>
         </view>
       </navigator>
@@ -91,12 +86,11 @@
 
     <view class="refund">
       <view class="refund-title">退票规则</view>
-      <view class="refund-msg" bindtap="bindShowMsg">
-        <text>{{msg}}</text>
+      <view class="refund-msg" bindtap="{{changeshow}}" >
         <image src="/assets/common/more.png" class="icon-set" />
       </view>
-      <!-- 下拉需要显示的列表 -->
-      <view class="select_box" wx:if="{{select}}">
+    <!-- 下拉需要显示的列表  -->
+      <view class="select_box" wx:if="{{selectdiplay}}">
         <view wx:for="{{selectmsg}}" wx:key="unique">
           <view class="select_one" bindtap="mySelect" data-name="{{item}}">{{item}}</view>
         </view>

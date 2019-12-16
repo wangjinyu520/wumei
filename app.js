@@ -77,6 +77,8 @@ App({
   globalData: {
     userInfo: null,
     openid: '',
-    ticket: null
+    ticket: null,
+    curentTicket:'',
+    concatlist: []
   }
 })

@@ -1,7 +1,7 @@
 // pages/publish/publish.js
 const WXAPI = require('../../wxapi/main')
 const app = getApp()
-
+let globalData = app.globalData;
 var fromList = null;
 
 Page({
@@ -14,7 +14,6 @@ Page({
     imgBoolean: true,
     isAgreement: false, // 是否显示用户协议
     submitBtn: false, // 是否允许投稿
-
     select: false,
     msg: '退票收取10%手续费',
     selectmsg: ['退票收取10%手续费', '不可退票'],
@@ -23,24 +22,17 @@ Page({
     }, {
       "text": '否'
     }],
-
     item: '',
     headImage: '',
     title: '',
     beginTime: '2019-12-12',
     endTime: '2019-12-30',
     desc: '',
-    advice: ''
+    advice: '',
+    currentTicket: '',
+    selectdiplay:false
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    var that = this;
-    //隐藏tabBar
-    wx.hideTabBar()
-  },
 
   chooseImage: function() {
     var that = this;
@@ -84,6 +76,11 @@ Page({
       select: !this.data.select
     })
   },
+  changeshow(){
+    this.setData({
+      selectdiplay: !selectdiplay
+    })
+  },
   mySelect(e) {
     var name = e.currentTarget.dataset.name
     this.setData({
@@ -106,20 +103,30 @@ Page({
       }
     })
   },
-  bindDateChange: function (e) {
+  bindDateChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       beginTime: e.detail.value
     })
   },
-  bindDateChanges: function (e) {
+  bindDateChanges: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       endTime: e.detail.value
     })
   },
-
-
+  // 退票
+  optionTap:function(e){
+    
+  },
+  // 表单提交
+  fromSubmit: function (e) {
+    // console.log(bossList);
+    company = e.detail.value;
+    company.userId = wx.getStorageSync('token').userId;
+    this.uploadimage();
+    // console.log(bossList);
+  },
   fromSubmit: function(e) {
     console.log(e)
     this.setData({
@@ -166,8 +173,37 @@ Page({
       this.bbbb()
     }
   },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    let token = wx.getStorageSync('token');
+    if (!token.companyId) {
+      wx.showModal({
+        title: '',
+        content: '只有主办方才能够发布活动，是否申请为主办方',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/bossCertification/bossCertification',
+            })
+          } else if (res.cancel) {
+            wx.switchTab({
+              url: '/pages/home/home',
+            })
+          }
+        }
+      })
 
-
+    }
+    var that = this;
+    //隐藏tabBar
+    wx.hideTabBar();
+    console.log(globalData.curentTicket);
+    this.setData({
+      currentTicket: globalData.curentTicket
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -179,7 +215,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    
+    console.log(globalData.curentTicket);
+    this.setData({
+      currentTicket: globalData.curentTicket
+    })
   },
 
   /**

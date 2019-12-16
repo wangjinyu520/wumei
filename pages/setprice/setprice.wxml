@@ -11,11 +11,11 @@
     </navigator>
   </view>
   <view class="list" wx:for="{{arrtickets}}" wx:key="{{index}}">
-    <view class="preter">{{item}}</view>
+    <view class="preter">{{item.ticketName}}</view>
     <navigator url="/pages/" hover-class="none" class="free-from">
       <view class="free">
         <view class="body-view">
-          <switch checked="{{switch1Checked}}" bindchange="switch1Change" data-name="{{item}}" data-id="{{index}}" />
+          <switch checked="{{currentId==index?'switch1Checked':''}}" bindchange="switch1Change" data-name="{{item}}" data-id="{{index}}" />
         </view>
       </view>
     </navigator>
