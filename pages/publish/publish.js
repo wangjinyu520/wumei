@@ -24,6 +24,7 @@ Page({
     title: '',
     beginTime: '2019-12-12',
     endTime: '2019-12-30',
+    dateStart: Date.now(),  
     desc: '是',
     advice: '',
     currentTicket: '',
@@ -80,7 +81,7 @@ Page({
       msg: '',
       selectdiplay: !this.data.selectdiplay
     })
-    console.log(this.data.selectdiplay);
+    // console.log(this.data.selectdiplay);
   },
   changeshows: function() {
     this.setData({
@@ -103,8 +104,13 @@ Page({
       selectdiplays: false
     })
   },
-
-
+//初始化富文本编辑器
+  onEditorReady() {
+    const that = this
+    wx.createSelectorQuery().select('#editor').context(function (res) {
+      that.editorCtx = res.context
+    }).exec()
+  },
   map: function() {
     wx.getLocation({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
@@ -137,10 +143,22 @@ Page({
   },
   // 表单提交
   fromSubmit: function(e) {
+
     activity = e.detail.value;
     activity.activityStartTime = this.data.beginTime;
     activity.activityEndTime = this.data.endTime;
-    console.log(this.data.currentTicket);
+    activity.companyId = wx.getStorageSync('token').companyId;
+    // console.log(this.data.currentTicket);
+    if (this.data.currentTicket == "免费") {
+      this.data.currentTicket = 0;
+    }
+    
+    if(new Date().getTime() > new Date(activity.activityStartTime).getTime()){
+      wx.showModal({
+        title: '开始时间应该在当前时间之后',
+      })
+      return;
+    }
     activity.activityFee = this.data.currentTicket;
     activity.refundRule = this.data.msg == "退票收取10%手续费" ? 1 : 0;
     activity.trafficPlan = this.data.desc == "是" ? 1 : 0;
@@ -152,10 +170,9 @@ Page({
       obj[i] = v
     })
     activityForm = JSON.stringify(obj);
-    // console.log(company);
-    // company.userId = wx.getStorageSync('token').userId;
+    activity = JSON.stringify(activity);
+    // console.log(activity);
     this.uploadimage();
-    // console.log(bossList);
   },
   //上传图片
   uploadimage: function() {
@@ -163,36 +180,50 @@ Page({
 
     var that = this;
     let data = {
-      activity: {
-        activity
-      },
+      activity,
       activityForm
     };
-    console.log(data);
-    // wx.uploadFile({
-    //   url: 'http://10.20.11.126:8080/wumei-server/company/addCompany',
-    //   header: {
-    //     'content-type': 'multipart/form-data'
-    //   },
-    //   filePath: this.data.item,
-    //   name: 'logo',//name是后台接收到字段
-    //   formData: data,
-    //   success: function (res) {
-    //     console.log(res)
-    //   },
-    //   fail: function (res) {
-    //     console.log(res)
-    //   }
-    // })
+    if (!this.data.item) {
+      wx.showModal({
+        title: '还没有上传图片',
+        content: '还没有上传图片',
+      })
+    }
+    // console.log(data);
+    // console.log(data);
+    wx.uploadFile({
+      url: 'http://10.20.11.126:8080/wumei-server/activity/addActivity',
+      header: {
+        'content-type': 'multipart/form-data'
+      },
+      filePath: this.data.item,
+      name: 'logo', //name是后台接收到字段
+      formData: data,
+      success: function(res) {
+        let str = JSON.parse(res.data);
+        if (str.code == 200) {
+          wx.showToast({
+            title: "发布活动成功",
+            content: str.message,
+          })
+        }
+        wx.switchTab({
+          url: '/pages/home/home',
+        })
+        wx.showTabBar();
 
-
+      },
+      fail: function(res) {
+        console.log(res)
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let token = wx.getStorageSync('token');
-    if (!token.companyId) {
+    let token = wx.getStorageSync('companyId');
+    if (!token) {
       wx.showModal({
         title: '',
         content: '只有主办方才能够发布活动，是否申请为主办方',
@@ -214,9 +245,9 @@ Page({
     //隐藏tabBar
     wx.hideTabBar();
     this.setData({
-      currentTicket: globalData.curentTicket ? globalData.curentTicket:'免费'
+      currentTicket: globalData.curentTicket ? globalData.curentTicket : '免费'
     })
-   
+
 
   },
   /**

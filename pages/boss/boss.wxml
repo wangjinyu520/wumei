@@ -15,7 +15,7 @@
         <view class='login'>{{title}}</view>
         <!-- <button open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
         <view class='phone'>
-         我是主办方我是主办方…
+          我是主办方我是主办方…
         </view>
         <view class="change" bindtap="toUser">
           <image class="change-img" src="/assets/images/profile/replace.png" />
@@ -33,59 +33,35 @@
       <view>
         <text class='count'>0</text>
       </view>
-      <view class="count-title">优惠券</view>
+      <view class="count-title">待举办</view>
     </view>
     <view class="cut"></view>
     <view class='info-discount info-item' bindtap="toCollect">
       <view>
         <text class='count'>0</text>
       </view>
-      <view class="count-title">收藏</view>
+      <view class="count-title">粉丝</view>
     </view>
-    <view class="cut"></view>
-    <view class='info-pointer info-item' bindtap="toFocus">
-      <view>
-        <text class='count'>0</text>
-      </view>
-      <view class="count-title">关注</view>
-    </view>
-  </view>
 
-  <!--商家-->
-  <view class="store" bindtap="toStorecenter">
-    <image class='store-img' src="/assets/images/profile/business.png" />
-    <text>商家中心</text>
-    <image class="more" src="/assets/images/profile/more.png" />
   </view>
-
   <!--list-->
-  <!-- <view class="list-top">
-    <view class="order-list" bindtap="toOrder" data-type="0">
-      <image class='order-img' src="/assets/images/profile/order.png" />
-      <text>我的订单</text>
-      <image class="more" src="/assets/images/profile/more.png" />
-    </view>
-    <view class="order-list" bindtap="toActivity" data-type="1">
-      <image class='order-img' src="/assets/images/profile/myactive.png" />
-      <text>我的活动</text>
-      <image class="more" src="/assets/images/profile/more.png" />
-    </view>
+  <view class="list-top">
+   
     <view class="order-list" bindtap="toAccount" data-type="2">
       <image class='order-img' src="/assets/images/profile/myaccount.png" />
       <text>我的账户</text>
       <image class="more" src="/assets/images/profile/more.png" />
     </view>
-  </view> -->
-
-  <!-- <view class="list-bottom">
-    <view class="order-list" bindtap="toCertification" data-type="3">
-      <image class='order-img' src="/assets/images/profile/realname.png" />
-      <text>实名认证</text>
+     <view class="order-list" bindtap="toActivity" data-type="1">
+      <image class='order-img' src="/assets/images/profile/myactive.png" />
+      <text>活动管理</text>
       <image class="more" src="/assets/images/profile/more.png" />
     </view>
-    <view class="order-list" bindtap="toAddress" data-type="4">
-      <image class='order-img' src="/assets/images/profile/address.png" />
-      <text>收货地址</text>
+  </view>
+  <view class="list-bottom">
+    <view class="order-list" bindtap="toCertification" data-type="3">
+      <image class='order-img' src="/assets/images/profile/realname.png" />
+      <text>主办方认证</text>
       <image class="more" src="/assets/images/profile/more.png" />
     </view>
     <view class="order-list" bindtap="toAdvice" data-type="5">
@@ -98,5 +74,5 @@
       <text>设置</text>
       <image class="more" src="/assets/images/profile/more.png" />
     </view>
-  </view> -->
+  </view>
 </view>

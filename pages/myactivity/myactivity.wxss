@@ -3,6 +3,29 @@
 page {
   background-color: #f9f9f9;
 }
+/* 切换部分 */
+.order-box{
+  background: #FFFFFF;
+	width:100vw;
+	height:88rpx;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	/* border-top: 2rpx; */
+}
+.order-label{
+	width: 120rpx;
+	height: 82rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  font-size: 28rpx;
+  color: #222222;
+}
+.order-label.active{
+  color: #2184E3;
+	border-bottom: 6rpx solid #2184E3;
+}
 
 .my-activity {
   height: 300rpx;
@@ -15,7 +38,7 @@ page {
 }
 
 .act-img {
-  width: 256rpx;
+  width: 35%;
   height: 176rpx;
   background: #d8d8d8;
   margin-left: 24rpx;
@@ -23,6 +46,7 @@ page {
 }
 
 .act-desc {
+  width: 65%;
   margin-top: 32rpx;
   margin-left: 20rpx;
 }
@@ -35,6 +59,8 @@ page {
 
 .act-content {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .content-left {
@@ -55,10 +81,12 @@ page {
 }
 
 .content-right {
-  margin-left: auto;
+  text-align: right;
+  
 }
 
 .content-price {
+  margin-right: 16rpx;
   font-size: 26rpx;
   color: #ff2525;
 }

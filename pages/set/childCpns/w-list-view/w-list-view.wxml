@@ -3,6 +3,9 @@
   <block wx:for="{{infos}}" wx:key="index">
     <view class='list-item'>
       <text>{{item.info}}</text>
+      <navigator url="/pages/order/order">
+      <image class="img" src="../../../../assets/images/more.png"></image>
+      </navigator>
     </view>
   </block>
 </view>

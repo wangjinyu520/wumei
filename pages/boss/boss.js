@@ -15,7 +15,7 @@ Page({
 
   toCoupon: function () {
     wx.navigateTo({
-      url: '/pages/coupon/coupon'
+      url: '/pages/myactivity/myactivity?status=0'
     })
   },
 
@@ -57,7 +57,7 @@ Page({
 
   toCertification: function () {
     wx.navigateTo({
-      url: '/pages/certification/certification',
+      url: '/pages/bossCertification/bossCertification',
     })
   },
 

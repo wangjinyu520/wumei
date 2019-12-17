@@ -12,8 +12,6 @@ Page({
   data: {
     code: ''
   },
-
-
   getPhoneNumber(e) {
     let that=this;
     wx.login({
@@ -47,6 +45,10 @@ Page({
                wx.showModal({
                  title: '',
                  content: '用户授权成功',
+               })
+               wx.setStorageSync('token', res.data);
+               wx.switchTab({
+                 url: '/pages/profile/profile',
                })
              }else{
                wx.showModal({

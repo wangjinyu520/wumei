@@ -120,11 +120,13 @@ Page({
               })
             }else if(res.code==SUCCESS) {
               // console.log(res.data.userName);
+
               that.setData({
                 title: res.data.userName,
                 isClicked: false
               })
               wx.setStorageSync('token',res.data);
+              wx.setStorageSync('companyId', res.data.companyId);
             }else if(res.code==11211){
               wx.showModal({
                 title: '',
@@ -188,7 +190,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let token = wx.getStorageSync('token').userName;
+    if (token) {
+      this.setData({
+        title: token
+      })
+    }
   },
 
   /**

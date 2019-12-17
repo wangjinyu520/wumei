@@ -4,11 +4,15 @@
 }
 
 .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 100rpx;
   line-height: 100rpx;
   background: #fff;
   font-size: 32rpx;
-  margin-left: 30rpx;
+  padding: 0 14px;
+  box-sizing: border-box;
   border-bottom: 1px solid #f8f8f8;
 }
 
@@ -16,9 +20,9 @@
   border-bottom: none;
 }
 
-.list-item image {
-  width: 40rpx;
-  height: 40rpx;
+.list-item image{
+  width:8px;
+  height: 14px;
   vertical-align: middle;
 }
 

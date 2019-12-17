@@ -4,7 +4,7 @@ const WXAPI = require('../../wxapi/main');
 let {
   SUCCESS
 } = require('../../config/base.js');
-let company={};
+let company = {};
 Page({
 
   /**
@@ -107,10 +107,21 @@ Page({
           'content-type': 'multipart/form-data'
         },
         filePath: this.data.upload_picture_list[i].path,
-        name: 'prove',//name是后台接收到字段
+        name: 'prove', //name是后台接收到字段
         formData: company,
         success: function(res) {
-          console.log(res)
+         let str=JSON.parse(res.data);
+         if(str.code==200){
+           wx.setStorageSync('companyId', str.data);
+           wx.navigateBack({
+             delta: 2
+           })
+         }else{
+           wx.showToast({
+             title: str.message,
+           })
+         }
+         
         },
         fail: function(res) {
           console.log(res)

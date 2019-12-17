@@ -23,12 +23,11 @@
     <!--输入框-->
     <view class="topic">
       <view class="title">主题</view>
-      <input type="text" name="activityTheme" placeholder="招聘人数" />
+      <input type="text" name="activityTheme" placeholder="内容" />
     </view>
-
     <view class="begin">
       <view class="title">开始时间</view>
-      <picker mode="date" value="{{beginTime}}" bindchange="bindDateChange">
+      <picker mode="date" value="{{beginTime}}" start="{{dateStart}}"  bindchange="bindDateChange">
         <view class="picker">
           {{beginTime}}
         </view>
@@ -64,7 +63,9 @@
       </view>
       <view class="active-decr">
         <view class="active-input">
-          <input name="activityIntroduce" placeholder="请输入文字内容"></input>
+          <!-- <input name="activityIntroduce" placeholder="请输入文字内容"></input> -->
+          <editor id="editor" class="ql-container" placeholder="{{placeholder}}" showImgSize showImgToolbar showImgResize bindstatuschange="onStatusChange"  bindready="onEditorReady">
+          </editor>
         </view>
       </view>
     </view>
@@ -86,11 +87,11 @@
 
     <view class="refund">
       <view class="refund-title">退票规则</view>
-      <view class="refund-msg" bindtap="changeshow" >
-         <text>{{msg}}</text>
+      <view class="refund-msg" bindtap="changeshow">
+        <text>{{msg}}</text>
         <image src="/assets/common/more.png" class="icon-set" />
       </view>
-    <!-- 下拉需要显示的列表  -->
+      <!-- 下拉需要显示的列表  -->
       <view class="select_box" wx:if="{{selectdiplay}}">
         <view wx:for="{{selectmsg}}" wx:key="unique">
           <view class="select_one" bindtap="mySelect" data-name="{{item}}">{{item}}</view>
@@ -100,12 +101,12 @@
 
     <view class="join">
       <view class="join-title">加入流量增长计划</view>
-       <view class="refund-msg" bindtap="changeshows" >
-         <text>{{desc}}</text>
+      <view class="refund-msg" bindtap="changeshows">
+        <text>{{desc}}</text>
         <image src="/assets/common/more.png" class="icon-set" />
       </view>
       <!-- <w-select prop-array='{{selectArray}}' class="w-select" /> -->
-       <view class="select_box_is" wx:if="{{selectdiplays}}">
+      <view class="select_box_is" wx:if="{{selectdiplays}}">
         <view wx:for="{{selectArray}}" wx:key="unique">
           <view class="select_one" bindtap="mySelects" data-name="{{item}}">{{item}}</view>
         </view>

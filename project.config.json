@@ -23,7 +23,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.3",
-	"appid": "wx83e9bb98c2aed8aa",
+	"appid": "wx9704107d6ee309ff",
 	"projectname": "wumei",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -634,6 +634,12 @@
 					"name": "pages/joinfrom/joinfrom",
 					"pathName": "pages/joinfrom/joinfrom",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/set/set",
+					"pathName": "pages/set/set",
 					"scene": null
 				}
 			]

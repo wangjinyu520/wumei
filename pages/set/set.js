@@ -14,8 +14,9 @@ Page({
     ]
   },
   goToReg: function () {
-    wx.navigateTo({
-      url: '../register/register'
+    wx.clearStorage();
+    wx.switchTab({
+      url: '/pages/profile/profile',
     })
   },
 

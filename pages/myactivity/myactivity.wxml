@@ -1,18 +1,23 @@
 <!--pages/myactivity/myactivity.wxml-->
-<w-tab-control class='tab-control' titles="{{titles}}" bind:tabclick="tabClick" />
-
-<view class="my-activity">
+  <view class="order-box">
+		<view class="order-label{{index== currentType?'.active':''}}"
+		 wx:for-items="{{orderType}}" 
+		 wx:key="{{index}}" data-index="{{index}}" bindtap="orderTap" >
+		 {{item}}
+		</view>
+	</view>
+<view class="my-activity" wx:for="{{contentlist}}" wx:key="{{index}}">
   <view class="act-top">
-    <image class="act-img" src="{{}}" />
+    <image class="act-img" src="{{item.activityIcon}}" />
     <view class="act-desc">
-      <view class="act-tltle">即刻融资 专业的线下投融资对接活动</view>
+      <view class="act-tltle">{{item.activityName}}</view>
       <view class="act-content">
         <view class="content-left">
-          <text class="content-loc">上海 静安</text>
-          <text class="content-time">10/24 周五</text>
+          <text class="content-loc">{{item.activityTheme}}</text>
+          <text class="content-time">{{item.startTime}}</text>
         </view>
         <view class="content-right">
-          <text class="content-price">¥9.9</text>
+          <text class="content-price">¥{{item.ticketPrice}}</text>
           <button class="content-btn">
             <text>查看详情</text>
           </button>
@@ -21,8 +26,8 @@
     </view>
   </view>
   <view class="act-bottom">
-    <view>报名人数：23人</view>
-    <view class="jion-price">报名费用：227.7</view>
-    <view class="act-jion">报名中</view>
+    <view>报名人数：{{item.signUpCount}}人</view>
+    <view class="jion-price">报名费用：{{item.signUpPrice}}</view>
+    <view class="act-jion">{{item.activityStatus}}</view>
   </view>
 </view>
