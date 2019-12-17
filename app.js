@@ -79,6 +79,6 @@ App({
     openid: '',
     ticket: null,
     curentTicket:'',
-    concatlist: []
+    concatlist: []//报名表单收集
   }
 })

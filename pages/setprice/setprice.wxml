@@ -65,7 +65,7 @@
         <label class="tTitle col-0">售票时间</label>
         <picker class="input_base input_h30 col-1" name="startTime" mode="date" value="{{startTime}}" bindchange="bindDateChange">
           <view class="picker">
-            {{startTime}}
+            {{startTime?startTime:'售卖开始时间'}}
           </view>
         </picker>
       </view>
@@ -73,7 +73,7 @@
         <label class="tTitle col-0"></label>
         <picker class="input_base input_h30 col-1" mode="date" name="endTime" value="{{endTime}}" bindchange="bindDateChanges">
           <view class="picker">
-            {{endTime}}
+            {{endTime?endTime:'售卖结束时间'}}
           </view>
         </picker>
       </view>

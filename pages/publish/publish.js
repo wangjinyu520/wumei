@@ -3,7 +3,8 @@ const WXAPI = require('../../wxapi/main')
 const app = getApp()
 let globalData = app.globalData;
 var fromList = null;
-
+let activity = null;
+let activityForm = null;
 Page({
 
   /**
@@ -17,20 +18,17 @@ Page({
     select: false,
     msg: '退票收取10%手续费',
     selectmsg: ['退票收取10%手续费', '不可退票'],
-    selectArray: [{
-      "text": '是'
-    }, {
-      "text": '否'
-    }],
+    selectArray: ['是', '否'],
     item: '',
     headImage: '',
     title: '',
     beginTime: '2019-12-12',
     endTime: '2019-12-30',
-    desc: '',
+    desc: '是',
     advice: '',
     currentTicket: '',
-    selectdiplay:false
+    selectdiplay: false,
+    selectdiplays: false
   },
 
 
@@ -76,18 +74,36 @@ Page({
       select: !this.data.select
     })
   },
-  changeshow(){
+  changeshow: function() {
+
     this.setData({
-      selectdiplay: !selectdiplay
+      msg: '',
+      selectdiplay: !this.data.selectdiplay
+    })
+    console.log(this.data.selectdiplay);
+  },
+  changeshows: function() {
+    this.setData({
+      desc: '',
+      selectdiplays: !this.data.selectdiplays
     })
   },
+
   mySelect(e) {
     var name = e.currentTarget.dataset.name
     this.setData({
       msg: name,
-      select: false
+      selectdiplay: false
     })
   },
+  mySelects(e) {
+    var name = e.currentTarget.dataset.name
+    this.setData({
+      desc: name,
+      selectdiplays: false
+    })
+  },
+
 
   map: function() {
     wx.getLocation({
@@ -116,62 +132,60 @@ Page({
     })
   },
   // 退票
-  optionTap:function(e){
-    
+  optionTap: function(e) {
+
   },
   // 表单提交
-  fromSubmit: function (e) {
-    // console.log(bossList);
-    company = e.detail.value;
-    company.userId = wx.getStorageSync('token').userId;
+  fromSubmit: function(e) {
+    activity = e.detail.value;
+    activity.activityStartTime = this.data.beginTime;
+    activity.activityEndTime = this.data.endTime;
+    console.log(this.data.currentTicket);
+    activity.activityFee = this.data.currentTicket;
+    activity.refundRule = this.data.msg == "退票收取10%手续费" ? 1 : 0;
+    activity.trafficPlan = this.data.desc == "是" ? 1 : 0;
+    activity.refundRule = this.data.msg == "退票收取10%手续费" ? 1 : 0;
+    activity.refundRule = this.data.msg == "退票收取10%手续费" ? 1 : 0;
+    activity.ticket = globalData.ticket;
+    let obj = {};
+    globalData.concatlist.forEach((v, i) => {
+      obj[i] = v
+    })
+    activityForm = JSON.stringify(obj);
+    // console.log(company);
+    // company.userId = wx.getStorageSync('token').userId;
     this.uploadimage();
     // console.log(bossList);
   },
-  fromSubmit: function(e) {
-    console.log(e)
-    this.setData({
+  //上传图片
+  uploadimage: function() {
+    // console.log(this.data.upload_picture_list.length);
 
-    })
-    const that = this;
-    const wxreq = wx.request({
-      url: '',
-      data: {
-
+    var that = this;
+    let data = {
+      activity: {
+        activity
       },
-      method: 'POST',
-      header: {
-        'Content-Type': "application/x-www-form-urlencoded",
-        'Cookie': 'SESSION=' + wx.getStorageSync("sessionId")
-      }, // 设置请求的 header 
-      success: function(res) {
-        console.log("提交任务成功");
-        wx.navigateTo({ //页面跳转
-          url: '',
-        })
-        wx.showModal({ //提示弹框
-          title: '提示',
-          content: '提交成功，请耐心等待审核。',
-          showCancel: false, //是否显示取消按钮 
-          fail: function(res) {}, //接口调用失败的回调函数
-          complete: function(res) {}, //接口调用结束的回调函数（调用成功、失败都会执行）
-        })
-      },
-      fail: function() {
-        console.log("请求数据失败");
-      }
-    })
+      activityForm
+    };
+    console.log(data);
+    // wx.uploadFile({
+    //   url: 'http://10.20.11.126:8080/wumei-server/company/addCompany',
+    //   header: {
+    //     'content-type': 'multipart/form-data'
+    //   },
+    //   filePath: this.data.item,
+    //   name: 'logo',//name是后台接收到字段
+    //   formData: data,
+    //   success: function (res) {
+    //     console.log(res)
+    //   },
+    //   fail: function (res) {
+    //     console.log(res)
+    //   }
+    // })
 
-  },
 
-  submit: function(e) {
-    console.log(e)
-    if (e.detail.target.dataset.type == 1) {
-      this.xxxx()
-    } else if (e.detail.target.dataset.type == 2) {
-      this.cccc()
-    } else {
-      this.bbbb()
-    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -199,10 +213,11 @@ Page({
     var that = this;
     //隐藏tabBar
     wx.hideTabBar();
-    console.log(globalData.curentTicket);
     this.setData({
-      currentTicket: globalData.curentTicket
+      currentTicket: globalData.curentTicket ? globalData.curentTicket:'免费'
     })
+   
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -210,14 +225,13 @@ Page({
   onReady: function() {
 
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
     console.log(globalData.curentTicket);
     this.setData({
-      currentTicket: globalData.curentTicket
+      currentTicket: globalData.curentTicket ? globalData.curentTicket : '免费'
     })
   },
 

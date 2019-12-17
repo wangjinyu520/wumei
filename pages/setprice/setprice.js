@@ -5,8 +5,8 @@ let arrticket = [];
 Page({
   data: {
     showModalStatus: false,
-    startTime: '售票开始时间',
-    endTime: '售票结束时间',
+    startTime: '',
+    endTime: '',
     arrtickets: [],
     switch1Checked: false,
     currentId: -1
@@ -21,6 +21,10 @@ Page({
   },
   // 弹框
   powerDrawer: function(e) {
+    var currentStatu = e.currentTarget.dataset.statu;
+    this.util(currentStatu)
+  },
+  cancelDrawer: function(e) {
     var currentStatu = e.currentTarget.dataset.statu;
     this.util(currentStatu)
   },

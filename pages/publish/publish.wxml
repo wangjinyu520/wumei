@@ -23,7 +23,7 @@
     <!--输入框-->
     <view class="topic">
       <view class="title">主题</view>
-      <input type="text" name="title" placeholder="招聘人数" />
+      <input type="text" name="activityTheme" placeholder="招聘人数" />
     </view>
 
     <view class="begin">
@@ -55,7 +55,7 @@
     </view>
     <view class="locale">
       <view class="locale-title">地点</view>
-      <input type="text" name="address" placeholder="活动地址" class="locale-input" />
+      <input type="text" name="activityLocation" placeholder="活动地址" class="locale-input" />
     </view>
 
     <view class="active">
@@ -64,7 +64,7 @@
       </view>
       <view class="active-decr">
         <view class="active-input">
-          <input name="desc" placeholder="请输入文字内容"></input>
+          <input name="activityIntroduce" placeholder="请输入文字内容"></input>
         </view>
       </view>
     </view>
@@ -81,12 +81,13 @@
 
     <view class="advice">
       <view class="advice-title">报名咨询</view>
-      <input type="advice-text" name="advice" placeholder="手机号/座机电话-分机号码" />
+      <input type="advice-text" name="activityPhone" placeholder="手机号/座机电话-分机号码" />
     </view>
 
     <view class="refund">
       <view class="refund-title">退票规则</view>
-      <view class="refund-msg" bindtap="{{changeshow}}" >
+      <view class="refund-msg" bindtap="changeshow" >
+         <text>{{msg}}</text>
         <image src="/assets/common/more.png" class="icon-set" />
       </view>
     <!-- 下拉需要显示的列表  -->
@@ -99,9 +100,17 @@
 
     <view class="join">
       <view class="join-title">加入流量增长计划</view>
-      <w-select prop-array='{{selectArray}}' class="w-select" />
+       <view class="refund-msg" bindtap="changeshows" >
+         <text>{{desc}}</text>
+        <image src="/assets/common/more.png" class="icon-set" />
+      </view>
+      <!-- <w-select prop-array='{{selectArray}}' class="w-select" /> -->
+       <view class="select_box_is" wx:if="{{selectdiplays}}">
+        <view wx:for="{{selectArray}}" wx:key="unique">
+          <view class="select_one" bindtap="mySelects" data-name="{{item}}">{{item}}</view>
+        </view>
+      </view>
     </view>
-
     <view class="agree">
       <view class="container-agreement">
         <checkbox-group bindchange="agreeMent" class="info">

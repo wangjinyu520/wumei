@@ -114,7 +114,8 @@
   margin-left: auto;
   margin-right: 12px;
 }
-picker{
+
+picker {
   text-align: right;
   margin-right: 12px;
   color: #a7a7a7;
@@ -181,7 +182,8 @@ picker{
 .locale-title {
   margin-left: 14px;
 }
-.locale-input{
+
+.locale-input {
   text-align: right;
   margin-right: 16px;
 }
@@ -192,24 +194,26 @@ picker{
   height: 341px;
   border-top: 1px solid #eee;
 }
-.active-title{
+
+.active-title {
   height: 49px;
   font-size: 30rpx;
-  color: #222222;
+  color: #222;
   display: flex;
 }
-.active-title text{
+
+.active-title text {
   margin-left: 14px;
   margin-top: 15px;
 }
 
-.active-decr{
+.active-decr {
   height: 273px;
-  background: #F7F7F7;
+  background: #f7f7f7;
   margin: 0 14px 0 11px;
 }
 
-.active-input{
+.active-input {
   padding-top: 8px;
   margin: 8px 14px 0 11px;
   font-size: 28rpx;
@@ -227,6 +231,7 @@ picker{
   padding: 0 16px 0 12px;
   box-sizing: border-box;
 }
+
 .from {
   /* margin-left: auto; */
   text-align: right;
@@ -277,35 +282,53 @@ picker{
 }
 
 .select_box {
-    /* background-color: #FFFFFF; */
-    padding: 0 5px;
-    /* width: 50%; */
-    float: right;
-    position: absolute;
-    right: 0;
-    top:20px;
-    background-color: red;
-    z-index: 1;
-    overflow: hidden;
-    /*animation: myfirst 0.5s;*/
+  padding: 0 5px;
+  /* width: 50%; */
+  float: right;
+  position: absolute;
+  right: 30px;
+  top: 10px;
+  z-index: 1;
+  overflow: hidden;
 }
+.select_box_is{
+  /* background-color: red; */
+  padding: 0 5px;
+  float: right;
+  position: absolute;
+  right: 30px;
+  top: 15px;
+  z-index: 1;
+  overflow: hidden;
+}
+
 @keyframes myfirst {
-    from {
-        height: 0rpx;
-    }
-    to {
-        height: 210rpx;
-    }
+  from {
+    height: 0rpx;
+  }
+
+  to {
+    height: 210rpx;
+  }
 }
 .select_one {
-    height: 60rpx;
-    line-height: 60rpx;
-    border-bottom: 1px solid #F9F9F9;
+  /* background-color: rgba(0,0,0,.2); */
+  border: 1px solid #f4f4f4;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 5px 15px;
+  /* box-sizing: border-box; */
+}
+.select_box_is .select_one{
+  padding: 0 25px; 
+  width: 20px;
+  height:25px;
+  line-height: 25px;
+  /* background-color: #e7e7e7; */
 }
 
-
-
 .join {
+  position: relative;
   height: 50px;
   border-top: 1px solid #eee;
   display: flex;
@@ -316,11 +339,11 @@ picker{
 .join-title {
   margin-left: 12px;
 }
-.w-select{
+
+.w-select {
   margin-left: auto;
   margin-right: 12px;
 }
-
 
 .info {
   height: 39px;
@@ -333,8 +356,9 @@ picker{
   margin-left: 10px;
   border-radius: 5px;
 }
-.iagree-text{
-font-size: 26rpx;
+
+.iagree-text {
+  font-size: 26rpx;
   color: #222;
   margin-left: 5px;
 }
@@ -382,22 +406,28 @@ font-size: 26rpx;
   align-items: center;
 }
 
-
 /*checkbox 整体大小  */
+
 checkbox {
   width: 40rpx;
   height: 40rpx;
 }
+
 /*checkbox 选项框大小  */
+
 checkbox .wx-checkbox-input {
-  width:40rpx;
-  height:40rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
+
 /*checkbox选中后样式  */
+
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-  background: #2184E3;
+  background: #2184e3;
 }
+
 /*checkbox选中后图标样式  */
+
 checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   width: 40rpx;
   height: 40rpx;
