@@ -1,0 +1,66 @@
+<!--pages/masterRegister/masterRegister.wxml-->
+<!--pages/publish/publish.wxml-->
+<view class="publish">
+  <form bindsubmit="fromSubmit" id="1" bindreset="fromReset">
+    <!--输入框-->
+     <view class="refund">
+      <view class="refund-title">退票规则</view>
+      <view class="refund-msg" bindtap="changeshow">
+        <text>{{msg}}我的世界</text>
+        <image src="/assets/images/master/bottom.png" class="icon-set" />
+      </view>
+      <!-- 下拉需要显示的列表  -->
+      <view class="select_box" wx:if="{{selectdiplay}}">
+        <view wx:for="{{selectmsg}}" wx:key="unique">
+          <view class="select_one" bindtap="mySelect" data-name="{{item}}">{{item}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="active">
+      <view class="active-title">
+        <text>活动详情</text>
+      </view>
+      <view class="active-decr">
+        <view class="active-input">
+          <!-- <input name="activityIntroduce" placeholder="请输入文字内容"></input> -->
+          <view class='toolbar' bindtap="format">
+            <i class="iconfont icon-727bianjiqi_ziti {{formats.fontSize === '24px'? 'ql-active' : ''}}" data-name="fontSize" data-value="24px"></i>
+            <i class="iconfont icon-suojinindent3" data-name="indent" data-value="-1"></i>
+            <i class="iconfont icon-suojinindent2" data-name="indent" data-value="+1"></i>
+            <i class="iconfont icon-bold {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+            <i class="iconfont icon-italic {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+            <i class="iconfont icon-underline {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+            <i class="iconfont icon-726bianjiqi_duanla" data-name="list" data-value="check"></i>
+            <i class="iconfont icon-richtextnumberedlist {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+            <i class="iconfont icon-richtextbulletedlist {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
+            <image src="../../assets/images/activity/pic.png" catchtouchend="insertImage"></image>
+          </view>
+          <view class="containers" style="height:{{editorHeight}}px;">
+            <editor id="editor" class="ql-container" placeholder="{{placeholder}}" bindstatuschange="onStatusChange" bindready="onEditorReady" bindblur="getContent">
+            </editor>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="agree">
+      <view class="container-agreement">
+        <checkbox-group bindchange="agreeMent" class="info">
+          <checkbox value="true" checked="false" class="iagree" />
+          <text class="iagree-text">我同意</text>
+          <text class="user-agree" catchtap="showAgreement"> 《舞美之家活动发布协议》</text>
+        </checkbox-group>
+        <view wx:if="{{isAgreement}}" class="agreement-text"></view>
+        <view class="btn-box">
+          <button class="pre-btn" data-type="1" formType="submit">
+            <text>预览</text>
+          </button>
+          <button class="pub-btn" data-type="2" formType="submit">
+            <text>发布</text>
+          </button>
+        </view>
+      </view>
+    </view>
+
+  </form>
+</view>

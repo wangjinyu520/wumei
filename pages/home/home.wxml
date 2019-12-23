@@ -13,63 +13,60 @@
       <image class="img" src="/assets/common/publish.png" bindtap="toPublish" />
     </view>
   </view>
-
   <!--展示轮播图-->
   <w-swiper list="{{banners}}" />
-
   <!--数据展示-->
     <view class="icons">
     <view class="icon-classify">
       <view class="icon-top">
-        <view class="icon-item" bindtap="goLight" data-type="0">
+        <view class="icon-item" bindtap="goLight" data-type="1">
           <image class="icon-icon" src="/assets/images/icon/light.png"></image>
           <view class="text">灯光师</view>
         </view>
-        <view class="icon-item" bindtap="goLight" data-type="1">
+        <view class="icon-item" bindtap="goLight" data-type="2">
           <image class="icon-icon" src="/assets/images/icon/audio.png"></image>
           <view class="text">音响师</view>
         </view>
-        <view class="icon-item" bindtap="goLight" data-type="2">
+        <view class="icon-item" bindtap="goLight" data-type="3">
           <image class="icon-icon" src="/assets/images/icon/video.png"></image>
           <view class="text">视频师</view>
         </view>
-        <view class="icon-item" bindtap="goLight" data-type="3">
+        <view class="icon-item" bindtap="goLight" data-type="4">
           <image class="icon-icon" src="/assets/images/icon/manager.png"></image>
           <view class="text">项目经理</view>
         </view>
       </view>
       <view class="icon-bottom">
-        <view class="icon-item" bindtap="goLight" data-type="4">
+        <view class="icon-item" bindtap="goLight" data-type="5">
           <image class="icon-icon" src="/assets/images/icon/setup.png"></image>
           <view class="text">搭建</view>
         </view>
-        <view class="icon-item" bindtap="goLight" data-type="5">
+        <view class="icon-item" bindtap="goLight" data-type="6">
           <image class="icon-icon" src="/assets/images/icon/design.png"></image>
           <view class="text">舞美设计</view>
         </view>
-        <view class="icon-item" bindtap="goLight" data-type="6">
+        <view class="icon-item" bindtap="goLight" data-type="">
           <image class="icon-icon" src="/assets/images/icon/all.png"></image>
           <view class="text">全部</view>
         </view>
       </view>
     </view>
   </view>
-
   <!--展示热门大师-->
   <view class="master">
     <view class="master-tab">
       <view class="master-title">
         <text>热门大师</text>
       </view>
-      <navigator url="/pages/light/light" hover-class="none">
+      <view bindtap="goLight" data-type="">
         <view class="more">
           <text>更多</text>
           <image src="/assets/common/master-right.png" class="icon-more"/>
         </view>
-      </navigator>
+      </view>
     </view>
     <view class="masters-list" scroll-x="true">
-      <w-masters masterslist="{{masters[currentType].list}}" class="masters-item" />
+      <w-masters masterslist="{{masters}}" class="masters-item" />
     </view>
   </view>
 
@@ -93,22 +90,25 @@
 
     <scroll-view scroll-x="true" class="" >
       <view wx:for="{{activityList}}" wx:key="{{index}}">
-        <view class="active-desc" data-id="{{item.activityId}}" bindtap="toDetailsTap">
-          <image class="active-img" src="{{}}" />
+      <navigator url="/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
+        <view class="active-desc" data-id="{{item.activityId}}">
+          <image class="active-img" src="{{item.activityLogo}}" />
           <view class="active-right">
-            <view class="a-rightnow">即刻融资 专业的线下投融资对接活动</view>
+            <view class="a-rightnow">{{item.activityTheme}}</view>
             <view class="active-text">
               <view class="a-text">
-                <text class="a-loca">上海 静安</text>
-                <text class="a-time">10/24 周五</text>
+                <text class="a-loca">{{item.activityLocation}}</text>
+                <text class="a-time">{{item.activityTime}}</text>
               </view>
               <view class="active-b">
-                <text class="active-free">免费</text>
+                <text class="active-free">{{item.activityFee?'¥'+item.activityFee:'免费'}}</text>
                 <button class="active-btn"><text>立即报名</text></button>
               </view>
             </view>
           </view>
         </view>
+      </navigator>
+      
       </view>
       </scroll-view>
     </view>
@@ -139,9 +139,6 @@
       </block>
     </view>
   </view>
-
-
-
   <!--回到顶部-->
   <!--<w-back-top wx:if="{{showBackTop}}" />-->
 

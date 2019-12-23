@@ -3,26 +3,29 @@
 
   <view class="lable">
     <view class="image">
-      <image src="" />
+      <image src="{{cartActivityInfo.activityLogo}}" />
     </view>
     <view class="content">
       <view class="title">
-        <text>即刻融资 专业的线下投融资对接活动</text>
+        <text>{{cartActivityInfo.activityTheme}}</text>
       </view>
-      <view class="address">上海 静安</view>
-      <view class="active">线下活动 丨10/24 12:00</view>
+      <view class="address">{{cartActivityInfo.activityLocation}}</view>
+      <view class="active">{{cartActivityInfo.activityType==1?'线上活动':'线下活动'}} 丨 {{cartActivityInfo.activityStartTime}}
+      </view>
     </view>
   </view>
 
+
   <view class="vip">
-    <text>VIP</text>
-    <view class="price">¥19.9 x 4</view>
+    <text>{{cartActivityInfo.ticket.ticketName}}</text>
+    <view class="price">¥{{cartActivityInfo.ticket.ticketFee}} x {{activityCart.ticketsnum}}</view>
   </view>
 
   <view class="pay">
-    <view class="explain">付款说明</view>
-    <image class="payimg" src="/assets/common/orderpay.png" />
+    <view class="explain">备注</view>
+    <input class="moredesc" auto-focus="true" bindblur="getMoreDesc" />
   </view>
+
 
   <view class="refund">
     <view class="explain">退款说明</view>
@@ -33,30 +36,22 @@
     <text>选择支付方式</text>
   </view>
   <view class="style">
-    <view class="zfb">
-      <image src="/assets/common/zfb.png"/>
-      <text>支付宝支付</text>
-      <label class="checked-lable" catchtap='checkedTap1'>
-        <radio checked="{{checked1}}"></radio>
-      </label>
-    </view>
-  </view>
-  <view class="style">
     <view class="wx">
-      <image src="/assets/common/wx.png"/>
+      <image src="/assets/common/wx.png" />
       <text>微信支付</text>
-      <label class="checked-lable" catchtap='checkedTap'>
+      <label class="checked-lable">
         <radio checked="{{checked}}"></radio>
       </label>
     </view>
   </view>
 
   <view class="bottom">
-    <view class="sum">合计：
-      <view>{{item.price}}</view>
-    </view>    
-    <button class="btn"><text>确认支付</text></button>
+    <view class="sum">
+      合计：
+      <text>¥{{activityCart.totalPrice}}</text>
+    </view>
+    <button class="btn" bindtap="goPay">
+      <text>确认支付</text>
+    </button>
   </view>
-
-
 </view>

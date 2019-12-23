@@ -11,7 +11,9 @@ Page({
    */
   data: {
     title:'点击登录',
-    isClicked:true
+    isClicked:true,
+    openDisplay:false,
+    userIdDiscount:null
   },
 
   toCoupon: function () {
@@ -49,7 +51,7 @@ Page({
 
   toActivity: function () {
     wx.navigateTo({
-      url: '/pages/myactivity/myactivity',
+      url: '/pages/userActivity/userActivity',
     })
   },
 
@@ -115,15 +117,27 @@ Page({
         if (res.code) {
           WXAPI.getlogin({ 'code': res.code }).then(res => {
             if (res.code == 50000) {
+              // 去注册
               wx.navigateTo({
                 url: '/pages/sqlogin/sqlogin',
               })
             }else if(res.code==SUCCESS) {
-              // console.log(res.data.userName);
-
+              wx.getUserInfo({
+                success: function (res) {
+                  var userInfo = res.userInfo
+                  var nickName = userInfo.nickName
+                  var avatarUrl = userInfo.avatarUrl
+                  var gender = userInfo.gender //性别 0：未知、1：男、2：女
+                  var province = userInfo.province
+                  var city = userInfo.city
+                  var country = userInfo.country
+                }
+              })
               that.setData({
                 title: res.data.userName,
-                isClicked: false
+                isClicked: false,
+                openDisplay: true,
+
               })
               wx.setStorageSync('token',res.data);
               wx.setStorageSync('companyId', res.data.companyId);
@@ -167,6 +181,15 @@ Page({
     })
 
   },
+  //获取优惠券。收藏，关注
+  getDiscount:function(e){
+    let userId=wx.getStorageSync('token').userId;
+    WXAPI.getDiscount({userId}).then(res=>{
+        this.setData({
+          userIdDiscount:res.data
+        })
+    })
+  },
    /*
    * 生命周期函数--监听页面加载
    */
@@ -174,8 +197,10 @@ Page({
     let token = wx.getStorageSync('token').userName;
     if (token) {
     this.setData({
-      title:token
+      title: token, 
+      openDisplay: true
     })
+      this.getDiscount();
     }
   },
 

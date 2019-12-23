@@ -1,4 +1,5 @@
 /* pages/technology/technology.wxss */
+@import "../../wxParse/wxParse.wxss";
 
 .nav {
   height: 119px;
@@ -8,11 +9,13 @@
 }
 
 .nav-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 17px;
 }
 
-
 .nav-image {
-  float: left;
   width: 45px;
   height: 45px;
   background: #d8d8d8;
@@ -22,10 +25,10 @@
 .info1 {
   font-size: 28rpx;
   color: #000;
-  margin-top: 20px;
   margin-left: 10px;
 }
-.info1-name{
+
+.info1-name {
   width: 56rpx;
 }
 
@@ -36,6 +39,8 @@
   border-radius: 2px;
   color: #2083e3;
   margin-left: 9px;
+  padding: 0 2px;
+  box-sizing: border-box;
 }
 
 .info2 {
@@ -46,7 +51,7 @@
 }
 
 .intro {
-  margin-left: 42px;
+  margin-left: 54px;
   margin-top: 9px;
   font-size: 26rpx;
   color: #666;
@@ -54,7 +59,6 @@
 }
 
 .credit {
-  height: 120px;
 }
 
 .credit-title {
@@ -64,86 +68,106 @@
   margin-left: 12px;
   margin-top: 30rpx;
 }
+
+scroll-view {
+  height: 100%;
+  scroll-y: none;
+}
+
 .credit-wrap {
-  margin-top: 24rpx;
   display: flex;
   display: -webkit-box;
   white-space: nowrap;
-  flex-direction:row;
-  height: 100px;
+  height: auto;
 }
-.credit-item{
-  flex: 1;
-  white-space: nowrap;
+
+.credit-item {
+  margin-top: 24rpx;
+  /* white-space: nowrap; */
 }
-.credit-image{
+
+.credit-image {
   width: 88px;
   height: 88px;
   margin-left: 12px;
   margin-right: 10px;
 }
 
-
-.person-title{
+.person-title {
   margin-top: 18px;
   margin-left: 12px;
   font-size: 32rpx;
-  font-weight: Medium;
+  font-weight: 500;
   line-height: 22px;
-  color: #000000;
+  color: rgba(0, 0, 0, 1);
+  font-family: PingFangSC-Medium, PingFang SC;
 }
-.person-content{
-  font-size: 26rpx;
-  color: #666666;
+
+.person-content {
   margin-left: 11px;
   margin-right: 14px;
   margin-top: 8px;
+  font-size: 13px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 19px;
 }
 
-.case{
+.case {
   border-bottom: 10px solid #eee;
 }
-.case-src{
+
+.case-src {
   margin-bottom: 10px;
 }
-.case-title{
+
+.case-title {
   font-size: 32rpx;
-  color: #000000;
+  color: #000;
   font-weight: Medium;
   margin-left: 11px;
   margin-top: 17px;
 }
-.case-text{
+
+.case-content {
+  padding: 0 14px;
+  box-sizing: border-box;
+}
+
+.case-text {
   font-size: 26rpx;
-  color: #666666;
+  color: #666;
   margin: 8px 11px;
 }
-.case-image{
+
+.case-image {
   height: 204px;
   margin: 7px 11px;
   background: #eee;
 }
 
-
-
-.btn{
+.btn {
   height: 146rpx;
   align-items: center;
   padding-top: 10px;
 }
-.button{  
+
+.button {
   height: 100rpx;
   line-height: 100rpx;
-  background: #2184E3;
+  background: #2184e3;
   font-size: 30rpx;
-  color: #FFFFFF;
+  color: #fff;
   margin: 10px 11px;
 }
-.button text{
+
+.button text {
   align-items: center;
   text-align: center;
 }
-.modalDlg{
+
+.modalDlg {
   position: fixed;
   top: 20px;
   left: 20px;
@@ -153,3 +177,22 @@
   text-align: center;
 }
 
+/* 活动介绍开始 */
+
+.rich_p {
+  width: 100%;
+  /* height: 100%; */
+  font-size: 13px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 19px;
+  padding-top: 10px;
+}
+.rich_p .rich_img {
+  width: 100%!important;
+  height:204px;
+  text-indent: none;
+}
+
+/* 活动接受的结束 */

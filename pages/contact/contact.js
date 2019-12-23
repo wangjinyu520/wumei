@@ -13,7 +13,8 @@ var keyHeight = 0;
 function initData(that) {
   inputVal = '';
 
-  msgList = [{
+  msgList = [
+  {
     speaker: 'server',
     contentType: 'text',
     content: '欢迎来到'
@@ -21,7 +22,7 @@ function initData(that) {
   {
     speaker: 'customer',
     contentType: 'text',
-    content: ''
+    content: '哈喽'
   }
   ]
   that.setData({

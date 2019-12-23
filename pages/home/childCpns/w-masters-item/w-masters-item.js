@@ -32,7 +32,6 @@ Component({
     //}
   //},
   toDetailsMaster: function (e) {
-    //const iId = this.data.mastersitem.iid;
     console.log(e);
     wx.navigateTo({
       url: '/pages/technology/technology?id=' + e.currentTarget.dataset.id,

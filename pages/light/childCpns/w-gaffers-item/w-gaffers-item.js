@@ -9,7 +9,6 @@ Component({
       value: {}
     }
   },
-
   /**
    * 组件的初始数据
    */
@@ -21,13 +20,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    itemClick(e) {
-      // 1.获取iid
-      const iid = this.data.gaffersitem.iid;
-      // 2.跳转到对应的路径
+    itemClick: function (e) {
       wx.navigateTo({
-        url: '/pages/detail/detail?iid=' + iid,
+        url: '/pages/technology/technology?id=' + e.currentTarget.dataset.id,
       })
     }
+    
   }
 })

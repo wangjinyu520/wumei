@@ -60,7 +60,10 @@
     "pages/activityDetails/activityDetails",
     "pages/sqlogin/sqlogin",
     "pages/bossCertification/bossCertification",
-    "pages/boss/boss"
+    "pages/boss/boss",
+    "pages/userActvity",
+    "pages/userActivity/userActivity",
+    "pages/masterRegister/masterRegister"
   ],
   "window": {
     "backgroundTextStyle": "light",

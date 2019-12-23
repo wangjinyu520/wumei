@@ -1,101 +1,144 @@
 <!--pages/activityDetails/activityDetails.wxml-->
-<view>
-  <image class="img" src="{{}}"></image>
-
+<import src="../../wxParse/wxParse.wxml" />
+<view wx:if="{{activityDetailList}}">
+  <image class="img" src="{{activityDetailList.activityLogo}}"></image>
   <view class="activity">
-    <view class="price">免费</view>
-    <view class="title">即刻融资 专业的线下投融资对接活动</view>
-    <view class="act">
-      <text>线下活动</text>
-      <view class="act-num">
-        <view class="browse">
-          <image class="act-img" src="/assets/images/activity/browse.png"></image>
-          <text>6997</text>
-        </view>
-        <view class="collect">
-          <image class="act-img" src="/assets/images/activity/collect.png"></image>
-          <text>6997</text>
+    <view class="price">{{activityDetailList.activityFee?'¥'+activityDetailList.activityFee:'免费'}}</view>
+    <view class="title">{{activityDetailList.activityTheme}}</view>
+    <view class="act-box">
+      <view class="act">
+        <text>{{activityDetailList.activityType==1?'线上活动':'线下活动'}}</text>
+        <view class="act-num">
+          <view class="browse">
+            <image class="act-img" src="/assets/images/activity/browse.png"></image>
+            <text>{{activityDetailList.activityPv==null?'0':activityDetailList.activityPv}}</text>
+          </view>
+          <view class="collects">
+            <image class="act-img" src="/assets/images/activity/collect.png"></image>
+            <text>{{activityDetailList.collectCount==null?'0':activityDetailList.collectCount}}</text>
+          </view>
         </view>
       </view>
     </view>
   </view>
-
   <view class="time-loc">
     <view class="time">
       <image class="time-img" src="/assets/images/activity/time.png"></image>
-      <text>2019/10/25 周五</text>
+      <text>{{activityDetailList.activityTime}}</text>
     </view>
     <view class="location">
       <image class="location-img" src="/assets/images/activity/location.png"></image>
-      <text>上海静安区愚园路123号</text>
+      <text>{{activityDetailList.activityLocation}}</text>
     </view>
   </view>
 
   <view class="msg">
+    <!-- 公司的信息 -->
     <view class="mag-top">
-      <image class="msg-img" src=""></image>
-      <view class="msg-desc">
-        <view class="msg-title">信息服务有限公司</view>
-        <view class="msg-introduce">是一家汽车领域的全国性金融服务公全国国性金…</view>
-        <view class="msg-act">
-          <text>活动:89</text>
-          <text>粉丝:908</text>
+      <image class="msg-img" src="http://www.techwells.com/sumuji-upload/company/1576554202590wx9704107d6ee309ff.o6zAJs4jJUXoX75lAb1ATeCbI45w.HAQk78lpObpb5146c88c93db3fe658f4675151c002d0.png"></image>
+      <view class="msg-desc-box">
+        <view class="msg-desc">
+          <view class="msg-title">{{activityDetailList.rsCompany.companyName}}</view>
+          <view class="msg-introduce">{{activityDetailList.rsCompany.companyIntroduction==null?'暂无简介':activityDetailList.rsCompany.companyIntroduction}}</view>
+          <view class="msg-act">
+            <text>活动：{{activityDetailList.rsCompany.activityCount}}</text>
+            <text>粉丝：{{activityDetailList.rsCompany.fansCount}}</text>
+          </view>
         </view>
       </view>
+
     </view>
     <view class="msg-btn">
-      <button class=" remove-btn">取消关注</button>
-      <button class="chat-btn">联系主办方</button>
-      <button class="show-btn">关注</button>
+      <!-- <button class="remove-btn {{focusKey?'active':''}}" bindtap="focusKey?'reduceFocus':''">取消关注</button> -->
+      <button class="chat-btn" bindtap="goPhone">联系主办方</button>
+      <button class="show-btn" bindtap="{{focusKeyed?'addFocus':'reduceFocus'}}">{{focusText}}</button>
     </view>
   </view>
-
   <view class="act-desc">
     <view class="act-title">活动介绍</view>
-    <view class="act-content"></view>
+    <view class="act-content">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
   </view>
-
   <view class="pop-act">
     <text>热门活动</text>
   </view>
   <view class="pop-content">
     <view class="active-list">
+
       <scroll-view scroll-x="true" class="">
-        <view wx:for="{{activityList}}" wx:key="{{index}}" bindtap="toDetailsTap">
-          <view class="active-desc">
-            <image class="active-img" src="{{}}" />
-            <view class="active-right">
-              <view class="a-rightnow">即刻融资 专业的线下投融资对接活动</view>
-              <view class="active-text">
-                <view class="a-text">
-                  <text class="a-loca">上海 静安</text>
-                  <text class="a-time">10/24 周五</text>
-                </view>
-                <view class="active-b">
-                  <text class="active-free">免费</text>
-                  <button class="active-btn">
-                    <text>立即报名</text>
-                  </button>
+
+        <view wx:for="{{popularActivity}}" wx:key="{{index}}" bindtap="toDetailsTap">
+          <navigator url="/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
+            <view class="active-desc">
+              <image class="active-img" src="{{item.activityLogo}}" />
+              <view class="active-right">
+                <view class="a-rightnow">{{item.activityTheme}}</view>
+                <view class="active-text">
+                  <view class="a-text">
+                    <text class="a-loca">{{item.activityLocation}}</text>
+                    <text class="a-time">{{item.activityTime}}</text>
+                  </view>
+                  <view class="active-b">
+                    <text class="active-free">¥{{item.activityFee}}</text>
+                    <button class="active-btn">
+                      <text>立即报名</text>
+                    </button>
+                  </view>
                 </view>
               </view>
             </view>
-          </view>
+          </navigator>
         </view>
       </scroll-view>
     </view>
   </view>
-
+  <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+    <!--drawer content-->
+    <view class="refund">
+      <!-- 下拉需要显示的列表  -->
+      <view class="select_box">
+        <view class="select_one">
+          <view class="select_one_titl">
+            选择票种
+          </view>
+          <view class="select_one_content" bindtap="mySelect" data-name="{{item}}">
+            <view>{{tickets.ticketName}}</view>
+            <view>¥{{tickets.ticketFee}}</view>
+          </view>
+        </view>
+        <view class="select_one">
+          <view class="select_one_titl">
+            数量
+          </view>
+          <view class="select_one_content_num" bindtap="mySelect" data-name="{{item}}">
+            <view class="select_one_content_item" bindtap="{{reducebtn?'reduceTickets':''}}">-</view>
+            <view class="select_one_content_item">{{ticketsnum}}</view>
+            <view class="select_one_content_item" bindtap="{{addbtn?'addTickets':''}}">+</view>
+          </view>
+        </view>
+      </view>
+      <view class="btn-box">
+        <text>总计：{{totalPrice}}元</text>
+        <button class="btn_ok" bindtap='toBuy' data-statu="close">下一步</button>
+      </view>
+    </view>
+    <!-- <view class="btn_ok" bindtap="powerDrawer" data-statu="close">确定</view> -->
+  </view>
+  <!-- 固定的底部 -->
   <view class="bottom">
     <view class='collect'>
       <view>
-        <image class="collect-img" src="{{isClick?'/assets/common/collect-yes.png':'/assets/images/activity/collect.png'}}" bindtap="haveSave"></image>
+        <image class="collect-img" src="{{isCollect?'/assets/common/collect-yes.png':'/assets/images/activity/collect.png'}}" bindtap="{{isCollect?'noSave':'haveSave'}}"></image>
       </view>
       <view>
-        <text>{{isClick?'已收藏':'收藏'}}</text>
+        <text>{{isCollect?'已收藏':'收藏'}}</text>
       </view>
     </view>
     <view class="cut"></view>
+
     <view class="share">
+      <button open-type='share'></button>
       <view>
         <image class="share-img" src="/assets/images/activity/share.png"></image>
       </view>
@@ -103,7 +146,7 @@
         <text>分享</text>
       </view>
     </view>
-    <button class="chat" bindtap="toBuy">
+    <button class="chat" bindtap="powerDrawer" data-statu="open">
       <text>立即抢票</text>
     </button>
   </view>

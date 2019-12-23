@@ -22,9 +22,9 @@
         <view class="title">手机号码</view>
         <input type="number" name="contact" placeholder="请填写" maxlength="11" bindblur="inputPhoneNum" />
       </view>
-      <view class="textarea">公司介绍</view>
       <view class="line">
-        <textarea class="title" placeholder="请输入" name="companyIntroduction" />
+      <view class="textarea">公司介绍</view>
+        <textarea placeholder="请输入" name="companyIntroduction" />
       </view>
       <view class="line">
         <view class="title">证明附件</view>

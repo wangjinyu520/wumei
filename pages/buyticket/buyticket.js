@@ -1,25 +1,30 @@
 // pages/buyticket/buyticket.js
+const app = getApp()
+let globalData = app.globalData;
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    activityForm:null,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  toConfirm:function(){
+  formSubmit:function(e){
+    globalData.activityCart.buyerInformation=JSON.stringify(e.detail.value);
     wx.navigateTo({
       url: '/pages/orderconfirm/orderconfirm',
     })
   },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    let activityForm=JSON.parse(globalData.activityForm.content);
+    this.setData({
+      activityForm
+    })
+    console.log(activityForm);
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

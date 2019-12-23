@@ -22,15 +22,16 @@
   </view>
 
   <view class="massage">
-
-    <view class="msg" bindtap="toContact">
-      <image class="msg-img" src="{{}}"></image>
-      <view class="msg-content">
-        <view class="content-title">泰温广告公司</view>
-        <view class="content">在吗</view>
+    <button open-type="contact"></button>
+      <view class="msg">
+        <image class="msg-img" src="{{}}"></image>
+        <view class="msg-content">
+          <view class="content-title">泰温广告公司</view>
+          <view class="content">在吗</view>
+        </view>
+        <view class="msg-time">2019/12/15</view>
       </view>
-      <view class="msg-time">2019/12/15</view>
-    </view>
+   
   </view>
 
 </view>

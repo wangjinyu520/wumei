@@ -37,6 +37,7 @@
   <view class='inputRoom' style='bottom: {{inputBottom}}'>
     <image style='width: 7vw; margin-left: 3.2vw;' src='' mode='widthFix'></image>
     <input bindconfirm='sendClick' adjust-position='{{false}}' value='{{inputVal}}' confirm-type='send' bindfocus='focus' bindblur='blur'></input>
+   
   </view>
 </view>
 

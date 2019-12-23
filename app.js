@@ -2,7 +2,7 @@
 const app = getApp()
 const WXAPI = require('./wxapi/main')
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -33,7 +33,7 @@ App({
     //           })
     //           return;
     //         }
-   
+
     //         if (page) {
     //           page.onShow()
     //         }
@@ -78,7 +78,10 @@ App({
     userInfo: null,
     openid: '',
     ticket: null,
-    curentTicket:'',
-    concatlist: []//报名表单收集
+    curentTicket: '',
+    concatlist: [], //报名表单收集,,
+    activityForm: null,
+    activityCart:null,
+    cartActivityInfo:null
   }
 })

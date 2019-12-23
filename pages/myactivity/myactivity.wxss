@@ -124,3 +124,18 @@ page {
   font-size: 24rpx;
   color: #2184E3;
 }
+.tip{
+  text-align: center;
+  color: #D8D8D8;
+  font-size: 14px;
+  padding-bottom:20px; 
+  padding-top:20px;
+}
+.else{
+  text-align: center;
+  line-height: 40px;
+  color: #666;
+  font-size: 16px;
+  padding:20px 0;
+  margin-top:200px;
+}

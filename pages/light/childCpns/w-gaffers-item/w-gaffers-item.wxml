@@ -1,6 +1,8 @@
 <!--pages/light/childCpns/w-gaffers-item/w-gaffers-item.wxml-->
-<view class='gaffers-item' bindtap='itemClick'>
-  <image class='image' src="{{item.userIcon}}"  mode='widthFix'/>
+<view class='gaffers-item' bindtap='itemClick' data-id="{{gaffersitem.userId}}">
+  <view class='image'>
+    <image src="{{gaffersitem.userIcon}}" mode='widthFix' />
+  </view>
   <view class='desc-info'>
     <view class='title'>
       <text class="name">{{gaffersitem.nickName}}</text>

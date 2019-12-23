@@ -1,0 +1,339 @@
+/* pages/masterRegister/masterRegister.wxss */
+/* pages/publish/publish.wxss */
+@import "../../assets/iconfont.wxss";
+.picture {
+  height: 221px;
+  border-top: 1px solid #eee;
+  display: flex;
+}
+
+/*每张图片所占容器*/
+
+.item-ot {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+
+.item {
+  position: relative;
+  margin: 16px auto;
+  width: 240px;
+  height: 160px;
+  background: #f9f9f9;
+  border: 1px solid #e7e7e7;
+  /* overflow:hidden; */
+}
+
+.itemImg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.itemImg image {
+  width: 100%;
+  height: 100%;
+}
+
+/*add按钮*/
+
+.addIcon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 160px;
+  font-size: 80rpx;
+  background: #fff;
+  color: #999;
+  z-index: 2;
+}
+
+/*删除按钮*/
+
+.delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  /* background:#ccc; */
+  opacity: 1;
+  height: 36rpx;
+  font-size: 22rpx;
+  font-weight: 700;
+  padding: 0 8rpx 0 10rpx;
+  color: #999;
+}
+
+.itemTxt {
+  text-align: center;
+  font-size: 30rpx;
+  color: #999;
+  margin-top: 50rpx;
+  margin-bottom: 70rpx;
+  font-weight: 700;
+}
+/*活动详情*/
+
+.active {
+  height: 341px;
+  border-top: 1px solid #eee;
+}
+
+.active-title {
+  height: 49px;
+  font-size: 30rpx;
+  color: #222;
+  display: flex;
+}
+
+.active-title text {
+  margin-left: 14px;
+  margin-top: 15px;
+}
+
+.active-decr {
+  height: 273px;
+  background: #f7f7f7;
+  margin: 0 14px 0 11px;
+}
+
+.active-input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 8px;
+  margin: 8px 20px 0 11px;
+  font-size: 28rpx;
+}
+ .active-input .toolbar{
+
+   font-size: 14px;
+   position: absolute;
+   top: -40px;
+   left: 90px;
+}
+.active-input .toolbar i{
+  font-size: 14px;
+  /* color: red; */
+  padding:0 5px;
+}
+ .active-input .toolbar image{
+   position: absolute;
+   top:270px;
+   right:-10px;
+   width: 23px;
+   height: 19px;
+ }
+
+/*报名咨询*/
+
+.advice {
+  height: 50px;
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.advice-title {
+  margin-left: 12px;
+}
+
+.advice input {
+  margin-left: auto;
+  text-align: right;
+  margin-right: 12px;
+}
+.refund {
+  position: relative;
+  height: 50px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 30rpx;
+}
+.refund-title{
+  width: 20%;
+
+}
+.refund-msg {
+  width: 80%;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10rpx;
+}
+.icon-set{
+  width: 14px;
+  height: 14px;
+  margin-left: 20px;
+}
+
+.select_box {
+  padding: 0 5px;
+  /* width: 50%; */
+  float: right;
+  position: absolute;
+  right: 30px;
+  top: 10px;
+  z-index: 1;
+  overflow: hidden;
+}
+.select_box_is{
+  /* background-color: red; */
+  padding: 0 5px;
+  float: right;
+  position: absolute;
+  right: 30px;
+  top: 15px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+@keyframes myfirst {
+  from {
+    height: 0rpx;
+  }
+
+  to {
+    height: 210rpx;
+  }
+}
+.select_one {
+  /* background-color: rgba(0,0,0,.2); */
+  border: 1px solid #f4f4f4;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 5px 15px;
+  /* box-sizing: border-box; */
+}
+.select_box_is .select_one{
+  padding: 0 25px; 
+  width: 20px;
+  height:25px;
+  line-height: 25px;
+  /* background-color: #e7e7e7; */
+}
+
+.join {
+  position: relative;
+  height: 50px;
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.join-title {
+  margin-left: 12px;
+}
+
+.w-select {
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+.info {
+  height: 39px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+}
+
+.iagree {
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.iagree-text {
+  font-size: 26rpx;
+  color: #222;
+  margin-left: 5px;
+}
+
+.user-agree {
+  font-size: 26rpx;
+  color: #2184e3;
+}
+
+.btn-box {
+  height: 73px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-left: 11px;
+  margin-right: 12px;
+}
+
+.pre-btn {
+  width: 171px;
+  height: 50px;
+  background: #f8a700;
+  border-radius: 8px;
+}
+
+.pre-btn text {
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  align-items: center;
+}
+
+.pub-btn {
+  width: 171px;
+  height: 50px;
+  margin-left: 10px;
+  background: #2184e3;
+  border-radius: 8px;
+}
+
+.pub-btn text {
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  align-items: center;
+}
+
+/*checkbox 整体大小  */
+
+checkbox {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/*checkbox 选项框大小  */
+
+checkbox .wx-checkbox-input {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/*checkbox选中后样式  */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #2184e3;
+}
+/*checkbox选中后图标样式  */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}

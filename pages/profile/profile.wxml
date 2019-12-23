@@ -8,13 +8,14 @@
   <view class="">
     <view class="header">
       <view class="avatar">
-        <image src="/assets/images/profile/avatar.png" />
+        <open-data class="user-avatar" type="{{openDisplay?'userAvatarUrl':''}}"></open-data>
+        <image src="{{openDisplay?'':'/assets/images/profile/avatar.png'}}" />
       </view>
       <view class='login-info'>
         <view class='login' bindtap="{{isClicked?'openlogin':''}}">{{title}}</view>
-        <!-- <button open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
         <view class='phone'>
-          这是我的简介昵称是我的简介…
+        <open-data class="user-avatar" type="{{openDisplay?'userNickName':''}}"></open-data>
+           <text>{{openDisplay?'':'这是我的简介'}}</text>
         </view>
         <view class="change" bindtap="toSponsor">
           <image class="change-img" src="/assets/images/profile/replace.png" />
@@ -31,21 +32,21 @@
   <view class='info'>
     <view class='info-money info-item' bindtap="toCoupon">
       <view>
-        <text class='count'>0</text>
+        <text class='count'>{{userIdDiscount.receiveCount}}</text>
       </view>
       <view class="count-title">优惠券</view>
     </view>
     <view class="cut"></view>
     <view class='info-discount info-item' bindtap="toCollect">
       <view>
-        <text class='count'>0</text>
+        <text class='count'>{{userIdDiscount.collectCount}}</text>
       </view>
       <view class="count-title">收藏</view>
     </view>
     <view class="cut"></view>
     <view class='info-pointer info-item' bindtap="toFocus">
       <view>
-        <text class='count'>0</text>
+        <text class='count'>{{userIdDiscount.focusCount}}</text>
       </view>
       <view class="count-title">关注</view>
     </view>

@@ -10,99 +10,84 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: ''
+    title: '',
+    activitynum: 0,
+    openDisplay: false
   },
 
-  toCoupon: function () {
+  toCoupon: function() {
     wx.navigateTo({
       url: '/pages/myactivity/myactivity?status=0'
     })
   },
 
-  toCollect: function () {
+  toCollect: function() {
     wx.navigateTo({
       url: '/pages/collect/collect'
     })
   },
 
-  toFocus: function () {
+  toFocus: function() {
     wx.navigateTo({
       url: '/pages/focus/focus'
     })
   },
 
-  toStorecenter: function () {
+  toStorecenter: function() {
     wx.navigateTo({
       url: '/pages/center/center',
     })
   },
 
-  toOrder: function () {
+  toOrder: function() {
     wx.navigateTo({
       url: '/pages/order/order',
     })
   },
 
-  toActivity: function () {
+  toActivity: function() {
     wx.navigateTo({
       url: '/pages/myactivity/myactivity',
     })
   },
 
-  toAccount: function () {
+  toAccount: function() {
     wx.navigateTo({
       url: '/pages/account/account',
     })
   },
 
-  toCertification: function () {
+  toCertification: function() {
     wx.navigateTo({
       url: '/pages/bossCertification/bossCertification',
     })
   },
 
-  toAddress: function () {
+  toAddress: function() {
     wx.navigateTo({
       url: '/pages/myaddress/myaddress',
     })
   },
 
-  toAdvice: function () {
+  toAdvice: function() {
     wx.navigateTo({
       url: '/pages/advice/advice',
     })
   },
 
-  toSetup: function () {
+  toSetup: function() {
     wx.navigateTo({
       url: '/pages/set/set',
     })
   },
 
-  toMassage: function () {
+  toMassage: function() {
     wx.navigateTo({
       url: '/pages/massage/massage',
     })
   },
-  // onGotUserInfo(e) {
-  //   if (!e.detail.userInfo) {
-  //     wx.showToast({
-  //       title: '您已取消登录',
-  //       icon: 'none',
-  //     })
-  //     return;
-  //   }
-  //   if (app.globalData.isConnected) {
-  //     AUTH.register(this);
-  //   } else {
-  //     wx.showToast({
-  //       title: '当前无网络',
-  //       icon: 'none',
-  //     })
-  //   }
-  // },
   // 更换为普通用户
-  toUser: function (e) {
+  toUser: function(e) {
     let token = wx.getStorageSync('token');
     if (!token) {
       wx.showToast({
@@ -115,32 +100,19 @@ Page({
     wx.switchTab({
       url: '/pages/profile/profile',
     })
-   
-    // let userId = wx.getStorageSync('token').userId;
-    // WXAPI.changebossCertification({ userId }).then(res => {
-    //   if (res.code !== SUCCESS) {
-    //     wx.showToast({
-    //       title: '您还不是主办方，马上注册',
-    //     })
-    //     wx.navigateTo({
-    //       url: '/pages/bossCertification/bossCertification',
-    //     })
-    //   } else if (res.code == SUCCESS) {
-    //     that.setData({
-    //       title: res.data.userName
-    //     })
-    //   }
-    // })
+  
 
   },
   // 点击登录
   openlogin() {
     let that = this;
     wx.login({
-      success: function (res) {
+      success: function(res) {
         let code = res.code
         if (res.code) {
-          WXAPI.getlogin({ 'code': res.code }).then(res => {
+          WXAPI.getlogin({
+            'code': res.code
+          }).then(res => {
             if (res.code == 11222) {
               wx.navigateTo({
                 url: '/pages/sqlogin/sqlogin',
@@ -158,61 +130,96 @@ Page({
     })
   },
   /*
-  * 生命周期函数--监听页面加载
-  */
-  onLoad: function (options) {
-    let userId=wx.getStorageSync('token').userName;
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    wx.showTabBar();
+    let userId = wx.getStorageSync('token').userName;
     this.setData({
-      title:userId
+      title: userId,
     })
+    //获取待举办数量
+    var that = this;
+    let data = {
+      pageNum: 1,
+      pageSize: 10,
+      activated: 0,
+      companyId: wx.getStorageSync('companyId')
+    };
+    WXAPI.getwillHold(data).then(res => {
+      console.log(res);
+      if (res.code == 200) {
+        that.setData({
+          activitynum: res.total
+        })
+       console.log(res.data.total)
+      }
+    })
+    // wx.request({
+    //   url: 'http://10.20.11.126:8080/wumei-server/activity/companyActivityList',
+    //   data: {
+    //     pageNum: 1,
+    //     pageSize: 10,
+    //     activated: 0,
+    //     companyId: wx.getStorageSync('companyId')
+    //   },
+    //   success: function(res) {
+    //     // console.log(res.data.total)
+    //     that.setData({
+    //       activitynum: res.data.total
+    //     })
+    //   }
+
+    // })
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function() {
+    wx.showTabBar();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

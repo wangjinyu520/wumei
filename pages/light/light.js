@@ -1,12 +1,12 @@
 // pages/light/light.js
 const WXAPI = require('../../wxapi/main')
 
-import{
+import {
   getProduct
 } from '../../wxapi/main.js'
 
-const RECOMMEND="recommend"
-const NEW="new"
+// const RECOMMEND="recommend"
+// const NEW="new"
 const BACK_TOP_POSITION = 1000;
 
 Page({
@@ -16,147 +16,332 @@ Page({
    */
   data: {
     titles: ["推荐", "最新"],
-    gaffers:{
-      [RECOMMEND]:{page:1,list:[]},
-      [NEW]:{page:1,list:[]}
-    },
+    gaffers: [],
     currentType: 'recommend',
+    nowType: '',
+    page: 1,
+    pageSize: 6, //根据后台每页的数据设定
+    currentIndex: 0
   },
-  loadMore() {
-    this._getProductData(this.data.currentType);
-  },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-    // 1.发送网络请求
-    this._getData()
+  onLoad: function(options) {
+    let type = options.type;
+    this.setData({
+      nowType: type
+    });
+    this.getRecommendListInfo();
   },
-
-
   tabClick(e) {
     // 1.根据当前的点击赋值最新的currentType
-    let currentType = ''
-    switch (e.detail.index) {
+    const curType = e.currentTarget.dataset.index;
+    this.setData({
+      currentIndex: curType,
+      page: 1
+    });
+    switch (curType) {
       case 0:
-        currentType = RECOMMEND
+        this.getRecommendListInfo();
         break
       case 1:
-        currentType = NEW
+        this.getDateListInfo();
         break
     }
-    this.setData({
-      currentType: currentType
-    })
-    console.log(this.selectComponent('.tab-control'));
-    this.selectComponent('.tab-control').setCurrentIndex(e.detail.index)
-    this.selectComponent('.tab-control-temp').setCurrentIndex(e.detail.index)
-  },
 
-  //onBackTop() {
-    // wx.pageScrollTo({
-    //   scrollTop: 0,
-    //   duration: 0
+  },
+  //获取最新下面的数据
+  getDateListInfo: function() {
+    // console.log('推荐')
+    var that = this;
+    let data = {
+      pageNum: that.data.page,
+      pageSize: that.data.pageSize,
+      technologyOccupation: that.data.nowType,
+      createDate: 1
+    };
+    WXAPI.getNewMaster(data).then(res => {
+      if (res.code == 200) {
+        var contentlistTem = that.data.gaffers //总的数据列表
+        if (res) {
+          if (that.data.page == 1) {
+            contentlistTem = []
+          }
+          // console.log(globalData.activitynum);/
+          var gaffers = res.data //contentlist每次返回的个数
+          if (gaffers.length > that.data.pageSize) {
+            that.setData({
+              gaffers: contentlistTem.concat(gaffers),
+              hasMoreData: false
+            })
+          } else {
+            that.setData({
+              gaffers: contentlistTem.concat(gaffers),
+              hasMoreData: true,
+              page: that.data.page + 1
+            })
+          }
+        } else {
+          wx.showToast({
+            title: '错误信息',
+          })
+        }
+        var result = that.data.gaffers.map(ele => {
+          if (ele.technologyOccupation == 1) {
+            ele.technologyOccupation = '灯光师'
+          } else if (ele.technologyOccupation == 2) {
+            ele.technologyOccupation = '音响师'
+          } else if (ele.technologyOccupation == 3) {
+            ele.technologyOccupation = '视频师'
+          } else if (ele.technologyOccupation == 4) {
+            ele.technologyOccupation = '项目经理'
+          } else if (ele.technologyOccupation == 5) {
+            ele.technologyOccupation = '搭建'
+          } else if (ele.technologyOccupation == 6) {
+            ele.technologyOccupation = '舞美设计'
+          } else {
+
+          }
+          return ele;
+        })
+        that.setData({
+          gaffers: result
+        })
+      }
+    })
+    // wx.request({
+    //   url: 'http://10.20.11.126:8080/wumei-server/technology/getTechnologyList',
+    //   data: {
+    //     pageNum: that.data.page,
+    //     pageSize: that.data.pageSize,
+    //     technologyOccupation: that.data.nowType,
+    //     createDate: 1
+    //   },
+    //   success: function(res) {
+    //     var contentlistTem = that.data.gaffers //总的数据列表
+    //     if (res) {
+    //       if (that.data.page == 1) {
+    //         contentlistTem = []
+    //       }
+    //       // console.log(globalData.activitynum);/
+    //       var gaffers = res.data.data //contentlist每次返回的个数
+    //       if (gaffers.length > that.data.pageSize) {
+    //         that.setData({
+    //           gaffers: contentlistTem.concat(gaffers),
+    //           hasMoreData: false
+    //         })
+    //       } else {
+    //         that.setData({
+    //           gaffers: contentlistTem.concat(gaffers),
+    //           hasMoreData: true,
+    //           page: that.data.page + 1
+    //         })
+    //       }
+    //     } else {
+    //       wx.showToast({
+    //         title: '错误信息',
+    //       })
+    //     }
+    //     var result = that.data.gaffers.map(ele => {
+    //       if (ele.technologyOccupation == 1) {
+    //         ele.technologyOccupation = '灯光师'
+    //       } else if (ele.technologyOccupation == 2) {
+    //         ele.technologyOccupation = '音响师'
+    //       } else if (ele.technologyOccupation == 3) {
+    //         ele.technologyOccupation = '视频师'
+    //       } else if (ele.technologyOccupation == 4) {
+    //         ele.technologyOccupation = '项目经理'
+    //       } else if (ele.technologyOccupation == 5) {
+    //         ele.technologyOccupation = '搭建'
+    //       } else if (ele.technologyOccupation == 6) {
+    //         ele.technologyOccupation = '舞美设计'
+    //       } else {
+
+    //       }
+    //       return ele;
+    //     })
+    //     that.setData({
+    //       gaffers: result
+    //     })
+
+    //   }
+
     // })
-    //this.setData({
-     // showBackTop: false,
-      //topPosition: 0,
-     // tabControlTop: 0
-    //})
-  //},
-
-  // 网络请求相关方法
-  _getData() {
-    this._getProductData(RECOMMEND);
-    this._getProductData(NEW);
   },
-  _getProductData(type) {
-    // 1.获取数据对应的页码
-    const page = this.data.gaffers[type].page;
-    let data={
-      pageNum:this.data.gaffers[type].page,
-      pageSize:20
-    }
-    console.log(data)
-    // 2.请求数据
-    getProduct(data).then(res => {
-      console.log(res)
-      // 1.取出数据
-      const list = res.data;
-    //console.log(list)
-      // 2.将数据临时获取
-      const gaffers = this.data.gaffers;
-      gaffers[type].list.push(...list)
-      gaffers[type].page += 1;
-
-      // 3.最新的gaffers设置到gaffers中
-      this.setData({
-        gaffers: gaffers
-      })
+  //获取推荐下面的数据
+  getRecommendListInfo: function() {
+    var that = this;
+    console.log('最新');
+    let data = {
+      pageNum: that.data.page,
+      pageSize: that.data.pageSize,
+      technologyOccupation: that.data.nowType,
+      isRecommend: 1
+    };
+    WXAPI.getRecommendList(data).then(res => {
+      if (res.code == 200) {
+        var contentlistTem = that.data.gaffers //总的数据列表
+        if (res) {
+          if (that.data.page == 1) {
+            contentlistTem = []
+          }
+          // console.log(globalData.activitynum);
+          var gaffers = res.data //contentlist每次返回的个数
+          if (gaffers.length > that.data.pageSize) {
+            that.setData({
+              gaffers: contentlistTem.concat(gaffers),
+              hasMoreData: false
+            })
+          } else {
+            that.setData({
+              gaffers: contentlistTem.concat(gaffers),
+              hasMoreData: true,
+              page: that.data.page + 1
+            })
+          }
+        } else {
+          wx.showToast({
+            title: '错误信息',
+          })
+        }
+        var result = that.data.gaffers.map(ele => {
+          if (ele.technologyOccupation == 1) {
+            ele.technologyOccupation = '灯光师'
+          } else if (ele.technologyOccupation == 2) {
+            ele.technologyOccupation = '音响师'
+          } else if (ele.technologyOccupation == 3) {
+            ele.technologyOccupation = '视频师'
+          } else if (ele.technologyOccupation == 4) {
+            ele.technologyOccupation = '项目经理'
+          } else if (ele.technologyOccupation == 5) {
+            ele.technologyOccupation = '搭建'
+          } else if (ele.technologyOccupation == 6) {
+            ele.technologyOccupation = '舞美设计'
+          } else {}
+          return ele;
+        })
+        that.setData({
+          gaffers: result
+        })
+      }
     })
+    // wx.request({
+    //   url: 'http://10.20.11.126:8080/wumei-server/technology/getTechnologyList',
+    //   data: {
+    //     pageNum: that.data.page,
+    //     pageSize: that.data.pageSize,
+    //     technologyOccupation: that.data.nowType,
+    //     isRecommend: 1
+    //   },
+    //   success: function(res) {
+    //     var contentlistTem = that.data.gaffers //总的数据列表
+    //     if (res) {
+    //       if (that.data.page == 1) {
+    //         contentlistTem = []
+    //       }
+    //       // console.log(globalData.activitynum);
+    //       var gaffers = res.data.data //contentlist每次返回的个数
+    //       if (gaffers.length > that.data.pageSize) {
+    //         that.setData({
+    //           gaffers: contentlistTem.concat(gaffers),
+    //           hasMoreData: false
+    //         })
+    //       } else {
+    //         that.setData({
+    //           gaffers: contentlistTem.concat(gaffers),
+    //           hasMoreData: true,
+    //           page: that.data.page + 1
+    //         })
+    //       }
+    //     } else {
+    //       wx.showToast({
+    //         title: '错误信息',
+    //       })
+    //     }
+    //     var result = that.data.gaffers.map(ele => {
+    //       if (ele.technologyOccupation == 1) {
+    //         ele.technologyOccupation = '灯光师'
+    //       } else if (ele.technologyOccupation == 2) {
+    //         ele.technologyOccupation = '音响师'
+    //       } else if (ele.technologyOccupation == 3) {
+    //         ele.technologyOccupation = '视频师'
+    //       } else if (ele.technologyOccupation == 4) {
+    //         ele.technologyOccupation = '项目经理'
+    //       } else if (ele.technologyOccupation == 5) {
+    //         ele.technologyOccupation = '搭建'
+    //       } else if (ele.technologyOccupation == 6) {
+    //         ele.technologyOccupation = '舞美设计'
+    //       } else {}
+    //       return ele;
+    //     })
+    //     that.setData({
+    //       gaffers: result
+    //     })
+    //     console.log(that.data.gaffers);
+
+
+    //   }
+
+    // })
   },
 
-
-  dispath: function (e) {
-    //e.currentTarget.dataset.text获取点击的模块的值
-    if ("" == e.currentTarget.dataset.text) {
-      wx.navigateTo({
-        url: './page',
-      })
-    }
-  },
-
-
-
- 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
+  onPullDownRefresh: function() {
+    this.data.page = 1
+    this.getMusicInfo()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  onReachBottom: function() {
+    console.log(this.data.hasMoreData);
+    if (this.data.hasMoreData) {
+      this.getMusicInfo()
+    } else {
+      wx.showToast({
+        title: '没有更多数据',
+        icon: 'none'
+      })
+    }
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

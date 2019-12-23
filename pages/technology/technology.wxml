@@ -1,17 +1,20 @@
 <!--pages/technology/technology.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
 <view class="technology">
   <view class="nav">
     <view class="nav-info">
       <image class="nav-image" src="{{item.userIcon}}" />
-      <view class="info1">
-        <text class="info1-name">{{mastersitem.nickName}}</text>
-        <text class="linght">灯光师</text>
+      <view>
+        <view class="info1">
+          <text class="info1-name">{{masterDetail.nickName}}</text>
+          <text class="linght">{{masterDetail.technologyOccupation}}</text>
+        </view>
+        <view class="info2">{{masterDetail.technologyGender==1?'男':'女'}} 丨{{masterDetail.technologyAge}}岁</view>
       </view>
-      <view class="info2">男 丨 35岁</view>
     </view>
     <view class="intro">
-      <view>{{mastersitem.workExperience}}</view>
-      <view>海上宝山区灯光第一人</view>
+      <view>{{masterDetail.workExperience}}</view>
+      <view>{{}}</view>
     </view>
   </view>
 
@@ -19,17 +22,8 @@
     <view class="credit-title">证书</view>
     <scroll-view scroll-x="true">
       <view class="credit-wrap">
-        <view class="credit-item">
-          <image class="credit-image" src="/assets/common/add.png" />
-        </view>
-        <view class="credit-item">
-          <image class="credit-image" src="/assets/common/add.png" />
-        </view>
-        <view class="credit-item">
-          <image class="credit-image" src="/assets/common/add.png" />
-        </view>
-        <view class="credit-item">
-          <image class="credit-image" src="/assets/common/add.png" />
+        <view class="credit-item" wx:for="{{masterDetail.certificateImage}}" wx:key="{{index}}"> 
+          <image class="credit-image" src="{{item}}" />
         </view>
       </view>
     </scroll-view>
@@ -37,23 +31,15 @@
 
   <view class="person">
     <view class="person-title">个人经历介绍</view>
-    <view class="person-content">个人简介为某人的简要介绍。个人简介可以是表格的形式，也可以是其他形式。一般用于初次见面时个人介绍中或者个人履历表中等。</view>
+    <view class="person-content">海上宝山区灯光第一人{{masterDetail.personalIntroduce==null?'':masterDetail.personalIntroduce}}</view>
   </view>
 
   <view class="case">
     <view class="case-title">案例介绍</view>
-    <view class="case-src">
-      <view class="case-text">个人简介为某人的简要介绍。个人简介可以是表格的形式，也可以是其他形式。一般用于初次见面时个人介绍中或者个人履历表中等。</view>
-      <view class="case-image">
-        <image src="" />
-      </view>
+    <view class="case-content">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
-    <view class="case-src">
-      <view class="case-text">个人简介为某人的简要介绍。个人简介可以是表格的形式，也可以是其他形式。一般用于初次见面时个人介绍中或者个人履历表中等。</view>
-      <view class="case-image">
-        <image src="" />
-      </view>
-    </view>
+   
   </view>
 
   <view class="btn">

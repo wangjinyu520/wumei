@@ -9,7 +9,6 @@ import {
 const RECOMMEND = "recommend"
 const NEW = "new"
 const BACK_TOP_POSITION = 1000;
-
 Page({
 
   /**

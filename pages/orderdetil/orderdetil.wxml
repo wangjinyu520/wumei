@@ -28,24 +28,31 @@
     </view>
 
     <view class="ticket">
-      <view class="ticketnum">票号
-        <view class=""></view>
+      <view class="ticketnum">
+      票号
       </view>
       <view class="code">
-        <image class="ticketimg" />
-        <view class="ticketcode">票号二维码</view>
+        <view wx:for="{{textArr}}">
+          <qrcode class="iblock" value="{{item}}" width="440">
+            <view slot="text" class="qrcode-tip">
+             票号二维码
+            </view>
+          </qrcode>
+        </view>
       </view>
     </view>
   </view>
 
   <view class="order">
     <view class="orderlist">
-    <view class="ordernum">订单编号：201910220011</view>
-    <view class="ordertime">创建时间：2019-10-22 15：38</view>
+      <view class="ordernum">订单编号：201910220011</view>
+      <view class="ordertime">创建时间：2019-10-22 15：38</view>
     </view>
   </view>
 
   <view class="btn">
-  <button class="cancel"><text>取消报名</text></button>
+    <button class="cancel">
+      <text>取消报名</text>
+    </button>
   </view>
 </view>

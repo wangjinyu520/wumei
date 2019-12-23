@@ -1,30 +1,14 @@
 <!--pages/buyticket/buyticket.wxml-->
-<view class="buyticket">
-
-  <view class="input">
-    <view class="name">
-      <text class="text">姓名</text>
-      <input class="frame active" type="text" placeholder="请输入" placeholder-class="place-holder" style="text-align: right;"></input>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="buyticket">
+    <view class="input">
+      <view class="name" wx:for="{{activityForm}}" wx:key="{{index}}">
+        <text class="text">{{item.name}}</text>
+        <input class="frame active" type="text" name="name{{index}}" placeholder="请输入" style="text-align: right;"></input>
+      </view>
     </view>
-
-    <view class="name">
-      <text class="text">手机号</text>
-      <input class="frame active" type="number" placeholder="请输入" placeholder-class="place-holder" style="text-align: right;"></input>
-    </view>
-
-    <view class="name">
-      <text class="text">年龄</text>
-      <input class="frame active" type="text" placeholder="请输入" placeholder-class="place-holder" style="text-align: right;"></input>
-    </view>
-
-    <view class="name">
-      <text class="text">邮箱</text>
-      <input class="frame active" type="text" placeholder="请输入" placeholder-class="place-holder" style="text-align: right;"></input>
+    <view class="next">
+      <button class="next-btn" formType="submit">下一步</button>
     </view>
   </view>
-
-  <view class="next" bindtap="toConfirm">
-    <button class="next-btn"><text>下一步</text></button>
-  </view>
-
-</view>
+</form>

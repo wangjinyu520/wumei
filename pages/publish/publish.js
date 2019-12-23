@@ -5,6 +5,7 @@ let globalData = app.globalData;
 var fromList = null;
 let activity = null;
 let activityForm = null;
+var editorImg = [];
 Page({
 
   /**
@@ -24,15 +25,16 @@ Page({
     title: '',
     beginTime: '2019-12-12',
     endTime: '2019-12-30',
-    dateStart: Date.now(),  
+    dateStart: Date.now(),
     desc: '是',
     advice: '',
     currentTicket: '',
     selectdiplay: false,
-    selectdiplays: false
+    selectdiplays: false,
+    picList:[],
+    editorImg:[],
+    detailHtml:''
   },
-
-
   chooseImage: function() {
     var that = this;
     // 选择图片
@@ -57,7 +59,6 @@ Page({
       current: current,
       urls: [current]
     })
-    // console.log("这是1" + current);
   },
   //删除图片
   deleteImg: function(e) {
@@ -68,7 +69,6 @@ Page({
       imgBoolean: true
     });
   },
-
   /*下拉菜单 */
   bindShowMsg() {
     this.setData({
@@ -81,7 +81,6 @@ Page({
       msg: '',
       selectdiplay: !this.data.selectdiplay
     })
-    // console.log(this.data.selectdiplay);
   },
   changeshows: function() {
     this.setData({
@@ -89,7 +88,6 @@ Page({
       selectdiplays: !this.data.selectdiplays
     })
   },
-
   mySelect(e) {
     var name = e.currentTarget.dataset.name
     this.setData({
@@ -104,13 +102,92 @@ Page({
       selectdiplays: false
     })
   },
-//初始化富文本编辑器
+  // 富文本
+  readOnlyChange() {
+    this.setData({
+      readOnly: !this.data.readOnly
+    })
+  },
   onEditorReady() {
     const that = this
     wx.createSelectorQuery().select('#editor').context(function (res) {
       that.editorCtx = res.context
     }).exec()
   },
+  blur() {
+ 
+  },
+  getContent(){
+    this.editorCtx.getContents({
+      success: (res) => {
+        this.setData({
+          detailHtml:res.html
+        })
+      },
+      fail: (res) => {
+        // console.log(res);
+      }
+    });
+  },
+  format(e) {
+    let {
+      name,
+      value
+    } = e.target.dataset
+    // conosole.log(value);
+    if (!name) return
+    this.editorCtx.format(name, value)
+  },
+  onStatusChange(e) {
+    const formats = e.detail
+    // console.log(formats);
+  
+    this.setData({
+      formats
+    })
+
+  },
+  //富文本插入图片
+  insertImage() {
+    const that = this
+    let picList = that.data.picList;
+    wx.chooseImage({
+      count: 1,
+      success: function (res) {
+        // console.log(res.tempFiles);
+        let tempFiles = res.tempFiles[0].path;
+        //把选择的图片 添加到集合里
+        //显示
+          wx.uploadFile({
+            url: 'http://10.20.11.126:8080/wumei-server/file/imageUpload',
+            header: {
+              'content-type': 'multipart/form-data'
+            },
+            filePath: tempFiles,
+            name: 'file', //name是后台接收到字段
+            success: function (res) {
+              // console.log(res.data);
+              let str = JSON.parse(res.data);
+              if (str.code == 200) {
+                // console.log(str.data)
+                that.editorCtx.insertImage({
+                  src: str.data,
+                  success: function () {
+                  }
+                });
+              } else {
+                wx.showToast({
+                  title: str.message,
+                })
+              }
+            },
+            fail: function (res) {
+            }
+          })
+      }
+    })
+  },
+
   map: function() {
     wx.getLocation({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
@@ -126,13 +203,11 @@ Page({
     })
   },
   bindDateChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       beginTime: e.detail.value
     })
   },
   bindDateChanges: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       endTime: e.detail.value
     })
@@ -143,17 +218,16 @@ Page({
   },
   // 表单提交
   fromSubmit: function(e) {
-
+    // console.log('dfbhdbf');
     activity = e.detail.value;
     activity.activityStartTime = this.data.beginTime;
     activity.activityEndTime = this.data.endTime;
     activity.companyId = wx.getStorageSync('token').companyId;
-    // console.log(this.data.currentTicket);
+    activity.activityIntroduce=this.data.detailHtml;
     if (this.data.currentTicket == "免费") {
       this.data.currentTicket = 0;
     }
-    
-    if(new Date().getTime() > new Date(activity.activityStartTime).getTime()){
+    if (new Date().getTime() > new Date(activity.activityStartTime).getTime()) {
       wx.showModal({
         title: '开始时间应该在当前时间之后',
       })
@@ -171,13 +245,10 @@ Page({
     })
     activityForm = JSON.stringify(obj);
     activity = JSON.stringify(activity);
-    // console.log(activity);
     this.uploadimage();
   },
   //上传图片
   uploadimage: function() {
-    // console.log(this.data.upload_picture_list.length);
-
     var that = this;
     let data = {
       activity,
@@ -189,8 +260,6 @@ Page({
         content: '还没有上传图片',
       })
     }
-    // console.log(data);
-    // console.log(data);
     wx.uploadFile({
       url: 'http://10.20.11.126:8080/wumei-server/activity/addActivity',
       header: {
@@ -206,18 +275,21 @@ Page({
             title: "发布活动成功",
             content: str.message,
           })
+          wx.switchTab({
+            url: '/pages/home/home',
+          })
+          wx.showTabBar();
         }
-        wx.switchTab({
-          url: '/pages/home/home',
-        })
-        wx.showTabBar();
+       
 
       },
       fail: function(res) {
-        console.log(res)
       }
     })
+
+
   },
+ 
   /**
    * 生命周期函数--监听页面加载
    */
@@ -260,7 +332,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    console.log(globalData.curentTicket);
     this.setData({
       currentTicket: globalData.curentTicket ? globalData.curentTicket : '免费'
     })

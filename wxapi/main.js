@@ -7,6 +7,7 @@ const request = (url, method, data) => {
       url: _url,
       method: method,
       data: data,
+      dataType: 'json',
       header: {
         'Content-Type': 'application/json;charset=UTF-8'
       },
@@ -23,16 +24,6 @@ const request = (url, method, data) => {
     })
   })
 }
-
-/*const urlList = {
-  //刷新
-  refreshTokeUrl: API_BASE_URL + '/refreshToke',
-  //注册
-  loginUrl: API_BASE_URL + '/wxappLogin',
-}
-
-module.exports = urlList;
-*/
 
 module.exports = {
   request,
@@ -53,6 +44,9 @@ module.exports = {
   },
   getActivityList: (data) => {
     return request("/activity/getActivityList", 'get', data)
+  },
+  getHomeList: (data) => {
+    return request("/home/getHomeDetail", 'get', data)
   },
   getAccount: (data) => {
     return request("/merchant/getMerchantAccount", 'get', data)
@@ -82,8 +76,9 @@ module.exports = {
   },
   //添加收货地址
   addAddress: (data) => {
-    return request("/address/addAddress", 'post',data)
+    return request("/address/addAddress", 'post', data)
   },
+  //****主办方的相关接口 */
   //更换为主办方认证
   changebossCertification: (data) => {
     return request("/company/getCompanyInfoByUserId", 'get', data)
@@ -91,7 +86,78 @@ module.exports = {
   //主办方认证
   savebossCertification: (data) => {
     return request("/company/addCompany", 'post', data)
-  }
+  },
+  //主办主页的待举办数
+  getwillHold: (data) => {
+    return request("/activity/companyActivityList", 'get', data)
+  },
 
+
+
+
+
+
+  // 用户活动详情
+  getActivityDetails: (data) => {
+    return request("/activity/getActivityInfo", 'get', data)
+  },
+  // 添加关注
+  addFocus: (data) => {
+    return request("/focus/addFocus", 'get', data)
+  },
+  // 取消关注
+  reduceFocus: (data) => {
+    return request("/focus/cancelFocus", 'get', data)
+  },
+  getPopularActivity: (data) => {
+    return request("/activity/getPopularActivityList", 'get', data)
+  },
+  //用户活动收藏
+  saveActivity: (data) => {
+    return request("/collect/addCollect", 'get', data)
+  },
+  nosaveActivity: (data) => {
+    return request("/collect/deleteCollect", 'get', data)
+  },
+  //详情页的热门活动
+  getPopularActivity: (data) => {
+    return request("/activity/getPopularActivityList", 'get', data)
+  },
+  // 浏览量 
+  browseNum: (data) => {
+    return request("/pv/addPv", 'get', data)
+  },
+  // 获取大师的详细信息
+  getDetailInfo: (data) => {
+    return request("/technology/getTechnologyInfo", 'get', data)
+  },
+  //微信支付接口
+  getweChatOpenid: (data) => {
+    return request("/weChat/getActivityPrePayId", 'get', data)
+  },
+  //****用户相关页面的接口：
+
+  // 获取优惠券、收藏、关注
+  getDiscount: (data) => {
+    return request("/user/getMyInfo", 'get', data)
+  },
+  // 获取大师列表页面-最新的大师数据
+  getNewMaster: (data) => {
+    return request("/technology/getTechnologyList", 'get', data)
+  },
+  // 获取大师列表页面-推荐的大师数据
+  getRecommendList: (data) => {
+    return request("/technology/getTechnologyList", 'get', data)
+  },
+  // 获取我的主页的用户活动列表
+  getMyActivityList: (data) => {
+    return request("/activity/getUserActivityList", 'get', data)
+  },
+  // 获取我的主页的用户活动列表
+  getCompanyActivityList: (data) => {
+    return request("/activity/companyActivityList", 'get', data)
+  },
+
+  
 
 }

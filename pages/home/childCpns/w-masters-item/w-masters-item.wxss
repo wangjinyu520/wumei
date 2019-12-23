@@ -12,9 +12,11 @@
   flex-wrap: wrap;
 }
 .image{
+  display: block;
+  background-color: red;
   width: 45px;
-  height: 45px;
-  border-radius: 39.5px;
+  height: 45px!important;
+  border-radius:50%;
   margin-top: 8px;
 }
 .desc-info{
@@ -33,6 +35,7 @@
   color: #2083E3;
   border-radius: 2px;
   margin-left: 8px;
+  padding:2px;
 }
 
 .info{

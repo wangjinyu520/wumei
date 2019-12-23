@@ -640,6 +640,20 @@
 					"id": -1,
 					"name": "pages/set/set",
 					"pathName": "pages/set/set",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 84,
+					"name": "pages/orderdetil/orderdetil",
+					"pathName": "pages/orderdetil/orderdetil",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/masterRegister/masterRegister",
+					"pathName": "pages/masterRegister/masterRegister",
 					"scene": null
 				}
 			]

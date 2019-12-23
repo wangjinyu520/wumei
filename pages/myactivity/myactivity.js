@@ -1,4 +1,8 @@
 // pages/myactivity/myactivity.js
+const app = getApp()
+let globalData = app.globalData;
+const WXAPI = require('../../wxapi/main')
+
 Page({
 
   /**
@@ -10,7 +14,7 @@ Page({
     databaseStatus: '',
     page: 1,
     contentlist: [],
-    pageSize:6, //根据后台每页的数据设定
+    pageSize: 6, //根据后台每页的数据设定
     hasMoreData: '', //是否有更多数据文字
 
   },
@@ -20,7 +24,7 @@ Page({
     this.setData({
       currentType: curType,
       databaseStatus: curType - 1,
-      page:1
+      page: 1
     });
     if (curType == 0) {
       this.setData({
@@ -30,24 +34,24 @@ Page({
     this.getMusicInfo();
 
   },
-  // 获取对应状态的内容
+  // 获取用户活动的内容
   getMusicInfo: function(message) {
     var that = this;
-    wx.request({
-      url: 'http://10.20.11.126:8080/wumei-server/activity/companyActivityList',
-      data: {
-        pageNum: that.data.page,
-        pageSize: that.data.pageSize,
-        activated: that.data.databaseStatus,
-        companyId: wx.getStorageSync('companyId')
-      },
-      success: function(res) {
+    let data = {
+      pageNum: that.data.page,
+      pageSize: that.data.pageSize,
+      activated: that.data.databaseStatus,
+      companyId: wx.getStorageSync('token').companyId
+    };
+    WXAPI.getCompanyActivityList(data).then(res => {
+      if (res.code == 200) {
         var contentlistTem = that.data.contentlist //总的数据列表
-        if (res) {
+        if (res.data) {
           if (that.data.page == 1) {
             contentlistTem = []
           }
-          var contentlist = res.data.data //contentlist每次返回的个数
+          // console.log(globalData.activitynum);
+          var contentlist = res.data //contentlist每次返回的个数
           var contentlist = contentlist.map(ele => {
             if (ele.activityStatus == 0) {
               ele.activityStatus = '待举办'
@@ -59,17 +63,6 @@ Page({
               ele.activityStatus = '停止售票'
             }
             return ele;
-            // switch (ele.activityStatus) {
-            //   case 0:
-            //     ele.activityStatus = '待举办'
-            //     break
-            //   case 1:
-            //     ele.activityStatus = '进行中'
-            //     break
-            //   case 2:
-            //     ele.activityStatus = '已结束'
-            //     break
-            // }
           })
 
           if (contentlist.length > that.data.pageSize) {
@@ -85,14 +78,63 @@ Page({
             })
           }
         } else {
-          wx.showToast({
-            title: '错误信息',
+          that.setData({
+            contentlist: null
           })
         }
-
       }
-
+      console.log(that.data.contentlist);
     })
+    // wx.request({
+    //   url: 'http://10.20.11.126:8080/wumei-server/activity/getUserActivityList',
+    //   data: {
+    //     pageNum: that.data.page,
+    //     pageSize: that.data.pageSize,
+    //     activated: that.data.databaseStatus,
+    //     userId: wx.getStorageSync('token').userId
+    //   },
+    //   success: function(res) {
+    //     var contentlistTem = that.data.contentlist //总的数据列表
+    //     if (res) {
+    //       if (that.data.page == 1) {
+    //         contentlistTem = []
+    //       }
+    //       // console.log(globalData.activitynum);
+    //       var contentlist = res.data.data //contentlist每次返回的个数
+    //       var contentlist = contentlist.map(ele => {
+    //         if (ele.activityStatus == 0) {
+    //           ele.activityStatus = '待举办'
+    //         } else if (ele.activityStatus == 1) {
+    //           ele.activityStatus = '进行中'
+    //         } else if (ele.activityStatus == 2) {
+    //           ele.activityStatus = '已结束'
+    //         } else {
+    //           ele.activityStatus = '停止售票'
+    //         }
+    //         return ele;
+    //       })
+
+    //       if (contentlist.length > that.data.pageSize) {
+    //         that.setData({
+    //           contentlist: contentlistTem.concat(contentlist),
+    //           hasMoreData: false
+    //         })
+    //       } else {
+    //         that.setData({
+    //           contentlist: contentlistTem.concat(contentlist),
+    //           hasMoreData: true,
+    //           page: that.data.page + 1
+    //         })
+    //       }
+    //     } else {
+    //       wx.showToast({
+    //         title: '错误信息',
+    //       })
+    //     }
+
+    //   }
+
+    // })
   },
   // //格式化数据日期
   // dateToweek:function(date){
@@ -107,10 +149,10 @@ Page({
    */
   onLoad: function(options) {
     // this.dateToweek();
-    if (options.status){
+    if (options.status) {
       this.setData({
-        databaseStatus:options.status,
-        currentType:1
+        databaseStatus: options.status,
+        currentType: 1
       })
     }
     var that = this;
