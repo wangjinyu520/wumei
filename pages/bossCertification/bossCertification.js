@@ -1,10 +1,12 @@
 // pages/bossCertification/bossCertification.js
 const app = getApp();
 const WXAPI = require('../../wxapi/main');
+// import uploadImg from '../../xcomponents/uploadpic/up-pic.js'
 let {
   SUCCESS
 } = require('../../config/base.js');
 let company = {};
+let mulImage = [];
 Page({
 
   /**
@@ -15,7 +17,8 @@ Page({
     uploadedImages: [],
     imgs: [],
     list: '',
-    upload_picture_list: []
+    upload_picture_list: [],
+    mulImage: []
   },
   //选择图片方法
   uploadpic: function(e) {
@@ -30,15 +33,13 @@ Page({
         let tempFiles = res.tempFiles
         //把选择的图片 添加到集合里
         for (let i in tempFiles) {
-          // tempFiles[i]['upload_percent'] = 0
-          // tempFiles[i]['path_server'] = ''
           upload_picture_list.push(tempFiles[i])
         }
         //显示
         that.setData({
           upload_picture_list: upload_picture_list,
         });
-        console.log(upload_picture_list);
+        that.uploadimage();
       }
     })
   },
@@ -91,57 +92,80 @@ Page({
   //  表单提交事件
   fromSubmit: function(e) {
     // console.log(bossList);
+    let that = this;
     company = e.detail.value;
     company.userId = wx.getStorageSync('token').userId;
-    this.uploadimage();
-    // console.log(bossList);
+    // let myComponent = this.myComponent  // 调用自定义组件中的方法
+    // myComponent.uploadimage();
+    // this.uploadimage();
+    if (mulImage) {
+      company.companyProve = mulImage.join(',');
+      console.log(company);
+      WXAPI.savebossCertification(company).then(res => {
+        if (res.code == 200) {
+          wx.setStorageSync('companyId', res.data);
+
+          wx.navigateBack({
+            delta: 2
+          })
+          wx.switchTab({
+            url: '/pages/boss/boss',
+          })
+        } else {
+          wx.showToast({
+            title: res.msg,
+          })
+        }
+      })
+    }
+
   },
   // 点击上传图片
   uploadimage: function() {
     // console.log(this.data.upload_picture_list.length);
     var that = this;
     for (let i = 0; i < this.data.upload_picture_list.length; i++) {
+      that.uploadFile(i).then(res => {
+        mulImage.push(res.data);
+      });
+    }
+
+  },
+  uploadFile: function(i) {
+    return new Promise((resolve, reject) => {
+      const app = getApp();
+      let filterName = {
+        "filterName": "company"
+      }
       wx.uploadFile({
-        url: 'http://10.20.11.126:8080/wumei-server/company/addCompany',
+        url: 'http://101.133.164.180:8080/wumei-server/file/imageUpload',
         header: {
           'content-type': 'multipart/form-data'
         },
         filePath: this.data.upload_picture_list[i].path,
-        name: 'prove', //name是后台接收到字段
-        formData: company,
-        success: function(res) {
-         let str=JSON.parse(res.data);
-         if(str.code==200){
-           wx.setStorageSync('companyId', str.data);
-           wx.navigateBack({
-             delta: 2
-           })
-         }else{
-           wx.showToast({
-             title: str.message,
-           })
-         }
-         
+        formData: filterName,
+        name: 'file', //name是后台接收到字段
+        success: function(result) {
+          console.log(result);
+          const res = JSON.parse(result.data);
+          res.status === -1 ? reject(res) : resolve(res);
         },
-        fail: function(res) {
-          console.log(res)
-        }
+        fail: function(res) {}
       })
-    }
-
+    });
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
 
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    // this.myComponent = this.selectComponent('#myComponent')
   },
 
   /**

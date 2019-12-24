@@ -5,6 +5,6 @@
     <text class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
   </view>
   <view class="picture_item">
-    <image src="../../assets/images/bossregister/add.png" class="addIcon" bindtap="uploadpic"></image>
+    <image src="../../assets/images/bossregister/add.png"  bindtap="uploadpic"></image>
   </view>
 </view>

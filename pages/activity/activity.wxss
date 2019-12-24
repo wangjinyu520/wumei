@@ -15,15 +15,14 @@ page {
 /*搜索框*/
 
 .search-bar {
-  display: inline-flex;
-  width: 100vw;
-  justify-content: space-between;
-  position: relative;
-  z-index: 999;
-  background: #FFFFFF;
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  background: #fff;
 }
 
 .search-left {
+  width: 100%;
   display: flex;
   position: relative;
   justify-content: flex-start;
@@ -33,32 +32,34 @@ page {
 
 .search-icon {
   position: absolute;
-  left: 300rpx;
+  left: 280rpx;
 }
 
 .search-input {
-  position: absolute;
+  /* position: absolute; */
   height: 56rpx;
-  width: 548rpx;
-  left: 24rpx;
-  background: #F2F2F2;
+  width: 100%;
+  background: #f2f2f2;
   border-radius: 28rpx;
   opacity: 0.2896;
 }
 
 input[placeholder] {
   font-size: 26rpx;
-  color: #999999;
+  color: #999;
   text-align: center;
   padding-left: 70rpx;
-
 }
 
 .search-right {
-  position: relative;
   width: 80rpx;
   height: 36rpx;
-  align-items: center;
+  font-size: 15px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  line-height: 18px;
+  margin-left: 10px;
 }
 
 .search-text {
@@ -71,28 +72,29 @@ input[placeholder] {
 
 /*选择picker-bar*/
 
-
-.icon-img{
+.icon-img {
   width: 12px;
   height: 10px;
 }
 
-
-
 /* fenlei */
-.fenlei{
+
+.fenlei {
   height: 90rpx;
   line-height: 90rpx;
   border-bottom: 1rpx solid #e6e6e6;
   display: flex;
   align-items: center;
 }
-.fenlei text{
+
+.fenlei text {
   font-size: 30rpx;
-  color: #999999;
+  color: #999;
   margin-left: 15rpx;
 }
+
 /* 下拉框 */
+
 .select_box {
   background: #fff;
   width: 100%;
@@ -157,21 +159,19 @@ input[placeholder] {
 }
 
 
-
-activity-list {
-  height: 300rpx;
+.my-activity {
+  /* height: 300rpx; */
   background: #fff;
-  margin-top: 1rpx;
+  margin-bottom: 20rpx;
+  padding-bottom: 10px;
 }
-.item{
-  border-bottom: 1px solid #e6e6e6;
-}
+
 .act-top {
   display: flex;
 }
 
 .act-img {
-  width: 256rpx;
+  width: 35%;
   height: 176rpx;
   background: #d8d8d8;
   margin-left: 24rpx;
@@ -179,6 +179,7 @@ activity-list {
 }
 
 .act-desc {
+  width: 65%;
   margin-top: 32rpx;
   margin-left: 20rpx;
 }
@@ -191,6 +192,8 @@ activity-list {
 
 .act-content {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .content-left {
@@ -211,11 +214,12 @@ activity-list {
 }
 
 .content-right {
-  margin-left: auto;
-  margin-bottom: 10rpx;
+  text-align: right;
+  
 }
 
 .content-price {
+  margin-right: 16rpx;
   font-size: 26rpx;
   color: #ff2525;
 }
@@ -253,4 +257,17 @@ activity-list {
   font-size: 24rpx;
   color: #2184E3;
 }
-
+.else{
+  text-align: center;
+  line-height: 40px;
+  color: #666;
+  font-size: 16px;
+  padding:20px 0;
+  margin-top:200px;
+}
+.tip{
+  text-align: center;
+  color: #D8D8D8;
+  font-size: 14px;
+  padding-bottom:20px; 
+}

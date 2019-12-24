@@ -49,12 +49,10 @@ Page({
         // console.log(res.tempFilePaths)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
-
         if (imgbox.length == 0) {
           imgbox = tempFilePaths
         } else if (9 > imgbox.length) {
           imgbox = imgbox.concat(tempFilePaths);
-
         } else {
           imgbox[picid] = tempFilePaths[0];
         }
@@ -79,7 +77,7 @@ Page({
     const that = this;
 
     wx.request({
-      url: 'http://10.20.11.126:8080/wumei-server/feedback/addFeedback',
+      url: 'http://101.133.164.180:8080/wumei-server/feedback/addFeedback',
       data: {
         input,
         imgbox
@@ -98,8 +96,7 @@ Page({
       }
     })
   },
-
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

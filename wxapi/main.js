@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://10.20.11.126:8080/wumei-server"
+const API_BASE_URL = "http://101.133.164.180:8080/wumei-server"
 
 const request = (url, method, data) => {
   let _url = API_BASE_URL + url
@@ -85,18 +85,12 @@ module.exports = {
   },
   //主办方认证
   savebossCertification: (data) => {
-    return request("/company/addCompany", 'post', data)
+    return request("/company/addCompany", 'get', data)
   },
   //主办主页的待举办数
   getwillHold: (data) => {
     return request("/activity/companyActivityList", 'get', data)
   },
-
-
-
-
-
-
   // 用户活动详情
   getActivityDetails: (data) => {
     return request("/activity/getActivityInfo", 'get', data)
@@ -136,7 +130,13 @@ module.exports = {
     return request("/weChat/getActivityPrePayId", 'get', data)
   },
   //****用户相关页面的接口：
-
+  getActivityList: (data) => {
+    return request("/activity/getActivityList", 'get', data)
+  },
+  // 申请为大师
+  addTechnology: (data) => {
+    return request("/technology/addTechnology", 'get', data)
+  },
   // 获取优惠券、收藏、关注
   getDiscount: (data) => {
     return request("/user/getMyInfo", 'get', data)
@@ -157,7 +157,10 @@ module.exports = {
   getCompanyActivityList: (data) => {
     return request("/activity/companyActivityList", 'get', data)
   },
-
+  //更新用户信息获取头像
+  modifyUser: (data) => {
+    return request("/user/modifyUser", 'get', data)
+  },
   
 
 }

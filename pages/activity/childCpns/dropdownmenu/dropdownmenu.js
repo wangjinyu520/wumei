@@ -27,6 +27,9 @@ Component({
     source_open: false, // 
     style_open: false, // 
     filteropen: false,  // 
+    source_opens: false, // 变颜色开关
+    style_opens: false, // 变颜色开关
+    filteropens: false,  // 变颜色开关
     shownavindex: '',
     dropDownMenuDistrictDataRight: {},
     district_left_select: '',
@@ -61,7 +64,20 @@ Component({
       }
 
     },
+    allSelect: function (e) {
+      this.setData({
+        source_opens: false,
+        style_opens: false,
+        district_opens: false,
+        filter_opens: false,
+      })
+      this.triggerEvent("selectedItem", { index: 1, selectedId: 1, selectedTitle: '全部' })
+    },
+    // 免费下面的活动
     tapSourceNav: function (e) {
+      this.setData({
+        source_opens: true,
+      })
       if (this.data.source_open) {
         this.setData({
           source_open: false,
@@ -71,6 +87,7 @@ Component({
           shownavindex: 0
         })
       } else {
+        // console.log(e.currentTarget.dataset.nav);
         this.setData({
           source_open: true,
           style_open: false,
@@ -80,7 +97,11 @@ Component({
         })
       }
     },
+    // 行业下面的活动
     tapStyleNav: function (e) {
+      this.setData({
+        style_opens: true,
+      })
       if (this.data.style_open) {
         this.setData({
           source_open: false,
@@ -98,9 +119,12 @@ Component({
           shownavindex: e.currentTarget.dataset.nav
         })
       }
-      console.log(e.target)
     },
+    //综合下面的活动
     tapFilterNav: function (e) {
+       this.setData({
+        style_opens: true,
+      })
       if (this.data.filter_open) {
         this.setData({
           source_open: false,
@@ -214,6 +238,7 @@ Component({
       }
     },
   },
+
   //组件生命周期函数，在组件实例进入页面节点树时执行
   attached: function () {
     

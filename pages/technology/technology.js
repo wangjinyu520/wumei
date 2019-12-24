@@ -34,7 +34,8 @@ Page({
         } else {
         }
       if (res.data.certificateImage){
-        res.data.certificateImage = res.data.certificateImage.split(',')
+        res.data.certificateImage = res.data.certificateImage.split(',');
+        console.log(res.data.certificateImage);
       }else{
       
       }
@@ -54,8 +55,8 @@ Page({
     })
   },
   change: function () {
-    this.setData({
-      showModal: true
+    wx.makePhoneCall({
+      phoneNumber: this.data.masterDetail.phone,
     })
   },
   /**

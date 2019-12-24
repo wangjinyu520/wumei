@@ -1,6 +1,5 @@
 /* pages/home/childCpns/w-masters/w-masters.wxss */
 .masters {
-  height: 220px;
 }
 .masters-item{
   align-items: center;

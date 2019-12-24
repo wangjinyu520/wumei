@@ -102,6 +102,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showTabBar();
     //请求轮播图和推荐数据
     // this._getMultiData()
     // this._getData();
@@ -160,7 +161,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+   wx.showTabBar({
+     
+   })
   },
 
   /**

@@ -1,8 +1,21 @@
 /* pages/publish/publish.wxss */
 @import "../../assets/iconfont.wxss";
+.home-page {
+  height: 160rpx;
+  width: 100%;
+  border: 1rpx solid red;
+  font-size: 60rpx;
+}
+.return{
+  position: absolute;
+  top:-20px;
+  left:20px;
+  width: 47px;
+  height: 47px;
+  background-color: red;
+}
 .picture {
   height: 221px;
-  border-top: 1px solid #eee;
   display: flex;
 }
 

@@ -58,9 +58,15 @@ Page({
   },
 
   toCertification: function() {
-    wx.navigateTo({
-      url: '/pages/bossCertification/bossCertification',
-    })
+    let companyId=wx.getStorageSync('companyId');
+    if(companyId){
+     
+    }else{
+      wx.navigateTo({
+        url: '/pages/bossCertification/bossCertification',
+      })
+    }
+ 
   },
 
   toAddress: function() {

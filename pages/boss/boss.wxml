@@ -59,11 +59,6 @@
     </view>
   </view>
   <view class="list-bottom">
-    <view class="order-list" bindtap="toCertification" data-type="3">
-      <image class='order-img' src="/assets/images/profile/realname.png" />
-      <text>主办方认证</text>
-      <image class="more" src="/assets/images/profile/more.png" />
-    </view>
     <view class="order-list" bindtap="toAdvice" data-type="5">
       <image class='order-img' src="/assets/images/profile/advise.png" />
       <text>反馈建议</text>

@@ -13,7 +13,7 @@
       </view>
     </view>
     <view class="intro">
-      <view>{{masterDetail.workExperience}}</view>
+      <view>{{masterDetail.workExperience}}年工作经验</view>
       <view>{{}}</view>
     </view>
   </view>

@@ -107,7 +107,7 @@ Page({
     const that = this;
 
     wx.request({
-      url: 'http://10.20.11.126:8080/wumei-server/report/addReport',
+      url: 'http://101.133.164.180:8080/wumei-server/report/addReport',
       data: {
         checkbox,
         input,

@@ -1,4 +1,6 @@
 <!--pages/publish/publish.wxml-->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view style="height:{{height}}px"></view>
 <view class="publish">
   <form bindsubmit="fromSubmit" id="1" bindreset="fromReset">
     <!--上传活动封面-->

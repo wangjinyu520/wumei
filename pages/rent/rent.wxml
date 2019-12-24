@@ -10,6 +10,7 @@
     </SearchBar>
   </view>
   <!--展示轮播图-->
+    <w-swiper list="{{banners}}" />
   <!--推荐数据-->
   <view class="recommend">
     <view class="tab-control">

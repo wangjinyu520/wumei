@@ -72,6 +72,7 @@
   vertical-align: middle;
 }
 
+
 .login-info {
   vertical-align: middle;
   margin-left: 30rpx;
@@ -83,16 +84,19 @@
 }
 
 .login-info .phone {
+  position: relative;
   font-size: 28rpx;
   margin-top: 10rpx;
   height: 20px;
 }
-
-.phone button {
-  background-color: #fff;
-  opacity: 0;
+.finnishInfo{
+  width: 150px;
   height: 20px;
-  box-sizing: border-box;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  opacity: 0;
 }
 
 .phone image {

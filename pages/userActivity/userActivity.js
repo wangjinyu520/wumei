@@ -106,29 +106,6 @@ Page({
 
   },
 
-  // tabClick(e) {
-  //   // 1.根据当前的点击赋值最新的currentType
-  //   // console.log(e.detail.value);
-  //   let currentType = ''
-  //   switch (e.detail.index) {
-  //     case 0:
-  //       currentType = ALL
-  //       break
-  //     case 1:
-  //       currentType = FINISH
-  //       break
-  //     case 2:
-  //       currentType = END
-  //       break
-  //   }
-  //   this.setData({
-  //     currentType: currentType
-  //   })
-  //   console.log(this.selectComponent('.tab-control'));
-  //   this.selectComponent('.tab-control').setCurrentIndex(e.detail.index)
-  //   this.selectComponent('.tab-control-temp').setCurrentIndex(e.detail.index)
-  // },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

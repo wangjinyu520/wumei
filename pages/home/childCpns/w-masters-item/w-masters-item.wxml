@@ -7,7 +7,7 @@
       <text class="occu">{{mastersitem.technologyOccupation}}</text>
     </view>
     <view class='info'>
-      <text class='expe'>{{mastersitem.workExperience}}</text>
+      <text class='expe'>{{mastersitem.workExperience}}年工作经验</text>
     </view>
   </view>
 </view>

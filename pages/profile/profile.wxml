@@ -8,14 +8,15 @@
   <view class="">
     <view class="header">
       <view class="avatar">
-        <open-data class="user-avatar" type="{{openDisplay?'userAvatarUrl':''}}"></open-data>
-        <image src="{{openDisplay?'':'/assets/images/profile/avatar.png'}}" />
+        <image src="{{userInfo?userInfo.avatarUrl:'/assets/images/profile/avatar.png'}}" />
       </view>
       <view class='login-info'>
         <view class='login' bindtap="{{isClicked?'openlogin':''}}">{{title}}</view>
         <view class='phone'>
-        <open-data class="user-avatar" type="{{openDisplay?'userNickName':''}}"></open-data>
-           <text>{{openDisplay?'':'这是我的简介'}}</text>
+          <!-- <open-data class="user-avatar" type="{{openDisplay?'userNickName':''}}"></open-data> -->
+          <!-- <text>{{openDisplay?'':'这是我的简介'}}</text> -->
+          <view>{{userInfo?userInfo.nickName:'完善个人信息'}}</view>
+          <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="finnishInfo"></button>
         </view>
         <view class="change" bindtap="toSponsor">
           <image class="change-img" src="/assets/images/profile/replace.png" />
@@ -81,7 +82,7 @@
   <view class="list-bottom">
     <view class="order-list" bindtap="toCertification" data-type="3">
       <image class='order-img' src="/assets/images/profile/realname.png" />
-      <text>实名认证</text>
+      <text>大师认证</text>
       <image class="more" src="/assets/images/profile/more.png" />
     </view>
     <view class="order-list" bindtap="toAddress" data-type="4">

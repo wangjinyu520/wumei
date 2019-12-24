@@ -1,6 +1,9 @@
+
 {
   "usingComponents": {
-    "w-select": "./childCpns/w-select/w-select"
+    "w-select": "./childCpns/w-select/w-select",
+    "nav-bar": "../../components/header/header"
   },
+  "navigationStyle": "custom",
   "navigationBarTitleText": "发布活动"
 }

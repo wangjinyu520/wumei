@@ -12,6 +12,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '我的主页', //导航栏 中间的标题
+    },
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.statusBarHeight * 2 + 20,   
     uploadedImages: [],
     imgBoolean: true,
     isAgreement: false, // 是否显示用户协议
@@ -159,7 +165,7 @@ Page({
         //把选择的图片 添加到集合里
         //显示
           wx.uploadFile({
-            url: 'http://10.20.11.126:8080/wumei-server/file/imageUpload',
+            url: 'http://101.133.164.180:8080/wumei-server/file/imageUpload',
             header: {
               'content-type': 'multipart/form-data'
             },
@@ -261,7 +267,7 @@ Page({
       })
     }
     wx.uploadFile({
-      url: 'http://10.20.11.126:8080/wumei-server/activity/addActivity',
+      url: 'http://101.133.164.180:8080/wumei-server/activity/addActivity',
       header: {
         'content-type': 'multipart/form-data'
       },

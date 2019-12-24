@@ -30,6 +30,7 @@
         <view class="title">证明附件</view>
         <!--上传活动封面-->
       </view>
+       <!-- <myComponent id="myComponent"></myComponent> -->
       <include src="../../components/uploadpic/up-pic.wxml" />
       <view class="btn-box ">
         <button class="pub-btn" formType="submit">

@@ -1,7 +1,6 @@
 <!--pages/advice/advice.wxml-->
 <view>
 <form bindsubmit="fromReport">
-
   <view class="uploader">
       <view class="detail">
         <input class="desc" name="input" placeholder="请在此输入您对本平台的反馈留言…"></input>

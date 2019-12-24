@@ -61,9 +61,9 @@
     "pages/sqlogin/sqlogin",
     "pages/bossCertification/bossCertification",
     "pages/boss/boss",
-    "pages/userActvity",
     "pages/userActivity/userActivity",
-    "pages/masterRegister/masterRegister"
+    "pages/masterRegister/masterRegister",
+    "components/header/header"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -10,25 +10,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title:'点击登录',
-    isClicked:true,
-    openDisplay:false,
-    userIdDiscount:null
+    title: '点击登录',
+    isClicked: true,
+    openDisplay: false,
+    userIdDiscount: null,
+    userInfo: null
   },
 
-  toCoupon: function () {
+  toCoupon: function() {
     wx.navigateTo({
       url: '/pages/coupon/coupon'
     })
   },
 
-  toCollect: function () {
+  toCollect: function() {
     wx.navigateTo({
       url: '/pages/collect/collect'
     })
   },
 
-  toFocus: function () {
+  toFocus: function() {
     wx.navigateTo({
       url: '/pages/focus/focus'
     })
@@ -37,93 +38,109 @@ Page({
 
 
 
-  toStorecenter: function () {
+  toStorecenter: function() {
     wx.navigateTo({
       url: '/pages/center/center',
     })
   },
 
-  toOrder: function () {
+  toOrder: function() {
     wx.navigateTo({
       url: '/pages/order/order',
     })
   },
 
-  toActivity: function () {
+  toActivity: function() {
     wx.navigateTo({
       url: '/pages/userActivity/userActivity',
     })
   },
 
-  toAccount: function () {
+  toAccount: function() {
     wx.navigateTo({
       url: '/pages/account/account',
     })
   },
-
-  toCertification: function () {
-    wx.navigateTo({
-      url: '/pages/certification/certification',
-    })
+  toCertification: function() {
+    let companyId = wx.getStorageSync('companyId');
+    if (companyId) {
+      wx.showToast({
+        title: '你已经是主办方身份，不能再申请大师身份',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/masterRegister/masterRegister',
+      })
+    }
   },
 
-  toAddress: function () {
+  toAddress: function() {
     wx.navigateTo({
       url: '/pages/myaddress/myaddress',
     })
   },
 
-  toAdvice: function () {
+  toAdvice: function() {
     wx.navigateTo({
       url: '/pages/advice/advice',
     })
   },
 
-  toSetup: function () {
+  toSetup: function() {
     wx.navigateTo({
       url: '/pages/set/set',
     })
   },
 
-  toMassage: function () {
+  toMassage: function() {
     wx.navigateTo({
       url: '/pages/massage/massage',
     })
   },
-  // onGotUserInfo(e) {
-  //   if (!e.detail.userInfo) {
-  //     wx.showToast({
-  //       title: '您已取消登录',
-  //       icon: 'none',
-  //     })
-  //     return;
-  //   }
-  //   if (app.globalData.isConnected) {
-  //     AUTH.register(this);
-  //   } else {
-  //     wx.showToast({
-  //       title: '当前无网络',
-  //       icon: 'none',
-  //     })
-  //   }
-  // },
+  onGotUserInfo(e) {
+    let that = this;
+    let tokens = wx.getStorageSync('token');
+    tokens.avatarUrl = tokens.userIcon;
+    if (tokens.nickName) {
+      this.setData({
+        userInfo: tokens
+      });
+    }else {
+      wx.getUserInfo({
+        success: function(res) {
+          // console.log(res);
+          var userInfo = res.userInfo;
+          userInfo.userId = wx.getStorageSync('token').userId;
+          that.setData({
+            userInfo
+          });
+          // console.log(userInfo);
+          WXAPI.modifyUser(userInfo).then(res => {
+            console.log(res)
+          })
+        }
+      })
+    }
 
+  },
   // 点击登录
   openlogin() {
-    let that=this;
+    let that = this;
     wx.login({
-      success: function (res) {
-       let code=res.code
+      success: function(res) {
+        let code = res.code
         if (res.code) {
-          WXAPI.getlogin({ 'code': res.code }).then(res => {
+          WXAPI.getlogin({
+            'code': res.code
+          }).then(res => {
             if (res.code == 50000) {
               // 去注册
               wx.navigateTo({
                 url: '/pages/sqlogin/sqlogin',
               })
-            }else if(res.code==SUCCESS) {
+            } else if (res.code == SUCCESS) {
               wx.getUserInfo({
-                success: function (res) {
+                success: function(res) {
                   var userInfo = res.userInfo
                   var nickName = userInfo.nickName
                   var avatarUrl = userInfo.avatarUrl
@@ -139,9 +156,9 @@ Page({
                 openDisplay: true,
 
               })
-              wx.setStorageSync('token',res.data);
+              wx.setStorageSync('token', res.data);
               wx.setStorageSync('companyId', res.data.companyId);
-            }else if(res.code==11211){
+            } else if (res.code == 11211) {
               wx.showModal({
                 title: '',
                 content: '登录出错，请重新登录',
@@ -153,7 +170,7 @@ Page({
     })
   },
   // 更换为主办方认证
-  toSponsor: function (e) {
+  toSponsor: function(e) {
     let token = wx.getStorageSync('token');
     if (!token) {
       wx.showToast({
@@ -165,8 +182,11 @@ Page({
       return;
     }
     let userId = wx.getStorageSync('token').userId;
-    WXAPI.changebossCertification({ userId }).then(res => {
-      if (res.code !=200) {
+    WXAPI.changebossCertification({
+      userId
+    }).then(res => {
+      console.log(res);
+      if (res.code != 200) {
         wx.showToast({
           title: '您还不是主办方，马上注册',
         })
@@ -182,24 +202,34 @@ Page({
 
   },
   //获取优惠券。收藏，关注
-  getDiscount:function(e){
-    let userId=wx.getStorageSync('token').userId;
-    WXAPI.getDiscount({userId}).then(res=>{
-        this.setData({
-          userIdDiscount:res.data
-        })
+  getDiscount: function(e) {
+    let userId = wx.getStorageSync('token').userId;
+    WXAPI.getDiscount({
+      userId
+    }).then(res => {
+      this.setData({
+        userIdDiscount: res.data
+      })
     })
   },
-   /*
+  /*
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let token = wx.getStorageSync('token').userName;
     if (token) {
-    this.setData({
-      title: token, 
-      openDisplay: true
-    })
+      this.setData({
+        title: token,
+        openDisplay: true
+      })
+      let tokens = wx.getStorageSync('token');
+      tokens.avatarUrl=tokens.userIcon;
+      console.log(tokens);
+      if (tokens.nickName) {
+        this.setData({
+          userInfo: tokens
+        });
+      }
       this.getDiscount();
     }
   },
@@ -207,14 +237,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     let token = wx.getStorageSync('token').userName;
     if (token) {
       this.setData({
@@ -226,35 +256,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

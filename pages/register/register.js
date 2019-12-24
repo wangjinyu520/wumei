@@ -308,7 +308,7 @@ Page({
         header:{
           'content-type':'application/json',
         },
-        url:"http://10.20.11.126:8080/wumei-server/user/getVerCode",
+        url:"http://101.133.164.180:8080/wumei-server/user/getVerCode",
         success(res) {
           console.log(res.data.data)
           _this.setData({
