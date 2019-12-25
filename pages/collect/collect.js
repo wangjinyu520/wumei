@@ -41,9 +41,7 @@ Page({
     this.setData({
       currentType: currentType
     })
-    //console.log(this.selectComponent('.tab-control'));
-    //this.selectComponent('.tab-control').setCurrentIndex(e.detail.index)
-    //this.selectComponent('.tab-control-temp').setCurrentIndex(e.detail.index)
+ 
   },
 
   /**
@@ -72,18 +70,6 @@ Page({
     // 2.请求数据
     WXAPI.getCollect(data).then(res => {
       console.log(res);
-      // 1.取出数据
-     // const list = res.data;
-
-      // 2.将数据临时获取
-      //const collect = this.data.collectList;
-      //collect[type].list.push(...list)
-      //collect[type].page += 1;
-
-      // 3.最新的collect设置到collect中
-      //this.setData({
-       // collect: collect
-      //})
     })
   },
 

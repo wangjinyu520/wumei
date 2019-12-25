@@ -111,64 +111,7 @@ Page({
         })
       }
     })
-    // wx.request({
-    //   url: 'http://10.20.11.126:8080/wumei-server/technology/getTechnologyList',
-    //   data: {
-    //     pageNum: that.data.page,
-    //     pageSize: that.data.pageSize,
-    //     technologyOccupation: that.data.nowType,
-    //     createDate: 1
-    //   },
-    //   success: function(res) {
-    //     var contentlistTem = that.data.gaffers //总的数据列表
-    //     if (res) {
-    //       if (that.data.page == 1) {
-    //         contentlistTem = []
-    //       }
-    //       // console.log(globalData.activitynum);/
-    //       var gaffers = res.data.data //contentlist每次返回的个数
-    //       if (gaffers.length > that.data.pageSize) {
-    //         that.setData({
-    //           gaffers: contentlistTem.concat(gaffers),
-    //           hasMoreData: false
-    //         })
-    //       } else {
-    //         that.setData({
-    //           gaffers: contentlistTem.concat(gaffers),
-    //           hasMoreData: true,
-    //           page: that.data.page + 1
-    //         })
-    //       }
-    //     } else {
-    //       wx.showToast({
-    //         title: '错误信息',
-    //       })
-    //     }
-    //     var result = that.data.gaffers.map(ele => {
-    //       if (ele.technologyOccupation == 1) {
-    //         ele.technologyOccupation = '灯光师'
-    //       } else if (ele.technologyOccupation == 2) {
-    //         ele.technologyOccupation = '音响师'
-    //       } else if (ele.technologyOccupation == 3) {
-    //         ele.technologyOccupation = '视频师'
-    //       } else if (ele.technologyOccupation == 4) {
-    //         ele.technologyOccupation = '项目经理'
-    //       } else if (ele.technologyOccupation == 5) {
-    //         ele.technologyOccupation = '搭建'
-    //       } else if (ele.technologyOccupation == 6) {
-    //         ele.technologyOccupation = '舞美设计'
-    //       } else {
-
-    //       }
-    //       return ele;
-    //     })
-    //     that.setData({
-    //       gaffers: result
-    //     })
-
-    //   }
-
-    // })
+  
   },
   //获取推荐下面的数据
   getRecommendListInfo: function() {

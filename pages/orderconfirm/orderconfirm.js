@@ -21,8 +21,6 @@ Page({
   },
   goPay: function(e) {
     let that = this;
-    console.log(this.data.cartActivityInfo);
-    console.log(JSON.parse(JSON.stringify(that.data.activityCart.buyerInformation)));
     wx.login({
       success(res) {
         if (res.code) {
@@ -34,7 +32,8 @@ Page({
               buyerInformation: JSON.stringify(that.data.activityCart.buyerInformation),
               paymentMethod: 1,
               ticketCount: that.data.activityCart.ticketsnum,
-              payAmount: that.data.activityCart.totalPrice,
+              // payAmount: that.data.activityCart.totalPrice,
+              payAmount:0.01,
               remark: that.data.remarksInfo,
               account: wx.getStorageSync('token').userName,
             }
@@ -48,7 +47,19 @@ Page({
                 signType: res.data.signType,
                 paySign: res.data.paySign,
                 success(res) {
-                  console.log(res)
+                  console.log(res);
+                  if (res.errMsg == "requestPayment:ok"){
+                    wx.navigateTo({
+                      url: '/pages/orderdetil/orderdetil',
+                    
+                    })
+                  }else{
+                    wx.showToast({
+                      title: '支付失败',
+                      icon: '',
+                      image: '../../assets/common/fail.png',
+                    })
+                  }
                 },
                 fail(res) {
                   console.log(res)

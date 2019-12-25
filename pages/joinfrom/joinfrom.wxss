@@ -143,6 +143,7 @@ page {
 .use-content .check {
   border: 1px solid #2184e3;
   color: #2184e3;
+  box-sizing: border-box;
 }
 
 .checkbox {
@@ -164,6 +165,7 @@ page {
   color: #1a92ec;
   background: rgba(49, 165, 253, 0.08);
   border: 1rpx solid #31a5fd;
+  box-sizing: border-box;
 }
 
 .checkbox checkbox {

@@ -24,7 +24,7 @@ Page({
   data: {
     masters: [],
     activityList:[],
-    banners:[],
+    banners: [' http://101.133.164.180:8089/wumei-upload/image/1577187646839wx9704107d6ee309ff.o6zAJs4jJUXoX75lAb1ATeCbI45w.Tx94jRrYs3zDf7a0d235374123d063896f20cc33b5d9.jpg','http://101.133.164.180:8089/wumei-upload/image/1577187652232wx9704107d6ee309ff.o6zAJs4jJUXoX75lAb1ATeCbI45w.xbCQqKJy0blM2601794cd3ff9ea8f055f56acf5a7d37.jpg'],
     currentType:'masters',
     showBackTop:false,
     isTabFixed:false,
@@ -93,11 +93,7 @@ Page({
       url: '/pages/technology/technology',
     })
   },
-  // toDetailsTap:function(){
-  //   wx.navigateTo({
-  //     url: '/pages/activityDetails/activityDetails?',
-  //   })
-  // },
+
   /**
    * 生命周期函数--监听页面加载
    */

@@ -51,7 +51,7 @@ input[placeholder] {
   padding-left: 70rpx;
 
 }
-
+/* 轮播图 */
 .topub{
   height: 54rpx;
   margin-top: 2px;
@@ -267,8 +267,6 @@ button{
   text-align: center;
   align-items: center;
 }
-
-
 /*视频教程*/
 .video{
   background: #FFFFFF;

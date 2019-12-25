@@ -28,8 +28,16 @@
       <input type="text" name="activityTheme" placeholder="内容" />
     </view>
     <view class="begin">
+      <view class="title">开始日期</view>
+      <picker mode="date" value="{{beginDate}}"  bindchange="bindDateChange">
+        <view class="picker">
+          {{beginDate}}
+        </view>
+      </picker>
+    </view>
+     <view class="begin">
       <view class="title">开始时间</view>
-      <picker mode="date" value="{{beginTime}}" start="{{dateStart}}" bindchange="bindDateChange">
+      <picker mode="time" value="{{beginTime}}"  bindchange="bindTimeChange">
         <view class="picker">
           {{beginTime}}
         </view>
@@ -37,8 +45,16 @@
     </view>
 
     <view class="end">
+      <view class="title">结束日期</view>
+      <picker mode="date" value="{{endDate}}" bindchange="bindDateChanges">
+        <view class="picker">
+          {{endDate}}
+        </view>
+      </picker>
+    </view>
+      <view class="end">
       <view class="title">结束时间</view>
-      <picker mode="date" value="{{endTime}}" bindchange="bindDateChanges">
+      <picker mode="time" value="{{endTime}}" bindchange="bindTimeChanges">
         <view class="picker">
           {{endTime}}
         </view>

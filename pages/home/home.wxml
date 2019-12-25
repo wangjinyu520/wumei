@@ -14,9 +14,9 @@
     </view>
   </view>
   <!--展示轮播图-->
-  <w-swiper list="{{banners}}" />
+  <w-swiper list="{{banners}}" class="swiper" />
   <!--数据展示-->
-    <view class="icons">
+  <view class="icons">
     <view class="icon-classify">
       <view class="icon-top">
         <view class="icon-item" bindtap="goLight" data-type="1">
@@ -61,7 +61,7 @@
       <view bindtap="goLight" data-type="">
         <view class="more">
           <text>更多</text>
-          <image src="/assets/common/master-right.png" class="icon-more"/>
+          <image src="/assets/common/master-right.png" class="icon-more" />
         </view>
       </view>
     </view>
@@ -72,7 +72,7 @@
 
   <!--分割线-->
   <view class="cut"></view>
-  
+
   <!--展示热门活动-->
   <view class="active">
     <view class="active-tab">
@@ -88,32 +88,34 @@
     </view>
     <view class="active-list">
 
-    <scroll-view scroll-x="true" class="" >
-      <view wx:for="{{activityList}}" wx:key="{{index}}">
-      <navigator url="/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
-        <view class="active-desc" data-id="{{item.activityId}}">
-          <image class="active-img" src="{{item.activityLogo}}" />
-          <view class="active-right">
-            <view class="a-rightnow">{{item.activityTheme}}</view>
-            <view class="active-text">
-              <view class="a-text">
-                <text class="a-loca">{{item.activityLocation}}</text>
-                <text class="a-time">{{item.activityTime}}</text>
-              </view>
-              <view class="active-b">
-                <text class="active-free">{{item.activityFee?'¥'+item.activityFee:'免费'}}</text>
-                <button class="active-btn"><text>立即报名</text></button>
+      <scroll-view scroll-x="true" class="">
+        <view wx:for="{{activityList}}" wx:key="{{index}}">
+          <navigator url="/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
+            <view class="active-desc" data-id="{{item.activityId}}">
+              <image class="active-img" src="{{item.activityLogo}}" />
+              <view class="active-right">
+                <view class="a-rightnow">{{item.activityTheme}}</view>
+                <view class="active-text">
+                  <view class="a-text">
+                    <text class="a-loca">{{item.activityLocation}}</text>
+                    <text class="a-time">{{item.activityTime}}</text>
+                  </view>
+                  <view class="active-b">
+                    <text class="active-free">{{item.activityFee?'¥'+item.activityFee:'免费'}}</text>
+                    <button class="active-btn">
+                      <text>立即报名</text>
+                    </button>
+                  </view>
+                </view>
               </view>
             </view>
-          </view>
+          </navigator>
+
         </view>
-      </navigator>
-      
-      </view>
       </scroll-view>
     </view>
   </view>
-  
+
   <!--分割线-->
   <view class="cut"></view>
 
@@ -133,7 +135,7 @@
     <view class="video-list">
       <block wx:for="{{videoList}}" wx:key="{{index}}">
         <view class="video-desc">
-          <image class="video-img" src="{{}}"/>
+          <image class="video-img" src="{{}}" />
           <view class="video-title">MA操作教程</view>
         </view>
       </block>

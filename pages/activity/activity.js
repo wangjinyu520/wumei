@@ -53,23 +53,6 @@ Page({
     newest:'',
     pv:''
   },
-
-  // 点击下拉显示框
-  // selectTaps() {
-  //   this.setData({
-  //     shows: !this.data.shows,
-  //   });
-  // },
-  // // 点击下拉列表
-  // optionTaps(e) {
-  //   let Indexs = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
-  //   console.log(Indexs)
-  //   this.setData({
-  //     indexs: Indexs,
-  //     shows: !this.data.shows
-  //   });
-
-  // },
   turn_search: function() {
     wx.navigateTo({
       url: '/pages/search/search'

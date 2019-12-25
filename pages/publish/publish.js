@@ -29,8 +29,10 @@ Page({
     item: '',
     headImage: '',
     title: '',
-    beginTime: '2019-12-12',
-    endTime: '2019-12-30',
+    beginTime: '请选择',
+    endTime: '请选择',
+    beginDate: '请选择',
+    endDate: '请选择',
     dateStart: Date.now(),
     desc: '是',
     advice: '',
@@ -210,10 +212,22 @@ Page({
   },
   bindDateChange: function(e) {
     this.setData({
-      beginTime: e.detail.value
+      beginDate: e.detail.value
     })
   },
   bindDateChanges: function(e) {
+    this.setData({
+      endDate: e.detail.value
+    })
+  },
+  bindTimeChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      beginTime: e.detail.value
+    })
+  },
+  bindTimeChanges: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       endTime: e.detail.value
     })
@@ -226,8 +240,8 @@ Page({
   fromSubmit: function(e) {
     // console.log('dfbhdbf');
     activity = e.detail.value;
-    activity.activityStartTime = this.data.beginTime;
-    activity.activityEndTime = this.data.endTime;
+    activity.activityStartTime = this.data.beginDate+' '+this.data.beginTime;
+    activity.activityEndTime = this.data.endDate +' '+this.data.endTime;
     activity.companyId = wx.getStorageSync('token').companyId;
     activity.activityIntroduce=this.data.detailHtml;
     if (this.data.currentTicket == "免费") {

@@ -53,12 +53,12 @@
       </view>
       <view class="top grid">
         <label class="tTitle col-0">限购</label>
-        <input class="input_base input_h30 col-1 input_xg" name="purchaseLimit" type="number"></input>
+        <input class="input_base input_h30 col-1 input_xg" name="startingAt" type="number"></input>
         <label class="tTitle col-0">张起售</label>
       </view>
       <view class="top grid">
         <label class="tTitle col-0">每人最多购买</label>
-        <input class="input_base input_h30 col-1 " name="startingAt" type="number"></input>
+        <input class="input_base input_h30 col-1 " name="purchaseLimit" type="number"></input>
         <label class="tTitle col-0">张</label>
       </view>
       <view class="top grid">

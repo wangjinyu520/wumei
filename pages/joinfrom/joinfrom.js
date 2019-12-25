@@ -166,12 +166,7 @@ Page({
     })
     var currentStatu = e.currentTarget.dataset.statu;
     this.util(currentStatu);
-    // console.log(this.data.commonselectform);
-    // console.log(this.data.definedform);
-    // console.log(this.data.concatlist);
-    // console.log(newArr);
 
-    
   },
   checkboxChangeList: function(e) {
  

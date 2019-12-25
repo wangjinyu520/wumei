@@ -161,23 +161,6 @@ Page({
        console.log(res.data.total)
       }
     })
-    // wx.request({
-    //   url: 'http://10.20.11.126:8080/wumei-server/activity/companyActivityList',
-    //   data: {
-    //     pageNum: 1,
-    //     pageSize: 10,
-    //     activated: 0,
-    //     companyId: wx.getStorageSync('companyId')
-    //   },
-    //   success: function(res) {
-    //     // console.log(res.data.total)
-    //     that.setData({
-    //       activitynum: res.data.total
-    //     })
-    //   }
-
-    // })
-
   },
 
   /**

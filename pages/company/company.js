@@ -30,8 +30,6 @@ Page({
     console.log(data)
 
     WXAPI.getActivityList(data).then(function (res) {
-      console.log(res);
-
       const list = res.data;
       const activity = that.data.activityList;
       activity.list.push(...list)

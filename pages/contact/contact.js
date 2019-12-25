@@ -34,13 +34,6 @@ function initData(that) {
 /**
  * 计算msg总高度
  */
-// function calScrollHeight(that, keyHeight) {
-//   var query = wx.createSelectorQuery();
-//   query.select('.scrollMsg').boundingClientRect(function(rect) {
-//   }).exec();
-// }
-
-
 
 Page({
 
