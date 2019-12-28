@@ -41,19 +41,19 @@ Page({
 
   goLight:function(){
     wx.navigateTo({
-      url: '/pages/light/light',
+      url: '/subShopping/pages/light/light',
     })
   },
 
   toDetailsAssemble: function () {
     wx.navigateTo({
-      url: '/pages/assembledetails/assembledetails',
+      url: '/subShopping/pages/assembledetails/assembledetails',
     })
   },
   
   toDetailsGoods:function(){
     wx.navigateTo({
-      url: '/pages/goods/goods',
+      url: '/subShopping/pages/goods/goods',
     })
   },
 

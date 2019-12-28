@@ -1,0 +1,13 @@
+<!--pages/pay-success/pay-success.wxml-->
+<view>
+
+  <view class="success">
+    <image class="img" src="/assets/common/success.png"></image>
+    <view class="content">恭喜您拼团成功！</view>
+    <view class="btn">
+      <button class="btn-order" bindtap="">查看订单</button>
+      <button class="btn-goods" bindtap="">返回商品首页</button>
+    </view>
+  </view>
+
+</view>

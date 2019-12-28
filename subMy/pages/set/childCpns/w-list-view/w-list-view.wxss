@@ -1,0 +1,32 @@
+/* pages/profile/childCpns/w-list-view/w-list-view.wxss */
+.list-view {
+  border-top: 36rpx solid #f8f8f8;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #fff;
+  font-size: 32rpx;
+  padding: 0 14px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+.list-item image{
+  width:8px;
+  height: 14px;
+  vertical-align: middle;
+}
+
+.list-item text {
+  vertical-align: middle;
+  margin-left: 16rpx;
+}

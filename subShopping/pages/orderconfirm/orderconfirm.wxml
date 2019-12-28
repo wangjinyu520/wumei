@@ -1,0 +1,56 @@
+<!--pages/orderconfirm/orderconfirm.wxml-->
+<view class="orderconfirm">
+  <view class="lable">
+    <view class="image">
+      <image src="{{cartActivityInfo.activityLogo}}" />
+    </view>
+    <view class="content">
+      <view class="title">
+        <text>{{cartActivityInfo.activityTheme}}</text>
+      </view>
+      <view class="address">{{cartActivityInfo.activityLocation}}</view>
+      <view class="active">{{cartActivityInfo.activityType==1?'线上活动':'线下活动'}} 丨 {{cartActivityInfo.activityStartTime}}
+      </view>
+    </view>
+  </view>
+
+
+  <view class="vip">
+    <text>{{cartActivityInfo.ticket.ticketName}}</text>
+    <view class="price">¥{{cartActivityInfo.ticket.ticketFee}} x {{activityCart.ticketsnum}}</view>
+  </view>
+
+  <view class="pay">
+    <view class="explain">备注</view>
+    <input class="moredesc" auto-focus="true" bindblur="getMoreDesc" />
+  </view>
+
+
+  <view class="refund">
+    <view class="explain">退款说明</view>
+    <view class="detil">不接受退款，由于本活动各项资源提前采购，一经售出不接受退款，请确认后购买。</view>
+  </view>
+
+  <view class="change">
+    <text>选择支付方式</text>
+  </view>
+  <view class="style">
+    <view class="wx">
+      <image src="/assets/common/wx.png" />
+      <text>微信支付</text>
+      <label class="checked-lable">
+        <radio checked="{{checked}}"></radio>
+      </label>
+    </view>
+  </view>
+
+  <view class="bottom">
+    <view class="sum">
+      合计：
+      <text>¥{{activityCart.totalPrice}}</text>
+    </view>
+    <button class="btn" bindtap="goPay">
+      <text>确认支付</text>
+    </button>
+  </view>
+</view>

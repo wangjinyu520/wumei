@@ -24,7 +24,7 @@ Page({
   data: {
     masters: [],
     activityList:[],
-    banners: [' http://101.133.164.180:8089/wumei-upload/image/1577187646839wx9704107d6ee309ff.o6zAJs4jJUXoX75lAb1ATeCbI45w.Tx94jRrYs3zDf7a0d235374123d063896f20cc33b5d9.jpg','http://101.133.164.180:8089/wumei-upload/image/1577187652232wx9704107d6ee309ff.o6zAJs4jJUXoX75lAb1ATeCbI45w.xbCQqKJy0blM2601794cd3ff9ea8f055f56acf5a7d37.jpg'],
+    banners: ['http://www.techwells.com/wumei-upload/image/1577518950031tmp_49324e776471e4b13151fadcefdc6e6bd092504bf756815a.jpg','http://www.techwells.com/wumei-upload/image/1577518940946tmp_1f9fb6f3fbfb1b8c46478864be6862b915c77e1252bd2357.jpg'],
     currentType:'masters',
     showBackTop:false,
     isTabFixed:false,
@@ -34,14 +34,14 @@ Page({
 
   turn_search: function () {
     wx.navigateTo({
-      url: '/pages/search/search'
+      url: '/subShopping/pages/search/search'
     })
   },
   goLight: function (e) {
     let type=e.currentTarget.dataset.type;
     console.log(type);
     wx.navigateTo({
-      url: '/pages/light/light?type='+type,
+      url: '/subShopping/pages/light/light?type='+type,
     })
   },
   loadMore() {
@@ -90,7 +90,7 @@ Page({
   },
   toTechnology: function () {
     wx.navigateTo({
-      url: '/pages/technology/technology',
+      url: '/subShopping/pages/technology/technology',
     })
   },
 

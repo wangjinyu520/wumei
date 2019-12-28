@@ -1,0 +1,20 @@
+<!--pages/collect/collect.wxml-->
+<view>
+  <view class="order-box">
+		<view class="order-label{{index== currentType?'.active':''}}"
+		 wx:for-items="{{orderType}}" 
+		 wx:key="{{index}}" data-index="{{index}}" bindtap="orderTap" bind:tabclick="tabClick">
+		 {{item}}
+		</view>
+	</view>
+
+  <block wx:for="{{collectList}}" wx:key="{{index}}">
+    <view class="content">
+      <image class="img" src="{{}}"></image>
+      <view class="goods">
+        <view class="title">流星灯光线条A</view>
+        <view class="price">¥</view>
+      </view>
+    </view>
+  </block>
+</view>

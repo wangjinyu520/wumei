@@ -1,0 +1,39 @@
+<!--pages/allactivity/allactivity.wxml-->
+<view class="allactivity">
+  <view class="page-bd">
+    <view class="search-bar">
+      <view class="search-left">
+        <icon class="search-icon" type="search" size="13"></icon>
+        <input type="text" class="search-input" placeholder="搜索" bindtap="turn_search" disabled/>
+      </view>
+      <view class="search-right">
+        <view class="message">取消</view>
+      </view>
+    </view>
+  </view>
+
+  <!--导航条-->
+  <view class="nav">
+    <dropdownmenu dropDownMenuTitle='{{dropDownMenuTitle}}' dropDownMenuSourceData='{{data2}}' 
+    dropDownMenuStyleData='{{data3}}' dropDownMenuFilterData='{{data4}}' bind:selectedItem='selectedItem' />
+  </view>
+
+  <!--视频内容-->
+  <view class="">
+    <block wx:for="" wx:key="index">
+      <image />
+      <view class="desc-info">
+        <view class="title"></view>
+        <view class="loca"></view>
+        <view class="time"></view>
+        <view class="price"></view>
+        <button></button>
+      </view>
+    </block>
+  </view>
+
+  <!--分割线-->
+  <view class="cut"></view>
+
+
+</view>

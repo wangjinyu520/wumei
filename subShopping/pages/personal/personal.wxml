@@ -1,0 +1,78 @@
+<!--pages/personal/personal.wxml-->
+<view class="personal">
+  <form bindsubmit="fromSubmit" id="2" bindreset="fromReset">
+    <view class="from">
+      <view class="title">头像</view>
+
+      <view class="addimg">
+        <!-- 添加按钮 -->
+        <view class="addIcon" bindtap="chooseImage" wx:if="{{imgBoolean}}">
+          <view class='' name='headImage'>+</view>
+        </view>
+        <!-- 上传的图 -->
+        <view class='itemImg'>
+          <image src="{{item}}" data-src="{{item}}" bindtap="previewImage" mode="aspectFill" />
+          <!-- 删除按钮 -->
+          <view class="delete" bindtap="deleteImg" data-index="{{index}}">X</view>
+        </view>
+      </view>
+
+      <image class="rinhtimg" src="/assets/common/personal.png" />
+    </view>
+
+    <view class="from">
+      <view class="title">昵称</view>
+      <view class="detil">
+        <input name="name" value="{{name}}" />
+      </view>
+      <image class="rinhtimg" src="/assets/common/personal.png" />
+    </view>
+
+    <view class="from">
+      <view class="title">性别</view>
+      <view class="detil">
+        <picker name="sexIndex" bindchange="bindSexChange" value="{{sexIndex}}" range="{{arraySex}}">
+          <view class="picker">{{arraySex[sexIndex]}}</view>
+        </picker>
+      </view>
+      <image class="rinhtimg" src="/assets/common/personal.png" />
+    </view>
+
+    <view class="from age">
+      <view class="title">年龄</view>
+      <view class="detil">
+        <picker name="ageIndex" bindchange="bindAgeChange" value="{{ageIndex}}" range="{{arrayAge}}">
+          <view class="picker">{{arrayAge[ageIndex]}}</view>
+        </picker>
+      </view>
+      <image class="rinhtimg" src="/assets/common/personal.png" />
+    </view>
+
+    <view class="from">
+      <view class="title">所在地</view>
+      <view class="detil">
+        <picker name="region" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker">
+            {{region[0]}} {{region[1]}} {{region[2]}}
+          </view>
+        </picker>
+      </view>
+      <image class="rinhtimg" src="/assets/common/personal.png" />
+    </view>
+
+    <view class="from">
+      <view class="title">个人简介</view>
+      <view class="detil">
+        <input name="desc" value="{{desc}}"/>
+      </view>
+      <image class="rinhtimg" src="/assets/common/personal.png" />
+    </view>
+
+      <view class="btn">
+        <button formType="submit">
+          <text class="buttontext">完成</text>
+        </button>
+      </view>
+  </form>
+  </view>
+  

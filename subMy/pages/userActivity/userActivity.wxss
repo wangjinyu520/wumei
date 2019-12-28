@@ -1,0 +1,197 @@
+/* pages/userActivity/userActivity.wxss */
+
+/* pages/myactivity/myactivity.wxss */
+
+page {
+  background-color: #f9f9f9;
+}
+
+/* 切换部分 */
+
+.order-box {
+  background: #fff;
+  width: 100vw;
+  height: 88rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.order-label {
+  width: 120rpx;
+  height: 82rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  color: #222;
+}
+
+.order-label.active {
+  color: #2184e3;
+  border-bottom: 6rpx solid #2184e3;
+}
+
+.my-activity {
+  /* height: 300rpx; */
+  margin-top: 10px;
+  background: #fff;
+  margin-bottom: 20rpx;
+  padding-bottom: 10px;
+}
+
+.orderNum {
+  margin: 0 12px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 13px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  border-bottom: 1px solid #eee;
+}
+
+.order-btn {
+  overflow: hidden;
+  padding-top: 10px;
+  margin: 0 12px;
+  margin-top:14px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 13px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  border-top: 1px solid #eee;
+}
+
+.order-btn button {
+  margin-left: 8px;
+  float: right;
+  padding: 7px 10px;
+  font-size: 13px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #fff;
+  line-height: 18px;
+  border-radius: 4px;
+}
+
+.order-btn button:nth-child(1) {
+  background-color: #2184e3;
+  padding: 7px 17px;
+}
+.order-btn button:nth-child(2) {
+  color:rgba(102,102,102,1);
+  background-color: #fff;
+
+
+}
+
+.act-top {
+  display: flex;
+  margin: 0 12px;
+}
+
+.act-img {
+  width: 35%;
+  height: 176rpx;
+  background: #d8d8d8;
+  /* margin-left: 24rpx; */
+  margin-top: 28rpx;
+}
+
+.act-desc {
+  width: 65%;
+  margin-top: 32rpx;
+  margin-left: 20rpx;
+}
+
+.act-tltle {
+  font-size: 30rpx;
+  color: #000;
+  font-weight: Medium;
+}
+
+.act-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-loc {
+  margin-top: 14rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.content-time {
+  margin-top: 26rpx;
+  font-size: 22rpx;
+  color: #666;
+}
+
+.content-right {
+  text-align: right;
+}
+
+.content-price {
+  margin-right: 16rpx;
+  font-size: 26rpx;
+  color: #ff2525;
+}
+
+.content-btn {
+  float: right;
+  width: 150rpx;
+  height: 52rpx;
+  margin-top: 14rpx;
+  background: #2184e3;
+  font-size: 20rpx;
+  color: #fff;
+}
+
+.content-btn>text {
+  text-align: center;
+  align-items: center;
+}
+
+.act-bottom {
+  display: flex;
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 32rpx;
+  margin-left: 24rpx;
+}
+
+.jion-price {
+  margin-left: 24rpx;
+}
+
+.act-jion {
+  margin-left: auto;
+  margin-right: 18rpx;
+  font-size: 24rpx;
+  color: #2184e3;
+}
+
+.else {
+  text-align: center;
+  line-height: 40px;
+  color: #666;
+  font-size: 16px;
+  padding: 20px 0;
+  margin-top: 200px;
+}
+
+.tip {
+  text-align: center;
+  color: #d8d8d8;
+  font-size: 14px;
+  padding-bottom: 20px;
+}

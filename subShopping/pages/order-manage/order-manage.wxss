@@ -1,0 +1,179 @@
+/* pages/order-manage/order-manage.wxss */
+page{
+  background: #F9F9F9;
+}
+.order-box{
+  background: #FFFFFF;
+	width:100vw;
+	height:88rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 2rpx;
+}
+.order-label{
+	width: 120rpx;
+	height: 82rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  font-size: 28rpx;
+  color: #222222;
+}
+.order-label.active{
+  color: #2184E3;
+	border-bottom: 6rpx solid #2184E3;
+}
+
+
+
+/*myorder*/
+.my-order{
+  background: #FFFFFF;
+  margin-top: 20rpx;
+}
+.order-title{
+  display: flex;
+  align-items: center;
+  height: 84rpx;
+  margin: 0 24rpx 0 24rpx;
+  border-bottom: 1px solid #F2F2F2;
+}
+.order-time{
+  font-size: 26rpx;
+  color: #222222;
+}
+.order-or{
+  margin-left: auto;
+  font-size: 26rpx;
+  color: #FF2525;
+}
+
+.order-list{
+  height: 318rpx;
+  border-bottom: 1px solid #F2F2F2;
+}
+
+.order-goods{
+  display: flex;
+  margin: 30rpx 28rpx 0 26rpx;
+  border-bottom: 1px solid #F2F2F2;
+}
+.goods-img{
+  width: 256rpx;
+  height: 176rpx;
+  background: #D8D8D8;
+  margin-bottom: 28rpx;
+}
+.goods-detail{
+  margin-top: 8rpx;
+  margin-left: 24rpx;
+}
+.goods-title{
+  display: flex;
+}
+.goods-title>text{
+  font-size: 30rpx;
+  color: #000000;
+  font-weight: 550px;
+}
+.goods-title .goods-num{
+  margin-left: auto;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.goods-desc{
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.goods-price{
+  margin-top: 22rpx;
+  font-size: 28rpx;
+  color: #FF2525;
+}
+
+.order-gather{
+  display: flex;
+  margin-top: 36rpx;
+  margin-right: 24rpx;
+  float: right;
+}
+.order-num{
+  font-size: 26rpx;
+  color: #999999;
+}
+.order-express{
+  font-size: 28rpx;
+  color: #000000;
+  margin-left: 10rpx;
+}
+.order-price{
+  font-size: 30rpx;
+  color: #FF2525;
+  margin-left: 10rpx;
+}
+
+
+.order-message{
+  height: 236rpx;
+}
+
+.message{
+  height: 120rpx;
+  margin: 0 24rpx 0 24rpx;
+  border-bottom: 1px solid #F2F2F2;
+}
+.message-info{
+  margin-top: 26rpx;
+  display: flex;
+}
+.message-info>text{
+  font-size: 28rpx;
+  color: #222222;
+}
+.message-phone{
+  margin-left: 10rpx;
+}
+.message-address{
+  font-size: 28rpx;
+  color: #222222;
+  margin-top: 16rpx;
+}
+
+.order-shop{
+  display: flex;
+  margin: 22rpx 0 0 24rpx;
+}
+
+.shop-img{
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 6rpx;
+  background: #D8D8D8;
+}
+.shop-name{
+  margin-left: 12rpx;
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+.shop-btn{
+  margin-left: auto;
+  display: flex;
+}
+button{
+  margin: 0;
+  padding: 0;
+}
+.shop-btn>button{
+  width: 144rpx;
+  height: 64rpx;
+  font-size: 26rpx;
+  margin-right: 22rpx;
+}
+
+
+

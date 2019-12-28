@@ -1,0 +1,45 @@
+<!--pages/refund/refund.wxml-->
+<view>
+
+  <view class="list-top">
+    <view class="service-list" bindtap="toApply">
+      <image class='service-img' src="/assets/common/returngoods.png" />
+      <text>退款退货</text>
+      <image class="more" src="/assets/images/profile/more.png" />
+    </view>
+    <view class="service-list" bindtap="toApply">
+      <image class='service-img' src="/assets/common/refund.png" />
+      <text>仅退款</text>
+      <image class="more" src="/assets/images/profile/more.png" />
+    </view>
+  </view>
+
+  <view class="goods">
+    <view class="order-goods">
+      <image class="goods-img" src="{{}}"></image>
+      <view class="goods-detail">
+        <view class="goods-title">
+          <text>流星灯光线条A</text>
+          <view class="goods-num">×1</view>
+        </view>
+        <view class="goods-desc">规格：1条装</view>
+        <view class="goods-price">¥99.00</view>
+      </view>
+    </view>
+    <view class="order-gather">
+      <view class="order-num">总2件</view>
+      <view class="order-express">小计（快递：¥34.00）:</view>
+      <view class="order-price">¥99.00</view>
+    </view>
+  </view>
+
+  <view class="order-msg">
+    <view class="msg-title">订单信息</view>
+    <view class="msg">
+      <view class="msg-num">订单号：321031201012301</view>
+      <view class="order-time">下单时间：2018-12-13 12：31：00</view>
+      <view class="pay-time">付款时间：2018-12-13 12：31：00</view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,130 @@
+/* pages/account/account.wxss */
+page{
+  background-color: #F9F9F9;
+}
+
+.myaccount{
+  height: 170px;
+   background: linear-gradient(#44a3ff, #2184E3);
+}
+
+.nav{
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.income{ 
+  margin-left: 20px;
+  margin-top: 30px;
+  display: inline-block;
+}
+.income-p{
+  font-size: 42rpx;
+  color: #FFFFFF;
+}
+.income-t{
+  font-size: 26rpx;
+  color: #FFFFFF;
+  display: block;
+}
+
+.cut{
+  height: 52px;
+  border: 1px solid #8AB6E0;
+  margin-top: 31px;
+  margin-left: auto;
+}
+
+.surplus{
+  margin-left: 20px;
+  margin-right: 72px;
+  margin-top: 30px;
+  display: inline-block;
+}
+.surplus-p{
+  font-size: 42rpx;
+  color: #FFFFFF;
+}
+.surplus-t{
+  font-size: 26rpx;
+  color: #FFFFFF;
+  display: block;
+}
+
+.btn{
+  width: 100px;
+  height: 38px;
+  display: flex;
+  text-align: center;
+  line-height: 38px;
+  margin-top: 30px;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+.btn text{
+  font-size: 30rpx;
+  color: #2C8EEC;
+  flex: 1;
+  text-align: center;
+  align-items: center;
+}
+
+
+.wait{
+  height: 50px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  background: #FFFFFF;
+  font-size: 30rpx;
+  color: #222222;
+  margin-top: 10px;
+}
+.wait-title{
+  margin-left: 12px;
+}
+.wait-price{
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+.already{
+  height: 50px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  background: #FFFFFF;
+  font-size: 30rpx;
+  color: #222222;
+  margin-top: 1px;
+}
+.already-title{
+  margin-left: 12px;
+}
+.already-price{
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+
+.acc{
+  height: 50px;
+  background: #FFFFFF;
+  font-size: 30rpx;
+  color: #222222;
+  margin-top: 10px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.acc-title{
+  margin-left: 12px;
+
+}
+.img{
+  width: 8px;
+  height: 14px;
+  margin-left: auto;
+  margin-right: 14px;
+}
+

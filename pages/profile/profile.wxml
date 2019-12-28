@@ -11,10 +11,8 @@
         <image src="{{userInfo?userInfo.avatarUrl:'/assets/images/profile/avatar.png'}}" />
       </view>
       <view class='login-info'>
-        <view class='login' bindtap="{{isClicked?'openlogin':''}}">{{title}}</view>
-        <view class='phone'>
-          <!-- <open-data class="user-avatar" type="{{openDisplay?'userNickName':''}}"></open-data> -->
-          <!-- <text>{{openDisplay?'':'这是我的简介'}}</text> -->
+        <view class='login' bindtap="openlogin">{{title}}</view>
+        <view class='phone'> 
           <view>{{userInfo?userInfo.nickName:'完善个人信息'}}</view>
           <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="finnishInfo"></button>
         </view>
@@ -33,21 +31,21 @@
   <view class='info'>
     <view class='info-money info-item' bindtap="toCoupon">
       <view>
-        <text class='count'>{{userIdDiscount.receiveCount}}</text>
+        <text class='count'>{{userIdDiscount.receiveCount?userIdDiscount.receiveCount:0}}</text>
       </view>
       <view class="count-title">优惠券</view>
     </view>
     <view class="cut"></view>
     <view class='info-discount info-item' bindtap="toCollect">
       <view>
-        <text class='count'>{{userIdDiscount.collectCount}}</text>
+        <text class='count'>{{userIdDiscount.collectCount?userIdDiscount.collectCount:0}}</text>
       </view>
       <view class="count-title">收藏</view>
     </view>
     <view class="cut"></view>
     <view class='info-pointer info-item' bindtap="toFocus">
       <view>
-        <text class='count'>{{userIdDiscount.focusCount}}</text>
+        <text class='count'>{{userIdDiscount.focusCount?userIdDiscount.focusCount:0}}</text>
       </view>
       <view class="count-title">关注</view>
     </view>

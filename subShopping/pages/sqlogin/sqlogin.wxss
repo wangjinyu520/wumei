@@ -1,0 +1,47 @@
+/* pages/sqlogin/sqlogin.wxss */
+/* pages/login/login.wxss */
+page{
+  width: 100%;
+  height:100%;
+  /* background-color: #fcfcfc; */
+  margin: 0 24rpx;
+  
+}
+.login{
+  width: 100%;
+  height: 100%;
+
+}
+.top-img{
+  position: absolute;
+  top:300rpx;
+  left:50%;
+  margin-left: -100rpx;
+  width: 200rpx;
+  height: 200rpx;
+}
+.top-img image{
+  width: 100%;
+  height: 100%;
+}
+.botimg{
+  position: absolute;
+  top:280rpx;
+  left: 24rpx;
+  width: calc(100% - 48rpx);
+  height: 445rpx;
+}
+.botimg image{
+  width: 100%;
+  height: 100%;
+
+}
+.login-btn{
+  position: absolute;
+  top:800rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100rpx;
+   width: 80%;
+
+}

@@ -34,7 +34,7 @@ Component({
   toDetailsMaster: function (e) {
     console.log(e);
     wx.navigateTo({
-      url: '/pages/technology/technology?id=' + e.currentTarget.dataset.id,
+      url: '/subShopping/pages/technology/technology?id=' + e.currentTarget.dataset.id,
     })
   }
   },

@@ -1,0 +1,35 @@
+<!--pages/account/account.wxml-->
+<view class="account">
+
+  <view class="myaccount">
+    <view class="nav">
+      <view class="income">
+        <text class="income-p">¥999.99</text>
+        <text class="income-t">活动总收入</text>
+      </view>
+      <view class="cut"></view>
+      <view class="surplus">
+        <text class="surplus-p">¥999.99</text>
+        <text class="surplus-t">余额</text>
+      </view>
+    </view>
+    <button class="btn" bindtap="toCashout"><text>去提现</text></button>
+  </view>
+
+  <view class="wait">
+    <view class="wait-title">待提现</view>
+    <view class="wait-price">¥889.00</view>
+  </view>
+
+  <view class="already" bindtap="toWithdrawrecord">
+    <view class="already-title">已提现</view>
+    <view class="already-price">¥889.00</view>
+  </view>
+
+  <view class="acc" bindtap="toBill">
+    <view class="acc-title">我的账单</view>
+    <image class="img" src="/assets/common/more.png"/>
+  </view>
+
+</view>
+

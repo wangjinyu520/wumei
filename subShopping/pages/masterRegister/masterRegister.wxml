@@ -1,0 +1,75 @@
+<!--pages/masterRegister/masterRegister.wxml-->
+<!--pages/publish/publish.wxml-->
+<view class="publish">
+  <form bindsubmit="fromSubmit" id="1" bindreset="fromReset">
+    <!--输入框-->
+    <view class="refund">
+      <view class="refund-title">大师类型</view>
+      <view class="refund-msg" bindtap="changeshow">
+        <text>{{msg}}</text>
+        <image src="/assets/images/master/bottom.png" class="icon-set" />
+      </view>
+      <!-- 下拉需要显示的列表  -->
+      <view class="select_box" wx:if="{{selectdiplay}}">
+        <view wx:for="{{selectmsg}}" wx:key="unique">
+          <view class="select_one" bindtap="mySelect" data-name="{{item}}" data-id="{{index}}">{{item}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="work">
+      <view class="refund-title">工作年长</view>
+      <view class="refund-input">
+        <input type="number" name="workExperience" class="yearWork" placeholder="请输入数字"></input>
+      </view>
+    </view>
+    <view class="work">
+      <view class="refund-title">年龄</view>
+      <view class="refund-input">
+        <input type="number" name="technologyAge" class="yearWork" placeholder="请输入年龄"></input>
+      </view>
+    </view>
+    <view class="active area">
+      <view class="active-title">
+        <text>个人经历</text> `
+      </view>
+      <view class="active-decr-area">
+        <textarea placeholder="" name="personalIntroduce"></textarea>
+      </view>
+    </view>
+    <view class="active">
+      <view class="active-title">
+        <text>案例介绍</text>
+      </view>
+      <view class="active-decr">
+        <view class="active-input">
+          <view class='toolbar' bindtap="format">
+            <image src="/assets/images/activity/pic.png" catchtouchend="insertImage"></image>
+          </view>
+          <view class="containers" style="height:{{editorHeight}}px;">
+            <editor id="editor" class="ql-container" placeholder="{{placeholder}}" bindstatuschange="onStatusChange" bindready="onEditorReady" bindblur="getContent">
+            </editor>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 证明证件 -->
+    <view class="line">
+      <view class="title">证书</view>
+      <!--上传活动封面-->
+    </view>
+    <include src="../../components/uploadpic/up-pic.wxml" />
+    <view class="agree">
+      <view class="container-agreement">
+        <view class="btn-box">
+          <button class="pre-btn" data-type="1" formType="reset">
+            <text>取消</text>
+          </button>
+          <button class="pub-btn" data-type="2" formType="submit">
+            <text>申请</text>
+          </button>
+        </view>
+      </view>
+    </view>
+
+  </form>
+</view>

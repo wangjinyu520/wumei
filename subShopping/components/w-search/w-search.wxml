@@ -1,0 +1,6 @@
+<!--components/w-search/w-search.wxml-->
+<view class="w-search">
+  <image class="image" src="/assets/common/search.jpg" mode="widthFix"/>
+  <input type="text" class="input" placeholder="商品名称" />
+  <button class="btn" size="mini" >{{titles}}</button>
+</view>

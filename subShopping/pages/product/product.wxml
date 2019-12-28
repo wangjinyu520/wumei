@@ -1,0 +1,58 @@
+<!--pages/product/product.wxml-->
+<view>
+  <image class="img" src="{{commodityIcon}}"></image>
+
+  <view class="product">
+    <view class="title">{{commodityName}}灯光A灯光A灯光A灯光A灯光A灯光A灯光A</view>
+    <view class="price">
+      <text>租金：</text>
+      <text class="rent">¥{{rent}}</text>
+      <text class="unit">{{unit}}</text>
+    </view>
+</view>
+
+<view class="location">
+  <text>{{location}}地址：上海市浦东新区德州路</text>
+</view>
+
+<view class="desc-title">
+  <text>商品详情</text>
+</view>
+
+<view class="desc">
+</view>
+
+<view class="bottom">
+  <view class="check">
+    <view>
+      <image class="check-img" src="/assets/common/company.png"></image>
+    </view>
+    <view>
+      <text>查看公司</text>
+    </view>
+  </view>
+  <view class="cut"></view>
+  <view class='collect'>
+    <view>
+      <image class="collect-img" src="{{isClick?'/assets/common/collect-yes.png':'/assets/common/collect-no.png'}}" bindtap="haveSave"></image>
+    </view>
+    <view>
+      <text>{{isClick?'已收藏':'收藏'}}</text>
+    </view>
+  </view>
+  <button class="chat" bindtap="show">
+    <text>联系商家</text>
+  </button>
+  <!-- 弹出层内容 -->
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <view class="modalDlg" wx:if="{{showModal}}">
+    <text class="mask-content">联系人电话：13213457890</text>
+    <view style="display:flex;">
+      <button class="msk-btn" bindtap="go">取消</button>
+      <button class="msk-btn" bindtap="tel">呼叫</button>
+    </view>
+  </view>
+
+</view>
+
+</view>

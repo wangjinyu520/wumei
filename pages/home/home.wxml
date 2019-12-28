@@ -69,7 +69,6 @@
       <w-masters masterslist="{{masters}}" class="masters-item" />
     </view>
   </view>
-
   <!--分割线-->
   <view class="cut"></view>
 
@@ -79,7 +78,7 @@
       <view class="active-title">
         <text>热门活动</text>
       </view>
-      <navigator url="/pages/activity/activity" hover-class="none">
+      <navigator url="/subShopping/pages/activity/activity" hover-class="none">
         <view class="more">
           <text>更多</text>
           <image src="/assets/common/master-right.png" class="icon-more" />
@@ -90,7 +89,7 @@
 
       <scroll-view scroll-x="true" class="">
         <view wx:for="{{activityList}}" wx:key="{{index}}">
-          <navigator url="/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
+          <navigator url="../../subShopping/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
             <view class="active-desc" data-id="{{item.activityId}}">
               <image class="active-img" src="{{item.activityLogo}}" />
               <view class="active-right">
@@ -120,7 +119,7 @@
   <view class="cut"></view>
 
   <!--展示视频教程-->
-  <view class="video">
+  <!-- <view class="video">
     <view class="video-tab">
       <view class="video-title">
         <text>视频教程</text>
@@ -140,7 +139,7 @@
         </view>
       </block>
     </view>
-  </view>
+  </view> -->
   <!--回到顶部-->
   <!--<w-back-top wx:if="{{showBackTop}}" />-->
 </view>

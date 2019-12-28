@@ -1,0 +1,28 @@
+<!--pages/myaddress/myaddress.wxml-->
+<view>
+  <view class="myaddress">
+    <scroll-view class="scroll" scroll-y="true">
+    <view class="info" wx:for="{{addressList}}" wx:key="{{index}}">
+      <view class="info-left">
+        <view class="info-top">
+          <view class="name">{{item.name}}</view>
+          <view class="phone">{{item.phone}}</view>
+        </view>
+        <view class="info-bottom">
+          <view class="address">{{item.address}}</view>
+        </view>
+      </view>
+      <view class="cut"></view>
+      <view class="info-right">
+        <text data-id="{{index}}" bindtap="delAddress">删除</text>
+      </view>
+    </view>
+    </scroll-view>
+  </view>
+
+  <view class="btn">
+    <button class="addbtn" bindtap="toAddress">
+      <text>新增地址</text>
+    </button>
+  </view>
+</view>

@@ -1,0 +1,58 @@
+/* pages/collect/collect.wxss */
+page{
+  background: #F9F9F9;
+}
+
+.order-box{
+  background: #FFFFFF;
+	width:100vw;
+	height:88rpx;
+	display: flex;
+  text-align: center;
+	align-items: center;
+	border-top: 2rpx;
+}
+.order-label{
+	width: 120rpx;
+	height: 82rpx;
+	display: flex;
+  text-align: center;
+	justify-content: center;
+	align-items: center;
+  font-size: 28rpx;
+  color: #222222;
+  margin-left: 160rpx;
+}
+.order-label.active{
+  color: #2184E3;
+	border-bottom: 6rpx solid #2184E3;
+}
+
+
+
+.content{
+  display: flex;
+  margin-top: 2rpx;
+  background: #FFFFFF;
+  height: 236rpx;
+}
+.img{
+  width: 256rpx;
+  height: 176rpx;
+  margin: 30rpx 26rpx;
+  background: #D8D8D8;
+}
+.goods{
+  margin-top: 38rpx;
+  margin-left: 24rpx;
+}
+.title{
+  font-size: 30rpx;
+  color: #000000;
+}
+.price{
+  margin-top: 64rpx;
+  font-size: 28rpx;
+  color: #FF2525;
+}
+

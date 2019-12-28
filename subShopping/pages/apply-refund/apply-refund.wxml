@@ -1,0 +1,53 @@
+<!--pages/apply-refund/apply-refund.wxml-->
+<view>
+
+  <view class="goods">
+    <view class="order-goods">
+      <image class="goods-img" src="{{}}"></image>
+      <view class="goods-detail">
+        <view class="goods-title">
+          <text>流星灯光线条A</text>
+          <view class="goods-num">×1</view>
+        </view>
+        <view class="goods-desc">规格：1条装</view>
+        <view class="goods-price">¥99.00</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="refund-top">
+    <view class="refund-list" bindtap="toApply">
+      <text>退款原因</text>
+      <view class="section">
+        <picker bindchange="bindCauseChange" value="{{index}}" range="{{causeArray}}">
+          <view class="picker">{{causeArray[index]}}</view>
+        </picker>
+        <image class="more" src="/assets/images/profile/more.png" />
+      </view>
+    </view>
+    <view class="refund-list" bindtap="toApply">
+      <text>退款金额</text>
+      <view class="section">
+        <picker bindchange="bindMoneyChange" value="{{index}}" range="{{moneyArray}}">
+          <view class="picker">{{moneyArray[index]}}</view>
+        </picker>
+        <image class="more" src="/assets/images/profile/more.png" />
+      </view>
+    </view>
+  </view>
+
+  <view class="most">
+    <text>最多退款¥99.00,含运费¥10.00</text>
+  </view>
+
+  <view class="explain">
+    <view class="explain-title">退款说明</view>
+    <view class="explain-content">
+      <input placeholder="填写退款说明"></input>
+    </view>
+    <button class="btn"><text>提交</text></button>
+  </view>
+
+
+
+</view>

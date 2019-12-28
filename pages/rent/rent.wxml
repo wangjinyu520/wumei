@@ -21,4 +21,3 @@
   </view>
   <commodity commoditylist="{{commodity[currentType].list}}"/>
 </view>
-

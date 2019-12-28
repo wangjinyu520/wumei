@@ -11,7 +11,6 @@ Page({
    */
   data: {
     title: '点击登录',
-    isClicked: true,
     openDisplay: false,
     userIdDiscount: null,
     userInfo: null
@@ -19,19 +18,19 @@ Page({
 
   toCoupon: function() {
     wx.navigateTo({
-      url: '/pages/coupon/coupon'
+      url: '/subMy/pages/coupon/coupon'
     })
   },
 
   toCollect: function() {
     wx.navigateTo({
-      url: '/pages/collect/collect'
+      url: '/subMy/pages/collect/collect'
     })
   },
 
   toFocus: function() {
     wx.navigateTo({
-      url: '/pages/focus/focus'
+      url: '/subMy/pages/focus/focus'
     })
   },
 
@@ -40,63 +39,75 @@ Page({
 
   toStorecenter: function() {
     wx.navigateTo({
-      url: '/pages/center/center',
+      url: '/subMy/pages/center/center',
     })
   },
 
   toOrder: function() {
     wx.navigateTo({
-      url: '/pages/order/order',
+      url: '/subMy/pages/order/order',
     })
   },
 
   toActivity: function() {
     wx.navigateTo({
-      url: '/pages/userActivity/userActivity',
+      url: '/subMy/pages/userActivity/userActivity',
     })
   },
 
   toAccount: function() {
     wx.navigateTo({
-      url: '/pages/account/account',
+      url: '/subMy/pages/account/account',
     })
   },
   toCertification: function() {
+    let token = wx.getStorageSync('token');
+    if (!token) {
+      wx.showToast({
+        title: '请先去登录',
+      })
+      wx.switchTab({
+        url: '/pages/profile/profile',
+      })
+      return;
+    }
     let companyId = wx.getStorageSync('companyId');
     if (companyId) {
       wx.showToast({
+        icon: 'none' ,
         title: '你已经是主办方身份，不能再申请大师身份',
       })
     } else {
       wx.navigateTo({
-        url: '/pages/masterRegister/masterRegister',
+        url: '/subShopping/pages/masterRegister/masterRegister',
       })
     }
   },
 
   toAddress: function() {
     wx.navigateTo({
-      url: '/pages/myaddress/myaddress',
+      url: '/subMy/pages/myaddress/myaddress',
     })
   },
 
   toAdvice: function() {
     wx.navigateTo({
-      url: '/pages/advice/advice',
+      url: '/subMy/pages/advice/advice',
     })
   },
 
   toSetup: function() {
     wx.navigateTo({
-      url: '/pages/set/set',
+      url: '/subMy/pages/set/set',
     })
   },
 
   toMassage: function() {
     wx.navigateTo({
-      url: '/pages/massage/massage',
+      url: '/subMy/pages/massage/massage',
     })
   },
+  // 完善个人信息
   onGotUserInfo(e) {
     let that = this;
     let tokens = wx.getStorageSync('token');
@@ -116,7 +127,11 @@ Page({
           });
           // console.log(userInfo);
           WXAPI.modifyUser(userInfo).then(res => {
-            console.log(res)
+            console.log(res.data);
+            let token=wx.getStorageSync('token');
+            token.userIcon=res.data.userIcon;
+            token.nickName=res.data.nickName;
+            wx.setStorageSync('token', token);
           })
         }
       })
@@ -136,28 +151,29 @@ Page({
             if (res.code == 50000) {
               // 去注册
               wx.navigateTo({
-                url: '/pages/sqlogin/sqlogin',
+                url: '/subShopping/pages/sqlogin/sqlogin',
               })
             } else if (res.code == SUCCESS) {
-              wx.getUserInfo({
-                success: function(res) {
-                  var userInfo = res.userInfo
-                  var nickName = userInfo.nickName
-                  var avatarUrl = userInfo.avatarUrl
-                  var gender = userInfo.gender //性别 0：未知、1：男、2：女
-                  var province = userInfo.province
-                  var city = userInfo.city
-                  var country = userInfo.country
-                }
-              })
               that.setData({
                 title: res.data.userName,
-                isClicked: false,
                 openDisplay: true,
 
               })
+              console.log(res.data);
+              if (res.data.nickName) {
+                if (res.data.userIcon) {
+                  res.data.avatarUrl = res.data.userIcon;
+                }
+                that.setData({
+                  userInfo:res.data
+                });
+                console.log(that.data.userInfo)
+              }
               wx.setStorageSync('token', res.data);
-              wx.setStorageSync('companyId', res.data.companyId);
+              if (res.data.companyId) {
+                wx.setStorageSync('companyId', res.data.companyId);
+              }
+            
             } else if (res.code == 11211) {
               wx.showModal({
                 title: '',
@@ -177,7 +193,7 @@ Page({
         title: '请先去登录',
       })
       wx.navigateTo({
-        url: '/pages/sqlogin/sqlogin'
+        url: '/subShopping/pages/sqlogin/sqlogin'
       })
       return;
     }
@@ -191,11 +207,11 @@ Page({
           title: '您还不是主办方，马上注册',
         })
         wx.navigateTo({
-          url: '/pages/bossCertification/bossCertification',
+          url: '/subShopping/pages/bossCertification/bossCertification',
         })
       } else if (res.code == 200) {
         wx.navigateTo({
-          url: '/pages/boss/boss',
+          url: '/subShopping/pages/boss/boss',
         })
       }
     })
@@ -216,16 +232,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let token = wx.getStorageSync('token').userName;
+    let token = wx.getStorageSync('token').mobile;
     if (token) {
       this.setData({
         title: token,
         openDisplay: true
       })
       let tokens = wx.getStorageSync('token');
-      tokens.avatarUrl=tokens.userIcon;
-      console.log(tokens);
+    
       if (tokens.nickName) {
+        if (tokens.userIcon) {
+          tokens.avatarUrl = tokens.userIcon;
+        }
         this.setData({
           userInfo: tokens
         });

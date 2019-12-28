@@ -1,0 +1,22 @@
+/* components/w-search/w-search.wxss */
+.w-search{
+  display: flex;
+  margin: 30rpx;
+  justify-content: center;
+  align-items: center;
+}
+.image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.input{
+  border: 1px solid #eee;
+  margin-left: 30rpx;
+  font-size: 32rpx;
+  padding-left: 16rpx; 
+}
+.btn{
+  font-size: 32rpx;
+  height: 64rpx;
+  margin-left: auto;
+}

@@ -1,0 +1,27 @@
+<!--pages/cashout/cashout.wxml-->
+<view>
+  <view class="cashout-price">
+    <text class="pirce-title">提现金额</text>
+    <view class="price-desc">¥<input class="price-input"/></view>
+  </view>
+
+  <view class="cashout-name">
+    <text class="name">姓名</text>
+    <input class="name-input" placeholder="吴晓敏"/>
+  </view>
+
+  <view class="bankcard">
+    <text class="bankcard-tltle">银行卡号</text>
+    <input class="bankcard-input" placeholder="请输入"/>
+  </view>
+
+  <view class="bank">
+    <text class="bank-title">所属银行</text>
+    <input class="bank-input" placeholder="请输入"/>
+  </view>
+
+  <button class="btn"><text class="btn-text">提现</text></button>
+
+</view>
+
+

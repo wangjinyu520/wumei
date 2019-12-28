@@ -1,0 +1,12 @@
+<!--pages/light/light.wxml-->
+<view class="light">
+  <!-- <w-tab-control class='tab-control' titles="{{titles}}" /> -->
+  <view class='tab-control'>
+    <block wx:for="{{titles}}" wx:key="index">
+      <view class='tab-item {{index == currentIndex?"active": ""}}' bindtap="tabClick" data-index="{{index}}">
+        <text>{{item}}</text>
+      </view>
+    </block>
+  </view>
+  <w-gaffers gafferslist="{{gaffers}}" bindtap="dispath" />
+</view>

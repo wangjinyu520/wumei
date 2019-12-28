@@ -1,0 +1,60 @@
+<!--pages/joinfrom/joinfrom.wxml-->
+<view class="joinfrom">
+
+  <view class="lable">
+    <view class="name">
+      <text class="text">姓名</text>
+        <text class="text">必填</text>
+    </view>
+    <view class="name">
+      <text class="text">手机号</text>
+        <text class="text">必填</text>     
+    </view>
+    <checkbox-group  class="phone" wx:for="{{concatlist}}" wx:key="{{index}}">
+      <label class="text"> {{item.name}} </label>
+      <checkbox class="check" bindtap="checkboxChangeList" data-id="{{index}}" value="{{item.name}}" checked="{{item.zstatus}}">必填</checkbox>
+    </checkbox-group>
+  </view>
+  <view class="btn">
+    <button class="frombtn" bindtap="powerDrawer" data-statu="open">
+      <image class="fromimg" src="/assets/common/from-add.png" />
+      <text class="fromtext">添加表单项</text>
+    </button>
+    <button class="frombtn" bindtap="savesubmit">
+      <text class="fromtext">保存</text>
+    </button>
+  </view>
+  <!--mask-->
+  <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+  <!--content-->
+  <!--使用animation属性指定需要执行的动画-->
+  <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+
+    <!--drawer content-->
+    <view class="drawer_title">添加表单项</view>
+    <view class="drawer_content">
+      <view class="use">
+        <view class="use-title">常用表单项</view>
+        <view>
+          <checkbox-group class="use-content" bindchange="checkboxChange">
+            <label class="{{item.status?'checkbox checked':'checkbox'}}" wx:for="{{checkboxArr}}" bindtap='checkbox' data-item="{{item}}" wx:key="{{index}}">
+              <checkbox value="{{item.name}}" checked="{{item.status}}" />{{item.name}}
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+      <view class="custom">
+        <view class="custom-title">自定义填写项</view>
+        <view class="custom-content">
+          <!-- <view>
+            <text>多选问题</text>
+          </view> -->
+          <input class="weui-input" bindfocus="setnull" placeholder="" value="{{inputvalue}}" bindblur="additem" />
+        </view>
+      </view>
+    </view>
+    <view class="btn_ok" bindtap="saveinput" data-statu="close">确定
+    </view>
+  </view>
+
+</view>

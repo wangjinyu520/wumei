@@ -1,0 +1,57 @@
+<!--pages/orderdetil/orderdetil.wxml-->
+<view class="orderdetil">
+  <view class="lable">
+    <view class="image">
+      <image src="{{orderDetail.activityLogo}}" />
+    </view>
+    <view class="content">
+      <view class="title">
+        <text>{{orderDetail.activityName}}</text>
+      </view>
+      <view class="active">{{orderDetail.activityType?"线上活动":"线下活动"}} 丨{{orderDetail.activityTime}}</view>
+    </view>
+  </view>
+
+  <view class="address">
+    <image class="localimg" src="/assets/common/local.png" />
+    <view class="local">{{orderDetail.activityLocation}}</view>
+  </view>
+
+  <view class="message">
+    <view class="infor">
+      <view>{{orderDetail.name}} {{orderDetail.phone}}</view>
+    </view>
+
+    <view class="vip">
+      <view class="vipticket">{{orderDetail.ticketName}}</view>
+      <view class="vipprice">¥{{orderDetail.payAmount}}</view>
+    </view>
+
+    <view class="ticket">
+      <view class="ticketnum">
+        票号
+      </view>
+      <view class="code">
+        <!-- <view class="container-box">
+          <view class="img-box">
+            <image bindtap="previewImg" mode="scaleToFill" src="{{imagePath}}"></image>
+          </view>
+        </view> -->
+        <view class="canvas-box">
+          <canvas style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="order">
+    <view class="orderlist">
+      <view class="ordernum">订单编号：{{activityOrderId}}</view>
+      <view class="ordertime">创建时间：{{orderDetail.updateDate}}</view>
+    </view>
+  </view>
+  <view class="btn">
+    <button class="cancel">
+      <text>取消报名</text>
+    </button>
+  </view>
+</view>

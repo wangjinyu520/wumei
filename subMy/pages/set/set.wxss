@@ -1,0 +1,10 @@
+/* pages/set/set.wxss */
+page{
+  background:rgba(249,249,249,1);
+}
+.btn{
+  background-color: #ffffff;
+  margin:60rpx 32rpx 16rpx;
+  text-align: center;
+  font-size: 32rpx;
+}

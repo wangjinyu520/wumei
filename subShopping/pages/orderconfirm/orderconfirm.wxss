@@ -1,0 +1,236 @@
+/* pages/orderconfirm/orderconfirm.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.orderconfirm {
+  background: #f7f7f7;
+  width: 100%;
+  height: 100%;
+}
+
+.lable {
+  height: 117px;
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.image {
+  width: 128px;
+  height: 88px;
+  margin-left: 10px;
+  margin-top: 14px;
+  background: #d8d8d8;
+}
+
+.image image {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  margin-top: 18px;
+  margin-right: 8px;
+  margin-left: 10px;
+}
+
+.title {
+  font-size: 30rpx;
+  color: #000;
+  font-weight: Medium;
+  align-items: baseline;
+}
+
+.address {
+  font-size: 26rpx;
+  color: #666;
+  font-weight: Regular;
+  margin-top: 7px;
+}
+
+.active {
+  font-size: 24rpx;
+  color: #666;
+  font-weight: Regular;
+  margin-top: 13px;
+}
+
+.vip {
+  display: flex;
+  height: 50px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.vip text {
+  margin-left: 14px;
+  margin-top: 15px;
+  font-size: 30rpx;
+  color: #222;
+  font-weight: Regular;
+}
+
+.price {
+  margin-left: auto;
+  margin-top: 15px;
+  margin-right: 12px;
+  font-size: 30rpx;
+  color: #a7a7a7;
+}
+
+.pay {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.pay .moredesc {
+  height: 100%;
+  width: 150px;
+}
+
+.explain {
+  margin-left: 14px;
+  margin-top: 15px;
+  font-size: 30rpx;
+  color: #222;
+  font-weight: Regular;
+}
+
+.payimg {
+  width: 8px;
+  height: 14px;
+  margin-left: auto;
+  margin-top: 19px;
+  margin-right: 15px;
+}
+
+.refund {
+  height: 182rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.detil {
+  margin: 11px 12px;
+  font-size: 26rpx;
+  color: #757575;
+}
+
+.change {
+  height: 40px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+}
+
+.change text {
+  font-size: 26rpx;
+  color: #757575;
+  margin-left: 14px;
+}
+
+.style {
+  height: 50px;
+  border-bottom: 1px solid #eee;
+}
+
+.zfb {
+  display: flex;
+  align-items: center;
+}
+
+.zfb image {
+  width: 46rpx;
+  height: 46rpx;
+  margin-left: 12px;
+  margin-top: 14px;
+}
+
+.zfb text {
+  font-size: 30rpx;
+  color: #222;
+  margin-left: 11px;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.checked-lable {
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  margin-top: 12px;
+  margin-right: 18px;
+}
+
+.wx {
+  display: flex;
+  align-items: center;
+}
+
+.wx image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-left: 12px;
+  margin-top: 14px;
+}
+
+.wx text {
+  font-size: 30rpx;
+  color: #222;
+  margin-left: 11px;
+  margin-top: 15px;
+  align-items: center;
+}
+
+/* 未选中的 背景样式 */
+
+radio .wx-radio-input {
+  height: 36rpx;
+  width: 36rpx;
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* 选中后的 背景样式 */
+
+radio .wx-radio-input.wx-radio-input-checked {
+  border: none;
+  background: #2184e3;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0px;
+  width: 100%;
+  height: 55px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.sum {
+  margin-left: 14px;
+  font-size: 28rpx;
+  color: #000;
+  line-height: 40px;
+}
+
+.btn {
+  width: 126px;
+  height: 40px;
+  background: #2184e3;
+  border-radius: 6px;
+  margin-right: 12px;
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.btn>text {
+  line-height: 40px;
+}

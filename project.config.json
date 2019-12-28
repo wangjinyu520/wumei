@@ -4,13 +4,15 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
 		"autoAudits": false,
+		"uglifyFileName": true,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -19,7 +21,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"enhance": true
+		"bundle": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.3",
@@ -504,9 +506,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/sqlogin/sqlogin",
-					"pathName": "pages/sqlogin/sqlogin",
+					"id": 64,
+					"name": "subShopping/pages/sqlogin/sqlogin",
+					"pathName": "subShopping/pages/sqlogin/sqlogin",
 					"query": "",
 					"scene": null
 				},
@@ -654,6 +656,21 @@
 					"id": -1,
 					"name": "pages/masterRegister/masterRegister",
 					"pathName": "pages/masterRegister/masterRegister",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 86,
+					"name": "subShopping/pages/orderdetil/orderdetil",
+					"pathName": "subShopping/pages/orderdetil/orderdetil",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 87,
+					"name": "subShopping/pages/search/search",
+					"pathName": "subShopping/pages/search/search",
+					"query": "",
 					"scene": null
 				}
 			]

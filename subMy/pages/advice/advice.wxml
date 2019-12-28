@@ -1,0 +1,19 @@
+<!--pages/advice/advice.wxml-->
+<view>
+  <form bindsubmit="fromReport">
+    <view class="uploader">
+      <view class='toolbar' bindtap="format">
+        <image src="/assets/images/bossregister/add.png" catchtouchend="insertImage"></image>
+      </view>
+      <view class="containers" style="height:{{editorHeight}}px;">
+        <editor id="editor" placeholder="请在此输入你对本平台的反馈意见" bindstatuschange="onStatusChange" bindready="onEditorReady" bindblur="getContent">
+        </editor>
+      </view>
+    </view>
+    <view class="btn">
+      <button class="rbtn" bindtap="click" data-value="{{value}}" formType="submit" type='primary'>
+        <text>举报</text>
+      </button>
+    </view>
+  </form>
+</view>

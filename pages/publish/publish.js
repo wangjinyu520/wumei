@@ -17,7 +17,7 @@ Page({
       title: '我的主页', //导航栏 中间的标题
     },
     // 此页面 页面内容距最顶部的距离
-    height: app.globalData.statusBarHeight * 2 + 20,   
+    height: app.globalData.statusBarHeight * 2 + 20,
     uploadedImages: [],
     imgBoolean: true,
     isAgreement: false, // 是否显示用户协议
@@ -39,9 +39,9 @@ Page({
     currentTicket: '',
     selectdiplay: false,
     selectdiplays: false,
-    picList:[],
-    editorImg:[],
-    detailHtml:''
+    picList: [],
+    editorImg: [],
+    detailHtml: ''
   },
   chooseImage: function() {
     var that = this;
@@ -111,25 +111,17 @@ Page({
     })
   },
   // 富文本
-  readOnlyChange() {
-    this.setData({
-      readOnly: !this.data.readOnly
-    })
-  },
   onEditorReady() {
     const that = this
-    wx.createSelectorQuery().select('#editor').context(function (res) {
+    wx.createSelectorQuery().select('#editor').context(function(res) {
       that.editorCtx = res.context
     }).exec()
   },
-  blur() {
- 
-  },
-  getContent(){
+  getContent() {
     this.editorCtx.getContents({
       success: (res) => {
         this.setData({
-          detailHtml:res.html
+          detailHtml: res.html
         })
       },
       fail: (res) => {
@@ -149,7 +141,7 @@ Page({
   onStatusChange(e) {
     const formats = e.detail
     // console.log(formats);
-  
+
     this.setData({
       formats
     })
@@ -161,41 +153,38 @@ Page({
     let picList = that.data.picList;
     wx.chooseImage({
       count: 1,
-      success: function (res) {
+      success: function(res) {
         // console.log(res.tempFiles);
         let tempFiles = res.tempFiles[0].path;
         //把选择的图片 添加到集合里
         //显示
-          wx.uploadFile({
-            url: 'http://101.133.164.180:8080/wumei-server/file/imageUpload',
-            header: {
-              'content-type': 'multipart/form-data'
-            },
-            filePath: tempFiles,
-            name: 'file', //name是后台接收到字段
-            success: function (res) {
-              // console.log(res.data);
-              let str = JSON.parse(res.data);
-              if (str.code == 200) {
-                // console.log(str.data)
-                that.editorCtx.insertImage({
-                  src: str.data,
-                  success: function () {
-                  }
-                });
-              } else {
-                wx.showToast({
-                  title: str.message,
-                })
-              }
-            },
-            fail: function (res) {
+        wx.uploadFile({
+          url: 'https://www.techwells.com/wumei-server/file/imageUpload',
+          header: {
+            'content-type': 'multipart/form-data'
+          },
+          filePath: tempFiles,
+          name: 'file', //name是后台接收到字段
+          success: function(res) {
+            // console.log(res.data);
+            let str = JSON.parse(res.data);
+            if (str.code == 200) {
+              // console.log(str.data)
+              that.editorCtx.insertImage({
+                src: str.data,
+                success: function() {}
+              });
+            } else {
+              wx.showToast({
+                title: str.message,
+              })
             }
-          })
+          },
+          fail: function(res) {}
+        })
       }
     })
   },
-
   map: function() {
     wx.getLocation({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
@@ -220,30 +209,28 @@ Page({
       endDate: e.detail.value
     })
   },
-  bindTimeChange: function (e) {
+  bindTimeChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       beginTime: e.detail.value
     })
   },
-  bindTimeChanges: function (e) {
+  bindTimeChanges: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       endTime: e.detail.value
     })
   },
   // 退票
-  optionTap: function(e) {
-
-  },
+  optionTap: function(e) {},
   // 表单提交
   fromSubmit: function(e) {
     // console.log('dfbhdbf');
     activity = e.detail.value;
-    activity.activityStartTime = this.data.beginDate+' '+this.data.beginTime;
-    activity.activityEndTime = this.data.endDate +' '+this.data.endTime;
-    activity.companyId = wx.getStorageSync('token').companyId;
-    activity.activityIntroduce=this.data.detailHtml;
+    activity.activityStartTime = this.data.beginDate + ' ' + this.data.beginTime;
+    activity.activityEndTime = this.data.endDate + ' ' + this.data.endTime;
+    activity.companyId = wx.getStorageSync('companyId');
+    activity.activityIntroduce = this.data.detailHtml;
     if (this.data.currentTicket == "免费") {
       this.data.currentTicket = 0;
     }
@@ -265,7 +252,20 @@ Page({
     })
     activityForm = JSON.stringify(obj);
     activity = JSON.stringify(activity);
-    this.uploadimage();
+    this.uploadimage(e);
+  },
+  // 表单重置
+  fromReset: function(e) {
+    e.detail.value = null;
+    this.setData({
+      beginDate: '请选择',
+      endDate: '请选择',
+      beginTime: '请选择',
+      endTime: '请选择',
+      currentTicket: '',
+      item: ''
+    });
+    this.editorCtx.clear();
   },
   //上传图片
   uploadimage: function() {
@@ -281,7 +281,7 @@ Page({
       })
     }
     wx.uploadFile({
-      url: 'http://101.133.164.180:8080/wumei-server/activity/addActivity',
+      url: 'https://www.techwells.com/wumei-server/activity/addActivity',
       header: {
         'content-type': 'multipart/form-data'
       },
@@ -290,30 +290,59 @@ Page({
       formData: data,
       success: function(res) {
         let str = JSON.parse(res.data);
+        console.log(str.message);
         if (str.code == 200) {
           wx.showToast({
             title: "发布活动成功",
             content: str.message,
+            duration:2000
           })
-          wx.switchTab({
-            url: '/pages/home/home',
-          })
+          setTimeout(function () {
+            wx.switchTab({
+              url: '/pages/home/home',
+            })
+          }, 2000)
           wx.showTabBar();
+        }else{
+          wx.showToast({
+            title: str.message,
+            content: str.message,
+          })
         }
-       
+
 
       },
-      fail: function(res) {
-      }
+      fail: function(res) {}
     })
 
 
   },
- 
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this;
+
+    let userId = wx.getStorageSync('token').userId;
+    if (!userId) {
+      wx.showModal({
+        title: '',
+        content: '您还没有登录，前去登录',
+        success(res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/profile/profile',
+            })
+          } else if (res.cancel) {
+            wx.switchTab({
+              url: '/pages/home/home',
+            })
+          }
+        }
+      })
+      return;
+    }
     let token = wx.getStorageSync('companyId');
     if (!token) {
       wx.showModal({
@@ -322,7 +351,7 @@ Page({
         success(res) {
           if (res.confirm) {
             wx.navigateTo({
-              url: '/pages/bossCertification/bossCertification',
+              url: '/subShopping/pages/bossCertification/bossCertification',
             })
           } else if (res.cancel) {
             wx.switchTab({
@@ -333,14 +362,11 @@ Page({
       })
 
     }
-    var that = this;
     //隐藏tabBar
     wx.hideTabBar();
     this.setData({
       currentTicket: globalData.curentTicket ? globalData.curentTicket : '免费'
-    })
-
-
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -352,9 +378,49 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    let that = this;
     this.setData({
       currentTicket: globalData.curentTicket ? globalData.curentTicket : '免费'
     })
+
+    let userId = wx.getStorageSync('token').userId;
+    if (!userId) {
+      wx.showModal({
+        title: '',
+        content: '您还没有登录，前去登录',
+        success(res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/profile/profile',
+            })
+          } else if (res.cancel) {
+            wx.switchTab({
+              url: '/pages/home/home',
+            })
+          }
+        }
+      })
+      return;
+    }
+    let token = wx.getStorageSync('companyId');
+    if (!token) {
+      wx.showModal({
+        title: '',
+        content: '只有主办方才能够发布活动，是否申请为主办方',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/subShopping/pages/bossCertification/bossCertification',
+            })
+          } else if (res.cancel) {
+            wx.switchTab({
+              url: '/pages/home/home',
+            })
+          }
+        }
+      })
+
+    }
   },
 
   /**

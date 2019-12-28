@@ -1,0 +1,45 @@
+<!--pages/activity/activity.wxml-->
+
+<view class="">
+  <!--搜索框-->
+  <view class="search-bar">
+    <view class="search-left">
+      <icon class="search-icon" type="search" size="13"></icon>
+      <input type="text" class="search-input" placeholder="搜索" bindtap="turn_search" disabled/>
+    </view>
+
+  </view>
+
+  <!--选择picker-bar-->
+  <view class='picker-bar'>
+    <dropdownmenu dropDownMenuTitle='{{dropDownMenuTitle}}' dropDownMenuSourceData='{{data2}}' dropDownMenuStyleData='{{data3}}' dropDownMenuFilterData='{{data4}}' bind:selectedItem='selectedItem' />
+  </view>
+  <!--展示数据-->
+  <view wx:if="{{contentlist}}">
+    <view class="my-activity" wx:for="{{contentlist}}" wx:key="{{index}}">
+      <navigator url="/pages/orderdetil/orderdetil?activityId={{item.activityId}}">
+        <view class="act-top ">
+          <image class="act-img " src="{{item.activityLogo}} " />
+          <view class="act-desc ">
+            <view class="act-content ">
+              <view class="content-left ">
+                <text class="content-loc ">{{item.activityTheme}}</text>
+                <text class="content-time ">{{item.activityLocation}}</text>
+                <text class="content-time ">{{item.startTime}}</text>
+              </view>
+              <view class="content-right ">
+                <text class="content-price ">¥{{item.activityFee}}</text>
+                <button class="content-btn ">
+                  <text>立即报名</text>
+                </button>
+              </view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+
+    </view>
+    <view class="tip">{{hasMoreData?'暂无更多数据':''}}</view>
+  </view>
+  <view wx:else class="else ">暂无相应的活动</view>
+</view>

@@ -1,0 +1,32 @@
+<!--pages/shop/shop.wxml-->
+
+<view>
+  <view class="nav">
+    <view class="nav-top">
+      <image class="nav-img" src="" />
+      <view class="nav-title">
+        <view class="center-title">星光灯具店</view>
+        <view class="center-assess">好评率 99%</view>
+      </view>
+    </view>
+    <view class="nav-desc">
+      简介:这是一个店铺简介，这是一个店铺简介，这是一介…
+    </view>
+  </view>
+
+  <view class="coupon">
+    <view class="coupon-price">
+      <text>¥</text>
+      <text>68</text>
+    </view>
+    <view class="coupon-use">满999可用 限定商品</view>
+  </view>
+
+  <view class="order-box">
+    <view class="order-label{{index== currentType?'.active':''}}" 
+    wx:for-items="{{orderType}}" wx:key="{{index}}" data-index="{{index}}" bindtap="orderTap">
+      {{item}}
+    </view>
+  </view>
+
+</view>

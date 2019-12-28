@@ -63,7 +63,7 @@
 
     <view class="price">
       <view class="price-title">费用</view>
-      <navigator url="/pages/setprice/setprice" class="set">
+      <navigator url="/subShopping/pages/setprice/setprice" class="set">
         <view class=" ">
           <text>{{currentTicket?currentTicket:'设置'}}</text>
           <image src="/assets/common/more.png" class="icon-set"></image>
@@ -81,7 +81,6 @@
       </view>
       <view class="active-decr">
         <view class="active-input">
-          <!-- <input name="activityIntroduce" placeholder="请输入文字内容"></input> -->
           <view class='toolbar' bindtap="format">
              <i class="iconfont icon-727bianjiqi_ziti {{formats.fontSize === '24px'? 'ql-active' : ''}}" data-name="fontSize" data-value="24px"></i>
             <i class="iconfont icon-suojinindent3" data-name="indent" data-value="-1"></i>
@@ -92,7 +91,7 @@
             <i class="iconfont icon-726bianjiqi_duanla" data-name="list" data-value="check"></i>
             <i class="iconfont icon-richtextnumberedlist {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
             <i class="iconfont icon-richtextbulletedlist {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
-            <image src="../../assets/images/activity/pic.png" catchtouchend="insertImage"></image>
+            <image src="/assets/images/activity/pic.png" catchtouchend="insertImage"></image>
           </view>
           <view class="containers" style="height:{{editorHeight}}px;">
             <editor id="editor" class="ql-container" placeholder="{{placeholder}}" bindstatuschange="onStatusChange" bindready="onEditorReady" bindblur="getContent">
@@ -103,7 +102,7 @@
     </view>
     <view class="collect">
       <view class="collect-title">报名表单收集</view>
-      <navigator url="/pages/joinfrom/joinfrom" class="from">
+      <navigator url="/subShopping/pages/joinfrom/joinfrom" class="from">
         <view class="from">
           <text>姓名等</text>
           <image src="/assets/common/more.png" class="icon-set"></image>
@@ -152,8 +151,8 @@
         </checkbox-group>
         <view wx:if="{{isAgreement}}" class="agreement-text"></view>
         <view class="btn-box">
-          <button class="pre-btn" data-type="1" formType="submit">
-            <text>预览</text>
+          <button class="pre-btn" data-type="1" formType="reset">
+            <text>取消</text>
           </button>
           <button class="pub-btn" data-type="2" formType="submit">
             <text>发布</text>

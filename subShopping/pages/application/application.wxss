@@ -1,0 +1,96 @@
+/* pages/application/application.wxss */
+page{
+  background-color: #F9F9F9;
+}
+
+
+.details{
+  height: 149px;
+  background: #FFFFFF;
+}
+.active{
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.active-img{
+  width: 128px;
+  height: 88px;
+  background: #D8D8D8;
+  margin-left: 12px;
+  margin-top: 14px;
+  border-radius: 4px;
+}
+.active-detail{
+  font-size: 15px;
+  color: #000000;
+  margin:17px 6px 0 10px;
+  text-align: left;
+}
+.active-loca{
+  font-size: 13px;
+  color: #666666;
+  margin:7px 0 0 10px;
+  text-align: left;
+}
+.active-time{
+  display: flex;
+}
+.active-time text{
+  font-size: 11px;
+  color: #666666;
+  margin: 10px 0 0 10px;
+}
+.active-price{
+  margin-left: auto;
+  font-size: 13px;
+  color: #FF2525;
+  margin-right: 9px;
+}
+.appli{
+  margin-top: 16px;
+  margin-left: 14px;
+}
+.appli text{
+  font-size: 13px;
+  color: #666666;
+}
+.appli-price{
+  margin-left: 10px;
+}
+
+
+.person{
+  height: 100%;
+  background: #FFFFFF;
+  margin-top: 10px;
+}
+.title{
+  height: 44px;
+  display: flex;
+  text-align: center;
+  align-items: center; 
+  border-bottom: 1px solid #F3F3F3;
+}
+.title view{
+  flex-grow: 1;
+  font-size: 13px;
+  color: #222222
+}
+.content{
+  height: 44px;
+  display: flex;
+  text-align: center;
+  align-items: center; 
+  border-bottom: 1px solid #F3F3F3;
+  font-size: 13px;
+  color: #222222;
+}
+.content view{
+  flex-grow: 1;
+}
+.btn{
+  font-size: 13px;
+  color: #2184E3;
+}
+

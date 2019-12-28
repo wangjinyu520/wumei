@@ -1,0 +1,41 @@
+<!--pages/search/search.wxml-->
+<view>
+  <view class="search-tab">
+    <view class="search-input">
+      <icon class="search-icon" type="search" size="16" bindtap="getActivityInfo"></icon>
+      <input type="text" placeholder="搜索" confirm-type='search' bindblur="inputBind" bindconfirm="getActivityInfo" />
+    </view>
+    <view class="cancel" bindtap="return_index">
+      取消
+    </view>
+  </view>
+  <scroll-view>
+    <view wx:if="{{contentlist}}">
+      <view class="my-activity" wx:for="{{contentlist}}" wx:key="{{index}}">
+        <navigator url="/pages/orderdetil/orderdetil?activityId={{item.activityId}}">
+          <view class="act-top ">
+            <image class="act-img " src="{{item.activityLogo}} " lazy-load />
+            <view class="act-desc ">
+              <view class="act-content ">
+                <view class="content-left ">
+                  <text class="content-loc ">{{item.activityTheme}}</text>
+                  <text class="content-time ">{{item.activityLocation}}</text>
+                  <text class="content-time ">{{item.startTime}}</text>
+                </view>
+                <view class="content-right ">
+                  <text class="content-price ">¥{{item.activityFee}}</text>
+                  <button class="content-btn ">
+                    <text>立即报名</text>
+                  </button>
+                </view>
+              </view>
+            </view>
+          </view>
+        </navigator>
+
+      </view>
+      <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
+    </view>
+  </scroll-view>
+
+</view>
