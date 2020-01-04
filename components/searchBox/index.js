@@ -4,7 +4,7 @@
 // 若显示搜索框右侧部分   需传入右侧图标url以及addhandle函数
 
 Component({
-
+  externalClasses: ['i-class'],
   properties: {
 
     addflag: {    //显示搜索框右侧部分

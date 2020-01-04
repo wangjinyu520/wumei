@@ -21,6 +21,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    toRuntDetail(e) {
+      let id = e.currentTarget.dataset.id
+      wx.navigateTo({
+        url: '/subShopping/pages/product/product?commodityId=' + id,
+      })
+    }
   }
 })

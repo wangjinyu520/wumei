@@ -55,7 +55,7 @@ Page({
   },
   turn_search: function() {
     wx.navigateTo({
-      url: '/subShopping/pages/search/search'
+      url: "/subShopping/pages/search/search?type=activity"
     })
   },
 

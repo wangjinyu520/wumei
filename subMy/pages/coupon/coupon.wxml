@@ -1,14 +1,14 @@
 <!--pages/coupon/coupon.wxml-->
-<view class="">
-
-  <view class="coupon">
-  <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" 
-        class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
-    <image class="coupon-bg" src="/assets/images/profile/yes-coupon.png"></image>
-    <view wx:for="{{couponList}}" wx:key="{{index}}">
+<view class="coupon">
+  <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
+    <view class="imgItem">
+      <image class="coupon-bg" src="/assets/images/profile/yes-coupon.png"></image>
       <view class="content">
-        <view class="price">¥
-          <text>300</text>
+        <view class="price">
+          <view class="price-box">
+            ¥<text>300</text>
+          </view>
+
         </view>
         <view class="cut"></view>
         <view class="shop">
@@ -28,9 +28,136 @@
         </view>
       </view>
     </view>
-    </scroll-view>
-  </view>
+    <view class="imgItem">
+      <image class="coupon-bg" src="/assets/images/profile/no-coupon.png"></image>
+       <view class="content">
+        <view class="price">
+          <view class="price-box">
+            ¥<text>300</text>
+          </view>
+        </view>
+        <view class="cut"></view>
+        <view class="shop">
+          <view class="title">
+            <image class="title-img" src="{{}}" />
+            <view class="title-nav">星光灯具店</view>
+          </view>
+          <view class="use">
+            <text>10月特惠</text>
+          </view>
+          <view class="time">截止时间：
+            <text>2019/08/09 18：90</text>
+          </view>
+        </view>
+        <view class="or-use">
+          <text>进店使用</text>
+        </view>
+      </view>
+    </view>
+    <view class="imgItem">
+      <image class="coupon-bg" src="/assets/images/profile/yes-coupon.png"></image>
+       <view class="content">
+        <view class="price">
+          <view class="price-box">
+            ¥<text>300</text>
+          </view>
+        </view>
+        <view class="cut"></view>
+        <view class="shop">
+          <view class="title">
+            <image class="title-img" src="{{}}" />
+            <view class="title-nav">星光灯具店</view>
+          </view>
+          <view class="use">
+            <text>10月特惠</text>
+          </view>
+          <view class="time">截止时间：
+            <text>2019/08/09 18：90</text>
+          </view>
+        </view>
+        <view class="or-use">
+          <text>进店使用</text>
+        </view>
+      </view>
+    </view>
+    <!-- <view wx:for="{{couponList}}" wx:key="{{index}}">
+        <view class="content">
+          <view class="price">¥
+            <text>300</text>
+          </view>
+          <view class="cut"></view>
+          <view class="shop">
+            <view class="title">
+              <image class="title-img" src="{{}}" />
+              <view class="title-nav">星光灯具店</view>
+            </view>
+            <view class="use">
+              <text>10月特惠</text>
+            </view>
+            <view class="time">截止时间：
+              <text>2019/08/09 18：90</text>
+            </view>
+          </view>
+          <view class="or-use">
+            <text>进店使用</text>
+          </view>
+        </view>
+      </view> -->
+  </scroll-view>
+   <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
 
+    <view class="imgItem">
+      <image class="coupon-bg" src="/assets/images/profile/no-coupon.png"></image>
+       <view class="content">
+        <view class="price">
+          <view class="price-box">
+            ¥<text>300</text>
+          </view>
+        </view>
+        <view class="cut"></view>
+        <view class="shop">
+          <view class="title">
+            <image class="title-img" src="{{}}" />
+            <view class="title-nav">星光灯具店</view>
+          </view>
+          <view class="use">
+            <text>10月特惠</text>
+          </view>
+          <view class="time">截止时间：
+            <text>2019/08/09 18：90</text>
+          </view>
+        </view>
+        <view class="or-use">
+          <text>进店使用</text>
+        </view>
+      </view>
+    </view>
+        <view class="imgItem">
+      <image class="coupon-bg" src="/assets/images/profile/no-coupon.png"></image>
+       <view class="content">
+        <view class="price">
+          <view class="price-box">
+            ¥<text>300</text>
+          </view>
+        </view>
+        <view class="cut"></view>
+        <view class="shop">
+          <view class="title">
+            <image class="title-img" src="{{}}" />
+            <view class="title-nav">星光灯具店</view>
+          </view>
+          <view class="use">
+            <text>10月特惠</text>
+          </view>
+          <view class="time">截止时间：
+            <text>2019/08/09 18：90</text>
+          </view>
+        </view>
+        <view class="or-use">
+          <text>进店使用</text>
+        </view>
+      </view>
+    </view>
 
-
+  </scroll-view>
 </view>

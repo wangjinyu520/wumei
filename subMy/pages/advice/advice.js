@@ -77,6 +77,7 @@ Page({
   },
   // 表单提交
   fromReport: function (e) {
+    let that=this;
     let data = {
       userId: wx.getStorageSync("token").userId,
       content: this.data.detailHtml
@@ -84,7 +85,16 @@ Page({
     WXAPI.addFeedback(data).then(res => {
       console.log(res);
       if (res.code == 200) {
-
+        wx.showToast({
+          icon:"none",
+          title: res.message,
+        })
+        that.editorCtx.clear();
+      }else{
+        wx.showToast({
+          icon:"none",
+          title: res.message,
+        })
       }
     })
   },

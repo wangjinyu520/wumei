@@ -210,7 +210,7 @@ Page({
           url: '/subShopping/pages/bossCertification/bossCertification',
         })
       } else if (res.code == 200) {
-        wx.navigateTo({
+        wx.navigateTo({ 
           url: '/subShopping/pages/boss/boss',
         })
       }

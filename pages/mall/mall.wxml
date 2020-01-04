@@ -6,21 +6,9 @@
   </block>
   <!--搜索框-->
   <view class="search">
-    <view class="weui-search-bar">
-      <view class="weui-search-bar__form">
-        <!-- 最初始时的搜索框 -->
-        <view class="weui-search-bar__box">
-          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-          <input type="text" class="weui-search-bar__input" placeholder="搜索" />
-        </view>
-        <!-- 可编辑时的搜索框 -->
-        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-          <icon class="weui-icon-search" type="search" size="14"></icon>
-          <view class="weui-search-bar__text">搜索</view>
-        </label>
-      </view>
-      <!-- 取消搜索 -->
-      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+    <view class="search-left">
+      <icon class="search-icon" type="search" size="13"></icon>
+      <input type="text" class="search-input" placeholder="搜索" bindtap="turn_search" disabled/>
     </view>
     <view class="cartright" bindtap="">
       <image class="img" src="/assets/images/mall/cart.png" />
@@ -32,36 +20,36 @@
 
   <!--icon展示-->
   <view class="icons">
-    <view class="icon-classify">
-      <view class="icon-top">
-        <view class="icon-item" bindtap="goLight" data-type="0">
-          <image class="icon-icon" src="/assets/images/mall/light.png"></image>
-          <view class="text">灯光</view>
-        </view>
-        <view class="icon-item" bindtap="goLight" data-type="1">
-          <image class="icon-icon" src="/assets/images/mall/audio.png"></image>
-          <view class="text">音响</view>
-        </view>
-        <view class="icon-item" bindtap="goLight" data-type="2">
-          <image class="icon-icon" src="/assets/images/mall/video.png"></image>
-          <view class="text">视频</view>
-        </view>
-        <view class="icon-item" bindtap="goLight" data-type="3">
-          <image class="icon-icon" src="/assets/images/mall/truss.png"></image>
-          <view class="text">舞台桁架</view>
-        </view>
+    <!-- <view class="icon-classify"> -->
+    <view class="icon-top">
+      <view class="icon-item" bindtap="goLight" data-type="1">
+        <image class="icon-icon" src="/assets/images/mall/light.png"></image>
+        <view class="text">灯光</view>
       </view>
-      <view class="icon-bottom">
-        <view class="icon-item" bindtap="goLight" data-type="4">
-          <image class="icon-icon" src="/assets/images/mall/ambitus.png"></image>
-          <view class="text">耗材周边</view>
-        </view>
-        <view class="icon-item" bindtap="goLight" data-type="5">
-          <image class="icon-icon" src="/assets/images/mall/all.png"></image>
-          <view class="text">全部</view>
-        </view>
+      <view class="icon-item" bindtap="goLight" data-type="2">
+        <image class="icon-icon" src="/assets/images/mall/audio.png"></image>
+        <view class="text">音响</view>
+      </view>
+      <view class="icon-item" bindtap="goLight" data-type="3">
+        <image class="icon-icon" src="/assets/images/mall/video.png"></image>
+        <view class="text">视频</view>
+      </view>
+      <view class="icon-item" bindtap="goLight" data-type="4">
+        <image class="icon-icon" src="/assets/images/mall/truss.png"></image>
+        <view class="text">舞台桁架</view>
       </view>
     </view>
+    <view class="icon-bottom">
+      <view class="icon-item" bindtap="goLight" data-type="5">
+        <image class="icon-icon" src="/assets/images/mall/ambitus.png"></image>
+        <view class="text">耗材周边</view>
+      </view>
+      <view class="icon-item" bindtap="goLight" data-type="6">
+        <image class="icon-icon" src="/assets/images/mall/all.png"></image>
+        <view class="text">全部</view>
+      </view>
+    </view>
+    <!-- </view> -->
   </view>
   <!--厂家推荐-->
   <view class="factory">
@@ -76,6 +64,24 @@
     </view>
 
     <view class="factory-list">
+      <view class="factory-item">
+        1
+      </view>
+      <view class="factory-item">
+        2
+      </view>
+      <view class="factory-item">
+        3
+      </view>
+      <view class="factory-item">
+        4
+      </view>
+      <view class="factory-item">
+        3
+      </view>
+      <view class="factory-item">
+        4
+      </view>
     </view>
   </view>
 
@@ -112,10 +118,10 @@
       <view class="assemble-title">
         <text>拼团采购</text>
       </view>
-        <view class="more" bindtap="toAssemble">
-          <text>更多</text>
-          <image src="/assets/common/master-right.png" class="icon-more" />
-        </view>
+      <view class="more" bindtap="toAssemble">
+        <text>更多</text>
+        <image src="/assets/common/master-right.png" class="icon-more" />
+      </view>
     </view>
 
     <view class="assemble-list">
@@ -123,13 +129,18 @@
         <image class="assemble-img" src="{{}}"></image>
         <view class="assemble-desc">
           <view class="assemble-name">流星灯光线条A</view>
-          <view class="assemble-type"><text>寿命长</text><text>寿命长</text></view>
+          <view class="assemble-type">
+            <text>寿命长</text>
+            <text>寿命长</text>
+          </view>
           <view class="assemble-bottom">
             <view class="price">
               <view class="assemble-evey">日常价 ¥300</view>
               <view class="assemble-price">拼团价 ¥</view>
             </view>
-            <button class="assemble-btn" bindtap="toDetailsAssemble"><text>去拼团</text></button>
+            <button class="assemble-btn" bindtap="toDetailsAssemble">
+              <text>去拼团</text>
+            </button>
           </view>
         </view>
       </view>

@@ -1,76 +1,110 @@
 /* pages/coupon/coupon.wxss */
-page{
-  background: #F9F9F9;
-}
 
-.coupon{
-
-}
-
-.coupon-bg{
-  position:absolute;
-	z-index:-1;
-	width: 92vw;
-	height: 188rpx;	
-  top: 30rpx;
-  left: 30rpx;
+page {
+  background: #f9f9f9;
+  height: 100%;
+  width: 100%;
 }
 
 
-.content{
+.list {
+  padding: 0 14px;
+  box-sizing: border-box;
+  width:100%;
+  height: 100%；
+}
+.list .imgItem{
+  position: relative;
+  margin-top: 30rpx;
+  height: 94px;
+  width:100%;
+}
+
+.coupon-bg {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 94px;
+  left: rpx;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
   display: flex;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
-.price{
-  margin: 94rpx 0 0 72rpx;
+.price {
+  /* margin: 94rpx 0 0 72rpx; */
   font-size: 30rpx;
-  color: #2184E3;
+  color: #2184e3;
+  height: 100%;
+  padding: 30px 15px 30px 22px;
+  box-sizing: border-box;
 }
-.price>text{
+.shop{
+  width: 210px;
+  overflow: hidden;
+}
+
+.price text {
   font-size: 50rpx;
 }
 
-.cut{
-  height: 146rpx;
-  border: 1px solid #EBEBEB;
-  margin-top: 56rpx;
-  margin-left: 20rpx;
-  }
+.cut {
+  height: calc(100% - 12px);
+  width: 1px;
+  background-color: #ebebeb;
+  margin: 12px 0;
+}
 
-  .title{
-    display: flex;
-  }
-  .title-img{
-    width: 48rpx;
-    height: 48rpx;
-    background: #E5E5E5;
-    margin: 60rpx 0 0 20rpx;
-  }
+.title {
+  margin-top: 13px;
+  margin-left: 24rpx;
+  display: flex;
+}
 
-  .title-nav{
-    font-size: 26rpx;
-    caption-side: #000000;
-    margin: 64rpx 0 0 10rpx;
-  }
-  .use{
-    margin: 16rpx 0 0 24rpx;
-    font-size: 26rpx;
-    color: #999999;
-  }
-  .time{
-    margin-left:24rpx;
-    font-size: 26rpx;
-    color: #999999; 
-  }
+.title-img {
+  width: 48rpx;
+  height: 48rpx;
+  background: #e5e5e5;
+  margin: 60rpx 0 0 0rpx;
+  margin-top: 0px;
+  border-radius:3px;
+}
 
-  .or-use{
-    display: flex;
-    align-items: center;
-    width: 40rpx;
-    margin-top: 34rpx;
-    margin-left: 64rpx;
-    line-height: 36rpx;
-    font-size: 26rpx;
-    color: #FFFFFF;
-  }
+.title-nav {
+  font-size: 26rpx;
+  caption-side: #000;
+  margin: 64rpx 0 0 10rpx;
+  margin-top: 0px;
 
+}
+
+.use {
+  margin: 16rpx 0 0 24rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.time {
+  margin-left: 24rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.or-use {
+  display: flex;
+  align-items: center;
+  width: 46px;
+  text-align: center;
+  line-height: 36rpx;
+  font-size: 26rpx;
+  color: #fff;
+}
+.or-use text{
+  width: 40rpx;
+  margin :0 auto;
+}

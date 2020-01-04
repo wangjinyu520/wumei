@@ -1,6 +1,6 @@
 <!--pages/rent/childCpns/commodity/commodity.wxml-->
 <view class='commodity'>
   <block wx:for="{{commoditylist}}" wx:key="index">
-    <commodity-item class="commodity-item" commodityitem="{{item}}"/>
+    <commodity-item class="commodity-item" commodityitem="{{item}}" bindtap="toRuntDetail" data-id="{{item.commodityId}}" />
   </block>
 </view>

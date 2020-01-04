@@ -1,6 +1,6 @@
-// const API_BASE_URL = "http://10.20.11.126:8080/wumei-server"
+const API_BASE_URL = "http://10.20.11.126:8080/wumei-server"
 // const API_BASE_URL = "http://101.133.164.180:8080/wumei-server"
-const API_BASE_URL = "https://www.techwells.com/wumei-server";
+// const API_BASE_URL = "https://www.techwells.com/wumei-server";
 const request = (url, method, data) => {
   let _url = API_BASE_URL + url
   return new Promise((resolve, reject) => {
@@ -25,7 +25,6 @@ const request = (url, method, data) => {
     })
   })
 }
-
 module.exports = {
   request,
   getregisterDetail: (data) => {
@@ -162,6 +161,10 @@ module.exports = {
   modifyUser: (data) => {
     return request("/user/modifyUser", 'get', data)
   },
-  
+  //轮播图接口
+  getBannerList: (data) => {
+    return request("/banner/getBannerList", 'get', data)
+  },
+
 
 }

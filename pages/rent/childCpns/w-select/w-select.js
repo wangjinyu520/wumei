@@ -57,6 +57,7 @@ Component({
         nowText: nowText,
         animationData: this.animation.export()
       })
+      this.triggerEvent("selectedItem", { index: nowIdx,  selectedTitle: nowText })
     }
   }
 })

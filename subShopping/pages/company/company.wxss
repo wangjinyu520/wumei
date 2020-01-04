@@ -30,9 +30,8 @@
   background: #D8D8D8;
   border-radius: 32pt;
   text-align: center;
-  margin: 10rpx 300rpx;
+  margin: 30rpx 300rpx 10rpx;
 }
-
 .nav-title{
   font-size: 28rpx;
   color: #000000;
@@ -49,19 +48,20 @@
 .nav-btn button{
   width: 136rpx;
   height: 56rpx;
+  line-height: 56rpx;
   border: 1px solid #2184E3;
   border-radius: 31rpx;
   font-size: 24rpx;
   color: #2184E3;
+  text-align: center;
 }
 .nav-active{
   font-size: 12px;
   color: #666666;
   display: flex;
-  flex-direction:row;
+  margin:  0 auto;
   text-align: center;
   align-items: center;
-  margin-left: 100px;
   margin-top: 18px;
 }
 
@@ -86,27 +86,77 @@
 }
 
 
-activity-list {
-  height: 300rpx;
+.my-activity {
+  /* height: 300rpx; */
+  margin-top: 10px;
   background: #fff;
-  margin-top: 1rpx;
+  margin-bottom: 20rpx;
+  padding-bottom: 10px;
 }
-.item{
-  border-bottom: 1px solid #e6e6e6;
+
+.orderNum {
+  margin: 0 12px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 13px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  border-bottom: 1px solid #eee;
 }
+
+.order-btn {
+  overflow: hidden;
+  padding-top: 10px;
+  margin: 0 12px;
+  margin-top:14px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 13px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  border-top: 1px solid #eee;
+}
+
+.order-btn button {
+  margin-left: 8px;
+  float: right;
+  padding: 7px 10px;
+  font-size: 13px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #fff;
+  line-height: 18px;
+  border-radius: 4px;
+}
+
+.order-btn button:nth-child(1) {
+  background-color: #2184e3;
+  padding: 7px 17px;
+}
+.order-btn button:nth-child(2) {
+  color:rgba(102,102,102,1);
+  background-color: #fff;
+
+
+}
+
 .act-top {
   display: flex;
+  margin: 0 12px;
 }
 
 .act-img {
-  width: 256rpx;
+  width: 35%;
   height: 176rpx;
   background: #d8d8d8;
-  margin-left: 24rpx;
+  /* margin-left: 24rpx; */
   margin-top: 28rpx;
 }
 
 .act-desc {
+  width: 65%;
   margin-top: 32rpx;
   margin-left: 20rpx;
 }
@@ -119,6 +169,8 @@ activity-list {
 
 .act-content {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .content-left {
@@ -139,19 +191,19 @@ activity-list {
 }
 
 .content-right {
-  margin-left: auto;
-  margin-bottom: 10rpx;
+  text-align: right;
 }
 
 .content-price {
+  margin-right: 16rpx;
   font-size: 26rpx;
   color: #ff2525;
 }
 
 .content-btn {
+  float: right;
   width: 150rpx;
   height: 52rpx;
-  margin-right: 16rpx;
   margin-top: 14rpx;
   background: #2184e3;
   font-size: 20rpx;
@@ -175,10 +227,26 @@ activity-list {
   margin-left: 24rpx;
 }
 
-.act-jion{
+.act-jion {
   margin-left: auto;
   margin-right: 18rpx;
   font-size: 24rpx;
-  color: #2184E3;
+  color: #2184e3;
+}
+
+.else {
+  text-align: center;
+  line-height: 40px;
+  color: #666;
+  font-size: 16px;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.tip {
+  text-align: center;
+  color: #272323;
+  font-size: 14px;
+  padding-bottom: 20px;
 }
 

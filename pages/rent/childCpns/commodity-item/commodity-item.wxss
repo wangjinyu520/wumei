@@ -1,39 +1,46 @@
 /* pages/rent/childCpns/commodity-item/commodity-item.wxss */
-.commodity-item{
+
+.commodity-item {
   display: flex;
   align-items: center;
   margin-left: 13px;
   margin-right: 12px;
-  border-bottom: 2px solid #EFEFEF;
+  border-bottom: 1px solid #efefef;
+  padding: 15px 0;
 }
-.image{
+
+.image {
   width: 128px;
   height: 88px;
-  margin-left: 13px;
+  background: rgba(216, 216, 216, 1);
+  border-radius: 4px;
 }
-.desc-info{
+
+.desc-info {
   margin-left: 10px;
-  margin-top: 4px;
- 
-}
-.desc-info .name{
-  font-size: 30rpx;
-  color: #000000;
-  font-weight: Medium;
-  line-height: 19px;
-}
-.desc-info .company{
-  font-size: 26rpx;
-  color: #666666;
-  margin-top: 7px;
-}
-.price .rent{
-  font-size: 24rpx;
-  color: #FF2525;
   margin-top: 4px;
 }
 
-.price .unit{
+.desc-info .name {
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+  line-height: 19px;
+}
+
+.desc-info .company {
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 7px;
+}
+
+.price .rent {
+  font-size: 24rpx;
+  color: #ff2525;
+  margin-top: 4px;
+}
+
+.price .unit {
   font-size: 20rpx;
-  color: #FF2525;
+  color: #ff2525;
 }

@@ -1,6 +1,6 @@
-// const API_BASE_URL = "http://10.20.11.126:8080/wumei-server"
+const API_BASE_URL = "http://10.20.11.126:8080/wumei-server"
 // const API_BASE_URL = "http://101.133.164.180:8080/wumei-server"
-const API_BASE_URL = "https://www.techwells.com/wumei-server";
+// const API_BASE_URL = "https://www.techwells.com/wumei-server";
 
 const request = (url, method, data) => {
   let _url = API_BASE_URL + url
@@ -86,6 +86,14 @@ module.exports = {
     return request("/company/getCompanyInfoByUserId", 'get', data)
   },
   //主办方认证
+  addVerificationCode: (data) => {
+    return request("/verificationCode/addVerificationCode", 'get', data)
+  },
+  //实名认证
+  addAuthentication: (data) => {
+    return request("/authentication/addAuthentication", 'post', data)
+  },
+  //验证码发送
   savebossCertification: (data) => {
     return request("/company/addCompany", 'get', data)
   },
@@ -108,7 +116,7 @@ module.exports = {
   getPopularActivity: (data) => {
     return request("/activity/getPopularActivityList", 'get', data)
   },
-  //用户活动收藏
+  //用户活动收藏     1收藏商品   2.收藏活动    3.收藏租赁商品
   saveActivity: (data) => {
     return request("/collect/addCollect", 'get', data)
   },
@@ -171,4 +179,14 @@ module.exports = {
   addFeedback: (data) => {
     return request("/feedback/addFeedback", 'get', data)
   },
+  // 租赁详情页数据
+  getCommodityById: (data) => {
+    return request("/commodity/getCommodityById", 'get', data)
+  },
+  // 租赁详情页数据
+  getCompanyInfo: (data) => {
+    return request("/company/getCompanyInfoByCompanyId", 'get', data)
+  },
+ 
+
 }

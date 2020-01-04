@@ -120,6 +120,4 @@
     <button class="jion"><text>加入购物车</text></button>
     <button class="rightnow"><text>立即购买</text></button>
   </view>
-
-
 </view>

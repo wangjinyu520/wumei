@@ -24,7 +24,7 @@ editor {
 
 .uploader {
   position: relative;
-  height: 500rpx;
+  height: 630rpx;
   width: calc(100% - 24px);
   background: #f7f7f7;
   margin: 12px;

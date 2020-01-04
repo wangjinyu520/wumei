@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "w-gaffers-item": "../w-gaffers-item/w-gaffers-item"
+  }
+}

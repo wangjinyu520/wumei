@@ -20,13 +20,14 @@
 
   <view class="credit">
     <view class="credit-title">证书</view>
-    <scroll-view scroll-x="true">
+    <scroll-view scroll-x="true" wx:if="{{masterDetail.certificateImage}}">
       <view class="credit-wrap">
         <view class="credit-item" wx:for="{{masterDetail.certificateImage}}" wx:key="{{index}}"> 
           <image class="credit-image" src="{{item}}" />
         </view>
       </view>
     </scroll-view>
+    <view wx:else class="person-content">暂无证书</view>
   </view>
 
   <view class="person">

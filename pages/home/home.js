@@ -24,7 +24,7 @@ Page({
   data: {
     masters: [],
     activityList:[],
-    banners: ['http://www.techwells.com/wumei-upload/image/1577518950031tmp_49324e776471e4b13151fadcefdc6e6bd092504bf756815a.jpg','http://www.techwells.com/wumei-upload/image/1577518940946tmp_1f9fb6f3fbfb1b8c46478864be6862b915c77e1252bd2357.jpg'],
+    banners: [],
     currentType:'masters',
     showBackTop:false,
     isTabFixed:false,
@@ -88,21 +88,38 @@ Page({
       url: url,
     })
   },
+  // 获取轮播接口
+  getBannerList:function(e){
+    let that=this;
+    let data={
+      pageNum:1,
+      pageSize:2
+    }
+    WXAPI.getBannerList(data).then(res=>{
+      console.log(res)
+      if(res.code==200){
+        that.setData({
+          banners: res.data
+        })
+      }else{
+        wx.showToast({
+          title: res.message,
+        })
+      }
+     
+    })
+  },
   toTechnology: function () {
     wx.navigateTo({
       url: '/subShopping/pages/technology/technology',
     })
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     wx.showTabBar();
-    //请求轮播图和推荐数据
-    // this._getMultiData()
-    // this._getData();
-    // this.getActivityData();
     WXAPI.getHomeList().then(res=>{
       this.setData({
         masters: res.data.technologyTask,
@@ -133,6 +150,7 @@ Page({
       console.log(this.data.activityList);
 
     })
+    this.getBannerList();
   },
   // 网络请求相关方法
   _getData() {

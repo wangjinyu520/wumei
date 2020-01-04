@@ -3,7 +3,7 @@
 
   <slot></slot>
   <!-- 搜索框开始 -->
-    <view class='tit_seabox'>
+    <view class='tit_seabox i-class'>
         <view class="tit_seabox_bar {{addflag?'tit_seabox_add':''}} {{searchflag?'tit_start_search':''}}">
             <icon type='search' size="32rpx"></icon>
             <input type="text" bindinput="searchList" bindconfirm="endsearchList" bindfocus='getfocus' bindblur="blursearch" confirm-type='search' value='{{searchstr}}' placeholder='搜索' />

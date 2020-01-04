@@ -1,0 +1,38 @@
+<!--pages/address/address.wxml-->
+<form bindsubmit="bindSave">
+  <view class="address">
+    <view class="infor">
+      <view class="name">姓名</view>
+      <input type="text" name="addressee" class="input" placeholder="请输入" value="{{addressData.addressee}}"></input>
+    </view>
+    <view class="infor">
+      <view class="phone">电话</view>
+      <input type="text" name="addresseePhone" value="{{addressData.addresseePhone}}" class="input" maxlength="11" placeholder="请输入"></input>
+    </view>
+
+    <view class="infor">
+      <view class="place">所在地区</view>
+      <picker class="place-picker" mode="region" bindchange="bindChange" value="{{submitRegionStr}}" custom-item="{{customItem}}">
+        <view class="picker">
+          {{showRegionStr}}
+        </view>
+      </picker>
+    </view>
+    <view class="detil">
+      <input name="address" placeholder="请输入详细街道" value="{{addressData.address}}"></input>
+    </view>
+
+    <view class="infor">
+      <view class="default">设为默认地址</view>
+      <view class="body-view">
+        <switch class='switch-view' checked="{{switch1Checked}}" value="2" bindchange="switchChange" type='switch' />
+      </view>
+    </view>
+
+  </view>
+  <view class="savebtn">
+    <button class="btn" type="primary" form-type="submit">
+      <text>保存</text>
+    </button>
+  </view>
+</form>

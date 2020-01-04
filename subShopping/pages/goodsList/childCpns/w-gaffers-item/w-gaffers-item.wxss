@@ -1,0 +1,56 @@
+/* pages/light/childCpns/w-gaffers-item/w-gaffers-item.wxss */
+
+.gaffers-item {
+  height: 76px;
+  border-bottom: 1px solid #efefef;
+  margin-left: 14px;
+  margin-right: 11px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.gaffers-item .image {
+  width: 90rpx;
+  height:90rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  /* background-color: red; */
+}
+
+.gaffers-item image {
+  width: 100%;
+  height: 100%!important;
+
+}
+
+.desc-info {
+  /* background-color: blue; */
+  margin-left: 6px;
+}
+
+.title .name {
+  font-size: 14px;
+  color: #000;
+  line-height: 20px;
+}
+
+.title .occu {
+  font-size: 12px;
+  border: 1px solid #2083e3;
+  background: #dbebff;
+  color: #2083e3;
+  border-radius: 2px;
+  margin-left: 8px;
+  padding: 2px;
+}
+
+.info {
+  margin-top: 6px;
+}
+
+.info .expe {
+  font-size: 12px;
+  color: #666;
+}

@@ -5,76 +5,148 @@ page {
 }
 
 .myaddress {
-  
 }
 
-.info{
+/* 右滑删除效果 */
+
+.touch-item {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+  padding: 10px;
   display: flex;
   background: #fff;
   margin-top: 2rpx;
   height: 150rpx;
+  line-height: 22px;
+  margin-right: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  margin-left: -90px;
 }
-.info-left{
+
+.del {
+  background: rgba(255, 79, 79, 1);
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.touch-move-active .content, .touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+/* 右滑删除效果结束*/
+
+.no-more-goods {
+  text-align: center;
+  margin-top: 50%;
+}
+
+.no-order-img {
+  width: 110px;
+  height: 110px;
+}
+
+.no-more-goods .text {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: -5px;
+}
+
+.info-left {
   width: 75%;
   margin-left: 30rpx;
 }
-.info-top{
+
+.info-top {
   display: flex;
   font-size: 30rpx;
-  color: #111111;
+  color: #111;
   font-weight: 550;
 }
-.name{
+
+.name {
   margin-top: 26rpx;
 }
 
-.phone{
+.phone {
   margin-top: 28rpx;
-  margin-left: 22rpx; 
+  margin-left: 22rpx;
 }
 
-.info-bottom{
+.info-top  .default {
+  width: 30px;
+  height: 19px;
+  background: rgba(74, 167, 255, 1);
+  border-radius: 2px;
+  margin-top: 28rpx;
+  margin-left: 22rpx;
+  font-size: 11px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 19px;
+  text-align: center;
+}
+
+.info-bottom {
   margin-top: 16rpx;
   font-size: 26rpx;
-  color: #666666;
+  color: #666;
 }
 
-.address{
+.address {
 }
 
-.cut{
-  border: 1rpx solid #EAEAEA;
+.cut {
+  border: 1rpx solid #eaeaea;
   margin-top: 30rpx;
   margin-bottom: 30rpx;
 }
 
-.info-right{
+.info-right {
   margin-left: auto;
   font-size: 26rpx;
-  color: #999999;
+  color: #999;
 }
-.info-right{
+
+.info-right {
   margin-top: 58rpx;
   margin-right: 52rpx;
 }
 
-
-
-
-
 .btn {
   width: 100%;
   height: 148rpx;
-  background: #FFFFFF;
+  background: #fff;
   position: fixed;
   bottom: 0;
 }
-.addbtn{
+
+.addbtn {
   margin: 24rpx 24rpx 0 24rpx;
-  background: #2184E3;
+  background: #2184e3;
 }
-.addbtn>text{
+
+.addbtn>text {
   font-size: 34rpx;
-  color: #FFFFFF;
+  color: #fff;
   align-items: center;
 }

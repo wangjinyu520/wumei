@@ -36,6 +36,29 @@
       </view>
       <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
     </view>
+    <view wx:if="{{contentlist1}}">
+      <view class="my-activity" wx:for="{{contentlist1}}" wx:key="{{index}}">
+        <navigator url="/subShopping/pages/product/product?commodityId={{item.commodityId}}">
+          <view class="act-top ">
+            <image class="act-img " src="{{item.commodityIcon}} " lazy-load />
+            <view class="act-desc ">
+              <view class="act-content ">
+                <view class="content-left ">
+                  <text class="content-loc">{{item.commodityName}}</text>
+                  <text class="content-time1">¥{{item.rent}}{{item.unit}}</text>
+                </view>
+                <view class="content-right ">
+                  <button class="content-btn1 ">
+                    <text>立即报名</text>
+                  </button>
+                </view>
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+      <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
+    </view>
   </scroll-view>
 
 </view>

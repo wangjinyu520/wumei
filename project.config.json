@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -24,7 +24,7 @@
 		"bundle": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.3",
+	"libVersion": "2.10.0",
 	"appid": "wx9704107d6ee309ff",
 	"projectname": "wumei",
 	"debugOptions": {
@@ -184,9 +184,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/technology/technology",
-					"pathName": "pages/technology/technology",
+					"id": 18,
+					"name": "subShopping/pages/technology/technology",
+					"pathName": "subShopping/pages/technology/technology",
 					"query": "",
 					"scene": null
 				},
@@ -507,8 +507,8 @@
 				},
 				{
 					"id": 64,
-					"name": "subShopping/pages/sqlogin/sqlogin",
-					"pathName": "subShopping/pages/sqlogin/sqlogin",
+					"name": "subShopping/pages/shop/shop",
+					"pathName": "pages/home/home",
 					"query": "",
 					"scene": null
 				},
@@ -661,8 +661,8 @@
 				},
 				{
 					"id": 86,
-					"name": "subShopping/pages/orderdetil/orderdetil",
-					"pathName": "subShopping/pages/orderdetil/orderdetil",
+					"name": "subShopping/pages/certification/certification",
+					"pathName": "subShopping/pages/certification/certification",
 					"query": "",
 					"scene": null
 				},
@@ -670,6 +670,13 @@
 					"id": 87,
 					"name": "subShopping/pages/search/search",
 					"pathName": "subShopping/pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subShopping/pages/product/product",
+					"pathName": "subShopping/pages/product/product",
 					"query": "",
 					"scene": null
 				}

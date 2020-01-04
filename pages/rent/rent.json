@@ -6,8 +6,7 @@
     "w-tab-control": "./childCpns/w-tab-control/w-tab-control",
     "commodity": "./childCpns/commodity/commodity",
     
-    "w-swiper": "/components/w-swiper/w-swiper",
-    "SearchBar": "/components/searchBox/index"
+    "w-swiper": "/components/w-swiper/w-swiper"
   },
   "navigationBarTitleText": "严选租赁"
 }

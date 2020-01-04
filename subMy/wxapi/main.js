@@ -1,6 +1,6 @@
-// const API_BASE_URL = "http://10.20.11.126:8080/wumei-server"
+const API_BASE_URL = "http://10.20.11.126:8080/wumei-server"
 // const API_BASE_URL = "http://101.133.164.180:8080/wumei-server"
-const API_BASE_URL = "https://www.techwells.com/wumei-server";
+// const API_BASE_URL = "https://www.techwells.com/wumei-server";
 const request = (url, method, data) => {
   let _url = API_BASE_URL + url
   return new Promise((resolve, reject) => {
@@ -174,6 +174,37 @@ module.exports = {
   cancelActivityOrder: (data) => {
     return request("/activityOrder/cancelActivityOrder", 'get', data)
   },
-  
+  // 获取收藏
+  getMyCollectList: (data) => {
+    return request("/collect/getMyCollectList", 'get', data)
+  },
+  // 获取优惠劵
+  getReceiveList: (data) => {
+    return request("/receive/getReceiveList", 'get', data)
+  },
+  // 获取关注
+  getFocusList: (data) => {
+    return request("/focus/getFocusList", 'get', data)
+  },
+  // 查询收货地址
+  queryAddress: (data) => {
+    return request("/address/getAddressList", 'get', data)
+  },
+  // 新增收货地址
+  addAddress: (data) => {
+    return request("/address/addAddress", 'post', data)
+  },
+  // 更新默认地址
+  setDefaultAddress: (data) => {
+    return request("/address/setDefaultAddress", 'get', data)
+  },
+  // 编辑获取地址
+  getAddressById: (data) => {
+    return request("/address/getAddressById", 'get', data)
+  },
+  // 删除地址
+  deleteAddress: (data) => {
+    return request("/address/deleteAddress", 'get', data)
+  },
 
 }

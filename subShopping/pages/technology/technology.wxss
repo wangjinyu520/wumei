@@ -116,6 +116,7 @@ scroll-view {
 
 .case {
   border-bottom: 10px solid #eee;
+  padding-bottom: 10px;
 }
 
 .case-src {

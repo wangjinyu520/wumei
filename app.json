@@ -32,7 +32,6 @@
         "pages/allactivity/allactivity",
         "pages/search/search",
         "pages/personal/personal",
-        "pages/address/address",
         "pages/shop/shop",
         "pages/shop-set/shop-set",
         "pages/application/application",
@@ -57,7 +56,8 @@
         "pages/bossCertification/bossCertification",
         "pages/boss/boss",
         "pages/masterRegister/masterRegister",
-        "components/header/header"
+        "components/header/header",
+        "pages/goodsList/goodsList"
       ],
       "name": "subShopping"
     },
@@ -73,6 +73,7 @@
         "pages/focus/focus",
         "pages/order/order",
         "pages/myaddress/myaddress",
+        "pages/address/address",
         "pages/advice/advice",
         "pages/collect/collect",
         "pages/userActivity/userActivity"

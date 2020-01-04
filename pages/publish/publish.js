@@ -322,46 +322,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let that = this;
-
-    let userId = wx.getStorageSync('token').userId;
-    if (!userId) {
-      wx.showModal({
-        title: '',
-        content: '您还没有登录，前去登录',
-        success(res) {
-          if (res.confirm) {
-            wx.switchTab({
-              url: '/pages/profile/profile',
-            })
-          } else if (res.cancel) {
-            wx.switchTab({
-              url: '/pages/home/home',
-            })
-          }
-        }
-      })
-      return;
-    }
-    let token = wx.getStorageSync('companyId');
-    if (!token) {
-      wx.showModal({
-        title: '',
-        content: '只有主办方才能够发布活动，是否申请为主办方',
-        success(res) {
-          if (res.confirm) {
-            wx.navigateTo({
-              url: '/subShopping/pages/bossCertification/bossCertification',
-            })
-          } else if (res.cancel) {
-            wx.switchTab({
-              url: '/pages/home/home',
-            })
-          }
-        }
-      })
-
-    }
     //隐藏tabBar
     wx.hideTabBar();
     this.setData({
