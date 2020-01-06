@@ -23,18 +23,17 @@
       </view>
       <view class="line">
         <view class="title">银行名称</view>
-        <input type="text" name="bankName" value='{{cardType}}' disabled='true'  placeholder="请填写" />
+        <input type="text" name="bankName" value='{{cardType}}' disabled='true'  placeholder="" />
       </view>
  
       <view class="line">
         <view class="cerftifition">预留手机号</view>
-        <input type="number" class="telphone" name="mobile" placeholder="请填写" maxlength="11" bindblur="inputPhoneNum" value="{{phoneNumber}}" />
+        <input type="number" class="telphone" name="mobile" placeholder="请填写" maxlength="11" bindinput="inputPhoneNum" value="{{phoneNumber}}" />
         <button class="code" bindtap="{{isSend?'':'sendCode'}}"> {{isSend?((secend))+'s':'发送验证码'}}</button>
       </view>
       <view class="line">
         <view class="codeTitle">验证码</view>
-        <input type="number" class="codeValue" name="verificationCode" placeholder="请填写" maxlength="6" bindblur
-        ="writeCode" />
+        <input type="number" class="codeValue" name="verificationCode" placeholder="请填写" maxlength="6" bindinput="writeCode" />
       </view>
       <view class="btn-box ">
         <button class="pub-btn" formType="submit">

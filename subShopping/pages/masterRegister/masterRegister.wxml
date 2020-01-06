@@ -19,21 +19,13 @@
     <view class="work">
       <view class="refund-title">工作年长</view>
       <view class="refund-input">
-        <input type="number" name="workExperience" class="yearWork" placeholder="请输入数字"></input>
+        <input type="number" name="workExperience" class="yearWork" placeholder="请输入年限"></input>
       </view>
     </view>
     <view class="work">
       <view class="refund-title">年龄</view>
       <view class="refund-input">
         <input type="number" name="technologyAge" class="yearWork" placeholder="请输入年龄"></input>
-      </view>
-    </view>
-    <view class="active area">
-      <view class="active-title">
-        <text>个人经历</text> `
-      </view>
-      <view class="active-decr-area">
-        <textarea placeholder="" name="personalIntroduce"></textarea>
       </view>
     </view>
     <view class="active">
@@ -52,6 +44,15 @@
         </view>
       </view>
     </view>
+    <view class="active area">
+      <view class="active-title">
+        <text>个人经历</text> `
+      </view>
+      <view class="active-decr-area">
+        <textarea placeholder="" name="personalIntroduce"></textarea>
+      </view>
+    </view>
+
     <!-- 证明证件 -->
     <view class="line">
       <view class="title">证书</view>
@@ -64,12 +65,11 @@
           <button class="pre-btn" data-type="1" formType="reset">
             <text>取消</text>
           </button>
-          <button class="pub-btn" data-type="2" formType="submit">
+          <button class="pub-btn" data-type="2" formType="{{isClick?'submit':''}}">
             <text>申请</text>
           </button>
         </view>
       </view>
     </view>
-
   </form>
 </view>

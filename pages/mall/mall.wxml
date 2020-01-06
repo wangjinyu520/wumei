@@ -65,7 +65,7 @@
 
     <view class="factory-list">
       <view class="factory-item">
-        1
+        <image src="/assets/images/logo.jpg"></image>
       </view>
       <view class="factory-item">
         2
@@ -98,7 +98,7 @@
     </view>
 
     <view class="goods-list" bindtap="toDetailsGoods">
-      <block wx:for="goodsList" wx:key="{{index}}">
+      <!-- <block wx:for="goodsList" wx:key="{{index}}"> -->
         <view class="goods-content">
           <image class="goods-img" src="{{}}"></image>
           <view class="goods-desc">
@@ -107,7 +107,7 @@
             <view class="goods-shop">星光灯具店</view>
           </view>
         </view>
-      </block>
+      <!-- </block> -->
     </view>
 
   </view>

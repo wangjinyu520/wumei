@@ -9,13 +9,13 @@ Page({
    */
   data: {
     showModal: false,
-    imgList: ['http://www.techwells.com/wumei-upload/image/1577518950031tmp_49324e776471e4b13151fadcefdc6e6bd092504bf756815a.jpg', 'http://www.techwells.com/wumei-upload/image/1577518940946tmp_1f9fb6f3fbfb1b8c46478864be6862b915c77e1252bd2357.jpg'],
-    commodityDetail:null,
+    imgList: [],
+    commodityDetail: null,
     collectText: '收藏',
     isCollect: false,
   },
   // 收藏
-  haveSave: function () {
+  haveSave: function() {
     let data = {
       userId: wx.getStorageSync('token').userId,
       relationId: this.data.commodityDetail.commodityId,
@@ -39,7 +39,7 @@ Page({
 
   },
   // 取消收藏
-  noSave: function () {
+  noSave: function() {
     let data = {
       userId: wx.getStorageSync('token').userId,
       relationId: this.data.commodityDetail.commodityId,
@@ -63,17 +63,17 @@ Page({
 
   },
   // 查看公司
-  seeCompany:function(e){
-    let companyId=this.data.commodityDetail.companyId;
-     wx.navigateTo({
-       url: '/subShopping/pages/company/company?companyId=' + companyId,
-       success: function(res) {},
-       fail: function(res) {},
-       complete: function(res) {},
-     })
+  seeCompany: function(e) {
+    let companyId = this.data.commodityDetail.companyId;
+    wx.navigateTo({
+      url: '/subShopping/pages/company/company?companyId=' + companyId,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
   // 联系商家
-  goPhone: function (e) {
+  goPhone: function(e) {
     wx.makePhoneCall({
       phoneNumber: this.data.commodityDetail.companyContact,
     })
@@ -86,11 +86,10 @@ Page({
     let that = this;
     let data = {
       commodityId: options.commodityId,
-      userId:wx.getStorageSync('token').userId,
-      queryType:1
+      userId: wx.getStorageSync('token').userId,
+      queryType: 1
     }
     WXAPI.getCommodityById(data).then(res => {
-      console.log(res)
       if (res.code == 200) {
         if (res.data.collectId) {
           that.setData({
@@ -112,23 +111,12 @@ Page({
         } else {
           content = WxParse.wxParse('article', 'html', `<p style="text-indent:1em">暂无介绍</p>`, that, 5);
         }
+        let commodityIcon = res.data.commodityIcon.split(",");
+        that.setData({
+          commodityDetail: res.data,
+          imgList: commodityIcon
+        })
 
-        // globalData.cartActivityInfo = res.data;
-        // ticketsnum = res.data.ticket.startingAt;
-
-        // price = res.data.activityFee;
-        // totalPrice = ticketsnum * price;
-      that.setData({
-        commodityDetail: res.data,
-        // collectId: res.data.collectId,
-        // tickets: res.data.ticket,
-        // ticketsnum: res.data.ticket.startingAt,
-        // totalPrice: totalPrice,
-        // content: content
-      })
-        // console.log(that.data.activityDetailList);
-
-        // globalData.activityForm = res.data.activityForm;
       }
     })
   },

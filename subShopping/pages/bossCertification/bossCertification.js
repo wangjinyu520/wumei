@@ -18,7 +18,8 @@ Page({
     imgs: [],
     list: '',
     upload_picture_list: [],
-    mulImage: []
+    mulImage: [],
+    isClick:true
   },
   //选择图片方法
   uploadpic: function(e) {
@@ -91,31 +92,82 @@ Page({
   },
   //  表单提交事件
   fromSubmit: function(e) {
-    // console.log(bossList);
+    if (!this.isClick) {
+      wx.showToast({
+        title: '请勿重复点击',
+      })
+    }
     let that = this;
     company = e.detail.value;
     company.userId = wx.getStorageSync('token').userId;
-    // let myComponent = this.myComponent  // 调用自定义组件中的方法
-    // myComponent.uploadimage();
-    // this.uploadimage();
+    // 验证表单信息
+    if (!company.companyName) {
+      wx.showToast({
+        title: '公司名称不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if (company.companyTaxnumber.length==0) {
+      wx.showToast({
+        title: '公司税号不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if (company.contact.length==0) {
+      wx.showToast({
+        title: '联系方式不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    }
+    else if (!company.companyIntroduction) {
+      wx.showToast({
+        title: '公司介绍不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return;
+    }
     if (mulImage) {
       company.companyProve = mulImage.join(',');
-      console.log(company);
+      wx.showLoading({
+        title: '正在为您认证',
+      })
       WXAPI.savebossCertification(company).then(res => {
         if (res.code == 200) {
-          wx.setStorageSync('companyId', res.data);
-          wx.navigateBack({
-            delta: 2
+          wx.hideLoading()
+          wx.setStorageSync('token', res.data);
+          wx.setStorageSync('companyId', res.data.companyId);
+          wx.showToast({
+            icon: "none",
+            title: '恭喜您，认证成功',
+            duration: 2000
           })
-          wx.switchTab({
-            url: '/subShopping/pages/boss/boss',
+          that.setData({
+            isClick: false
           })
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 2
+            })
+          }, 2000)
+         
         } else {
           wx.showToast({
             title: res.msg,
           })
         }
       })
+    }else{
+      wx.showToast({
+        title: '证明材料不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return; 
     }
 
   },

@@ -31,7 +31,8 @@ Page({
     picList: [],
     editorImg: [],
     detailHtml: '',
-    upload_picture_list: []
+    upload_picture_list: [],
+    isClick:true
   },
 
   /*下拉菜单 */
@@ -124,7 +125,11 @@ Page({
       success: function(res) {
         // console.log(res.tempFiles);
         let tempFiles = res.tempFiles[0].path;
-
+        // console.log(str.data)
+        that.editorCtx.insertImage({
+          src: tempFiles,
+          success: function () { }
+        });
         //把选择的图片 添加到集合里
         //显示
         wx.uploadFile({
@@ -138,15 +143,13 @@ Page({
             // console.log(res.data);
             let str = JSON.parse(res.data);
             if (str.code == 200) {
-              // console.log(str.data)
-              that.editorCtx.insertImage({
-                src: str.data,
-                success: function() {}
-              });
+           
             } else {
+        
               wx.showToast({
                 title: str.message,
               })
+              return;
             }
           },
           fail: function(res) {}
@@ -231,23 +234,87 @@ Page({
   },
   //  表单提交事件
   fromSubmit: function(e) {
+    if(!this.isClick){
+      wx.showToast({
+        title: '请勿重复点击',
+      })
+    }
     let that = this;
     master = e.detail.value;
     master.userId = wx.getStorageSync('token').userId;
     master.workCase = this.data.detailHtml;
     master.technologyOccupation = this.data.selectId;
     master.certificate = mulImage.join(',');
-    master.technologyPhone = wx.getStorageSync('token').userName;
+    master.technologyPhone = wx.getStorageSync('token').mobile;
+    // 验证表单信息
+    if (master.technologyOccupation.length==0) {
+      wx.showToast({
+        title: '大师的类型不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if (!master.workExperience) {
+      wx.showToast({
+        title: '工作经验不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if (!master.technologyAge) {
+      wx.showToast({
+        title: '年龄不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    }
+    else if (master.workCase.length==0) {
+      wx.showToast({
+        title: '案例介绍不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return;
+    }
+    else if (!mulImage) {
+      wx.showToast({
+        title: "证书不能为空",
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    }
     // console.log(master);
+    wx.showLoading({
+      title: '正在为您申请',
+    })
+    setTimeout(function () {
+      wx.hideLoading();
+    }, 2000)
+
     WXAPI.addTechnology(master).then(res => {
       mulImage = [];
       if (res.code == 200) {
-        wx.showToast({
-          title: '恭喜您，已经成为技术人员',
+        wx.setStorageSync('token', res.data);
+        that.setData({
+          isClick: false
         })
-        setTimeout()
-        wx.switchTab({
-          url: '/pages/profile/profile',
+        wx.showToast({
+          icon:"none",
+          title: '恭喜您，已经成为技术人员',
+          duration:2000,
+          success:function(){
+            wx.switchTab({
+              url: '/pages/profile/profile',
+            })
+          }
+        })
+      }else{
+        wx.showToast({
+          icon: "none",
+          title: res.message+"请重试",
+          duration: 2000
         })
       }
     })
@@ -281,8 +348,7 @@ Page({
             mulImage.push(str.data);
           } else {
             wx.showToast({
-              title: str.message,
-              
+              title: str.message,   
             })
           }
 

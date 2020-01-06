@@ -21,16 +21,6 @@ Page({
         })
         if (res.code) {
           if (e.detail.errMsg == "getPhoneNumber:ok") {
-            //相当于注册
-            // wx.getUserInfo({
-            //   success: function (res) {
-            //     var userInfo = res.userInfo
-            //     var nickName = userInfo.nickName
-            //     var avatarUrl = userInfo.avatarUrl
-            //     var gender = userInfo.gender //性别 0：未知、1：男、2：女
-            //   }
-            // })
-           
             let encryptedData = e.detail.encryptedData;
             let iv = e.detail.iv;
             let code = that.data.code;

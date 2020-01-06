@@ -71,17 +71,38 @@ Page({
       })
       return;
     }
+    if (token.userType==3) {
+      wx.showToast({
+        icon:"none",
+        title: '你已经是大师，请勿重复申请！',
+      })
+      return;
+    }
     let companyId = wx.getStorageSync('companyId');
     if (companyId) {
       wx.showToast({
         icon: 'none' ,
         title: '你已经是主办方身份，不能再申请大师身份',
       })
-    } else {
+      return
+    }
+    let isAuthentication = wx.getStorageSync('token').isAuthentication;
+    if (!isAuthentication){
+      wx.showToast({
+        icon: 'none',
+        title: "技术人员需要实名哦",
+        success: function (res) {
+          wx.navigateTo({
+            url: '/subShopping/pages/certification/certification'
+          })
+         }
+      })
+     return
+    }
       wx.navigateTo({
         url: '/subShopping/pages/masterRegister/masterRegister',
       })
-    }
+    
   },
 
   toAddress: function() {
@@ -167,12 +188,13 @@ Page({
                 that.setData({
                   userInfo:res.data
                 });
-                console.log(that.data.userInfo)
               }
               wx.setStorageSync('token', res.data);
               if (res.data.companyId) {
                 wx.setStorageSync('companyId', res.data.companyId);
               }
+              wx.navigateBack({
+              })
             
             } else if (res.code == 11211) {
               wx.showModal({
@@ -194,6 +216,13 @@ Page({
       })
       wx.navigateTo({
         url: '/subShopping/pages/sqlogin/sqlogin'
+      })
+      return;
+    }
+    if (token.userType == 3) {
+      wx.showToast({
+        icon: "none",
+        title: '你已经是大师，不能在申请主办方',
       })
       return;
     }
@@ -263,6 +292,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    wx.showTabBar({ 
+    }) 
     let token = wx.getStorageSync('token').userName;
     if (token) {
       this.setData({

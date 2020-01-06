@@ -1,7 +1,7 @@
 <!--pages/rent/childCpns/commodity-item/commodity-item.wxml-->
 
 <view class="commodity-item" data-commodityid="{{item.commodityId}}" bindtap="itemClick">
-  <image class="image" src="{{item.commodityIcon}}" mode="withFix" />
+  <image class="image" src="{{commodityitem.commodityIcon}}" />
   <view class="desc-info">
     <view class="name"><text>{{commodityitem.commodityName}}</text></view>
     <view class="company"><text>{{commodityitem.companyName}}</text></view>

@@ -156,8 +156,12 @@ Page({
       success: function(res) {
         // console.log(res.tempFiles);
         let tempFiles = res.tempFiles[0].path;
+        that.editorCtx.insertImage({
+          src: tempFiles
+        });
         //把选择的图片 添加到集合里
         //显示
+        
         wx.uploadFile({
           url: 'https://www.techwells.com/wumei-server/file/imageUpload',
           header: {
@@ -170,10 +174,7 @@ Page({
             let str = JSON.parse(res.data);
             if (str.code == 200) {
               // console.log(str.data)
-              that.editorCtx.insertImage({
-                src: str.data,
-                success: function() {}
-              });
+             
             } else {
               wx.showToast({
                 title: str.message,
