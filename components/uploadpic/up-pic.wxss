@@ -8,7 +8,6 @@
   align-items: flex-start;
   align-content: flex-start;
 }
-
 .picture_item {
   position: relative;
   margin-left: 12px;
@@ -21,7 +20,6 @@
   top: 0;
   right: 0;
 }
-
 .picture_item image {
   width: 100%;
   height: 100%;

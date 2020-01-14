@@ -92,6 +92,7 @@ Page({
         this.setData({
           detailHtml: res.html
         })
+  
       },
       fail: (res) => {
         // console.log(res);
@@ -158,20 +159,6 @@ Page({
     })
   },
 
-  map: function() {
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success: function(res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
-        wx.openLocation({
-          latitude: latitude,
-          longitude: longitude,
-          scale: 28
-        })
-      }
-    })
-  },
   bindDateChange: function(e) {
     this.setData({
       beginTime: e.detail.value
@@ -182,10 +169,7 @@ Page({
       endTime: e.detail.value
     })
   },
-  // 退票
-  optionTap: function(e) {
 
-  },
   //选择图片方法
   uploadpic: function(e) {
     let that = this //获取上下文
@@ -209,7 +193,6 @@ Page({
       }
     })
   },
-
   // 点击删除图片
   deleteImg(e) {
     let upload_picture_list = this.data.upload_picture_list;
@@ -287,12 +270,11 @@ Page({
     }
     // console.log(master);
     wx.showLoading({
-      title: '正在为您申请',
+      title: '正在为您修改',
     })
     setTimeout(function () {
       wx.hideLoading();
     }, 2000)
-
     WXAPI.addTechnology(master).then(res => {
       mulImage = [];
       if (res.code == 200) {
@@ -302,7 +284,7 @@ Page({
         })
         wx.showToast({
           icon:"none",
-          title: '恭喜您，已经成为技术人员',
+          title: '恭喜您，已经修改成功',
           duration:2000,
           success:function(){
             wx.switchTab({

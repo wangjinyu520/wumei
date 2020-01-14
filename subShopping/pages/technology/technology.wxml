@@ -32,7 +32,7 @@
 
   <view class="person">
     <view class="person-title">个人经历介绍</view>
-    <view class="person-content">海上宝山区灯光第一人{{masterDetail.personalIntroduce==null?'':masterDetail.personalIntroduce}}</view>
+    <view class="person-content">{{masterDetail.personalIntroduce==null?'':masterDetail.personalIntroduce}}</view>
   </view>
 
   <view class="case">

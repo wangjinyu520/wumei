@@ -5,16 +5,11 @@
     <!--输入框-->
     <view class="refund">
       <view class="refund-title">大师类型</view>
-      <view class="refund-msg" bindtap="changeshow">
-        <text>{{msg}}</text>
-        <image src="/assets/images/master/bottom.png" class="icon-set" />
-      </view>
-      <!-- 下拉需要显示的列表  -->
-      <view class="select_box" wx:if="{{selectdiplay}}">
-        <view wx:for="{{selectmsg}}" wx:key="unique">
-          <view class="select_one" bindtap="mySelect" data-name="{{item}}" data-id="{{index}}">{{item}}</view>
+      <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+        <view class="picker">
+          {{index?picker[index]:'禁止换行，超出容器部分会以 ... 方式截断'}}
         </view>
-      </view>
+      </picker>
     </view>
     <view class="work">
       <view class="refund-title">工作年长</view>

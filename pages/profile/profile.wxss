@@ -1,13 +1,12 @@
 /* pages/profile/profile.wxss */
 
 .store {
-  border-top: 10px solid #f8f8f8;
   height: 100rpx;
   line-height: 100rpx;
-  background: #fff;
   font-size: 32rpx;
   margin-left: 10px;
   align-items: center;
+  
 }
 
 .store-img {
@@ -72,7 +71,6 @@
   vertical-align: middle;
 }
 
-
 .login-info {
   vertical-align: middle;
   margin-left: 30rpx;
@@ -89,7 +87,8 @@
   margin-top: 10rpx;
   height: 20px;
 }
-.finnishInfo{
+
+.finnishInfo {
   width: 150px;
   height: 20px;
   position: absolute;
@@ -144,11 +143,9 @@
 
 /*info*/
 
-.info {
+.profile .info {
   height: 64px;
-  margin: 12px 12px 0 12px;
-  background: #fff;
-  border-radius: 6px;
+  margin-top: 32px;
   display: flex;
   font-size: 30rpx;
   text-align: center;
@@ -179,9 +176,15 @@
 }
 
 /*list*/
-
+.list{
+  background:rgba(249,249,249,1);
+  margin: 10px 12px 0;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 3px 0px rgba(198, 227, 255, 1);
+  border-radius: 6px;
+}
 .list-top {
-  border-top: 36rpx solid #f8f8f8;
+
 }
 
 .order-list {
@@ -189,7 +192,8 @@
   line-height: 100rpx;
   background: #fff;
   font-size: 32rpx;
-  margin-left: 30rpx;
+  padding: 0 12px;
+  box-sizing: border-box;
   border-bottom: 1px solid #f8f8f8;
 }
 
@@ -210,9 +214,8 @@
   height: 14px;
   text-align: center;
   margin-top: 18px;
-  margin-right: 12px;
 }
 
 .list-bottom {
-  border-top: 36rpx solid #f8f8f8;
+  margin-bottom: 10px;
 }

@@ -1,0 +1,69 @@
+/* subShopping/pages/commandDetail/success.wxss */
+
+/* certification/pages/masterCertification/finnish.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 1);
+}
+
+.finnish {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.finnish .top {
+  position: absolute;
+  top: 200rpx;
+  left: 50%;
+  z-index: 99;
+  transform: translateX(-50%);
+  width: 170rpx;
+  height: 189rpx;
+}
+
+image {
+  width: 100%;
+  height: 100%;
+}
+
+.hd {
+  margin-top: 440rpx;
+  text-align: center;
+  font-size: 46rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 65rpx;
+}
+
+.hs {
+  width: 310rpx;
+  margin: 20rpx auto;
+  font-size: 32rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 50rpx;
+  text-align: center;
+}
+
+.btn-box {
+  position: fixed;
+  bottom: 64rpx;
+  width: 100%;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  height: 88rpx;
+  border-radius: 8px;
+}
+
+.pub-btn {
+  background: rgba(33, 132, 227, 1);
+  color: #fff;
+  box-sizing: border-box;
+  height: 88rpx;
+  background: linear-gradient(270deg, rgba(74, 108, 255, 1) 0%, rgba(35, 218, 255, 1) 100%);
+  border-radius: 44rpx;
+}

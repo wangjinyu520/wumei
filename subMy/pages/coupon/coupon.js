@@ -9,17 +9,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    couponList: {
-      page: 1,
-    }, 
-    contentlist: []
+    contentlist: [],
+    page:1,
+    pageSize:6
   },
   getReceiveList: function(e) {
     let that=this;
     let data = {
       userId: wx.getStorageSync('token').userId,
-      pageNum: 1,
-      pageSize: 6,
+      pageNum: that.data.page,
+      pageSize: that.data.pageSize,
     }
     WXAPI.getReceiveList(data).then(res => {
       if (res.code == 200) {
@@ -29,7 +28,7 @@ Page({
             contentlistTem = []
           }
           var contentlist = res.data //contentlist每次返回的个数
-          if (contentlist.length < that.data.pageSize) {
+          if (contentlist.length <that.data.pageSize) {
             that.setData({
               contentlist: contentlistTem.concat(contentlist),
               hasMoreData: false
@@ -87,14 +86,23 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.data.page = 1
+    this.getReceiveList()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    console.log(this.data.hasMoreData);
+    if (this.data.hasMoreData) {
+      this.getReceiveList()
+    } else {
+      wx.showToast({
+        title: '没有更多数据',
+        icon: 'none'
+      })
+    }
   },
 
   /**

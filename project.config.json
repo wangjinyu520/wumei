@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -661,8 +661,8 @@
 				},
 				{
 					"id": 86,
-					"name": "subShopping/pages/certification/certification",
-					"pathName": "subShopping/pages/certification/certification",
+					"name": "subMy/pages/masterEditor/masterEditor",
+					"pathName": "subMy/pages/masterEditor/masterEditor",
 					"query": "",
 					"scene": null
 				},
@@ -674,9 +674,107 @@
 					"scene": null
 				},
 				{
+					"id": 88,
+					"name": "subShopping/pages/goods/goods",
+					"pathName": "subShopping/pages/goods/goods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 89,
+					"name": "subShopping/pages/masterEditor/masterEditor",
+					"pathName": "subShopping/pages/masterEditor/masterEditor",
+					"query": "",
+					"scene": null
+				},
+				{
 					"id": -1,
-					"name": "subShopping/pages/product/product",
-					"pathName": "subShopping/pages/product/product",
+					"name": "pages/index/index",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subShopping/pages/activity/activity",
+					"pathName": "subShopping/pages/activity/activity",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subShopping/pages/certification/certification",
+					"pathName": "subShopping/pages/certification/certification",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 93,
+					"name": "certification/pages/certification/certification",
+					"pathName": "certification/pages/certification/certification",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "certification/pages/bossCertification/bossCertification",
+					"pathName": "certification/pages/certification/certification",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 95,
+					"name": "certification/pages/masterCertification/masterCertification",
+					"pathName": "certification/pages/masterCertification/masterCertification",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "certification/pages/masterCertification/personal",
+					"pathName": "certification/pages/masterCertification/personal",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 97,
+					"name": "certification/pages/masterCertification/case",
+					"pathName": "certification/pages/masterCertification/case",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "certification/pages/masterCertification/finnish",
+					"pathName": "certification/pages/masterCertification/finnish",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subShopping/pages/moreDemand/moreDemand",
+					"pathName": "subShopping/pages/moreDemand/moreDemand",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subShopping/pages/commandDetail/commandDetail",
+					"pathName": "subShopping/pages/commandDetail/commandDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 101,
+					"name": "subShopping/pages/commandDetail/success",
+					"pathName": "subShopping/pages/commandDetail/success",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subShopping/pages/masterDetail/masterDetail",
+					"pathName": "subShopping/pages/masterDetail/masterDetail",
 					"query": "",
 					"scene": null
 				}

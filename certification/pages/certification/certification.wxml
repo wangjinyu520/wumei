@@ -1,0 +1,30 @@
+<!--certification/pages/certification/certification.wxml-->
+<view>
+  <view class="titles">实名认证</view>
+  <form bindsubmit="fromSubmit" id="1" bindreset="fromReset">
+    <view class="info">
+      <view class="line">
+        <view class="title">姓名</view>
+        <input type="text" name="realName" placeholder="请填写" minlength="2" />
+      </view>
+      <view class="line">
+        <view class="title">身份证号</view>
+        <input type="idcard" name="idCard" placeholder="请填写" />
+      </view>
+      <view class="line">
+        <view class="title">身份证号</view>
+        <view class="sex">
+          <text>男</text>
+          <switch class="switch-sex" checked="{{checkValue}}" bindchange="changeSex" color="#44A3FF"></switch>
+          <text>女</text>
+        </view>
+
+      </view>
+      <view class="btn-box">
+        <button class="pub-btn" formType="submit">
+          <text>提交</text>
+        </button>
+      </view>
+    </view>
+  </form>
+</view>

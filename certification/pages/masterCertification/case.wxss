@@ -1,0 +1,100 @@
+/* certification/pages/masterCertification/case.wxss */
+@import "../../components/uploadpic/up-pic.wxss";
+
+page {
+  background: rgba(255, 255, 255, 1);
+  padding-bottom: 30rpx;
+
+}
+
+.box {
+  overflow: hidden;
+}
+
+.titles {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  height: 100rpx;
+  margin-top: 30rpx;
+  font-size: 38rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 100rpx;
+  /* border-bottom: 2rpx solid rgba(241, 241, 241, 1); */
+}
+
+/* 上传图片 */
+
+.picture {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  display: flex;
+}
+
+/* 地址选择器 */
+
+.cu-form-group picker .picker {
+  text-align: left;
+  color: #555;
+}
+
+.line {
+  font-size: 30rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  border: 1px solid #fcfcfc;
+}
+
+.line textarea {
+  width: 100%;
+  min-height: 100rpx;
+  height: auto;
+}
+
+image {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-box {
+  width: 100%;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  height: 88rpx;
+  border-radius: 8px;
+}
+
+.btn-more {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.more-btn {
+  width: 389rpx;
+  height: 70rpx;
+  background: rgba(250, 251, 255, 1);
+  border-radius: 35rpx;
+  border: 2rpx solid rgba(211, 219, 255, 1);
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(74, 108, 255, 1);
+  line-height: 70rpx;
+  text-align: center;
+  margin: 0 ;
+  margin-bottom: 24rpx;
+}
+
+.more-btn image {
+  margin-left: 12rpx;
+  width: 14rpx;
+  height: 14rpx;
+}
+
+.pub-btn {
+  background: rgba(33, 132, 227, 1);
+  color: #fff;
+  box-sizing: border-box;
+  height: 88rpx;
+  background: linear-gradient(270deg, rgba(74, 108, 255, 1) 0%, rgba(35, 218, 255, 1) 100%);
+  border-radius: 44rpx;
+}

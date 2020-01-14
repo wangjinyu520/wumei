@@ -52,7 +52,7 @@ page {
 }
 
 .search-left {
-  width:90%;
+  width: 90%;
   display: flex;
   position: relative;
   justify-content: flex-start;
@@ -96,7 +96,7 @@ input[placeholder] {
   background: #fff;
   width: 100%;
   padding: 20rpx 24rpx;
-  padding-bottom:10px;
+  padding-bottom: 10px;
   margin-top: 10rpx;
   box-sizing: border-box;
 }
@@ -121,7 +121,7 @@ input[placeholder] {
 }
 
 .icon-top {
-  width:100%;
+  width: 100%;
   height: 150rpx;
   display: flex;
   justify-content: space-around;
@@ -129,10 +129,10 @@ input[placeholder] {
 }
 
 .icon-bottom {
-  width:50%;
+  width: 50%;
   height: 150rpx;
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -150,7 +150,6 @@ input[placeholder] {
   background: #fff;
   margin-top: 20rpx;
   width: 100%;
-  height: 176px;
   display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
@@ -198,21 +197,23 @@ input[placeholder] {
   width: 100%;
   /* background-color: red; */
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-content: center;
   flex-wrap: wrap;
   padding: 12px;
   box-sizing: border-box;
 }
-.factory-item{
+
+.factory-item {
   margin: 2px;
   box-sizing: border-box;
   width: 83px;
   height: 48px;
-  border:1px solid rgba(244,244,244,1);
-  border-radius:4px;
+  border: 1px solid rgba(244, 244, 244, 1);
+  border-radius: 4px;
 }
-.factory-item image{
+
+.factory-item image {
   width: 100%;
   height: 100%;
 }
@@ -316,9 +317,13 @@ input[placeholder] {
 }
 
 .assemble-list {
+  width: 100%;
 }
 
 .assemble-content {
+  width: 100%;
+  padding: 0 12px;
+  box-sizing: border-box;
   height: 232rpx;
   display: flex;
   border-bottom: 1px solid #efefef;
@@ -327,16 +332,18 @@ input[placeholder] {
 .assemble-img {
   width: 256rpx;
   height: 176rpx;
-  margin: 30rpx 0 0 26rpx;
+  margin: 30rpx 0 0 0;
   background: #d8d8d8;
 }
 
 .assemble-desc {
+  width: calc(100% - 256rpx) ;
   margin-top: 34rpx;
   margin-left: 20rpx;
 }
 
 .assemble-name {
+  margin-top: 8px;
   font-size: 30rpx;
   color: #000;
 }
@@ -359,6 +366,7 @@ input[placeholder] {
 
 .assemble-bottom {
   display: flex;
+  justify-content: space-between;
 }
 
 .price {
@@ -385,10 +393,10 @@ button {
 .assemble-btn {
   width: 116rpx;
   height: 52rpx;
-  margin: 38rpx 0 0 174rpx;
+  margin: 42rpx 0 0 0;
   background: #2184e3;
   line-height: 52rpx;
-  text-align: center；
+  text-align: center；;
 }
 
 .assemble-btn>text {

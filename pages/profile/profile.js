@@ -60,6 +60,7 @@ Page({
       url: '/subMy/pages/account/account',
     })
   },
+  // 申请大师
   toCertification: function() {
     let token = wx.getStorageSync('token');
     if (!token) {
@@ -72,9 +73,18 @@ Page({
       return;
     }
     if (token.userType==3) {
-      wx.showToast({
-        icon:"none",
-        title: '你已经是大师，请勿重复申请！',
+      wx.showModal({
+        title: '',
+        content: '您已经是大师了，是想编辑大师信息吗',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/subShopping/pages/masterEditor/masterEditor',
+            })
+          } else if (res.cancel) {
+           
+          }
+        }
       })
       return;
     }
@@ -104,25 +114,21 @@ Page({
       })
     
   },
-
   toAddress: function() {
     wx.navigateTo({
       url: '/subMy/pages/myaddress/myaddress',
     })
   },
-
   toAdvice: function() {
     wx.navigateTo({
       url: '/subMy/pages/advice/advice',
     })
   },
-
   toSetup: function() {
     wx.navigateTo({
       url: '/subMy/pages/set/set',
     })
   },
-
   toMassage: function() {
     wx.navigateTo({
       url: '/subMy/pages/massage/massage',
@@ -220,13 +226,13 @@ Page({
       return;
     }
     if (token.userType == 3) {
-      wx.showToast({
-        icon: "none",
-        title: '你已经是大师，不能在申请主办方',
-      })
+     wx.showToast({
+       title: '您已经是大师，不能再注册主办方身份',
+     })
       return;
     }
     let userId = wx.getStorageSync('token').userId;
+
     WXAPI.changebossCertification({
       userId
     }).then(res => {
@@ -277,7 +283,6 @@ Page({
           userInfo: tokens
         });
       }
-      this.getDiscount();
     }
   },
 
@@ -299,6 +304,7 @@ Page({
       this.setData({
         title: token
       })
+      this.getDiscount();
     }
   },
 

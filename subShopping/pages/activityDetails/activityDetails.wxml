@@ -49,7 +49,6 @@
 
     </view>
     <view class="msg-btn">
-      <!-- <button class="remove-btn {{focusKey?'active':''}}" bindtap="focusKey?'reduceFocus':''">取消关注</button> -->
       <button class="chat-btn" bindtap="goPhone">联系主办方</button>
       <button class="show-btn" bindtap="{{focusKeyed?'addFocus':'reduceFocus'}}">{{focusText}}</button>
     </view>

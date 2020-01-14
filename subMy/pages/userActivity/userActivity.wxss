@@ -31,7 +31,7 @@ page {
   color: #2184e3;
   border-bottom: 6rpx solid #2184e3;
 }
-
+/* 我的活动开始 */
 .my-activity {
   /* height: 300rpx; */
   margin-top: 10px;
@@ -84,10 +84,7 @@ page {
 .order-btn button:nth-child(2) {
   color:rgba(102,102,102,1);
   background-color: #fff;
-
-
 }
-
 .act-top {
   display: flex;
   margin: 0 12px;
@@ -160,7 +157,7 @@ page {
   text-align: center;
   align-items: center;
 }
-
+/* 我的活动结束 */
 .act-bottom {
   display: flex;
   font-size: 26rpx;

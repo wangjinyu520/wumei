@@ -10,6 +10,7 @@
     {
       "root": "subShopping",
       "pages": [
+        "pages/masterEditor/masterEditor",
         "pages/activityDetails/activityDetails",
         "pages/buyticket/buyticket",
         "pages/orderconfirm/orderconfirm",
@@ -57,7 +58,11 @@
         "pages/boss/boss",
         "pages/masterRegister/masterRegister",
         "components/header/header",
-        "pages/goodsList/goodsList"
+        "pages/goodsList/goodsList",
+        "pages/moreDemand/moreDemand",
+        "pages/commandDetail/commandDetail",
+        "pages/commandDetail/success",
+        "pages/masterDetail/masterDetail"
       ],
       "name": "subShopping"
     },
@@ -79,6 +84,17 @@
         "pages/userActivity/userActivity"
       ],
       "name": "subMy"
+    },
+    {
+      "root": "certification",
+      "pages": [
+        "pages/certification/certification",
+        "pages/masterCertification/masterCertification",
+        "pages/masterCertification/personal",
+        "pages/masterCertification/case",
+        "pages/masterCertification/finnish"
+      ],
+      "name": "certification"
     }
   ],
   "preloadRule": {
@@ -91,7 +107,8 @@
     "pages/profile/profile": {
       "network": "all",
       "packages": [
-        "subMy"
+        "subMy",
+        "certification"
       ]
     }
   },

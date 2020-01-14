@@ -1,7 +1,7 @@
 <!--pages/product/product.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
 <view>
-  <swiper class="swiper" circular autoplay interval="5000" duration="300"  indicator-active-color="#2184E3">
+  <swiper class="swiper" circular autoplay interval="5000" duration="300" indicator-active-color="#2184E3">
     <block wx:for="{{imgList}}" wx:key="{{index}}">
       <swiper-item class="swiper-item">
         <image src="{{item}}" mode="widthFix" />
@@ -26,11 +26,11 @@
   </view>
 
   <view class="desc">
-      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
 
   <view class="bottom">
-    <view class="check"  bindtap="seeCompany">
+    <view class="check" bindtap="seeCompany">
       <view>
         <image class="check-img" src="/assets/common/company.png"></image>
       </view>

@@ -1,0 +1,17 @@
+<view class="picture_list">
+
+  <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
+    <image src="{{item.path}}" mode="aspectFill" data-src="{{item.path}}" data-index="{{index}}" bindtap='previewImg'></image>
+    <view class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">
+    <image src="/assets/images/master/delete.png" ></image>
+    </view> 
+  </view> 
+  <!-- 大图片上传 -->
+  <view class="continue" bindtap="uploadpic" wx:if="{{isShowPic}}">
+    <image src="/assets/images/master/camera.png" bindtap="uploadpic"></image>
+  </view>
+  <!-- 小图片上传 -->
+  <view class="picture_item" wx:if="{{!isShowPic&&isShowPic1}}">
+    <image src="/assets/images/master/camera.png" bindtap="uploadpic"></image>
+  </view>
+</view>

@@ -8,11 +8,13 @@ Page({
    */
   data: {
     inputShowed: false, //初始文本框不显示内容
-
     inputShowed: false,
     inputVal: "",
-    banners: [],
-    goodsList: []
+    banners: [],   //轮播图的获取
+    goodsList: [],
+    merchantTask: null,  //厂家推荐数据
+    productTask: null, //好货推荐数据
+    joinTask:null //拼团采购数据
   },
   // 使文本框进入可编辑状态
   showInput: function() {
@@ -26,13 +28,17 @@ Page({
       inputShowed: false
     });
   },
+  turn_search: function () {
+    wx.navigateTo({
+      url: "/subShopping/pages/search/search?type=goods"
+    })
+  },
   goLight: function (e) {
     let type = e.currentTarget.dataset.type;
     wx.navigateTo({
       url: '/subShopping/pages/goodsList/goodsList?type='+type,
     })
   },
-
   toDetailsAssemble: function () {
     wx.navigateTo({
       url: '/subShopping/pages/assembledetails/assembledetails',
@@ -63,11 +69,29 @@ Page({
       }
     })
   },
+  // 商城首页页面的数据
+  getMallData: function (e) {
+    let that = this;
+    WXAPI.getMallData().then(res => {
+      if (res.code == 200) {
+        that.setData({
+          merchantTask: res.data.merchantTask,
+          productTask: res.data.productTask,
+          joinTask: res.data.joinTask
+        })
+      } else {
+        wx.showToast({
+          title: res.message,
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     this.getBannerList();
+    this.getMallData();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -17,7 +17,7 @@
   <!--展示数据-->
   <view wx:if="{{contentlist}}">
     <view class="my-activity" wx:for="{{contentlist}}" wx:key="{{index}}">
-      <navigator url="/pages/orderdetil/orderdetil?activityId={{item.activityId}}">
+      <navigator url="/subShopping/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
         <view class="act-top ">
           <image class="act-img " src="{{item.activityLogo}} " />
           <view class="act-desc ">

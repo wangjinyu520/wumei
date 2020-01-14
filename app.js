@@ -12,50 +12,7 @@ App({
         this.globalData.statusBarHeight = res.statusBarHeight
       }
     })
-    // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //     let _this = this;    
-    //     if (res.code) {
-    //       // console.log(res.code);
-    //       // console.log(res.code);
-    //       WXAPI.getlogin({ 'code': res.code }).then(res => {
-    //         if (res.code == 11222) {
-    //           // 去注册
-    //           wx.navigateTo({
-    //             url: '/pages/sqlogin/sqlogin',
-    //           })
-    //             // _this.register();
-    //         }
-    //         if (res.code != 0) {
-    //           // 登录错误
-    //           wx.showModal({
-    //             title: '无法登录',
-    //             content: res.msg,
-    //             showCancel: false
-    //           })
-    //           return;
-    //         }
 
-    //         if (page) {
-    //           page.onShow()
-    //         }
-    //         // console.log(res);
-    //         // if (res.code == SUCCESS) {
-    //         //   //获取到openID之后存到globalData中
-    //         //   this.globalData.openid = res.openid;
-    //         //   // wx.showToast({
-    //         //   //   title: '数据获取成功',
-    //         //   // })
-
-
-    //         // }
-
-    //       })
-    //     }
-    //   }
-    // })
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -87,6 +44,7 @@ App({
     concatlist: [], //报名表单收集,,
     activityForm: null,
     activityCart:null,
-    cartActivityInfo:null
+    cartActivityInfo:null,
+    
   }
 })

@@ -1,6 +1,6 @@
-// const API_BASE_URL = "http://10.20.11.126:8080/wumei-server"
+const API_BASE_URL = "http://10.20.11.252:8080/wumei-server"
 // const API_BASE_URL = "http://101.133.164.180:8080/wumei-server"
-const API_BASE_URL = "https://www.techwells.com/wumei-server";
+// const API_BASE_URL = "https://www.techwells.com/wumei-server";
 const request = (url, method, data) => {
   let _url = API_BASE_URL + url
   return new Promise((resolve, reject) => {
@@ -165,6 +165,9 @@ module.exports = {
   getBannerList: (data) => {
     return request("/banner/getBannerList", 'get', data)
   },
-
+  //商城页面的接口
+  getMallData: (data) => {
+    return request("/home/getMallHomeDetail", 'get', data)
+  },
 
 }

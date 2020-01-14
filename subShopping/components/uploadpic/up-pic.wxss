@@ -1,6 +1,7 @@
 .picture_list {
   padding: 0 20rpx 10rpx;
   width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

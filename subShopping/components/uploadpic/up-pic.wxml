@@ -1,10 +1,14 @@
 <view class="picture_list">
+  <view class="picture_item" wx:for="{{imgList}}" wx:key="{{index}}">
+    <image class="credit-image" src="{{item}}" data-src="{{item}}"  />
+    <text class='del' bindtap='deleteImg1' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
+  </view>
   <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
-    <image src="{{item.path}}" mode="aspectFill" data-src="{{item}}"  bindtap='previewImg'></image>
-    <!-- <image  src="{{item.path_server}}" mode="aspectFill"></image> -->
+    <image src="{{item.path}}" mode="aspectFill" data-src="{{item.path}}" data-index="{{index}}" bindtap='previewImg'></image>
     <text class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
   </view>
   <view class="picture_item">
-    <image src="/assets/images/bossregister/add.png"  bindtap="uploadpic"></image>
+
+    <image src="/assets/images/bossregister/add.png" bindtap="uploadpic"></image>
   </view>
 </view>

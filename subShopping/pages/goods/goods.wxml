@@ -21,11 +21,16 @@
     </view>
   </view>
 
-  <view class="chose{{showView? '' : 'show'}}" bindtap="change">
+  <view class="chose {{showView? 'show' : ''}}" bindtap="change">
     <view class="chose-title">选择</view>
-    <view class="chose-desc">
-      <view class="chose-type">请选择商品型号</view>
-      <view class="hide{{showView?'':'show'}}">
+    <view class="chose-type">请选择商品型号</view>
+ 
+    <view class="chose-img">
+      <image src="/assets/common/more.png"></image>
+    </view>
+  </view>
+     <view class="chose-desc {{showView?'show':''}}">
+      <view>
         <!--遮罩层  -->
         <view class="shade">
           <!--面板内容  -->
@@ -59,7 +64,6 @@
         </view>
       </view>
     </view>
-  </view>
 
   <view class="shop">
     <image class="shop-img" src="{{}}"></image>
@@ -117,7 +121,11 @@
         <text>客服</text>
       </view>
     </view>
-    <button class="jion"><text>加入购物车</text></button>
-    <button class="rightnow"><text>立即购买</text></button>
+    <button class="jion">
+      <text>加入购物车</text>
+    </button>
+    <button class="rightnow">
+      <text>立即购买</text>
+    </button>
   </view>
 </view>

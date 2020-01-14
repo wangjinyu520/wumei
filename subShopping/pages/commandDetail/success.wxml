@@ -1,0 +1,19 @@
+<!--subShopping/pages/commandDetail/success.wxml-->
+<!--certification/pages/masterCertification/finnish.wxml-->
+<view class="finnish">
+  <view class="top">
+    <image src="/assets/images/remand/success.png">
+    </image>
+  </view>
+  <view class="hd">
+    申请成功
+  </view>
+  <view class="hs">
+    对方可能<text style="color:#4A6CFF">电话联系</text>您请注意接听电话
+  </view>
+  <view class="btn-box">
+    <button class="pub-btn" formType="submit">
+      <text>返回首页</text>
+    </button>
+  </view>
+</view>

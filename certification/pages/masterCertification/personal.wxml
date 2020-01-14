@@ -1,0 +1,15 @@
+<!--certification/pages/masterCertification/personal.wxml-->
+<view class="box">
+  <view class="titles">基本信息</view>
+  <form bindsubmit="fromSubmit" id="1" bindreset="fromReset">
+    <!--输入框-->
+    <view class="area"> 
+        <textarea placeholder="请输入" auto-focus name="personalIntroduce"></textarea>
+    </view>
+    <view class="btn-box">
+      <button class="pub-btn" formType="submit">
+        <text>提交</text>
+      </button>
+    </view>
+  </form>
+</view>

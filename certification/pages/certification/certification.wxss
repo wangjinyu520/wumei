@@ -1,0 +1,92 @@
+/* certification/pages/certification/certification.wxss */
+
+page {
+  background: rgba(255, 255, 255, 1);
+}
+
+.titles {
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+  font-size: 38rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 53rpx;
+}
+
+form {
+  width: 100%;
+  overflow: hidden;
+}
+
+.info {
+  background-color: #fff;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 1);
+  padding-bottom: 20px;
+}
+
+/* 每行 */
+
+.line {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  border: 1px solid #fcfcfc;
+}
+
+.line:nth-child(1) {
+  margin-top: 10px;
+}
+
+.line:nth-last-child(1) {
+  border: none;
+}
+
+.line .title {
+  height: 21px;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 42rpx;
+}
+
+.line input {
+  text-align: right;
+  font-size: 15px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(167, 167, 167, 1);
+}
+
+.sex {
+  width: 190rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.btn-box {
+  position: fixed;
+  bottom: 32rpx;
+  width: 100%;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  height: 88rpx;
+  border-radius: 8px;
+}
+
+.pub-btn {
+  background: rgba(33, 132, 227, 1);
+  color: #fff;
+  box-sizing: border-box;
+  height: 88rpx;
+  background:linear-gradient(270deg,rgba(74,108,255,1) 0%,rgba(35,218,255,1) 100%);
+  border-radius: 44rpx;
+}

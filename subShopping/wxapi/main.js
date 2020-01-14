@@ -1,6 +1,6 @@
-// const API_BASE_URL = "http://10.20.11.126:8080/wumei-server"
+const API_BASE_URL = "http://10.20.11.252:8080/wumei-server"
 // const API_BASE_URL = "http://101.133.164.180:8080/wumei-server"
-const API_BASE_URL = "https://www.techwells.com/wumei-server";
+// const API_BASE_URL = "https://www.techwells.com/wumei-server";
 
 const request = (url, method, data) => {
   let _url = API_BASE_URL + url
@@ -135,6 +135,11 @@ module.exports = {
   getDetailInfo: (data) => {
     return request("/technology/getTechnologyInfo", 'get', data)
   },
+  // 编辑大师的详细信息
+  editorDetailInfo: (data) => {
+    return request("/technology/modifyTechnology", 'post', data)
+  },
+
   //微信支付接口
   getweChatOpenid: (data) => {
     return request("/weChat/getActivityPrePayId", 'get', data)
@@ -187,6 +192,9 @@ module.exports = {
   getCompanyInfo: (data) => {
     return request("/company/getCompanyInfoByCompanyId", 'get', data)
   },
- 
+  // 获取三级地址城市
+  getPronceCity: (data) => {
+    return request("/city/getCityList", 'get', data)
+  }, 
 
 }

@@ -64,23 +64,8 @@
     </view>
 
     <view class="factory-list">
-      <view class="factory-item">
-        <image src="/assets/images/logo.jpg"></image>
-      </view>
-      <view class="factory-item">
-        2
-      </view>
-      <view class="factory-item">
-        3
-      </view>
-      <view class="factory-item">
-        4
-      </view>
-      <view class="factory-item">
-        3
-      </view>
-      <view class="factory-item">
-        4
+      <view class="factory-item" wx:for="{{merchantTask}}">
+        <image src="{{item.userIcon}}"></image>
       </view>
     </view>
   </view>
@@ -96,22 +81,19 @@
         <image src="/assets/common/master-right.png" class="icon-more" />
       </view>
     </view>
-
     <view class="goods-list" bindtap="toDetailsGoods">
-      <!-- <block wx:for="goodsList" wx:key="{{index}}"> -->
-        <view class="goods-content">
-          <image class="goods-img" src="{{}}"></image>
-          <view class="goods-desc">
-            <view class="goods-name">流星灯光线条A</view>
-            <view class="goods-price">¥99.00/天</view>
-            <view class="goods-shop">星光灯具店</view>
-          </view>
+      <block wx:for="{{productTask}}" wx:key="{{index}}">
+      <view class="goods-content">
+        <image class="goods-img" src="{{}}"></image>
+        <view class="goods-desc">
+          <view class="goods-name overhidden">{{item.productName}}</view>
+          <view class="goods-price">¥{{item.salePrice}}</view>
+          <view class="goods-shop">{{item.merchantName}}</view>
         </view>
-      <!-- </block> -->
+      </view>
+      </block>
     </view>
-
   </view>
-
   <!--拼团采购-->
   <view class="assemble">
     <view class="assemble-tab">
@@ -125,18 +107,18 @@
     </view>
 
     <view class="assemble-list">
-      <view class="assemble-content">
-        <image class="assemble-img" src="{{}}"></image>
+      <view class="assemble-content"  wx:for="{{joinTask}}">
+        <image class="assemble-img" src="{{item.productIcon}}"></image>
         <view class="assemble-desc">
-          <view class="assemble-name">流星灯光线条A</view>
-          <view class="assemble-type">
+          <view class="assemble-name overhidden">{{item.productName}}</view>
+          <!-- <view class="assemble-type">
             <text>寿命长</text>
             <text>寿命长</text>
-          </view>
+          </view> -->
           <view class="assemble-bottom">
             <view class="price">
-              <view class="assemble-evey">日常价 ¥300</view>
-              <view class="assemble-price">拼团价 ¥</view>
+              <view class="assemble-evey">日常价 ¥{{item.originalPrice}}</view>
+              <view class="assemble-price">拼团价 ¥{{item.currentPrice}}</view>
             </view>
             <button class="assemble-btn" bindtap="toDetailsAssemble">
               <text>去拼团</text>

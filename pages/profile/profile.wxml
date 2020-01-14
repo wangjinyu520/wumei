@@ -12,7 +12,7 @@
       </view>
       <view class='login-info'>
         <view class='login' bindtap="openlogin">{{title}}</view>
-        <view class='phone'> 
+        <view class='phone'>
           <view>{{userInfo?userInfo.nickName:'完善个人信息'}}</view>
           <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="finnishInfo"></button>
         </view>
@@ -28,7 +28,7 @@
   </view>
 
   <!--info-->
-  <view class='info'>
+  <view class='info list'>
     <view class='info-money info-item' bindtap="toCoupon">
       <view>
         <text class='count'>{{userIdDiscount.receiveCount?userIdDiscount.receiveCount:0}}</text>
@@ -52,14 +52,17 @@
   </view>
 
   <!--商家-->
-  <view class="store" bindtap="toStorecenter">
-    <image class='store-img' src="/assets/images/profile/business.png" />
-    <text>商家中心</text>
-    <image class="more" src="/assets/images/profile/more.png" />
+  <view class="store list" bindtap="toStorecenter">
+    <view class="order-list">
+      <image class='store-img' src="/assets/images/profile/business.png" />
+      <text>商家中心</text>
+      <image class="more" src="/assets/images/profile/more.png" />
+    </view>
+
   </view>
 
   <!--list-->
-  <view class="list-top">
+  <view class="list-top list">
     <view class="order-list" bindtap="toOrder" data-type="0">
       <image class='order-img' src="/assets/images/profile/order.png" />
       <text>我的订单</text>
@@ -77,7 +80,7 @@
     </view>
   </view>
 
-  <view class="list-bottom">
+  <view class="list-bottom list">
     <view class="order-list" bindtap="toCertification" data-type="3">
       <image class='order-img' src="/assets/images/profile/realname.png" />
       <text>大师认证</text>

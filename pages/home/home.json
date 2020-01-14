@@ -1,11 +1,9 @@
 {
   "usingComponents": {
-    "w-swiper":"/components/w-swiper/w-swiper",
+    "w-swiper": "/components/w-swiper/w-swiper",
     "w-tab-control": "/components/w-tab-control/w-tab-control",
     "w-pops-item": "/components/w-pops-item/w-pops-item",
-    "w-back-top": "/components/w-back-top/w-back-top",
-
-    "w-masters": "./childCpns/w-masters/w-masters"
+    "w-back-top": "/components/w-back-top/w-back-top"
   },
   "navigationBarTitleText": "首页"
 }

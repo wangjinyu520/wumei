@@ -226,7 +226,6 @@ Page({
   optionTap: function(e) {},
   // 表单提交
   fromSubmit: function(e) {
-    // console.log('dfbhdbf');
     activity = e.detail.value;
     activity.activityStartTime = this.data.beginDate + ' ' + this.data.beginTime;
     activity.activityEndTime = this.data.endDate + ' ' + this.data.endTime;
@@ -247,11 +246,55 @@ Page({
     activity.refundRule = this.data.msg == "退票收取10%手续费" ? 1 : 0;
     activity.refundRule = this.data.msg == "退票收取10%手续费" ? 1 : 0;
     activity.ticket = globalData.ticket;
+    if (!activity.activityTheme) {
+      wx.showToast({
+        title: '活动主题不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if (!activity.activityStartTime || !activity.activityEndTime || !this.data.endTime || !this.data.beginTime) {
+      wx.showToast({
+        title: '活动时间不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if (activity.contact.length == 0) {
+      wx.showToast({
+        title: '联系方式不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if (activity.contact.length != 11) {
+      wx.showToast({
+        title: '联系方式格式不正确',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if (!activity.activityLocation) {
+      wx.showToast({
+        title: '地址不为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return;
+    }
     let obj = {};
     globalData.concatlist.forEach((v, i) => {
       obj[i] = v
     })
     activityForm = JSON.stringify(obj);
+    if (activityForm) {
+      wx.showToast({
+        title: '报名表单不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return;
+    }
     activity = JSON.stringify(activity);
     this.uploadimage(e);
   },

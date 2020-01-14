@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "w-masters-item": "../w-masters-item/w-masters-item"
+  }
+}

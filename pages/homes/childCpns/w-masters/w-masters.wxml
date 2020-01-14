@@ -1,0 +1,7 @@
+<!--pages/home/childCpns/w-masters/w-masters.wxml-->
+<view class='masters'>
+  <block wx:for="{{masterslist}}" wx:key="{{index}}">
+    <w-masters-item class="masters-item" mastersitem="{{item}}"/>
+  </block>
+</view>
+

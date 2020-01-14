@@ -1,0 +1,86 @@
+<view class="box">
+  <view class="titles" wx:if="{{!caseList.length}}">添加案例</view>
+  <view wx:if="{{caseList.length}}">
+    <view class="case-box" wx:for="{{caseList}}" wx:key="{{index}}">
+      <view class="titles">案例{{index+1}}</view>
+      <view class="picture">
+        <view class="picture_list">
+          <view class="picture_item" wx:for="{{item.imageUrl}}" wx:key="{{index}}">
+            <image class="credit-image" src="{{item}}" data-src="{{item}}" />
+          </view>
+        </view>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">案例名称</view>
+        <input placeholder="请输入案例名称" value="{{item.caseName}}"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">日期选择</view>
+        <picker mode="date" value="{{item.caseTime}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+          <view class="picker">
+           {{item.caseTime}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">地址选择</view>
+        <picker mode="region" value="{{item.caseCity}}" custom-item="{{customItem}}">
+          <view class="picker">
+            {{item.caseCity}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">案例介绍</view>
+      </view>
+      <view class="line">
+        <textarea placeholder="请输入案例介绍..." auto-focus name="personalIntroduce" value="{{item.caseIntroduce}}"></textarea>
+      </view>
+    </view>
+  </view>
+
+  <form bindsubmit="fromSubmit" id="1" bindreset="fromReset">
+    <!--输入框-->
+    <view class="picture">
+      <include src="../../components/uploadpic/up-pic.wxml" />
+    </view>
+    <view class="cu-form-group">
+      <view class="title">案例名称</view>
+      <input placeholder="请输入案例名称" name="caseName" value='{{form_info}}'></input>
+    </view>
+
+    <view class="cu-form-group">
+      <view class="title">日期选择</view>
+      <picker mode="date"  placeholder="请输入案例名称" name="caseTime" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">地址选择</view>
+      <picker mode="region" bindchange="RegionChange" name="caseCity" custom-item="{{customItem}}">
+        <view class="picker">
+          {{region[0]}} {{region[1]}} {{region[2]}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">案例介绍</view>
+    </view>
+    <view class="line">
+      <textarea placeholder="请输入案例介绍..." value='{{form_info}}' auto-focus name="caseIntroduce"></textarea>
+    </view>
+    <view class="btn-more">
+      <button class="more-btn" formType="submit">
+        <text>填写完毕再加一个案例</text>
+        <image src="/assets/images/master/zuo.png"></image>
+      </button>
+    </view>
+    <view class="btn-box">
+      <button class="pub-btn">
+        <text>添加完成，去认证</text>
+      </button>
+    </view>
+  </form>
+</view>

@@ -11,43 +11,60 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderType: ['活动', '商品'],
-    contentlist: null,
-    currentType: 0,
+    orderType:["活动","商品"],
+    contentlist: null,//活动优惠券
+    contentlist1: null,//商品优惠劵
+    currentType: 0,//切换效果
+    curType:2,//传给后台的状态
     page:1,
     pageSize:6
   },
   tabClick(e) {
     // 1.根据当前的点击赋值最新的currentType
     const curType = e.currentTarget.dataset.index;
-    console.log(curType);
-    // switch (e.detail.index) {
-    //   case 0:
-    //     currentType = 
-    //     break
-    //   case 1:
-    //     currentType = GOODS
-    //     break
-    // }
     this.setData({
       currentType: curType
     })
-    this.getReceiveList();
+    console.log(curType);
+    switch (e.currentTarget.dataset.index) {
+      case 0:
+        this.setData({
+          curType:2,
+          page: 1
+        
+        })
+        break
+      case 1:
+        this.setData({
+          curType: 3,
+          page: 1
+        })
+        break
+    }
+   
+  
+    console.log(this.data.curType);
+
+    this.getMyCollectList();
 
   },
   // 获取收藏
-  getMyCollectList: function(message) {
+  getMyCollectList: function () {
     var that = this;
     let data = {
       pageNum: that.data.page,
       pageSize: that.data.pageSize,
-      userId: wx.getStorageSync('token').userId  //这里是不是还有一个收藏的类型
+      userId: wx.getStorageSync('token').userId , //这里是不是还有一个收藏的类型
+      collectType: that.data.curType
     };
     WXAPI.getMyCollectList(data).then(res => {
       console.log(res);
-      if (res.code == 200) {
+      if (res.code == 200 && that.data.curType==2) {
+        that.setData({
+          contentlist1: null
+        })
         var contentlistTem = that.data.contentlist //总的数据列表
-        if (res.data) {
+        if (res.data.length) {
           if (that.data.page == 1) {
             contentlistTem = []
           }
@@ -69,6 +86,37 @@ Page({
             contentlist: null
           })
         }
+      } else if (res.code == 200 && that.data.curType == 3) {
+        that.setData({
+          contentlist: null
+        })
+        var contentlistTem = that.data.contentlist1 //总的数据列表
+        if (res.data.length) {
+          if (that.data.page == 1) {
+            contentlistTem = []
+          }
+          var contentlist1 = res.data //contentlist每次返回的个数
+          if (contentlist1.length > that.data.pageSize) {
+            that.setData({
+              contentlist1: contentlistTem.concat(contentlist1),
+              hasMoreData: false
+            })
+          } else {
+            that.setData({
+              contentlist1: contentlistTem.concat(contentlist1),
+              hasMoreData: true,
+              page: that.data.page + 1
+            })
+          }
+        } else {
+          that.setData({
+            contentlist1: null
+          })
+        }
+        console.log(res.data);
+
+        console.log(that.data.contentlist1);
+
       }else{
         wx.showToast({
           title:res.message,

@@ -1,163 +1,35 @@
 <!--pages/coupon/coupon.wxml-->
 <view class="coupon">
-  <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
-    <view class="imgItem">
-      <image class="coupon-bg" src="/assets/images/profile/yes-coupon.png"></image>
+  <scroll-view wx:if="{{contentlist}}" class="list">
+    <view class="imgItem" wx:for="{{contentlist}}" wx:key="{{index}}">
+      <image class="coupon-bg" src="{{item.useStatus==1?'/assets/images/profile/yes-coupon.png':'/assets/images/profile/no-coupon.png'}}"></image>
       <view class="content">
         <view class="price">
           <view class="price-box">
-            ¥<text>300</text>
+            ¥
+            <text>{{item.amount}}</text>
           </view>
 
         </view>
         <view class="cut"></view>
         <view class="shop">
           <view class="title">
-            <image class="title-img" src="{{}}" />
-            <view class="title-nav">星光灯具店</view>
+            <image class="title-img" src="{{item.merchantLogo}}" />
+            <view class="title-nav">{{item.merchantName}}</view>
           </view>
           <view class="use">
-            <text>10月特惠</text>
+            <text>{{item.couponName}}</text>
           </view>
           <view class="time">截止时间：
-            <text>2019/08/09 18：90</text>
+            <text>{{item.endTime}}</text>
           </view>
         </view>
         <view class="or-use">
-          <text>进店使用</text>
+          <text>{{item.useStatus==1?'进店使用':'已使用'}}</text>
         </view>
       </view>
     </view>
-    <view class="imgItem">
-      <image class="coupon-bg" src="/assets/images/profile/no-coupon.png"></image>
-       <view class="content">
-        <view class="price">
-          <view class="price-box">
-            ¥<text>300</text>
-          </view>
-        </view>
-        <view class="cut"></view>
-        <view class="shop">
-          <view class="title">
-            <image class="title-img" src="{{}}" />
-            <view class="title-nav">星光灯具店</view>
-          </view>
-          <view class="use">
-            <text>10月特惠</text>
-          </view>
-          <view class="time">截止时间：
-            <text>2019/08/09 18：90</text>
-          </view>
-        </view>
-        <view class="or-use">
-          <text>进店使用</text>
-        </view>
-      </view>
-    </view>
-    <view class="imgItem">
-      <image class="coupon-bg" src="/assets/images/profile/yes-coupon.png"></image>
-       <view class="content">
-        <view class="price">
-          <view class="price-box">
-            ¥<text>300</text>
-          </view>
-        </view>
-        <view class="cut"></view>
-        <view class="shop">
-          <view class="title">
-            <image class="title-img" src="{{}}" />
-            <view class="title-nav">星光灯具店</view>
-          </view>
-          <view class="use">
-            <text>10月特惠</text>
-          </view>
-          <view class="time">截止时间：
-            <text>2019/08/09 18：90</text>
-          </view>
-        </view>
-        <view class="or-use">
-          <text>进店使用</text>
-        </view>
-      </view>
-    </view>
-    <!-- <view wx:for="{{couponList}}" wx:key="{{index}}">
-        <view class="content">
-          <view class="price">¥
-            <text>300</text>
-          </view>
-          <view class="cut"></view>
-          <view class="shop">
-            <view class="title">
-              <image class="title-img" src="{{}}" />
-              <view class="title-nav">星光灯具店</view>
-            </view>
-            <view class="use">
-              <text>10月特惠</text>
-            </view>
-            <view class="time">截止时间：
-              <text>2019/08/09 18：90</text>
-            </view>
-          </view>
-          <view class="or-use">
-            <text>进店使用</text>
-          </view>
-        </view>
-      </view> -->
+    <view class="tip">{{hasMoreData?'暂无更多数据':''}}</view>
   </scroll-view>
-   <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
-
-    <view class="imgItem">
-      <image class="coupon-bg" src="/assets/images/profile/no-coupon.png"></image>
-       <view class="content">
-        <view class="price">
-          <view class="price-box">
-            ¥<text>300</text>
-          </view>
-        </view>
-        <view class="cut"></view>
-        <view class="shop">
-          <view class="title">
-            <image class="title-img" src="{{}}" />
-            <view class="title-nav">星光灯具店</view>
-          </view>
-          <view class="use">
-            <text>10月特惠</text>
-          </view>
-          <view class="time">截止时间：
-            <text>2019/08/09 18：90</text>
-          </view>
-        </view>
-        <view class="or-use">
-          <text>进店使用</text>
-        </view>
-      </view>
-    </view>
-        <view class="imgItem">
-      <image class="coupon-bg" src="/assets/images/profile/no-coupon.png"></image>
-       <view class="content">
-        <view class="price">
-          <view class="price-box">
-            ¥<text>300</text>
-          </view>
-        </view>
-        <view class="cut"></view>
-        <view class="shop">
-          <view class="title">
-            <image class="title-img" src="{{}}" />
-            <view class="title-nav">星光灯具店</view>
-          </view>
-          <view class="use">
-            <text>10月特惠</text>
-          </view>
-          <view class="time">截止时间：
-            <text>2019/08/09 18：90</text>
-          </view>
-        </view>
-        <view class="or-use">
-          <text>进店使用</text>
-        </view>
-      </view>
-    </view>
-
-  </scroll-view>
+  <view wx:else class="else ">暂无相应的活动</view>
 </view>

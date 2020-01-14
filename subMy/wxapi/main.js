@@ -1,6 +1,6 @@
-// const API_BASE_URL = "http://10.20.11.126:8080/wumei-server"
+const API_BASE_URL = "http://10.20.11.252:8080/wumei-server"
 // const API_BASE_URL = "http://101.133.164.180:8080/wumei-server"
-const API_BASE_URL = "https://www.techwells.com/wumei-server";
+// const API_BASE_URL = "https://www.techwells.com/wumei-server";
 const request = (url, method, data) => {
   let _url = API_BASE_URL + url
   return new Promise((resolve, reject) => {
@@ -28,15 +28,6 @@ const request = (url, method, data) => {
 
 module.exports = {
   request,
-  getregisterDetail: (data) => {
-    return request('/register/getregisterDetail', 'get', data)
-  },
-  getMastersData: (data) => {
-    return request("/technology/getTechnologyList", 'get', data)
-  },
-  getProduct: (data) => {
-    return request("/technology/getTechnologyList", 'get', data)
-  },
   getCommodity: (data) => {
     return request("/commodity/getCommodityList", 'get', data)
   },
@@ -154,6 +145,7 @@ module.exports = {
   getRecommendList: (data) => {
     return request("/technology/getTechnologyList", 'get', data)
   },
+ 
   // 获取我的主页的用户活动列表
   getMyActivityList: (data) => {
     return request("/activity/getUserActivityList", 'get', data)
@@ -180,7 +172,7 @@ module.exports = {
   },
   // 获取优惠劵
   getReceiveList: (data) => {
-    return request("/receive/getReceiveList", 'get', data)
+    return request("/receive/myCouponList", 'get', data)
   },
   // 获取关注
   getFocusList: (data) => {
