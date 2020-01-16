@@ -45,6 +45,7 @@ App({
     activityForm: null,
     activityCart:null,
     cartActivityInfo:null,
+    addTechnology:{}
     
   }
 })

@@ -3,10 +3,10 @@
 <view class="box">
   <view class="content">
     <view class="content-item">
-      <view class="title overhidden1">明天在in77半场果冻需要等管事</view>
+      <view class="title overhidden1">{{demandDetail.demandTitle}}</view>
       <view class="btn">
         <view class="price">
-          <text class="rent">¥10000</text>
+          <text class="rent">¥{{demandDetail.salary}}</text>
           <text class="unit">/天</text>
         </view>
       </view>
@@ -14,20 +14,27 @@
   </view>
   <view class="nav">
     <view class="nav-son">
-      更新：今天
+      更新：{{demandDetail.startTime}}
     </view>
     <view class="nav-son">
-      浏览：32人
+      浏览：{{demandDetail.pvCount}}人
     </view>
     <view class="nav-son">
-      申请： 10人
+      申请： {{demandDetail.applyCount}}人
     </view>
   </view>
   <view class="content detail">
     <view class="content-item">
-      <view class="title overhidden1">明天在in77半场果冻需要等管事</view>
-      <view class="text">明天在in77半场果冻需要等管事</view>
-      <view class="text">明天在in77半场果冻需要等管事</view>
+      <view class="text overhidden1">
+        <image class="img" src="/assets/images/remand/zhong.png "></image>
+        {{demandDetail.demandTime}}
+        </view>
+      <view class="text">
+        <image class="img" src="/assets/images/remand/map.png "></image>
+        {{demandDetail.demandLocation}}</view>
+      <view class="text">
+        <image class="img" src="/assets/images/remand/pel.png "></image>
+        {{demandDetail.technologyType}}</view>
 
     </view>
 
@@ -43,30 +50,30 @@
 
   <view class="cu-item">
     <view class="con-left">
-      <image class="img " src="/assets/images/home/icon3.png "></image>
-      <text class="text-grey">利希纳</text>
+      <image class="img " src="{{demandDetail.userIcon}}"></image>
+      <text class="text-grey">{{demandDetail.contacts}}</text>
     </view>
     <view class="action">
       <view class="cu-avatar-group">
-        <image class="img " src="/assets/images/remand/phone.png "></image>
+        <image class="img " src="/assets/images/remand/phone.png"></image>
       </view>
-      <text class="text">4 人</text>
+      <text class="text">{{demandDetail.contact}}</text>
     </view>
   </view>
   <!-- 需求发布人 -->
 </view>
-<view class="null"></view>
-<view class="box">
+<view class="null"  wx:if="{{demandDetail.detail||demandDetail.demandImage}}"></view>
+<view class="box" wx:if="{{demandDetail.detail||demandDetail.demandImage}}">
   <!-- 需求发布人 -->
   <view class="til">
     需求描述
   </view>
   <view class="des">
     <view class="des-top">
-      村成本是那边VB女是那边是你爸是残暴是传村成本是那边VB女是那边是你爸是残暴是传村成本是那边VB女是那边是你爸是残暴是传
+     {{demandDetail.detail}}
     </view>
     <view class="des-img">
-      <image class="img " src="/assets/images/home/icon3.png "></image>
+      <image class="img " src="{{demandDetail.demandImage}}"></image>
     </view>
   </view>
   <!-- 需求发布人 -->
@@ -81,8 +88,6 @@
         <text>{{isCollect?'已收藏':'收藏'}}</text>
       </view>
     </view>
-
-
     <view class="share">
       <button open-type='share'></button>
       <view>
@@ -94,7 +99,6 @@
     </view>
   </view>
   <view class="mid">
-
   </view>
   <view class="right">
     <button class="chat" bindtap="powerDrawer" data-statu="open">

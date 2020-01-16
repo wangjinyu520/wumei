@@ -1,0 +1,4 @@
+<!--subShopping/pages/masterDetail/introduce.wxml-->
+<view class="content">
+  {{introduce}}
+</view>

@@ -41,5 +41,5 @@
     </view>
     <view class="tip">{{hasMoreData?'暂无更多数据':''}}</view>
   </view>
-  <view wx:else class="else ">暂无相应的活动</view>
+  <view wx:else class="else">暂无相应的活动</view>
 </view>

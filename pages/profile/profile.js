@@ -34,9 +34,6 @@ Page({
     })
   },
 
-
-
-
   toStorecenter: function() {
     wx.navigateTo({
       url: '/subMy/pages/center/center',
@@ -103,7 +100,7 @@ Page({
         title: "技术人员需要实名哦",
         success: function (res) {
           wx.navigateTo({
-            url: '/subShopping/pages/certification/certification'
+            url: 'certification/pages/certification/certification'
           })
          }
       })

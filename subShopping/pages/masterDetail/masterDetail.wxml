@@ -1,18 +1,18 @@
 <!--subShopping/pages/masterDetail/masterDetail.wxml-->
 <view class="top-bg">
-  <image src="/assets/images/master/bg.jpeg"></image>
+  <image src="{{masterDetail.userIcon}}"></image>
 </view>
 <!-- 个人介绍 -->
 <view class="content">
   <view class="content-top">
     <view class="left">
-      <image src="/assets/images/master/bg.jpeg"></image>
+      <image src="{{masterDetail.userIcon}}"></image>
     </view>
     <view class="right">
       <view class="botm">
         <!-- <image class="img" src="/assets/images/home/rongyao.png"> -->
         <text class="text">-荣耀值-</text>
-        <view class="rongyao">75</view>
+        <view class="rongyao">{{masterDetail.glory}}</view>
         <!-- </image> -->
       </view>
 
@@ -23,16 +23,16 @@
   <view class="content-bot">
     <view class="left">
       <view class="line">
-        <view class="name"> 何止</view>
+        <view class="name">{{masterDetail.realName}}</view>
         <view class="sex">
-          <image src="/assets/images/master/men.png"></image>
-          35
+          <image src="{{masterDetail.technologyGender==1?'/assets/images/master/men.png':'/assets/images/master/wumen.png'}}"></image>
+          {{masterDetail.technologyAge}}
         </view>
       </view>
       <view class="line line2">
-        <view class="work">灯光师</view>
+        <view class="work">{{masterDetail.typeName}}</view>
         <view class="cut"></view>
-        <view class="experience">从业5年</view>
+        <view class="experience">从业{{masterDetail.workExperience}}年</view>
         <view class="cut"></view>
         <view class="settled">入驻2年</view>
       </view>
@@ -44,7 +44,7 @@
           <image src="/assets/images/master/evaluate.png"></image>
           <image src="/assets/images/master/evaluate1.png"></image>
         </view>
-        <view class="people">回头克3</view>
+        <view class="people">回头客3</view>
       </view>
       <view class="line">
         <view class="scord">
@@ -65,7 +65,7 @@
 
       <view class="price">
         <view>
-          <text class="text-price rent">10000</text>
+          <text class="text-price rent">{{masterDetail.salary}}</text>
           <text class="unit">/天</text>
         </view>
 
@@ -80,7 +80,7 @@
     <view class="master-title">
       <text>个人介绍</text>
     </view>
-    <view bindtap="goLight" data-type="">
+    <view bindtap="goIntoduce" data-type="">
       <view class="more">
         <text class="cuIcon-right"></text>
       </view>
@@ -100,116 +100,266 @@
 
   <!-- html课程 -->
   <view class="master-content" hidden='{{currentId!=0}}'>
+
     <view class="img-nav">
-      <view>
+      <view style="margin-right:20rpx;">
         <image src="/assets/images/master/huo.png" bindtap="huoSort"></image>
         按热度
       </view>
       <view>
-        <image src="/assets/images/master/huo1.png" bindtap="timeSort"></image>
+        <image src="/assets/images/master/zhong.png" bindtap="timeSort"></image>
         按时间
       </view>
     </view>
 
-    <view class="img-left">
+    <view class="img-list">
+      <view class="img-left">
 
-      <view class="img-item">
-        <image src="/assets/images/master/evaluate.png"></image>
-        <view class="img-item-bot">
-          <view class="text overhidden">
-            在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
+        <view class="img-item">
+          <image src="/assets/images/master/evaluate.png"></image>
+          <view class="img-item-bot">
+            <view class="text overhidden">
+              在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
+            </view>
+            <view class="xinxin">
+              <image src="/assets/images/master/xinxin.png"></image>
+              12
+            </view>
           </view>
-          <view class="xinxin">
-            <image src="/assets/images/master/xinxin.png"></image>
-            12
-          </view>
+
+
         </view>
+        <view class="img-item">
+          <image src="/assets/images/master/evaluate.png"></image>
+          <view class="img-item-bot">
+            <view class="text overhidden">
+              在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
+            </view>
+            <view class="xinxin">
+              <image src="/assets/images/master/xinxin.png"></image>
+              12
+            </view>
+          </view>
 
 
+        </view>
+        <view class="img-item">
+          <image src="/assets/images/master/evaluate.png"></image>
+          <view class="img-item-bot">
+            <view class="text overhidden">
+              在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
+            </view>
+            <view class="xinxin">
+              <image src="/assets/images/master/xinxin.png"></image>
+              12
+            </view>
+          </view>
+
+
+        </view>
       </view>
-      <view class="img-item">
-        <image src="/assets/images/master/evaluate.png"></image>
-        <view class="img-item-bot">
-          <view class="text overhidden">
-            在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
+      <view class="img-right">
+
+        <view class="img-item">
+          <image src="/assets/images/master/evaluate.png"></image>
+          <view class="img-item-bot">
+            <view class="text overhidden" wx:if="cvcv">
+
+            </view>
+            <view class="xinxin">
+              <image src="/assets/images/master/xinxin.png"></image>
+              12
+            </view>
           </view>
-          <view class="xinxin">
-            <image src="/assets/images/master/xinxin.png"></image>
-            12
-          </view>
+
+
         </view>
+        <view class="img-item">
+          <image src="/assets/images/master/evaluate.png"></image>
+          <view class="img-item-bot">
+            <view class="text overhidden" wx:if="cvcv">
+
+            </view>
+            <view class="xinxin">
+              <image src="/assets/images/master/xinxin.png"></image>
+              12
+            </view>
+          </view>
 
 
-      </view>
-      <view class="img-item">
-        <image src="/assets/images/master/evaluate.png"></image>
-        <view class="img-item-bot">
-          <view class="text overhidden">
-            在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
-          </view>
-          <view class="xinxin">
-            <image src="/assets/images/master/xinxin.png"></image>
-            12
-          </view>
         </view>
+        <view class="img-item">
+          <image src="/assets/images/master/evaluate.png"></image>
+          <view class="img-item-bot">
+            <view class="text overhidden">
+              在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
+            </view>
+            <view class="xinxin">
+              <image src="/assets/images/master/xinxin.png"></image>
+              12
+            </view>
+          </view>
 
-
+        </view>
       </view>
     </view>
-    <view class="img-right">
 
-      <view class="img-item">
-        <image src="/assets/images/master/evaluate.png"></image>
-        <view class="img-item-bot">
-          <view class="text overhidden" wx:if="cvcv">
-
-          </view>
-          <view class="xinxin">
-            <image src="/assets/images/master/xinxin.png"></image>
-            12
-          </view>
-        </view>
-
-
-      </view>
-      <view class="img-item">
-        <image src="/assets/images/master/evaluate.png"></image>
-        <view class="img-item-bot">
-          <view class="text overhidden" wx:if="cvcv">
-
-          </view>
-          <view class="xinxin">
-            <image src="/assets/images/master/xinxin.png"></image>
-            12
-          </view>
-        </view>
-
-
-      </view>
-      <view class="img-item">
-        <image src="/assets/images/master/evaluate.png"></image>
-        <view class="img-item-bot">
-          <view class="text overhidden">
-            在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
-          </view>
-          <view class="xinxin">
-            <image src="/assets/images/master/xinxin.png"></image>
-            12
-          </view>
-        </view>
-
-
-      </view>
-    </view>
 
   </view>
   <!-- css课程 -->
   <view class="master-content" hidden='{{currentId!=1}}'>
-    <text>我是css课程</text>
+    <view class="activity-info">
+      <view class="img">
+        <!-- <image src="/assets/images/home/icon4.png"></image> -->
+      </view>
+      <view class="bottom">
+        <view class="title overhidden1">
+          即将融资，妆业的线下融资是偶们的选择相对湿度版本
+        </view>
+        <view class="area">
+          杭州/20月23日/周五
+        </view>
+      </view>
+    </view>
+    <view class="activity-info">
+      <view class="img">
+        <!-- <image src="/assets/images/home/icon4.png"></image> -->
+      </view>
+      <view class="bottom">
+        <view class="title overhidden1">
+          即将融资，妆业的线下融资是偶们的选择相对湿度版本
+        </view>
+        <view class="area">
+          杭州/20月23日/周五
+        </view>
+      </view>
+    </view>
+
   </view>
-  <!-- js课程 -->
+  <!-- 用户评价 -->
   <view class="master-content" hidden='{{currentId!=2}}'>
-    <text>我是js课程</text>
+    <view class="master-info">
+      <view class="left">
+        <image class="img" src="/assets/images/home/icon3.png"></image>
+      </view>
+      <view class="middle">
+        <view class="top">
+          <view class="center">
+            <view>
+              <text class="name">张三</text>
+            </view>
+            <view class="line evalute-box">
+              <view class="people">打分</view>
+              <view class="evaluate">
+                <image src="/assets/images/master/evaluate.png"></image>
+                <image src="/assets/images/master/evaluate.png"></image>
+                <image src="/assets/images/master/evaluate.png"></image>
+                <image src="/assets/images/master/evaluate.png"></image>
+                <image src="/assets/images/master/evaluate1.png"></image>
+              </view>
+
+            </view>
+          </view>
+          <view class="time">
+            2019-08-09
+          </view>
+        </view>
+        <view class="describe">
+          服务态度超级好，设备也很专业，很满意这个的服务服务态度超级好
+        </view>
+        <view class="master-img">
+          <view class="img">
+            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
+          </view>
+          <view class="img">
+            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
+          </view>
+          <view class="img">
+            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
+          </view>
+        </view>
+        <view class="browse">
+          浏览47
+        </view>
+      </view>
+    </view>
+      <view class="master-info">
+      <view class="left">
+        <image class="img" src="/assets/images/home/icon3.png"></image>
+      </view>
+      <view class="middle">
+        <view class="top">
+          <view class="center">
+            <view>
+              <text class="name">张三</text>
+            </view>
+            <view class="line evalute-box">
+              <view class="people">打分</view>
+              <view class="evaluate">
+                <image src="/assets/images/master/evaluate.png"></image>
+                <image src="/assets/images/master/evaluate.png"></image>
+                <image src="/assets/images/master/evaluate.png"></image>
+                <image src="/assets/images/master/evaluate.png"></image>
+                <image src="/assets/images/master/evaluate1.png"></image>
+              </view>
+
+            </view>
+          </view>
+          <view class="time">
+            2019-08-09
+          </view>
+        </view>
+        <view class="describe">
+          服务态度超级好，设备也很专业，很满意这个的服务服务态度超级好
+        </view>
+        <view class="master-img">
+          <view class="img">
+            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
+          </view>
+          <view class="img">
+            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
+          </view>
+          <view class="img">
+            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
+          </view>
+        </view>
+        <view class="browse">
+          浏览47
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+<view class="bottom1">
+  <view class="left">
+    <view class='collect'>
+      <view>
+        <image class="collect-img" src="{{isCollect?'/assets/common/collect-yes.png':'/assets/images/activity/collect.png'}}" bindtap="{{isCollect?'noSave':'haveSave'}}"></image>
+      </view>
+      <view>
+        <text>{{isCollect?'已收藏':'收藏'}}</text>
+      </view>
+    </view>
+
+
+    <view class="share"  bindtap="goPhone">
+      <button></button>
+      <view>
+        <image class="share-img" src="/assets/images/master/xiaoxi.png"></image>
+      </view>
+      <view>
+        <text>联系TA</text>
+      </view>
+    </view>
+  </view>
+  <view class="right">
+    <button class="chat" bindtap="powerDrawer" data-statu="open">
+      <text>加入购物车</text>
+    </button>
+        <button class="chat xiadan" bindtap="powerDrawer" data-statu="open">
+      <text>立即下单</text>
+    </button>
   </view>
 
 </view>

@@ -1,40 +1,30 @@
 <!-- 搜索框开始 -->
 <view class="searchBox">
   <view class="map">
-    <view class="text" bindtap="toOpen">
-      <text>杭州</text>
+    <view class="text" bindtap="listqy">
+      <text>{{currentCity}}</text>
       <image class="img" src="/assets/images/home/down.png" />
-    </view>
-    <view class="mask " wx:if="{{showView}}">
-      <swiper-item class="mask-top {{showView?'map-list-open':'map-list-close'}}">
-        <view class="map-item" bindtap="toOpen">
-          安徽
-        </view>
-        <view class="map-item" bindtap="toOpen">
-          湖北
-        </view>
-        <view class="map-item" bindtap="toOpen">
-          太原
-        </view>
-        <view class="map-item" bindtap="toOpen">
-          山西
-        </view>
-        <view class="map-item" bindtap="toOpen">
-          山东
-        </view>
-
-      </swiper-item>
     </view>
 
   </view>
-  <view class="search-left">
+  <view class="search-left" bindtap="turn_search">
     <icon class="search-icon" type="search" size="11"></icon>请输入
   </view>
   <view class="topub">
     <image class="img" src="/assets/images/home/add.png" bindtap="toPublish" />
   </view>
 </view>
+<!-- 地址选择的界面 -->
+<view class="quyu {{qyopen ? 'slidown' : 'slidup'}} {{qyshow ? 'disappear':''}}">
+  <view class="qy quyu-left">
+    <view class="{{currentId == index ? 'current' : ''}}" wx:for="{{cityData}}" bindtap="toSelectCity" data-name="{{item.name}}" data-index="{{index}}">
+      {{item.name}}
+    </view>
+  </view>
+</view>
+<!-- 地址选择的mask -->
 
+<view class="fullbg {{isfull ?'fullopacity':'disappear'}}" bindtap="hidebg"></view>
 <!-- 轮播图开始 -->
 <view class="swipers">
   <w-swiper list="{{banners}}" />
@@ -83,20 +73,20 @@
     <view class="order-info-time">时间 2019-12-03至2019-12-3</view>
   </view>
   <view class="order-btn">
-    <text>查看更多需求</text>
+    <navigator url="/subShopping/pages/moreDemand/moreDemand">
+      <text>查看更多需求</text>
+    </navigator>
   </view>
 </view>
 <!-- 热门大师 -->
 <view class="master-nav">
   <scroll-view scroll-x class="nav" scroll-with-animation scroll-left="{{scrollLeft}}">
     <view class="cu-item {{index==TabCur?'cur':''}}" wx:for="{{list}}" wx:key bindtap="tabSelect" data-id="{{index}}">
-      {{list[index]}}
+      {{item}}
     </view>
   </scroll-view>
-
-
 </view>
-<view class="master">
+<view class="master" wx:if="{{masters.length}}">
   <view class="master-tab">
     <view class="master-title">
       <text>热门大师</text>
@@ -107,109 +97,45 @@
       </view>
     </view>
   </view>
-  <view class="master-info">
-    <view class="left">
-      <image class="img" src="/assets/images/home/icon3.png"></image>
-    </view>
-    <view class="middle">
-      <view class="top">
-        <view class="center">
-          <view>
-            <text class="name">张三</text>
-            <text class="tag">音响师</text>
+  <view>
+    <view class="master-info" wx:for="{{masters}}" wx:key="{{index}}" data-id="{{item.userId}}" bindtap="toDetailsMaster">
+      <view class="left">
+        <image class="img" src="/assets/images/home/icon3.png"></image>
+      </view>
+      <view class="middle">
+        <view class="top">
+          <view class="center">
+            <view>
+              <text class="name">{{item.realName}}</text>
+              <text class="tag">{{item.technologyOccupation}}</text>
+            </view>
+            <view class="order-info-area introduce">{{item.city}} | 从业{{item.workExperience}}年</view>
+            <view class="order-info-time">薪资：¥{{item.salary}}/天</view>
           </view>
-          <view class="order-info-area introduce">浙江杭州 | 从业5年</view>
-          <view class="order-info-time">薪资：¥1000/天</view>
-        </view>
-        <view class="botm">
-          <!-- <image class="img" src="/assets/images/home/rongyao.png"> -->
-          <text class="text">75</text>
-          <view class="rongyao">荣耀值</view>
-          <!-- </image> -->
-        </view>
-      </view>
-      <view class="master-img">
-        <view class="img">
-          <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
-        </view>
-        <view class="img">
-          <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
-        </view>
-        <view class="img">
-          <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="master-info">
-    <view class="left">
-      <image class="img" src="/assets/images/home/icon3.png"></image>
-    </view>
-    <view class="middle">
-      <view class="top">
-        <view class="center">
-          <view>
-            <text class="name">张三</text>
-            <text class="tag">音响师</text>
+          <view class="botm">
+            <!-- <image class="img" src="/assets/images/home/rongyao.png"> -->
+            <text class="text">{{item.glory}}</text>
+            <view class="rongyao">荣耀值</view>
+            <!-- </image> -->
           </view>
-          <view class="order-info-area introduce">浙江杭州 | 从业5年</view>
-          <view class="order-info-time">薪资：¥1000/天</view>
         </view>
-        <view class="botm">
-          <!-- <image class="img" src="/assets/images/home/rongyao.png"> -->
-          <text class="text">75</text>
-          <view class="rongyao">荣耀值</view>
-          <!-- </image> -->
-        </view>
-      </view>
-      <view class="master-img">
-        <view class="img">
-          <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
-        </view>
-        <view class="img">
-          <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
-        </view>
-        <view class="img">
-          <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="master-info">
-    <view class="left">
-      <image class="img" src="/assets/images/home/icon3.png"></image>
-    </view>
-    <view class="middle">
-      <view class="top">
-        <view class="center">
-          <view>
-            <text class="name">张三</text>
-            <text class="tag">音响师</text>
+        <view class="master-img" wx:if="{{item.caseImage}}">
+          <view class="img">
+            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
           </view>
-          <view class="order-info-area introduce">浙江杭州 | 从业5年</view>
-          <view class="order-info-time">薪资：¥1000/天</view>
-        </view>
-        <view class="botm">
-          <!-- <image class="img" src="/assets/images/home/rongyao.png"> -->
-          <text class="text">75</text>
-          <view class="rongyao">荣耀值</view>
-          <!-- </image> -->
-        </view>
-      </view>
-      <view class="master-img">
-        <view class="img">
-          <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
-        </view>
-        <view class="img">
-          <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
-        </view>
-        <view class="img">
-          <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
+          <view class="img">
+            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
+          </view>
+          <view class="img">
+            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
+          </view>
         </view>
       </view>
     </view>
+
   </view>
 </view>
+<view class="null"></view>
 <!-- 热门活动开始 -->
 <view class="activity">
   <view class="master-tab">
@@ -222,38 +148,19 @@
       </view>
     </view>
   </view>
-  <view class="activity-info">
+  <view class="activity-info" wx:for="{{activityList}}" wx:key="{{index}}">
     <view class="img">
-      <!-- <image src="/assets/images/home/icon4.png"></image> -->
+      <image src="{{item.activityLogo}}"></image>
     </view>
     <view class="bottom">
       <view class="title overhidden1">
-        即将融资，妆业的线下融资是偶们的选择相对湿度版本
+        {{item.activityTheme}}
       </view>
       <view class="area">
-        杭州/20月23日/周五
+        {{item.activityTime}}
       </view>
       <view class="btn">
-        <text>¥22.00</text>
-        <view class="btn-img">
-          <image src="/assets/images/home/button.png"></image>
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="activity-info">
-    <view class="img">
-      <!-- <image src="/assets/images/home/icon4.png"></image> -->
-    </view>
-    <view class="bottom">
-      <view class="title overhidden1">
-        即将融资，妆业的线下融资是偶们的选择相对湿度版本
-      </view>
-      <view class="area">
-        杭州/20月23日/周五
-      </view>
-      <view class="btn">
-        <text>¥22.00</text>
+        <text>{{item.activityFee?'¥'+item.activityFee:'免费'}}</text>
         <view class="btn-img">
           <image src="/assets/images/home/button.png"></image>
         </view>

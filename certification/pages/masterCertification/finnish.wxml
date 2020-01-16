@@ -11,7 +11,7 @@
     恭喜成功入驻平台，快去首页看看有什么需求吧
   </view>
     <view class="btn-box">
-      <button class="pub-btn" formType="submit">
+      <button class="pub-btn" bindtap="submit">
         <text>返回首页</text>
       </button>
     </view>

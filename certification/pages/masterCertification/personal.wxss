@@ -41,13 +41,18 @@ form {
 
 .btn-box {
   position: fixed;
+  z-index: 99;
   bottom: 32rpx;
   width: 100%;
   padding: 0 32rpx;
   box-sizing: border-box;
   height: 88rpx;
   border-radius: 8px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 88rpx;
 }
+
 
 .pub-btn {
   background: rgba(33, 132, 227, 1);

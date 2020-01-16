@@ -3,9 +3,6 @@ const app = getApp();
 const WXAPI = require('../../wxapi/main');
 var util = require('../../../utils/util.js');
 // import uploadImg from '../../xcomponents/uploadpic/up-pic.js'
-let {
-  SUCCESS
-} = require('../../config/base.js');
 let company = {};
 let mulImage = [];
 Page({

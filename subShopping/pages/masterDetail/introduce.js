@@ -1,25 +1,21 @@
-// certification/pages/masterCertification/finnish.js
+// subShopping/pages/masterDetail/introduce.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    introduce:''
+  },
 
-  },
-  submit:function(){
-    wx.switchTab({
-      url: '/pages/home/home',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let introduce = options.value;
+    this.setData({
+      introduce: introduce,
+    });
   },
 
   /**

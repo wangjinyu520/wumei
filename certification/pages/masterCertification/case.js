@@ -1,23 +1,27 @@
 // certification/pages/masterCertification/case.js
-let len = 0;//图片最多能上传的数量
+const WXAPI = require('../../wxapi/main');
+const app = getApp();
+let globalData = app.globalData;
+let len = 0; //图片最多能上传的数量
 let mulImage = [];
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    upload_picture_list:[],
-    caseTitle:true,
-    imgs:[],
-    isShowPic:true,//是否显示上传照片的图片
-    isShowPic1: true,//是否显示上传照片的图片
+    upload_picture_list: [],
+    caseTitle: true,
+    imgs: [],
+    isShowPic: true, //是否显示上传照片的图片
+    isShowPic1: true, //是否显示上传照片的图片
     date: '请输入日期',
-    region: ['请输入地址','',''],
-    caseList:[],
-    form_info:'',//设置清空的
+    region: ['请输入地址', '', ''],
+    caseList: [], //后台提交的列表
+    form_info: '', //设置清空的
+    modalName: ''
   },
   // 选择不同的选图方式
-  chooseWxImage: function (type) {
+  chooseWxImage: function(type) {
     let that = this //获取上下文
     // console.log(that.data.upload_picture_list)  
     let upload_picture_list = that.data.upload_picture_list
@@ -26,7 +30,7 @@ Page({
     this.setData({
       isShowPic: false
     })
-    if (that.data.upload_picture_list.length>0) {
+    if (that.data.upload_picture_list.length > 0) {
       len = that.data.upload_picture_list.length;
     };
     // if (that.data.upload_picture_list.length = 0) {
@@ -40,28 +44,28 @@ Page({
         icon: 'none'
       })
       this.setData({
-        isShowPic1:false
+        isShowPic1: false
       })
       return;
     };
-    
+
     //获取当前已有的图片
     wx.chooseImage({
-      count: 6-len, // 默认9，这里显示一次选择相册的图片数量 
-      sizeType: [ 'compressed'], // 可以指定是原图还是压缩图，默认二者都有  
-      sourceType: [type],// 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) { // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显
+      count: 6 - len, // 默认9，这里显示一次选择相册的图片数量 
+      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有  
+      sourceType: [type], // 可以指定来源是相册还是相机，默认二者都有
+      success: function(res) { // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显
         let tempFiles = res.tempFiles
         console.log(tempFiles);
         //把选择的图片 添加到集合里
-        upload_picture_list=upload_picture_list.concat(tempFiles);
+        upload_picture_list = upload_picture_list.concat(tempFiles);
         //显示
         that.setData({
           upload_picture_list: upload_picture_list,
         });
         that.uploadimage(tempFiles);
       },
-      fail: function () {
+      fail: function() {
         wx.showToast({
           title: '图片上传失败',
           icon: 'none'
@@ -70,12 +74,12 @@ Page({
       }
     })
   },
-  uploadpic: function () {
+  uploadpic: function() {
     var that = this;
     wx.showActionSheet({
       itemList: ['从相册中选择', '拍照'],
       itemColor: "#a3a2a2",
-      success: function (res) {
+      success: function(res) {
         if (!res.cancel) {
           if (res.tapIndex == 0) {
             that.chooseWxImage('album')
@@ -95,7 +99,7 @@ Page({
     this.setData({
       upload_picture_list: upload_picture_list
     });
-                         
+
   },
   // 预览图片
   previewImg(e) {
@@ -111,22 +115,22 @@ Page({
     })
   },
   // 点击上传图片
-  uploadimage: function (tempFiles) {
-    console.log(this.data.upload_picture_list.length);
+  uploadimage: function(tempFiles) {
+    // console.log(this.data.upload_picture_list.length);
     var that = this;
     for (let i = 0; i < tempFiles.length; i++) {
       let filterName = {
         "filterName": "technology"
       }
       wx.uploadFile({
-        url: 'https://www.techwells.com/wumei-server/file/imageUpload',
+        url: 'http://10.20.11.252:8080/wumei-server/file/imageUpload',
         header: {
           'content-type': 'multipart/form-data'
         },
         filePath: tempFiles[i].path,
         formData: filterName,
         name: 'file', //name是后台接收到字段
-        success: function (res) {
+        success: function(res) {
           let str = JSON.parse(res.data);
           if (str.code == 200) {
             mulImage.push(str.data);
@@ -137,24 +141,70 @@ Page({
           }
 
         },
-        fail: function (res) {
+        fail: function(res) {
           console.log(res)
         }
       })
     }
   },
   //  表单提交事件
-  fromSubmit: function (e) {
-    // if (!this.isClick) {
-    //   wx.showToast({
-    //     title: '请勿重复点击',
-    //   })
-    // }
+  fromSubmit: function(e) {
     let that = this;
-    if(mulImage.length>0){
-      setTimeout(function () {
-        let master = e.detail.value;
-        master.imageUrl = mulImage;
+    setTimeout(function() {
+      let master = e.detail.value;
+      console.log(mulImage.length)
+      console.log(master.caseName)
+      console.log(master.caseIntroduce)
+      console.log(master.caseCity)
+      console.log(master.caseTime)
+      console.log(master.caseIntroduce)
+      console.log(master.caseCity)
+      console.log(master.imageUrlArray)
+      if (mulImage.length == 0 && !master.caseName && !master.caseIntroduce && master.caseCity.length == 0 && !master.caseTime) {
+        console.log('失败进来')
+
+      } else {
+        if (mulImage.length == 0) {
+          wx.showToast({
+            title: '案例图片不能为空',
+            icon: 'none',
+            image: '',
+            duration: 1000
+          })
+          return;
+        } else if (master.caseName.length == 0) {
+          wx.showToast({
+            title: '案例名称不能为空',
+            icon: 'none',
+            image: '',
+            duration: 1000
+          })
+          return;
+        } else if (!master.caseTime) {
+          wx.showToast({
+            title: '日期还没有选择',
+            icon: 'none',
+            duration: 1000
+          })
+          return
+        } else if (master.caseCity.length == 0) {
+          wx.showToast({
+            title: '请选择服务城市',
+            icon: 'none',
+            duration: 1000
+          })
+          return
+        } else if (!master.caseIntroduce) {
+          wx.showToast({
+            title: '案例介绍必填',
+            icon: 'none',
+            duration: 1000
+          })
+          return
+        }
+        master.technologyId = wx.getStorageSync('token').userId
+        master.caseCity = master.caseCity[0] + master.caseCity[1] + master.caseCity[2];
+        master.imageUrlArray = mulImage;
         let caseList = that.data.caseList;
         caseList.push(master);
         that.setData({
@@ -167,32 +217,62 @@ Page({
           region: ['请输入地址', '', ''],
         });
         mulImage = []
-
-      }, 1000)
-      console.log(that.data.caseList);
-    }else{
-      wx.showToast({
-        title: '图片上传失败',
-      })
-      return;
-    }
-  
+      }
+    }, 1500)
   },
-  fromReset: function (e) {
+  fromReset: function(e) {
     wx.navigateBack({
       delta: 2
     })
   },
+  showModal(e) {
+    setTimeout(function() {
+      this.setData({
+        modalName: e.currentTarget.dataset.target
+      })
+    }, 1800)
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
+  submitInfo(e) {
+    let that = this;
+    wx.showLoading({
+      title: '正在为您认证',
+    })
+    setTimeout(function() {
+      wx.hideLoading()
+    }, 2000)
+    globalData.addTechnology.caseList = that.data.caseList;
+    let data = globalData.addTechnology;
+    data.userId = wx.getStorageSync('token').userId;
+    WXAPI.addTechnology(data).then(res => {
+      console.log(res)
+      if (res.code == 200) {
+        console.log('sdfbf');
+        wx.setStorageSync("token", res.data)
+        wx.navigateTo({
+          url: '/certification/pages/masterCertification/finnish',
+        })
+      } else {
+        wx.showToast({
+          icon: "none",
+          title: res.message,
+        })
+      }
+    })
+  },
 
 
-
-// 选择器
+  // 选择器
   DateChange(e) {
     this.setData({
       date: e.detail.value
     })
   },
-  RegionChange: function (e) {
+  RegionChange: function(e) {
     this.setData({
       region: e.detail.value
     })
@@ -200,8 +280,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-  },
+  onLoad: function(options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成

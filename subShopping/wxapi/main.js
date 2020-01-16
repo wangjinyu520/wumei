@@ -196,5 +196,17 @@ module.exports = {
   getPronceCity: (data) => {
     return request("/city/getCityList", 'get', data)
   }, 
+  // 获取技术人员类型
+  getTechnologyTypeList: (data) => {
+    return request("/technologyType/getTechnologyTypeList", 'get', data)
+  },
+  // 获取技术人员类型
+  getDemandList: (data) => {
+    return request("/demand/getDemandList", 'get', data)
+  },
+  // 需求详情
+  getRemandInfo: (data) => {
+    return request("/demand/getDemandInfo", 'get', data)
+  },
 
 }

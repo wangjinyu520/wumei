@@ -8,6 +8,7 @@ const WXAPI = require('../../wxapi/main')
 //}from '../../service/home.js'
 
 import {
+
   getProduct,
   getActivity
 } from '../../wxapi/main.js'
@@ -22,6 +23,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    qyopen: false, //点击地铁区域筛选滑动弹窗显示效果，默认不显示
+    qyshow: true, //用户点击闭关区域的弹窗设置，默认不显示
     masters: [],
     activityList:[],
     banners: [],
@@ -112,6 +115,46 @@ Page({
   toTechnology: function () {
     wx.navigateTo({
       url: '/subShopping/pages/technology/technology',
+    })
+  },
+  // 地址区域列表下拉框是否隐藏
+  listqy: function (e) {
+    if (this.data.qyopen) {
+      this.setData({
+        qyopen: false,
+        nzopen: false,
+        pxopen: false,
+        nzshow: true,
+        pxshow: true,
+        qyshow: false,
+        isfull: false,
+        shownavindex: 0
+      })
+    } else {
+      this.setData({
+        qyopen: true,
+        pxopen: false,
+        nzopen: false,
+        nzshow: true,
+        pxshow: true,
+        qyshow: false,
+        isfull: true,
+        shownavindex: e.currentTarget.dataset.nav
+      })
+    }
+
+  },
+  // 点击灰色背景隐藏所有的筛选内容
+  hidebg: function (e) {
+    this.setData({
+      qyopen: false,
+      nzopen: false,
+      pxopen: false,
+      nzshow: true,
+      pxshow: true,
+      qyshow: true,
+      isfull: false,
+      shownavindex: 0,
     })
   },
   

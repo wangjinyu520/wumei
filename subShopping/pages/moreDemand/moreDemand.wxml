@@ -5,7 +5,7 @@
       <view class="search-left">
         <image class="img" src="/assets/images/home/search.png" />
         <!-- <icon class="search-icon" type="search" size="13"></icon> -->
-        <input type="text" class="search-input" placeholder="搜索您的需求" bindtap="turn_search" disabled/>
+        <input type="text" class="search-input" placeholder="搜索您的需求" confirm-type='search' bindinput="inputBind" bindconfirm="getActivityInfo" />
       </view>
       <view class="topub">
         发布需求
@@ -16,15 +16,11 @@
 
   <view class="nav">
     <view class="nav-son {{shownavindex == 1? 'active' : ''}}" bindtap="listqy" data-nav="1">
-      <view class="content">地区</view>
+      <view class="content1">地区</view>
       <view class="icon"></view>
     </view>
-    <!-- <view class="nav-son borders {{shownavindex == 2? 'active' : ''}}" bindtap="list" data-nav="2">
-      <view class="content">价格</view>
-      <view class="icon"></view>
-    </view> -->
     <view class="nav-son {{shownavindex == 3? 'active' : ''}}" bindtap="listpx" data-nav="3">
-      <view class="content">分类</view>
+      <view class="content1">分类</view>
       <view class="icon"></view>
     </view>
   </view>
@@ -52,56 +48,42 @@
       </view>
       <view wx:for="{{cityright}}" class="{{select3 == index?'current3':''}}" bindtap='selectright' data-city="{{index}}" data-code="{{item.code}}" data-name="{{item.name}}">
         <label> {{item.name}}</label>
-        <image src='/images/selectRight.png' style="{{select3 == index?'display:block':'display:none'}}"></image>
       </view>
     </view>
     <view class='form-btn'>
-      <button class='btn-reset' bindtap='quyuEmpty'>重置</button>
+      <button class='btn-reset' bindtap='quyuEmpty'>取消</button>
       <button class='btn-submit' bindtap='submitFilter'>确定</button>
     </view>
   </view>
-  <!-- 价格筛选 -->
-  <!-- <view class="temp temp1 {{nzopen ? 'slidown' : 'slidup'}} {{nzshow ? 'disappear':''}}">
-    <view wx:for="{{content}}">
-      {{item}}
-    </view>
-    <view class='sliderHView'>
-      <view class='showMoney'>
-        <text class='valueSty'>￥{{leftValue}}</text>
-        <text class='valueSty'>￥{{rightValue}}</text>
-      </view>
-      <view class='twoSlider'>
-        <slider style='width:{{leftPer}}%;margin-right:0rpx;' bindchange="leftSchange" min='{{leftMin}}' max='{{leftMax}}' value='{{leftValue}}' activeColor='#cecacb' backgroundColor='#f26a36' block-size='18' step='100' />
-        <slider style='width:{{rightPer}}%;margin-left:0rpx;' bindchange="rightSchange" min='{{rightMin}}' max='{{rightMax}}' value='{{rightValue}}' activeColor='#f26a36' backgroundColor='#cecacb' block-size='18' step='100' />
-      </view>
-    </view>
-    <view class='form-btn'>
-      <button class='btn-reset' bindtap='PriceEmpty'>重置</button>
-      <button class='btn-submit' bindtap='submitPrice'>确定</button>
-    </view>
-  </view> -->
-  <!-- 排序筛选-->
   <view class="temp temp2 contentCenter {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
-    <view wx:for="{{content}}" bindtap='selectPX' data-index="{{index}}" class="pxTable {{pxIndex == index?'current4':''}}">
+    <view wx:for="{{px}}" bindtap='selectPX' data-index="{{index}}" class="pxTable {{pxIndex == index?'current4':''}}" wx:key="{{index}}">
       {{item}}
     </view>
   </view>
   <view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>
-  <view class="content">
-    <view class="content-item">
-      <view class="title">明天在in77半场果冻需要等管事</view>
-      <view class="text">明天在in77半场果冻需要等管事</view>
-      <view class="text">明天在in77半场果冻需要等管事</view>
+  <view class="content" wx:if="{{contentlist}}">
+    <view class="content-item" wx:for="{{contentlist}}" wx:key="{{index}}">
+      <view class="title">{{item.demandTitle}}</view>
+      <view class="text">{{item.demandTime}}</view>
+      <view class="text">{{item.activityTheme}}</view>
+      <view class="text">{{item.technologyType}}</view>
+
       <view class="btn">
         <view class="price">
-          <text class="rent">¥10000</text>
+          <text class="rent">¥{{item.salary}}</text>
           <text class="unit">/天</text>
         </view>
-        <view class="btn-img">
+        <view class="btn-img" bindtap="toApply" data-id="{{item.demandId}}">
           申请
         </view>
       </view>
     </view>
-
+    <view class="tip">{{hasMoreData?'暂无更多数据':''}}</view>
+  </view>
+  <view wx:else class="else">
+    <view class="else-img" >
+      <image src="/assets/images/404.png" />
+      <view class="else-text"> 暂时还没有内容哦</view>
+    </view>
   </view>
 </view>

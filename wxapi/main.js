@@ -169,5 +169,18 @@ module.exports = {
   getMallData: (data) => {
     return request("/home/getMallHomeDetail", 'get', data)
   },
+  // 获取三级地址城市
+  getPronceCity: (data) => {
+    return request("/city/getCityList", 'get', data)
+  },
+  // 获取技术人员类型
+  getTechnologyTypeList: (data) => {
+    return request("/technologyType/getTechnologyTypeList", 'get', data)
+  },
+  // 获取技术人员列表
+  getHotTechnologyList: (data) => {
+    return request("/technology/getHotTechnologyList", 'get', data)
+  },
+
 
 }

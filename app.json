@@ -62,7 +62,8 @@
         "pages/moreDemand/moreDemand",
         "pages/commandDetail/commandDetail",
         "pages/commandDetail/success",
-        "pages/masterDetail/masterDetail"
+        "pages/masterDetail/masterDetail",
+        "pages/masterDetail/introduce"
       ],
       "name": "subShopping"
     },

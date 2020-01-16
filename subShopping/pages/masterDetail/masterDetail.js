@@ -1,4 +1,6 @@
 // subShopping/pages/masterDetail/masterDetail.js
+let userId = '';
+let WXAPI = require('../../wxapi/main.js');
 Page({
 
   /**
@@ -16,6 +18,60 @@ Page({
       name: '用户评价',
 
     }],
+    masterDetail:null,//大师详情
+    isCollect:false,
+  },
+  //联系大师
+  goPhone: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: this.data.masterDetail.phone,
+    })
+  },
+  // 收藏
+  haveSave: function () {
+    let data = {
+      userId: wx.getStorageSync('token').userId,
+      relationId: this.data.masterDetail.userId,
+      collectType: 4
+    }
+    WXAPI.saveActivity(data).then(res => {
+      if (res.code == 200) {
+        this.setData({
+          isCollect: true,
+        })
+        wx.showToast({
+          title: res.message,
+        })
+      } else {
+        wx.showToast({
+          title: res.message,
+        })
+      }
+    })
+
+  },
+  // 取消收藏
+  noSave: function () {
+    let data = {
+      userId: wx.getStorageSync('token').userId,
+      relationId: this.data.masterDetail.userId,
+      collectType: 4  //收藏类型
+    }
+    WXAPI.nosaveActivity(data).then(res => {
+      if (res.code == 200) {
+        this.setData({
+          isCollect: false,
+        })
+        wx.showToast({
+          title: res.message,
+        })
+      } else {
+        wx.showToast({
+          title: res.message,
+        })
+      }
+    })
+
   },
 
   //点击每个导航的点击事件
@@ -31,9 +87,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this;
+    userId = options.id;
+    WXAPI.getDetailInfo({ userId }).then(res => {
+      console.log(res)
+      that.setData({
+        masterDetail: res.data,
+      });
 
+    })
   },
-
+  goIntoduce:function(e){
+    let value = this.data.masterDetail.personalIntroduce;
+    wx.navigateTo({
+      url: '/subShopping/pages/masterDetail/introduce?value=' + value
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

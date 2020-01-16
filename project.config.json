@@ -777,6 +777,13 @@
 					"pathName": "subShopping/pages/masterDetail/masterDetail",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subShopping/pages/masterDetail/introduce",
+					"pathName": "subShopping/pages/masterDetail/introduce",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

@@ -63,6 +63,12 @@ page {
   line-height: 40rpx;
 }
 
+.content-item .text .img {
+  margin-left: 22rpx;
+  width: 22rpx;
+  height: 22rpx;
+}
+
 .btn {
   margin-top: 20rpx;
   width: 100%;
@@ -126,6 +132,7 @@ page {
   width: 106rpx;
   height: 106rpx;
   margin-right: 22rpx;
+  border-radius: 50%;
 }
 
 .action .img {

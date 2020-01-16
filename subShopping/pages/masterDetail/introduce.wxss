@@ -1,0 +1,15 @@
+/* subShopping/pages/masterDetail/introduce.wxss */
+
+page {
+  background: rgba(255, 255, 255, 1);
+}
+
+.content {
+  margin-top: 32rpx;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 45rpx;
+}

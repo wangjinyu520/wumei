@@ -7,7 +7,7 @@ Page({
    */
   data: {
     content: [],
-    px: ['灯光师', '音响师', '视频师', '项目经理', '搭建工头', '平面设计','3D设计'], //排序列表内容
+    px: ['灯光师', '音响师', '视频师', '项目经理', '搭建工头', '平面设计', '3D设计'], //排序列表内容
     qyopen: false, //点击地铁区域筛选滑动弹窗显示效果，默认不显示
     qyshow: true, //用户点击闭关区域的弹窗设置，默认不显示
     nzopen: false, //价格筛选弹窗
@@ -15,7 +15,7 @@ Page({
     nzshow: true,
     pxshow: true,
     isfull: false,
-    reimenflag:true,
+    reimenflag: true,
     cityleft: {}, //获取地铁区域的下拉框筛选项内容
     citycenter: {}, //选择地铁区域左边筛选框后的显示的中间内容部分
     cityright: {}, //选择地铁区域的中间内容部分后显示的右边内容
@@ -26,84 +26,195 @@ Page({
     selectName2: '', //地铁区域选择部分的中间
     selectName3: '', //地铁区域选择部分的右边
     shownavindex: '',
-    // 价格筛选框设置
-    leftMin: 0,
-    leftMax: 10000, //左边滑块最大值
-    rightMin: 0, //右边滑块的最小值
-    rightMax: 10000, //右边滑块最大值
-    leftValue: 1000, //左边滑块默认值
-    rightValue: 6000, //右边滑块默认值
-    leftPer: '50', //左边滑块可滑动长度：百分比
-    rightPer: '50', //右边滑块可滑动长度
+    page: 1,
+    pageSize: 4,
+    contentlist: null, //数据列表,
+    hasMoreData: '',
+    searchValue: '',
+    city: '',
+    technologyType: '' //选中的分类
 
-    pxIndex: 0, //排序内容下拉框，默认第一个
+  },
+  // 获取分类列表
+  getTechnologyTypeList: function(e) {
+    WXAPI.getTechnologyTypeList().then(res => {
+      if (res.code == 200) {
+        res.data = res.data.map(ele => {
+          return ele.typeName
+        })
+        res.data.unshift('全部');
+        this.setData({
+          px: res.data
+        })
+      } else {
+        wx.showToast({
+          icon: "none",
+          title: res.message,
+        })
+      }
+    })
+  },
+  // 获取需求列表的内容
+  getMusicInfo: function(data) {
+    var that = this;
+    WXAPI.getDemandList(data).then(res => {
+      if (res.code == 200) {
+        var contentlistTem = that.data.contentlist //总的数据列表
+        if (res.data) {
+          if (that.data.page == 1) {
+            contentlistTem = []
+          }
+          var contentlist = res.data //contentlist每次返回的个数
+          if (contentlist.length < that.data.pageSize) {
+            that.setData({
+              contentlist: contentlistTem.concat(contentlist),
+              hasMoreData: true
+            })
+          } else {
+            that.setData({
+              contentlist: contentlistTem.concat(contentlist),
+              hasMoreData: false,
+              page: that.data.page + 1
+            })
+            console.log(that.data.page)
+          }
+        } else {
+          that.setData({
+            contentlist: null
+          })
+        }
+      }
+      console.log(that.data.contentlist);
+    })
+  },
+  // 搜索获取值
+  inputBind: function(e) {
+    this.setData({
+      searchValue: e.detail.value
+    })
+  },
+  // 搜索列表后台数据
+  getActivityInfo: function(e) {
+    console.log(this.data.searchValue);
+    this.setData({
+      page: 1
+    })
+    let data = {
+      pageNum: this.data.page,
+      pageSize: this.data.pageSize,
+      demandTitle: this.data.searchValue,
+      city: this.data.city,
+      technologyType: this.data.technologyType,
+    }
+    this.getMusicInfo(data);
+  },
+  // 大师申请订单
+  toApply: function (e) {
+    console.log(e.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: '/subShopping/pages/commandDetail/commandDetail?demandId=' + e.currentTarget.dataset.id,
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let data={
-      level:2
+  onLoad: function(options) {
+    this.getTechnologyTypeList();
+    let data = {
+      level: 2
     }
-    WXAPI.getPronceCity(data).then(res=>{
+    WXAPI.getPronceCity(data).then(res => {
       this.setData({
         cityleft: res.data,
-        select1:-1
-      })  
+        select1: -1
+      })
     })
-   
+    data = {
+      pageNum: this.data.page,
+      pageSize: this.data.pageSize,
+      demandTitle: '',
+      city: '',
+      technologyType: '',
+    }
+    this.getMusicInfo(data);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  onReachBottom: function() {
+    console.log(this.data.hasMoreData);
+    if (!this.data.hasMoreData) {
+      let data = {
+        pageNum: this.data.page,
+        pageSize: this.data.pageSize,
+        demandTitle: this.data.searchValue,
+        city: this.data.city,
+        technologyType: this.data.technologyType,
+      }
+      this.getMusicInfo(data);
+    } else {
+      wx.showToast({
+        title: '没有更多数据',
+        icon: 'none'
+      })
+    }
   },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
+    this.data.page = 1
+    let data = {
+      pageNum: this.data.page,
+      pageSize: this.data.pageSize,
+      demandTitle: this.data.searchValue,
+      city: this.data.city,
+      technologyType: this.data.technologyType,
+    }
+    console.log(this.data.page);
+    this.getMusicInfo(data);
+  },
+
+
+
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
   // 地铁区域列表下拉框是否隐藏
-  listqy: function (e) {
+  listqy: function(e) {
     if (this.data.qyopen) {
       this.setData({
         qyopen: false,
@@ -130,7 +241,7 @@ Page({
 
   },
   // 价格下拉框是否隐藏
-  list: function (e) {
+  list: function(e) {
     if (this.data.nzopen) {
       this.setData({
         nzopen: false,
@@ -157,7 +268,7 @@ Page({
     }
   },
   // 排序下拉框是否隐藏
-  listpx: function (e) {
+  listpx: function(e) {
     if (this.data.pxopen) {
       this.setData({
         nzopen: false,
@@ -185,9 +296,9 @@ Page({
     console.log(e.target)
   },
   // 地铁区域第一栏选择内容
-  selectleft: function (e) {
-    let data={
-      level:3,
+  selectleft: function(e) {
+    let data = {
+      level: 3,
       parentCode: e.target.dataset.code
     }
     this.setData({
@@ -199,13 +310,13 @@ Page({
     });
     WXAPI.getPronceCity(data).then(res => {
       this.setData({
-        citycenter:res.data,
+        citycenter: res.data,
       })
     })
-  
+
   },
   // 地铁区域中间栏选择的内容
-  selectcenter: function (e) {
+  selectcenter: function(e) {
     let data = {
       level: 4,
       parentCode: e.target.dataset.code
@@ -219,17 +330,20 @@ Page({
       this.setData({
         cityright: res.data
       })
+      console.log(res.data)
     })
+  
   },
   // 地铁区域左边栏选择的内容
-  selectright: function (e) {
+  selectright: function(e) {
+    console.log(this.data.cityright);
     this.setData({
       select3: e.currentTarget.dataset.city,
-      selectName3: e.target.dataset.name,
+      selectName3: e.currentTarget.dataset.name,
     });
   },
   // 点击灰色背景隐藏所有的筛选内容
-  hidebg: function (e) {
+  hidebg: function(e) {
     this.setData({
       qyopen: false,
       nzopen: false,
@@ -242,18 +356,35 @@ Page({
     })
   },
   // 地铁区域清空筛选项
-  quyuEmpty: function () {
+  quyuEmpty: function() {
     this.setData({
       select1: '',
       select2: '',
-      select3: '-1'
+      select3: '-1',
+      selectName1: '',
+      selectName2: '',
+      selectName3: '-1',
+      page:1,
+      qyopen: false,
+      nzopen: false,
+      pxopen: false,
+      nzshow: true,
+      pxshow: true,
+      qyshow: false,
+      isfull: false,
     })
+    let data = {
+      pageNum: this.data.page,
+      pageSize: this.data.pageSize,
+      demandTitle: this.data.searchValue,
+      city:'',
+      technologyType: this.data.technologyType,
+    }
+    console.log(this.data.page);
+    this.getMusicInfo(data);
   },
   // 地铁区域选择筛选项后，点击提交
-  submitFilter: function () {
-    console.log('选择的一级选项是：' + this.data.select1);
-    console.log('选择的二级选项是：' + this.data.select2);
-    console.log('选择的三级选项是：' + this.data.select3);
+  submitFilter: function() {
     // 隐藏地铁区域下拉框
     this.setData({
       qyopen: false,
@@ -263,11 +394,30 @@ Page({
       pxshow: true,
       qyshow: false,
       isfull: false,
+      page:1,
       shownavindex: 0
     })
+    this.data.page = 1
+    let city=""
+    if (this.data.selectName1 == this.data.selectName2){
+       city = this.data.selectName1  + this.data.selectName3;
+    }else{
+       city = this.data.selectName1 + this.data.selectName2 + this.data.selectName3;
+    }
+    //地铁区域选中后的第二个子菜单，默认显示地铁下的子菜单
+    let data = {
+      pageNum: this.data.page,
+      pageSize: this.data.pageSize,
+      demandTitle: this.data.searchValue,
+      city: city,
+      technologyType: this.data.technologyType,
+    }
+    console.log(this.data.page);
+    this.getMusicInfo(data);
+
   },
   // 左边滑块滑动的值
-  leftSchange: function (e) {
+  leftSchange: function(e) {
     console.log('左边改变的值为：' + e.detail.value);
     let currentValue = parseInt(e.detail.value);
     let currentPer = parseInt(currentValue)
@@ -277,7 +427,7 @@ Page({
     })
   },
   // 右边滑块滑动的值
-  rightSchange: function (e) {
+  rightSchange: function(e) {
     console.log('右边改变的值为：' + e.detail.value);
     let currentValue = parseInt(e.detail.value);
     var that = this;
@@ -286,31 +436,16 @@ Page({
     })
   },
   // 价格筛选框重置内容
-  PriceEmpty: function () {
+  PriceEmpty: function() {
     this.setData({
       leftValue: 1000, //左边滑块默认值
       rightValue: 6000, //右边滑块默认值
     })
   },
-  // 价格筛选框提交内容
-  submitPrice: function () {
-    // 隐藏价格下拉框选项
-    this.setData({
-      nzopen: false,
-      pxopen: false,
-      qyopen: false,
-      nzshow: false,
-      pxshow: true,
-      qyshow: true,
-      isfull: false,
-      shownavindex: 0
-    })
-  },
   // 排序内容下拉框筛选
-  selectPX: function (e) {
-    console.log('排序内容下拉框筛选的内容是' + e.currentTarget.dataset.index);
+  selectPX: function(e) {
     this.setData({
-      pxIndex: e.currentTarget.dataset.index,
+      technologyType: e.currentTarget.dataset.index,
       nzopen: false,
       pxopen: false,
       qyopen: false,
@@ -318,8 +453,18 @@ Page({
       pxshow: false,
       qyshow: true,
       isfull: false,
-      shownavindex: 0
+      shownavindex: 0,
+      page:1
     });
-    console.log('当前' + this.data.pxIndex);
+    console.log(this.data.city);
+    let data = {
+      pageNum: this.data.page,
+      pageSize: this.data.pageSize,
+      demandTitle: this.data.searchValue,
+      city: this.data.city,
+      technologyType: this.data.technologyType,
+    }
+    this.getMusicInfo(data);
   },
+
 })
