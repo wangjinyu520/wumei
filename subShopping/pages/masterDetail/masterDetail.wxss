@@ -295,6 +295,7 @@ image {
   width: 100%;
   padding: 0 32rpx;
   box-sizing: border-box;
+  height: auto;
 }
 
 .img-list {
@@ -426,7 +427,6 @@ img-nav .taphover {
   width: 160rpx;
   height: 54rpx;
 }
-
 .btn text {
   font-size: 28rpx;
   font-weight: bold;
@@ -654,3 +654,7 @@ image {
   background: #2184e3;
   color: #fff;
 }
+.else{
+  position:relative;
+  top: 0;
+} 

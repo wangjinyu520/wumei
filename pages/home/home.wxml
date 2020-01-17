@@ -91,7 +91,7 @@
     <view class="master-title">
       <text>热门大师</text>
     </view>
-    <view bindtap="goLight" data-type="">
+    <view bindtap="goLight">
       <view class="more">
         <text>更多</text>
       </view>

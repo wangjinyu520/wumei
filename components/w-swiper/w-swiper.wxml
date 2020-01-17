@@ -2,7 +2,7 @@
 <!--展示轮播图-->
 <swiper class="swiper" circular autoplay interval="5000" duration="300" indicator-dots indicator-active-color="#fff">
   <block wx:for="{{list}}" wx:key="{{index}}">
-    <swiper-item class="swiper-item">
+    <swiper-item class="swiper-items">
       <image src="{{item.imageUrl}}" mode="widthFix"/>
     </swiper-item>
   </block>

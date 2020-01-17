@@ -64,7 +64,7 @@ page {
 }
 
 .content-item .text .img {
-  margin-left: 22rpx;
+  margin-right: 10rpx;
   width: 22rpx;
   height: 22rpx;
 }

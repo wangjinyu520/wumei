@@ -34,7 +34,7 @@
         <view class="title">案例介绍</view>
       </view>
       <view class="line">
-        <textarea placeholder="请输入案例介绍..." auto-focus name="personalIntroduce" value="{{item.caseIntroduce}}"></textarea>
+        <textarea placeholder="请输入案例介绍..." name="personalIntroduce" value="{{item.caseIntroduce}}"></textarea>
       </view>
     </view>
   </view>

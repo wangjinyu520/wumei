@@ -1,5 +1,6 @@
 // subShopping/pages/commandDetail/commandDetail.js
 let WXAPI = require('../../wxapi/main.js');
+let demandId=1;
 Page({
 
   /**
@@ -8,13 +9,20 @@ Page({
   data: {
     demandDetail:null,
     isCollect: false,
+    phoneNumber:'',
+  },
+  //联系发布人
+  goPhone: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: this.data.demandDetail.contact,
+    })
   },
   // 收藏
   haveSave: function () {
     let data = {
       userId: wx.getStorageSync('token').userId,
-      relationId: this.data.masterDetail.userId,
-      collectType: 4
+      relationId:demandId,
+      collectType: 5
     }
     WXAPI.saveActivity(data).then(res => {
       if (res.code == 200) {
@@ -36,8 +44,8 @@ Page({
   noSave: function () {
     let data = {
       userId: wx.getStorageSync('token').userId,
-      relationId: this.data.masterDetail.userId,
-      collectType: 4  //收藏类型
+      relationId:demandId,
+      collectType: 5 //收藏类型
     }
     WXAPI.nosaveActivity(data).then(res => {
       if (res.code == 200) {
@@ -55,11 +63,37 @@ Page({
     })
 
   },
+  // 大师申请需求
+  applyComand: function () {
+    let data = {
+      userId: wx.getStorageSync('token').userId,
+      demandId: 1,
+    }
+    WXAPI.addDemandApply(data).then(res => {
+      wx.showLoading({
+        title: '正在为您申请',
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
+      console.log(res)
+      if (res.code == 200) {
+        wx.navigateTo({
+          url: '/subShopping/pages/commandDetail/success'
+        })
+      } else {
+        wx.showToast({
+          title: res.message,
+        })
+      }
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   let demandId = options.demandId;
+   demandId = options.demandId;
     WXAPI.getRemandInfo({ demandId }).then(res => {
       this.setData({
         demandDetail: res.data,

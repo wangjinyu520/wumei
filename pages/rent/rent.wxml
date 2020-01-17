@@ -5,21 +5,23 @@
     <image class="background" src="/assets/common/rectangle.png"></image>
   </block>
   <!--搜索框-->
- <view class="search">
+  <view class="search">
     <view class="search-left">
       <icon class="search-icon" type="search" size="13"></icon>
       <input type="text" class="search-input" placeholder="搜索" bindtap="turn_search" disabled/>
     </view>
   </view>
   <!--展示轮播图-->
-    <w-swiper list="{{banners}}" class="swiper"/>
+  <view class="swipers">
+    <w-swiper list="{{banners}}" />
+  </view>
   <!--推荐数据-->
   <view class="recommend">
     <view class="tab-control">
       <w-tab-control class='tab-control' titles="{{titles}}" bind:tabclick="tabClick" />
     </view>
-    <w-select prop-array='{{selectArray}}' class="w-select"  bind:selectedItem="selectedItem" />
-    <w-select1 prop-array='{{selectArray1}}' class="w-select1"  bind:selectedItem1="selectedItem1" />
+    <w-select prop-array='{{selectArray}}' class="w-select" bind:selectedItem="selectedItem" />
+    <w-select1 prop-array='{{selectArray1}}' class="w-select1" bind:selectedItem1="selectedItem1" />
   </view>
-  <commodity commoditylist="{{contentlist}}"/>
+  <commodity commoditylist="{{contentlist}}" />
 </view>

@@ -69,7 +69,7 @@ Page({
       })
       return;
     }
-    if (token.userType==3) {
+    if (token.userType == 3) {
       wx.showModal({
         title: '',
         content: '您已经是大师了，是想编辑大师信息吗',
@@ -79,7 +79,7 @@ Page({
               url: '/subShopping/pages/masterEditor/masterEditor',
             })
           } else if (res.cancel) {
-           
+
           }
         }
       })
@@ -88,28 +88,28 @@ Page({
     let companyId = wx.getStorageSync('companyId');
     if (companyId) {
       wx.showToast({
-        icon: 'none' ,
+        icon: 'none',
         title: '你已经是主办方身份，不能再申请大师身份',
       })
       return
     }
     let isAuthentication = wx.getStorageSync('token').isAuthentication;
-    if (!isAuthentication){
+    if (!isAuthentication) {
       wx.showToast({
         icon: 'none',
         title: "技术人员需要实名哦",
-        success: function (res) {
+        success: function(res) {
           wx.navigateTo({
-            url: 'certification/pages/certification/certification'
+            url: '/certification/pages/certification/certification'
           })
-         }
+        }
       })
-     return
+      return
     }
-      wx.navigateTo({
-        url: '/subShopping/pages/masterRegister/masterRegister',
-      })
-    
+    wx.navigateTo({
+      url: '/certification/pages/masterCertification/masterCertification',
+    })
+
   },
   toAddress: function() {
     wx.navigateTo({
@@ -140,7 +140,7 @@ Page({
       this.setData({
         userInfo: tokens
       });
-    }else {
+    } else {
       wx.getUserInfo({
         success: function(res) {
           // console.log(res);
@@ -152,9 +152,9 @@ Page({
           // console.log(userInfo);
           WXAPI.modifyUser(userInfo).then(res => {
             console.log(res.data);
-            let token=wx.getStorageSync('token');
-            token.userIcon=res.data.userIcon;
-            token.nickName=res.data.nickName;
+            let token = wx.getStorageSync('token');
+            token.userIcon = res.data.userIcon;
+            token.nickName = res.data.nickName;
             wx.setStorageSync('token', token);
           })
         }
@@ -189,16 +189,15 @@ Page({
                   res.data.avatarUrl = res.data.userIcon;
                 }
                 that.setData({
-                  userInfo:res.data
+                  userInfo: res.data
                 });
               }
               wx.setStorageSync('token', res.data);
               if (res.data.companyId) {
                 wx.setStorageSync('companyId', res.data.companyId);
               }
-              wx.navigateBack({
-              })
-            
+              wx.navigateBack({})
+
             } else if (res.code == 11211) {
               wx.showModal({
                 title: '',
@@ -223,9 +222,9 @@ Page({
       return;
     }
     if (token.userType == 3) {
-     wx.showToast({
-       title: '您已经是大师，不能再注册主办方身份',
-     })
+      wx.showToast({
+        title: '您已经是大师，不能再注册主办方身份',
+      })
       return;
     }
     let userId = wx.getStorageSync('token').userId;
@@ -242,7 +241,7 @@ Page({
           url: '/subShopping/pages/bossCertification/bossCertification',
         })
       } else if (res.code == 200) {
-        wx.navigateTo({ 
+        wx.navigateTo({
           url: '/subShopping/pages/boss/boss',
         })
       }
@@ -271,7 +270,7 @@ Page({
         openDisplay: true
       })
       let tokens = wx.getStorageSync('token');
-    
+
       if (tokens.nickName) {
         if (tokens.userIcon) {
           tokens.avatarUrl = tokens.userIcon;
@@ -294,8 +293,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    wx.showTabBar({ 
-    }) 
+    wx.showTabBar({})
     let token = wx.getStorageSync('token').userName;
     if (token) {
       this.setData({

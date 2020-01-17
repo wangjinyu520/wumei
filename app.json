@@ -10,6 +10,9 @@
     {
       "root": "subShopping",
       "pages": [
+        "pages/popularMaster/popularMaster",
+        "pages/requireSuccess/requireSuccess",
+        "pages/publishRequirements/publishRequirements",
         "pages/masterEditor/masterEditor",
         "pages/activityDetails/activityDetails",
         "pages/buyticket/buyticket",
@@ -93,7 +96,9 @@
         "pages/masterCertification/masterCertification",
         "pages/masterCertification/personal",
         "pages/masterCertification/case",
-        "pages/masterCertification/finnish"
+        "pages/masterCertification/finnish",
+        "pages/masterModify/masterModify"
+      
       ],
       "name": "certification"
     }

@@ -226,8 +226,9 @@ Page({
     })
   },
   showModal(e) {
+  let  that=this;
     setTimeout(function() {
-      this.setData({
+      that.setData({
         modalName: e.currentTarget.dataset.target
       })
     }, 1800)

@@ -25,6 +25,12 @@ Page({
       showView: true
     })
   },
+  //大师更多页面
+  goLight: function (e) {
+    wx.navigateTo({
+      url: '/subShopping/pages/popularMaster/popularMaster',
+    })
+  },
   // 大师类型
   getTechnologyTypeList: function(e) {
     WXAPI.getTechnologyTypeList().then(res => {

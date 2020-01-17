@@ -100,107 +100,60 @@
 
   <!-- html课程 -->
   <view class="master-content" hidden='{{currentId!=0}}'>
+    <view wx:if="{{caseList}}">
+      <view class="img-nav">
+        <view style="margin-right:20rpx;">
+          <image src="/assets/images/master/huo.png" bindtap="huoSort"></image>
+          按热度
+        </view>
+        <view>
+          <image src="/assets/images/master/zhong.png" bindtap="timeSort"></image>
+          按时间
+        </view>
+      </view>
 
-    <view class="img-nav">
-      <view style="margin-right:20rpx;">
-        <image src="/assets/images/master/huo.png" bindtap="huoSort"></image>
-        按热度
+      <view class="img-list">
+        <view class="img-left">
+          <view wx:for="{{caseList}}" wx:key="{{index}}">
+            <view class="img-item" wx:if="{{index%2==0}}">
+              <image src="{{item.imageCover}}"></image>
+              <view class="img-item-bot">
+                <!-- <view class="text overhidden">
+               {{item.caseName}}
+              </view> -->
+                <view class="xinxin">
+                  <image src="/assets/images/master/xinxin.png"></image>
+                  {{item.pvCount}}
+                </view>
+              </view>
+
+
+            </view>
+          </view>
+        </view>
+        <view class="img-right">
+          <view wx:for="{{caseList}}" wx:key="{{index}}">
+            <view class="img-item" wx:if="{{index%2==1}}">
+              <image src="{{item.imageCover}}"></image>
+              <view class="img-item-bot">
+                <!-- <view class="text overhidden">
+               {{item.caseName}}
+              </view> -->
+                <view class="xinxin">
+                  <image src="/assets/images/master/xinxin.png"></image>
+                  {{item.pvCount}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
       </view>
-      <view>
-        <image src="/assets/images/master/zhong.png" bindtap="timeSort"></image>
-        按时间
-      </view>
+
     </view>
-
-    <view class="img-list">
-      <view class="img-left">
-
-        <view class="img-item">
-          <image src="/assets/images/master/evaluate.png"></image>
-          <view class="img-item-bot">
-            <view class="text overhidden">
-              在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
-            </view>
-            <view class="xinxin">
-              <image src="/assets/images/master/xinxin.png"></image>
-              12
-            </view>
-          </view>
-
-
-        </view>
-        <view class="img-item">
-          <image src="/assets/images/master/evaluate.png"></image>
-          <view class="img-item-bot">
-            <view class="text overhidden">
-              在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
-            </view>
-            <view class="xinxin">
-              <image src="/assets/images/master/xinxin.png"></image>
-              12
-            </view>
-          </view>
-
-
-        </view>
-        <view class="img-item">
-          <image src="/assets/images/master/evaluate.png"></image>
-          <view class="img-item-bot">
-            <view class="text overhidden">
-              在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
-            </view>
-            <view class="xinxin">
-              <image src="/assets/images/master/xinxin.png"></image>
-              12
-            </view>
-          </view>
-
-
-        </view>
-      </view>
-      <view class="img-right">
-
-        <view class="img-item">
-          <image src="/assets/images/master/evaluate.png"></image>
-          <view class="img-item-bot">
-            <view class="text overhidden" wx:if="cvcv">
-
-            </view>
-            <view class="xinxin">
-              <image src="/assets/images/master/xinxin.png"></image>
-              12
-            </view>
-          </view>
-
-
-        </view>
-        <view class="img-item">
-          <image src="/assets/images/master/evaluate.png"></image>
-          <view class="img-item-bot">
-            <view class="text overhidden" wx:if="cvcv">
-
-            </view>
-            <view class="xinxin">
-              <image src="/assets/images/master/xinxin.png"></image>
-              12
-            </view>
-          </view>
-
-
-        </view>
-        <view class="img-item">
-          <image src="/assets/images/master/evaluate.png"></image>
-          <view class="img-item-bot">
-            <view class="text overhidden">
-              在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识 在录影棚里面和老师学习到很多的知识
-            </view>
-            <view class="xinxin">
-              <image src="/assets/images/master/xinxin.png"></image>
-              12
-            </view>
-          </view>
-
-        </view>
+    <view wx:else class="else" style="height:250px">
+      <view class="else-img">
+        <image src="/assets/images/404.png" />
+        <view class="else-text"> 暂时还没有内容哦</view>
       </view>
     </view>
 
@@ -208,33 +161,27 @@
   </view>
   <!-- css课程 -->
   <view class="master-content" hidden='{{currentId!=1}}'>
-    <view class="activity-info">
-      <view class="img">
-        <!-- <image src="/assets/images/home/icon4.png"></image> -->
-      </view>
-      <view class="bottom">
-        <view class="title overhidden1">
-          即将融资，妆业的线下融资是偶们的选择相对湿度版本
+    <view wx:if="{{caseList}}">
+      <view class="activity-info" wx:for="{{caseList}}" wx:key="{{index}}">
+        <view class="img">
+          <image src="{{item.imageUrl}}"></image>
         </view>
-        <view class="area">
-          杭州/20月23日/周五
-        </view>
-      </view>
-    </view>
-    <view class="activity-info">
-      <view class="img">
-        <!-- <image src="/assets/images/home/icon4.png"></image> -->
-      </view>
-      <view class="bottom">
-        <view class="title overhidden1">
-          即将融资，妆业的线下融资是偶们的选择相对湿度版本
-        </view>
-        <view class="area">
-          杭州/20月23日/周五
+        <view class="bottom">
+          <view class="title overhidden1">
+            {{item.caseName}}
+          </view>
+          <view class="area">
+            {{item.caseCity}}
+          </view>
         </view>
       </view>
     </view>
-
+    <view wx:else class="else" style="height:250px">
+      <view class="else-img">
+        <image src="/assets/images/404.png" />
+        <view class="else-text"> 暂时还没有内容哦</view>
+      </view>
+    </view>
   </view>
   <!-- 用户评价 -->
   <view class="master-content" hidden='{{currentId!=2}}'>
@@ -283,7 +230,7 @@
         </view>
       </view>
     </view>
-      <view class="master-info">
+    <view class="master-info">
       <view class="left">
         <image class="img" src="/assets/images/home/icon3.png"></image>
       </view>
@@ -302,7 +249,6 @@
                 <image src="/assets/images/master/evaluate.png"></image>
                 <image src="/assets/images/master/evaluate1.png"></image>
               </view>
-
             </view>
           </view>
           <view class="time">
@@ -343,7 +289,7 @@
     </view>
 
 
-    <view class="share"  bindtap="goPhone">
+    <view class="share" bindtap="goPhone">
       <button></button>
       <view>
         <image class="share-img" src="/assets/images/master/xiaoxi.png"></image>
@@ -357,7 +303,7 @@
     <button class="chat" bindtap="powerDrawer" data-statu="open">
       <text>加入购物车</text>
     </button>
-        <button class="chat xiadan" bindtap="powerDrawer" data-statu="open">
+    <button class="chat xiadan" bindtap="powerDrawer" data-statu="open">
       <text>立即下单</text>
     </button>
   </view>

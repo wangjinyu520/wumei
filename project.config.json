@@ -724,8 +724,8 @@
 				},
 				{
 					"id": 95,
-					"name": "certification/pages/masterCertification/masterCertification",
-					"pathName": "certification/pages/masterCertification/masterCertification",
+					"name": "certification/pages/masterModify/masterModify",
+					"pathName": "certification/pages/masterModify/masterModify",
 					"query": "",
 					"scene": null
 				},
@@ -766,8 +766,8 @@
 				},
 				{
 					"id": 101,
-					"name": "subShopping/pages/commandDetail/success",
-					"pathName": "subShopping/pages/commandDetail/success",
+					"name": "subShopping/pages/popularMaster/popularMaster",
+					"pathName": "subShopping/pages/popularMaster/popularMaster",
 					"query": "",
 					"scene": null
 				},
@@ -782,6 +782,20 @@
 					"id": -1,
 					"name": "subShopping/pages/masterDetail/introduce",
 					"pathName": "subShopping/pages/masterDetail/introduce",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 104,
+					"name": "subShopping/pages/publishRequirements/publishRequirements",
+					"pathName": "subShopping/pages/publishRequirements/publishRequirements",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 105,
+					"name": "subShopping/pages/masterModify/masterModify",
+					"pathName": "subShopping/pages/masterModify/masterModify",
 					"query": "",
 					"scene": null
 				}

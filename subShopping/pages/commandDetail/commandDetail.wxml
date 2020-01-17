@@ -47,13 +47,12 @@
   <view class="til">
     需求发布人
   </view>
-
   <view class="cu-item">
     <view class="con-left">
       <image class="img " src="{{demandDetail.userIcon}}"></image>
       <text class="text-grey">{{demandDetail.contacts}}</text>
     </view>
-    <view class="action">
+    <view class="action" bindtap="goPhone">
       <view class="cu-avatar-group">
         <image class="img " src="/assets/images/remand/phone.png"></image>
       </view>
@@ -101,8 +100,8 @@
   <view class="mid">
   </view>
   <view class="right">
-    <button class="chat" bindtap="powerDrawer" data-statu="open">
-      <text>立即抢票</text>
+    <button class="chat" bindtap="applyComand" >
+      <text>立即申请</text>
     </button>
   </view>
 

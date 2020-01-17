@@ -27,25 +27,25 @@
   <!-- 地铁区域-》区域、地铁标签 -->
   <view class="quyu {{qyopen ? 'slidown' : 'slidup'}} {{qyshow ? 'disappear':''}}">
     <view class="qy quyu-left">
-      <view class="{{reimenflag? 'current' : ''}}">
+      <!-- <view class="{{reimenflag? 'current' : ''}}">
         热门
-      </view>
+      </view> -->
       <view class="{{select1 == index ? 'current' : ''}}" wx:for="{{cityleft}}" bindtap="selectleft" data-city='{{index}}' data-code="{{item.code}}" data-name="{{item.name}}">
         {{item.name}}
       </view>
     </view>
     <view class="qy quyu-center">
-      <view class="{{select2 == -1 ? 'current2' : ''}}">
+      <!-- <view class="{{select2 == -1 ? 'current2' : ''}}">
         全省
-      </view>
+      </view> -->
       <view class="{{select2 == index ? 'current2' : ''}}" wx:for="{{citycenter}}" bindtap="selectcenter" data-city='{{index}}' data-code="{{item.code}}" data-name="{{item.name}}">
         {{item.name}}
       </view>
     </view>
     <view class="qy quyu-right">
-      <view class="{{select3 == -1 ? 'current3' : ''}}">
+      <!-- <view class="{{select3 == -1 ? 'current3' : ''}}">
         全市
-      </view>
+      </view> -->
       <view wx:for="{{cityright}}" class="{{select3 == index?'current3':''}}" bindtap='selectright' data-city="{{index}}" data-code="{{item.code}}" data-name="{{item.name}}">
         <label> {{item.name}}</label>
       </view>

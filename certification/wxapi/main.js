@@ -41,5 +41,9 @@ module.exports = {
   getTechnologyTypeList: (data) => {
     return request("/technologyType/getTechnologyTypeList", 'get', data)
   },
+  // 获取大师的详细信息
+  getDetailInfo: (data) => {
+    return request("/technology/getTechnologyInfo", 'get', data)
+  },
 
 }

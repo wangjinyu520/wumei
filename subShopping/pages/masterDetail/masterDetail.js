@@ -20,6 +20,7 @@ Page({
     }],
     masterDetail:null,//大师详情
     isCollect:false,
+    caseList:[]
   },
   //联系大师
   goPhone: function (e) {
@@ -93,6 +94,7 @@ Page({
       console.log(res)
       that.setData({
         masterDetail: res.data,
+        caseList: res.data.caseList
       });
 
     })

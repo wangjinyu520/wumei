@@ -208,5 +208,27 @@ module.exports = {
   getRemandInfo: (data) => {
     return request("/demand/getDemandInfo", 'get', data)
   },
+  // 大师申请需求
+  addDemandApply: (data) => {
+    return request("/demandApply/addDemandApply", 'post', data)
+  },
+
+
+  //获取技术人员类型列表
+  getTechnologyTypeList: (data) => {
+    return request("/technologyType/getTechnologyTypeList", 'get', data)
+  },
+  //提交需求表单
+  addDemand: (data) => {
+    return request("/demand/addDemand", 'post', data)
+  },
+  // 获取三级地址城市
+  getPronceCity: (data) => {
+    return request("/city/getCityList", 'get', data)
+  },
+  //获取大师列表
+  getHotTechnologyList: (data) => {
+    return request("/technology/getHotTechnologyList", 'get', data)
+  },
 
 }

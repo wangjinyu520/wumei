@@ -124,6 +124,7 @@ Page({
       level: 2
     }
     WXAPI.getPronceCity(data).then(res => {
+      res.data.unshift({name:'全国'})
       this.setData({
         cityleft: res.data,
         select1: -1
@@ -360,7 +361,7 @@ Page({
     this.setData({
       select1: '',
       select2: '',
-      select3: '-1',
+      select3: '',
       selectName1: '',
       selectName2: '',
       selectName3: '-1',
