@@ -296,7 +296,6 @@ button {
   color: #666;
   margin-top: 13px;
 }
-
 .active-b {
   margin-left: auto;
   text-align: right;

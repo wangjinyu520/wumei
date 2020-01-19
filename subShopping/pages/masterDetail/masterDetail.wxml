@@ -285,11 +285,54 @@
       </view>
     </view>
   </view>
-  <view class="right">
-    <view class="chat" bindtap="goPhone">
-      <image  src="/assets/images/master/call.png"></image>
-      <text>联系TA</text>
+  <view class="right" bindtap="tobuy">
+    <view class="chat">
+      <text>立即下单</text>
     </view>
   </view>
-
+</view>
+<view class="show-popup" hidden="{{hideShopPopup}}">
+  <view class="popup-mask" bindtap="closePopupTap"></view>
+  <view class="popup-contents">
+    <!-- <view class="pop-goods-info">
+      <view class="pop-img-box">
+        <image src="{{goodsDetail.basicInfo.pic}}" class="goods-thumbnail" />
+      </view>
+      <view class="pop-goods-des">
+        <view class="pop-goods-title">{{goodsDetail.basicInfo.name}}</view>
+        <view class="pop-goods-price" wx:if="{{shopType =='addShopCar' || shopType =='tobuy'}}">¥ {{selectSizePrice}}</view>
+        <view class="pop-goods-price" wx:if="{{shopType =='pingtuan'}}">¥ {{selectptPrice}}</view>
+      </view>
+      <view class="pop-goods-close" bindtap="closePopupTap"></view>
+    </view>
+    <view class="size-label-box">
+      <block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">
+        <view class="label">{{property.name}}</view>
+        <view class="label-item-box">
+          <view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" wx:key="id" bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.id}}" data-propertyname="{{property.name}}" data-propertychildindex="{{index}}"
+            data-propertychildid="{{item.id}}" data-propertychildname="{{item.name}}">
+            {{item.name}}
+          </view>
+        </view>
+      </block>
+    </view> -->
+    <view class="buy-num-box">
+      <view class="num-label">购买数量</view>
+      <view class="num-box">
+        <picker mode="date" value="{{startDate}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+          <view class="picker">
+            {{startDate?startDate:'开始时间'}}
+          </view>
+        </picker>----
+        <view class="totalDay">{{totalDay}}</view>----
+        <picker  mode="date" value="{{endDate}}" start="2015-09-01" end="2020-09-01" bindchange="endDateChange">
+          <view class="picker">
+            {{endDate?endDate:'结束时间'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="popup-join-btn" wx:if="{{shopType =='addShopCar'}}" bindtap="addShopCar">加入购物车</view>
+    <view class="popup-join-btn" wx:if="{{shopType =='tobuy'}}" bindtap="buyNow"> 立即购买</view>
+  </view>
 </view>

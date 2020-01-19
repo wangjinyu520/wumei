@@ -10,6 +10,7 @@
     {
       "root": "subShopping",
       "pages": [
+        "pages/pay-order/pay-order",
         "pages/popularMaster/popularMaster",
         "pages/requireSuccess/requireSuccess",
         "pages/publishRequirements/publishRequirements",
@@ -87,7 +88,9 @@
         "pages/advice/advice",
         "pages/collect/collect",
         "pages/userActivity/userActivity",
-        "pages/myPublic/myPublic"
+        "pages/myPublic/myPublic",
+        "pages/editorRemad/editorRemad",
+        "pages/editorRemad/success"
       ],
       "name": "subMy"
     },
@@ -140,18 +143,6 @@
         "text": "严选租赁",
         "iconPath": "/assets/images/tabbar/rent.png",
         "selectedIconPath": "/assets/images/tabbar/rent_active.png"
-      },
-      {
-        "pagePath": "pages/publish/publish",
-        "text": "",
-        "iconPath": "/assets/images/tabbar/publish.png",
-        "selectedIconPath": "/assets/images/tabbar/publish.png"
-      },
-      {
-        "pagePath": "pages/mall/mall",
-        "text": "商城",
-        "iconPath": "/assets/images/tabbar/mall.png",
-        "selectedIconPath": "/assets/images/tabbar/mall_active.png"
       },
       {
         "pagePath": "pages/profile/profile",

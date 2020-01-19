@@ -1,0 +1,132 @@
+<!--pages/mall/mall.wxml-->
+
+<view class="mall">
+  <block class="background-position">
+    <image class="background" src="/assets/common/rectangle.png"></image>
+  </block>
+  <!--搜索框-->
+  <view class="search">
+    <view class="search-left">
+      <icon class="search-icon" type="search" size="13"></icon>
+      <input type="text" class="search-input" placeholder="搜索" bindtap="turn_search" disabled/>
+    </view>
+    <view class="cartright" bindtap="">
+      <image class="img" src="/assets/images/mall/cart.png" />
+    </view>
+  </view>
+
+  <!--轮播图-->
+  <w-swiper class="swiper" list="{{banners}}" />
+
+  <!--icon展示-->
+  <view class="icons">
+    <!-- <view class="icon-classify"> -->
+    <view class="icon-top">
+      <view class="icon-item" bindtap="goLight" data-type="1">
+        <image class="icon-icon" src="/assets/images/mall/light.png"></image>
+        <view class="text">灯光</view>
+      </view>
+      <view class="icon-item" bindtap="goLight" data-type="2">
+        <image class="icon-icon" src="/assets/images/mall/audio.png"></image>
+        <view class="text">音响</view>
+      </view>
+      <view class="icon-item" bindtap="goLight" data-type="3">
+        <image class="icon-icon" src="/assets/images/mall/video.png"></image>
+        <view class="text">视频</view>
+      </view>
+      <view class="icon-item" bindtap="goLight" data-type="4">
+        <image class="icon-icon" src="/assets/images/mall/truss.png"></image>
+        <view class="text">舞台桁架</view>
+      </view>
+    </view>
+    <view class="icon-bottom">
+      <view class="icon-item" bindtap="goLight" data-type="5">
+        <image class="icon-icon" src="/assets/images/mall/ambitus.png"></image>
+        <view class="text">耗材周边</view>
+      </view>
+      <view class="icon-item" bindtap="goLight" data-type="6">
+        <image class="icon-icon" src="/assets/images/mall/all.png"></image>
+        <view class="text">全部</view>
+      </view>
+    </view>
+    <!-- </view> -->
+  </view>
+  <!--厂家推荐-->
+  <view class="factory">
+    <view class="factory-tab">
+      <view class="factory-title">
+        <text>厂家推荐</text>
+      </view>
+      <view class="more" bindtap="goFactory">
+        <text>更多</text>
+        <image src="/assets/common/master-right.png" class="icon-more" />
+      </view>
+    </view>
+
+    <view class="factory-list">
+      <view class="factory-item" wx:for="{{merchantTask}}">
+        <image src="{{item.userIcon}}"></image>
+      </view>
+    </view>
+  </view>
+
+  <!--好货推荐-->
+  <view class="goods">
+    <view class="goods-tab">
+      <view class="goods-title">
+        <text>好货推荐</text>
+      </view>
+      <view class="more" bindtap="goGoods">
+        <text>更多</text>
+        <image src="/assets/common/master-right.png" class="icon-more" />
+      </view>
+    </view>
+    <view class="goods-list" bindtap="toDetailsGoods">
+      <block wx:for="{{productTask}}" wx:key="{{index}}">
+      <view class="goods-content">
+        <image class="goods-img" src="{{}}"></image>
+        <view class="goods-desc">
+          <view class="goods-name overhidden">{{item.productName}}</view>
+          <view class="goods-price">¥{{item.salePrice}}</view>
+          <view class="goods-shop">{{item.merchantName}}</view>
+        </view>
+      </view>
+      </block>
+    </view>
+  </view>
+  <!--拼团采购-->
+  <view class="assemble">
+    <view class="assemble-tab">
+      <view class="assemble-title">
+        <text>拼团采购</text>
+      </view>
+      <view class="more" bindtap="toAssemble">
+        <text>更多</text>
+        <image src="/assets/common/master-right.png" class="icon-more" />
+      </view>
+    </view>
+
+    <view class="assemble-list">
+      <view class="assemble-content"  wx:for="{{joinTask}}">
+        <image class="assemble-img" src="{{item.productIcon}}"></image>
+        <view class="assemble-desc">
+          <view class="assemble-name overhidden">{{item.productName}}</view>
+          <!-- <view class="assemble-type">
+            <text>寿命长</text>
+            <text>寿命长</text>
+          </view> -->
+          <view class="assemble-bottom">
+            <view class="price">
+              <view class="assemble-evey">日常价 ¥{{item.originalPrice}}</view>
+              <view class="assemble-price">拼团价 ¥{{item.currentPrice}}</view>
+            </view>
+            <button class="assemble-btn" bindtap="toDetailsAssemble">
+              <text>去拼团</text>
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

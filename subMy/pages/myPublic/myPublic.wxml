@@ -6,7 +6,7 @@
     <view class="text">{{item.technologyType}}</view>
 
     <view class="btn">
-      <view class="edit btn-item">
+      <view class="edit btn-item" bindtap="toEditer" data-id="{{item.demandId}}">
         编辑
       </view>
       <button class="share btn-item" open-type='share'>
@@ -32,7 +32,7 @@
         <view>
           <view class="action bg-white">
             <button class="cu-btn btn-default" bindtap="hideModal">取消</button>
-            <button class="cu-btn btn-active" bindtap="submitDelete">确定</button>
+            <button class="cu-btn btn-active" bindtap="submitDelete" data-index="{{index}}">确定</button>
           </view>
         </view>
       </view>

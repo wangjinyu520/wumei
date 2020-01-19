@@ -1,6 +1,6 @@
-const API_BASE_URL = "http://10.20.11.252:8080/wumei-server"
+// const API_BASE_URL = "http://10.20.11.252:8080/wumei-server"
 // const API_BASE_URL = "http://101.133.164.180:8080/wumei-server"
-// const API_BASE_URL = "https://www.techwells.com/wumei-server";
+const API_BASE_URL = "https://www.techwells.com/wumei-server";
 
 const request = (url, method, data) => {
   let _url = API_BASE_URL + url
@@ -195,7 +195,7 @@ module.exports = {
   // 获取三级地址城市
   getPronceCity: (data) => {
     return request("/city/getCityList", 'get', data)
-  }, 
+  },
   // 获取技术人员类型
   getTechnologyTypeList: (data) => {
     return request("/technologyType/getTechnologyTypeList", 'get', data)
@@ -238,5 +238,6 @@ module.exports = {
   getTechnologyCaseList: (data) => {
     return request("/technologyCase/getTechnologyCaseList", 'get', data)
   },
+ 
 
 }

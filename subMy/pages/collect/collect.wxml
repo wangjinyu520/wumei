@@ -37,7 +37,6 @@
   <view wx:elif="{{contentlist1}}">
     <block wx:for="{{contentlist1}}" wx:key="{{index}}">
       <view class="content">
-      <navigator url="">
       <image class="img" src="{{item.commodityIcon}}"></image>
         <view class="goods">
           <view class="title">{{item.commodityName}}</view>
@@ -47,10 +46,7 @@
               查看详情
             </button>
           </view>
-
         </view>
-      </navigator>
-        
       </view>
     </block>
     <view class="tip">{{hasMoreData?'暂无更多数据':''}}</view>

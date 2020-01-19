@@ -26,11 +26,17 @@ Page({
     }
     WXAPI.deleteDemand(data).then(res => {
       if (res.code == 200) {
-
-        this.setData({
+        that.data.contentlist.splice(e.currentTarget.dataset.index, 1);
+        that.setData({
           modalName: null
         })
       }
+    })
+  },
+  toEditer(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/subMy/pages/editorRemad/editorRemad?id='+id,
     })
   },
   hideModal(e) {
@@ -78,7 +84,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.getMusicInfo();
+  
   },
 
   /**
@@ -92,7 +98,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.getMusicInfo();
   },
 
   /**

@@ -1,6 +1,6 @@
-const API_BASE_URL = "http://10.20.11.252:8080/wumei-server"
+// const API_BASE_URL = "http://10.20.11.252:8080/wumei-server"
 // const API_BASE_URL = "http://101.133.164.180:8080/wumei-server"
-// const API_BASE_URL = "https://www.techwells.com/wumei-server";
+const API_BASE_URL = "https://www.techwells.com/wumei-server";
 const request = (url, method, data) => {
   let _url = API_BASE_URL + url
   return new Promise((resolve, reject) => {
@@ -206,5 +206,18 @@ module.exports = {
   deleteDemand: (data) => {
     return request("/demand/deleteDemand", 'get', data)
   },
+  //获取编辑发布的需求
+  getDemandInfo: (data) => {
+    return request("/demand/getDemandInfo", 'get', data)
+  },
+  //编辑发布的需求
+  modifyDemand: (data) => {
+    return request("/demand/modifyDemand", 'post', data)
+  },
+  // 获取技术人员类型
+  getTechnologyTypeList: (data) => {
+    return request("/technologyType/getTechnologyTypeList", 'get', data)
+  },
+
 
 }

@@ -78,15 +78,15 @@ Page({
     if (token.userType == 3) {
       wx.showModal({
         title: '',
-        content: '您已经是大师了，是想编辑大师信息吗',
+        content: '您已经是大师了，请勿重复编辑',
         success(res) {
-          if (res.confirm) {
-            wx.navigateTo({
-              url: '/subShopping/pages/masterEditor/masterEditor',
-            })
-          } else if (res.cancel) {
+          // if (res.confirm) {
+          //   wx.navigateTo({
+          //     url: '/subShopping/pages/masterEditor/masterEditor',
+          //   })
+          // } else if (res.cancel) {
 
-          }
+          // }
         }
       })
       return;

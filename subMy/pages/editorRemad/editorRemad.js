@@ -22,17 +22,24 @@ Page({
     technologyTypeList: [],
     selectedType: '',
     canSubmit: false,
-    isClick: true
+    isClick: true,
+    remandData: null, //编辑数据时获取数据
+    regionStr: '',
+    technologyName: '请选择工种',
+    imgList: '' ,//获取到的编辑的图片
+    demandId:0
   },
   //提交
   fromSubmit(e) {
     console.log(e)
+    let that = this;
     let userId = wx.getStorageSync('token').userId
-    if (e.detail.value.activityTheme != "" && e.detail.value.caseCity.length != 0 &&
-      e.detail.value.startTime != "" && e.detail.value.endTime != "" &&
-      e.detail.value.contactPerson != "" && e.detail.value.contactPhone != "" &&
-      e.detail.value.salary != "" && e.detail.value.technologyTypeId != "") {
-
+    let startTime = e.detail.value.startTime != "" || that.data.startDate;
+    let endtime = e.detail.value.endTime != "" || that.data.endDate;
+    let caseCity = e.detail.value.caseCity.length != 0 || that.data.regionStr;
+    console.log(caseCity);
+    let technologyTypeId = e.detail.value.technologyTypeId != "" || that.data.technologyName;
+    if (e.detail.value.activityTheme != "" && caseCity && startTime && endtime && e.detail.value.contactPerson != "" && e.detail.value.contactPhone != "" && e.detail.value.salary != "" && technologyTypeId) {
       if (new Date().getTime() > new Date(e.detail.value.endTime).getTime()) {
         wx.showModal({
           title: '结束时间应当在当前时间之后',
@@ -46,17 +53,20 @@ Page({
       } else {
         let a = e.detail.value.caseCity.join('');
         data = {
+          demandId:Number(that.data.demandId),
           userId: userId,
           demandTitle: e.detail.value.activityTheme,
-          demandLocation: a,
-          startTime: e.detail.value.startTime,
-          endTime: e.detail.value.endTime,
-          technologyType: e.detail.value.technologyTypeId,
+          demandLocation: a ? a : that.data.regionStr,
+          startTime: that.data.startDate,
+          endTime: that.data.endDate,
+          technologyType: e.detail.value.technologyTypeId? Number(e.detail.value.technologyTypeId)+1: that.data.selectedType,
           salary: e.detail.value.salary,
           contacts: e.detail.value.contactPerson,
           contact: e.detail.value.contactPhone
         }
         if (mulImage.length != 0 && e.detail.value.required != "") {
+          mulImage = mulImage.concat(that.data.imgList);
+          console.log(mulImage);
           data.demandImage = mulImage.join(',');
           data.detail = e.detail.value.required;
           console.log(data)
@@ -81,9 +91,9 @@ Page({
   //提交表单
   submitFun(a) {
     let that = this;
-    WXAPI.addDemand(a).then(res => {
+    WXAPI.modifyDemand(a).then(res => {
       wx.showLoading({
-        title: '正在发布',
+        title: '正在编辑',
       })
       this.setData({
         isClick: false
@@ -92,7 +102,7 @@ Page({
         wx.hideLoading();
         console.log(this.data.isClick);
         wx.navigateTo({
-          url: '/subShopping/pages/requireSuccess/requireSuccess',
+          url: '/subShopping/pages/editorRemad/success',
         })
       } else {
 
@@ -111,8 +121,10 @@ Page({
   //选择城市
   RegionChange: function (e) {
     this.setData({
-      region: e.detail.value
+      region: e.detail.value,
+      regionStr: e.detail.value[0] + " " + e.detail.value[1] + " " + e.detail.value[2]
     })
+
   },
   //选择日期
   DateChange(e) {
@@ -199,6 +211,18 @@ Page({
       upload_picture_list: upload_picture_list
     });
   },
+  // 删除回来的图片
+  deleteImg1(e) {
+    let imgList = this.data.imgList;
+    console.log(imgList);
+    let index = e.currentTarget.dataset.index;
+    imgList.splice(index, 1);
+    this.setData({
+      imgList: imgList
+    });
+    console.log(this.data.imgList);
+
+  },
   // 预览图片
   previewImg(e) {
     //获取当前图片的下标
@@ -227,7 +251,44 @@ Page({
       }
     })
   },
-  onLoad: function () {
+  getEditor(id) {
+    wx.showLoading()
+    WXAPI.getDemandInfo({
+      "demandId": id
+    }).then(res => {
+      console.log(res);
+      wx.hideLoading();
+      if (res.code == 200) {
+        res.data.demandImage = res.data.demandImage.split(',');
+        this.setData({
+          remandData: res.data,
+          startDate: res.data.startTime,
+          endDate: res.data.endTime,
+          regionStr: res.data.demandLocation,
+          technologyName: res.data.technologyType,
+          selectedType: res.data.technologyOccupation-1,
+          imgList: res.data.demandImage
+        });
+        return;
+        console.log(that.data.selectedType);
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '获取编辑数据失败',
+        })
+      }
+    })
+  },
+  // 获取编辑时的信息
+  onLoad: function (options) {
+    let id = options.id;
+    console.log(id);
+    if (id) {
+      this.setData({
+        demandId:id
+      })
+      this.getEditor(id);
+    }
     this.getTechnologyTypeList();
   },
   onShow: function () {

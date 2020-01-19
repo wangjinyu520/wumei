@@ -21,38 +21,149 @@ Page({
     masterDetail: null, //大师详情
     isCollect: false,
     caseList: [], //案例列表
-    imgHuo: false, 
+    imgHuo: false,
     imgTime: false,
     createTime: 0,
     pvCount: 0,
-    page:1,
-    pageSize:50,
-    contentlist:null //图片列表
+    page: 1,
+    pageSize: 50,
+    contentlist: null, //图片列表
+
+
+
+    // 下单的部分
+    shopType: '',
+    hideShopPopup: true,
+    startDate: '',
+    endDate: '',
+    totalDay: 0
   },
   // 打电话
 
-  goPhone: function (e) {
+  goPhone: function(e) {
     wx.makePhoneCall({
       phoneNumber: this.data.masterDetail.phone,
     })
-  
+
+  },
+  //选择日期
+  DateChange(e) {
+    console.log(e)
+    this.setData({
+      startDate: e.detail.value
+    })
+    this.checkDate(this.data.startDate, this.data.endDate)
+  },
+  endDateChange(e) {
+    this.setData({
+      endDate: e.detail.value
+    })
+    this.checkDate(this.data.startDate, this.data.endDate)
+  },
+  checkDate: function(startTime, endTime) {
+    //日期格式化
+    var start_date = new Date(startTime.replace(/-/g, "/"));
+    var end_date = new Date(endTime.replace(/-/g, "/"));
+    //转成毫秒数，两个日期相减
+    var ms = end_date.getTime() - start_date.getTime();
+    if (ms > 0) {
+      //转换成天数
+      var day = parseInt(ms / (1000 * 60 * 60 * 24));
+      //do something
+      this.setData({
+        totalDay: day
+      })
+    } else {
+      wx.showToast({
+        icon:'none',
+        title: '开始时间应该在结束时间之前',
+      })
+    }
+
+  },
+  // 立即下单
+  tobuy: function() {
+    if (wx.getStorageSync('token')) {
+      this.setData({
+        shopType: "tobuy"
+      });
+      this.bindGuiGeTap();
+    } else {
+      wx.showToast({
+        title: '您还未登录请先登录',
+      })
+      wx.switchTab({
+        url: '/pages/profile/profile',
+      })
+    }
+
+  },
+  /**
+   * 立即购买
+   */
+  buyNow: function() {
+    let that = this;
+    if (!that.data.startDate && !that.data.endDate) {
+      wx.showToast({
+        title: '请选择服务时间',
+      })
+      return;
+    }
+    setTimeout(function() {
+      wx.hideLoading();
+      //组建立即购买信息
+      let totalPrice = that.data.totalDay * that.data.masterDetail.salary;
+      console.log(totalPrice);
+      var buyNowInfo = {
+        userId: wx.getStorageSync('token').userId,
+        technologyInfo: that.data.masterDetail,
+        startDate: that.data.startDate,
+        endDate: that.data.endDate,
+        amount: that.data.totalDay,
+        totalPrice: totalPrice
+      }
+      // 写入本地存储
+      wx.setStorageSync('buyNowInfo', buyNowInfo)
+      that.closePopupTap();
+      wx.navigateTo({
+        url: "/subShopping/pages/pay-order/pay-order"
+      })
+    }, 1000);
+    wx.showLoading({
+      title: '商品准备中...',
+    })
+
+  },
+  // 显示弹窗
+  bindGuiGeTap: function() {
+    this.setData({
+      hideShopPopup: false
+    })
+  },
+  /**
+   * 规格选择弹出框隐藏
+   */
+  closePopupTap: function() {
+    this.setData({
+      hideShopPopup: true
+    })
   },
   //按热度排名
   huoSort: function(e) {
-    let that=this;
-    if (this.data.imgHuo){
+    let that = this;
+    if (this.data.imgHuo) {
       this.setData({
         imgHuo: false,
         pvCount: 0,
       })
-    }else{
+    } else {
       if (this.data.imgTime)
-      this.setData({
-        imgHuo: true,
-        pvCount:1,
-        imgTime: false,
-        createTime: 0,
-      })
+        this.setData({
+          imgHuo: true,
+          pvCount: 1,
+          imgTime: false,
+          createTime: 0,
+        })
     }
     console.log(this.data.pvCount);
     let data = {
@@ -97,7 +208,7 @@ Page({
   },
   //按热度排名
   timeSort: function(e) {
-    let that=this;
+    let that = this;
     if (this.data.imgTime) {
       this.setData({
         imgTime: false,
@@ -116,7 +227,7 @@ Page({
       pageNum: this.data.page,
       pageSize: this.data.pageSize,
       technologyId: this.data.masterDetail.userId,
-      pvCount:0,
+      pvCount: 0,
       createTime: Number(this.data.createTime)
     }
     WXAPI.getTechnologyCaseList(data).then(res => {
