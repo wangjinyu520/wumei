@@ -8,8 +8,8 @@
   <!-- 活动下面的列表 -->
   <view wx:if="{{contentlist}}">
     <view class="my-activity" wx:for="{{contentlist}}" wx:key="{{index}}">
-      <navigator url="/subShopping/pages/activityDetails/activityDetails?activityId={{item.activityId}}"">
-        <view class="act-top ">
+      <navigator url="/subShopping/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
+        <view class="act-top">
           <image class="act-img " src="{{item.activityLogo}} " />
           <view class="act-desc ">
             <view class="act-tltle ">{{item.activityName}}</view>
@@ -29,7 +29,6 @@
           </view>
         </view>
       </navigator>
-
     </view>
     <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
   </view>

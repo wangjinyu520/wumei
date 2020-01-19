@@ -798,6 +798,27 @@
 					"pathName": "subShopping/pages/masterModify/masterModify",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subShopping/pages/caseDetail/caseDetail",
+					"pathName": "subShopping/pages/caseDetail/caseDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subShopping/pages/requireSuccess/requireSuccess",
+					"pathName": "subShopping/pages/requireSuccess/requireSuccess",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subMy/pages/myPublic/myPublic",
+					"pathName": "subMy/pages/myPublic/myPublic",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

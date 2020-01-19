@@ -66,7 +66,8 @@
         "pages/commandDetail/commandDetail",
         "pages/commandDetail/success",
         "pages/masterDetail/masterDetail",
-        "pages/masterDetail/introduce"
+        "pages/masterDetail/introduce",
+        "pages/caseDetail/caseDetail"
       ],
       "name": "subShopping"
     },
@@ -85,7 +86,8 @@
         "pages/address/address",
         "pages/advice/advice",
         "pages/collect/collect",
-        "pages/userActivity/userActivity"
+        "pages/userActivity/userActivity",
+        "pages/myPublic/myPublic"
       ],
       "name": "subMy"
     },
@@ -98,7 +100,6 @@
         "pages/masterCertification/case",
         "pages/masterCertification/finnish",
         "pages/masterModify/masterModify"
-      
       ],
       "name": "certification"
     }

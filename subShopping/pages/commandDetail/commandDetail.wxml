@@ -28,7 +28,7 @@
       <view class="text overhidden1">
         <image class="img" src="/assets/images/remand/zhong.png "></image>
         {{demandDetail.demandTime}}
-        </view>
+      </view>
       <view class="text">
         <image class="img" src="/assets/images/remand/map.png "></image>
         {{demandDetail.demandLocation}}</view>
@@ -61,20 +61,30 @@
   </view>
   <!-- 需求发布人 -->
 </view>
-<view class="null"  wx:if="{{demandDetail.detail||demandDetail.demandImage}}"></view>
-<view class="box" wx:if="{{demandDetail.detail||demandDetail.demandImage}}">
+<view class="null"></view>
+<view class="box last">
   <!-- 需求发布人 -->
-  <view class="til">
-    需求描述
-  </view>
-  <view class="des">
-    <view class="des-top">
-     {{demandDetail.detail}}
+  <view>
+    <view class="til">
+      需求描述
     </view>
-    <view class="des-img">
-      <image class="img " src="{{demandDetail.demandImage}}"></image>
+    <view class="des" wx:if="{{demandDetail.detail||demandDetail.demandImage}}">
+      <view class="des-top">
+        {{demandDetail.detail}}
+      </view>
+      <view class="des-img">
+        <image class="img " src="{{demandDetail.demandImage}}"></image>
+      </view>
+    </view>
+      <view wx:else class="else" style="height:250px">
+    <view class="else-img">
+      <image src="/assets/images/404.png" />
+      <view class="else-text"> 暂时还没有内容哦</view>
     </view>
   </view>
+  </view>
+
+
   <!-- 需求发布人 -->
 </view>
 <view class="bottom">
@@ -100,7 +110,7 @@
   <view class="mid">
   </view>
   <view class="right">
-    <button class="chat" bindtap="applyComand" >
+    <button class="chat" bindtap="applyComand">
       <text>立即申请</text>
     </button>
   </view>

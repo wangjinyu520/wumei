@@ -84,7 +84,6 @@ Page({
           })
         }
       }
-      console.log(that.data.contentlist);
     })
   },
   // 搜索获取值
@@ -109,10 +108,15 @@ Page({
     this.getMusicInfo(data);
   },
   // 大师申请订单
-  toApply: function (e) {
+  toApply: function(e) {
     console.log(e.currentTarget.dataset.id);
     wx.navigateTo({
       url: '/subShopping/pages/commandDetail/commandDetail?demandId=' + e.currentTarget.dataset.id,
+    })
+  },
+  toRemand: function(e) {
+    wx.navigateTo({
+      url: '/subShopping/pages/publishRequirements/publishRequirements'
     })
   },
   /**
@@ -124,11 +128,15 @@ Page({
       level: 2
     }
     WXAPI.getPronceCity(data).then(res => {
-      res.data.unshift({name:'全国'})
+      res.data.unshift({
+        name: '全国',
+        code: 0
+      });
       this.setData({
         cityleft: res.data,
-        select1: -1
+        select1: 0
       })
+      console.log(this.data.cityleft);
     })
     data = {
       pageNum: this.data.page,
@@ -216,7 +224,9 @@ Page({
   },
   // 地铁区域列表下拉框是否隐藏
   listqy: function(e) {
+
     if (this.data.qyopen) {
+      console.log('收起');
       this.setData({
         qyopen: false,
         nzopen: false,
@@ -228,7 +238,16 @@ Page({
         shownavindex: 0
       })
     } else {
+
+      console.log('展示');
       this.setData({
+        city: '',
+        selectName1: '',
+        selectName2: '',
+        selectName3: '',
+        select1: '',
+        select2: '',
+        select3: '',
         qyopen: true,
         pxopen: false,
         nzopen: false,
@@ -298,49 +317,84 @@ Page({
   },
   // 地铁区域第一栏选择内容
   selectleft: function(e) {
-    let data = {
-      level: 3,
-      parentCode: e.target.dataset.code
+    if (e.target.dataset.code !== 0) {
+      let data = {
+        level: 3,
+        parentCode: e.target.dataset.code
+      }
+      this.setData({
+        selectName1: e.target.dataset.name,
+      });
+      WXAPI.getPronceCity(data).then(res => {
+        res.data.unshift({
+          name: '全省',
+          code: 0
+        });
+        this.setData({
+          citycenter: res.data,
+        })
+      })
+    } else {
+      this.setData({
+        selectName1: '',
+        city: ''
+      });
     }
     this.setData({
       reimenflag: false,
       cityright: {},
       select1: e.target.dataset.city,
-      selectName1: e.target.dataset.name,
       select2: '-1'
     });
-    WXAPI.getPronceCity(data).then(res => {
-      this.setData({
-        citycenter: res.data,
-      })
-    })
+
 
   },
   // 地铁区域中间栏选择的内容
   selectcenter: function(e) {
-    let data = {
-      level: 4,
-      parentCode: e.target.dataset.code
+    console.log(e.target.dataset.code);
+    if (e.target.dataset.code !== 0) {
+      let data = {
+        level: 4,
+        parentCode: e.target.dataset.code
+      }
+      this.setData({
+        selectName2: e.target.dataset.name,
+      });
+      WXAPI.getPronceCity(data).then(res => {
+        res.data.unshift({
+          name: '全市',
+          code: 0
+        });
+        this.setData({
+          cityright: res.data
+        })
+        console.log(res.data)
+      })
+    } else {
+      this.setData({
+        selectName2: '',
+      });
     }
     this.setData({
       select2: e.target.dataset.city,
       select3: '-1',
-      selectName2: e.target.dataset.name,
     });
-    WXAPI.getPronceCity(data).then(res => {
-      this.setData({
-        cityright: res.data
-      })
-      console.log(res.data)
-    })
-  
+
+
   },
   // 地铁区域左边栏选择的内容
   selectright: function(e) {
-    console.log(this.data.cityright);
+    if (e.currentTarget.dataset.code !== 0) {
+      this.setData({
+        selectName3: e.currentTarget.dataset.name,
+      });
+    } else {
+      this.setData({
+        selectName3: '',
+      });
+    }
     this.setData({
       select3: e.currentTarget.dataset.city,
-      selectName3: e.currentTarget.dataset.name,
     });
   },
   // 点击灰色背景隐藏所有的筛选内容
@@ -365,7 +419,7 @@ Page({
       selectName1: '',
       selectName2: '',
       selectName3: '-1',
-      page:1,
+      page: 1,
       qyopen: false,
       nzopen: false,
       pxopen: false,
@@ -378,7 +432,7 @@ Page({
       pageNum: this.data.page,
       pageSize: this.data.pageSize,
       demandTitle: this.data.searchValue,
-      city:'',
+      city: '',
       technologyType: this.data.technologyType,
     }
     console.log(this.data.page);
@@ -395,16 +449,19 @@ Page({
       pxshow: true,
       qyshow: false,
       isfull: false,
-      page:1,
+      page: 1,
       shownavindex: 0
     })
-    this.data.page = 1
-    let city=""
-    if (this.data.selectName1 == this.data.selectName2){
-       city = this.data.selectName1  + this.data.selectName3;
-    }else{
-       city = this.data.selectName1 + this.data.selectName2 + this.data.selectName3;
+    this.data.page = 1;
+    let city = "";
+    if (this.data.selectName1 == this.data.selectName2) {
+      city = this.data.selectName1 + this.data.selectName3;
+    } else {
+      city = this.data.selectName1 + this.data.selectName2 + this.data.selectName3;
     }
+    this.setData({
+      city: city
+    })
     //地铁区域选中后的第二个子菜单，默认显示地铁下的子菜单
     let data = {
       pageNum: this.data.page,
@@ -413,7 +470,6 @@ Page({
       city: city,
       technologyType: this.data.technologyType,
     }
-    console.log(this.data.page);
     this.getMusicInfo(data);
 
   },
@@ -445,6 +501,7 @@ Page({
   },
   // 排序内容下拉框筛选
   selectPX: function(e) {
+    console.log(e.currentTarget.dataset.index);
     this.setData({
       technologyType: e.currentTarget.dataset.index,
       nzopen: false,
@@ -455,9 +512,8 @@ Page({
       qyshow: true,
       isfull: false,
       shownavindex: 0,
-      page:1
+      page: 1
     });
-    console.log(this.data.city);
     let data = {
       pageNum: this.data.page,
       pageSize: this.data.pageSize,

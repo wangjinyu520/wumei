@@ -97,24 +97,22 @@
       </view>
     </view>
   </view>
-
-  <!-- html课程 -->
+  <!-- 图片资源 -->
   <view class="master-content" hidden='{{currentId!=0}}'>
-    <view wx:if="{{caseList}}">
+    <view wx:if="{{contentlist}}">
       <view class="img-nav">
-        <view style="margin-right:20rpx;">
-          <image src="/assets/images/master/huo.png" bindtap="huoSort"></image>
+        <view style="margin-right:20rpx;" bindtap="huoSort">
+          <image src="{{imgHuo?'/assets/images/master/huo1.png':'/assets/images/master/huo.png'}}"></image>
           按热度
         </view>
-        <view>
-          <image src="/assets/images/master/zhong.png" bindtap="timeSort"></image>
+        <view bindtap="timeSort">
+          <image src="{{imgTime?'/assets/images/master/zhong1.png':'/assets/images/master/zhong.png'}}"></image>
           按时间
         </view>
       </view>
-
       <view class="img-list">
         <view class="img-left">
-          <view wx:for="{{caseList}}" wx:key="{{index}}">
+          <view wx:for="{{contentlist}}" wx:key="{{index}}">
             <view class="img-item" wx:if="{{index%2==0}}">
               <image src="{{item.imageCover}}"></image>
               <view class="img-item-bot">
@@ -126,13 +124,11 @@
                   {{item.pvCount}}
                 </view>
               </view>
-
-
             </view>
           </view>
         </view>
         <view class="img-right">
-          <view wx:for="{{caseList}}" wx:key="{{index}}">
+          <view wx:for="{{contentlist}}" wx:key="{{index}}">
             <view class="img-item" wx:if="{{index%2==1}}">
               <image src="{{item.imageCover}}"></image>
               <view class="img-item-bot">
@@ -156,24 +152,25 @@
         <view class="else-text"> 暂时还没有内容哦</view>
       </view>
     </view>
-
-
   </view>
-  <!-- css课程 -->
+  <!-- 服务案例 -->
   <view class="master-content" hidden='{{currentId!=1}}'>
     <view wx:if="{{caseList}}">
       <view class="activity-info" wx:for="{{caseList}}" wx:key="{{index}}">
-        <view class="img">
-          <image src="{{item.imageUrl}}"></image>
-        </view>
-        <view class="bottom">
-          <view class="title overhidden1">
-            {{item.caseName}}
+        <navigator url="/subShopping/pages/caseDetail/caseDetail?caseId={{item.caseId}}">
+          <view class="img">
+            <image src="{{item.imageCover}}"></image>
           </view>
-          <view class="area">
-            {{item.caseCity}}
+          <view class="bottom">
+            <view class="title overhidden1">
+              {{item.caseName}}
+            </view>
+            <view class="area">
+              {{item.caseCity}}
+            </view>
           </view>
-        </view>
+        </navigator>
+
       </view>
     </view>
     <view wx:else class="else" style="height:250px">
@@ -287,25 +284,12 @@
         <text>{{isCollect?'已收藏':'收藏'}}</text>
       </view>
     </view>
-
-
-    <view class="share" bindtap="goPhone">
-      <button></button>
-      <view>
-        <image class="share-img" src="/assets/images/master/xiaoxi.png"></image>
-      </view>
-      <view>
-        <text>联系TA</text>
-      </view>
-    </view>
   </view>
   <view class="right">
-    <button class="chat" bindtap="powerDrawer" data-statu="open">
-      <text>加入购物车</text>
-    </button>
-    <button class="chat xiadan" bindtap="powerDrawer" data-statu="open">
-      <text>立即下单</text>
-    </button>
+    <view class="chat" bindtap="goPhone">
+      <image  src="/assets/images/master/call.png"></image>
+      <text>联系TA</text>
+    </view>
   </view>
 
 </view>

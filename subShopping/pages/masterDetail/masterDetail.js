@@ -18,18 +18,147 @@ Page({
       name: '用户评价',
 
     }],
-    masterDetail:null,//大师详情
-    isCollect:false,
-    caseList:[]
+    masterDetail: null, //大师详情
+    isCollect: false,
+    caseList: [], //案例列表
+    imgHuo: false, 
+    imgTime: false,
+    createTime: 0,
+    pvCount: 0,
+    page:1,
+    pageSize:50,
+    contentlist:null //图片列表
+  },
+  // 打电话
+
+  goPhone: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: this.data.masterDetail.phone,
+    })
+  
+  },
+  //按热度排名
+  huoSort: function(e) {
+    let that=this;
+    if (this.data.imgHuo){
+      this.setData({
+        imgHuo: false,
+        pvCount: 0,
+      })
+    }else{
+      if (this.data.imgTime)
+      this.setData({
+        imgHuo: true,
+        pvCount:1,
+        imgTime: false,
+        createTime: 0,
+      })
+    }
+    console.log(this.data.pvCount);
+    let data = {
+      pageNum: this.data.page,
+      pageSize: this.data.pageSize,
+      technologyId: this.data.masterDetail.userId,
+      pvCount: Number(this.data.pvCount),
+      createTime: 0
+    }
+    WXAPI.getTechnologyCaseList(data).then(res => {
+      console.log(res.data)
+      if (res.code == 200) {
+        var contentlistTem = that.data.contentlist //总的数据列表
+        if (res.data) {
+          if (that.data.page == 1) {
+            contentlistTem = []
+          }
+          var contentlist = res.data //contentlist每次返回的个数
+          if (contentlist.length < that.data.pageSize) {
+            that.setData({
+              contentlist: contentlistTem.concat(contentlist),
+              hasMoreData: true
+            })
+          } else {
+            that.setData({
+              contentlist: contentlistTem.concat(contentlist),
+              hasMoreData: false,
+              page: that.data.page + 1
+            })
+            console.log(that.data.page)
+          }
+        } else {
+          that.setData({
+            contentlist: null
+          })
+        }
+      }
+      console.log(that.data.contentlist)
+    })
+
+
+  },
+  //按热度排名
+  timeSort: function(e) {
+    let that=this;
+    if (this.data.imgTime) {
+      this.setData({
+        imgTime: false,
+        createTime: 0,
+      })
+    } else {
+      if (this.data.imgHuo)
+        this.setData({
+          imgHuo: false,
+          pvCount: 0,
+          imgTime: true,
+          createTime: 1,
+        })
+    }
+    let data = {
+      pageNum: this.data.page,
+      pageSize: this.data.pageSize,
+      technologyId: this.data.masterDetail.userId,
+      pvCount:0,
+      createTime: Number(this.data.createTime)
+    }
+    WXAPI.getTechnologyCaseList(data).then(res => {
+      if (res.code == 200) {
+        var contentlistTem = that.data.contentlist //总的数据列表
+        if (res.data) {
+          if (that.data.page == 1) {
+            contentlistTem = []
+          }
+          var contentlist = res.data //contentlist每次返回的个数
+          if (contentlist.length < that.data.pageSize) {
+            that.setData({
+              contentlist: contentlistTem.concat(contentlist),
+              hasMoreData: true
+            })
+          } else {
+            that.setData({
+              contentlist: contentlistTem.concat(contentlist),
+              hasMoreData: false,
+              page: that.data.page + 1
+            })
+            console.log(that.data.page)
+          }
+        } else {
+          that.setData({
+            contentlist: null
+          })
+        }
+        console.log(that.data.contentlist);
+      }
+    })
+
+
   },
   //联系大师
-  goPhone: function (e) {
+  goPhone: function(e) {
     wx.makePhoneCall({
       phoneNumber: this.data.masterDetail.phone,
     })
   },
   // 收藏
-  haveSave: function () {
+  haveSave: function() {
     let data = {
       userId: wx.getStorageSync('token').userId,
       relationId: this.data.masterDetail.userId,
@@ -52,11 +181,11 @@ Page({
 
   },
   // 取消收藏
-  noSave: function () {
+  noSave: function() {
     let data = {
       userId: wx.getStorageSync('token').userId,
       relationId: this.data.masterDetail.userId,
-      collectType: 4  //收藏类型
+      collectType: 4 //收藏类型
     }
     WXAPI.nosaveActivity(data).then(res => {
       if (res.code == 200) {
@@ -90,16 +219,20 @@ Page({
   onLoad: function(options) {
     let that = this;
     userId = options.id;
-    WXAPI.getDetailInfo({ userId }).then(res => {
+    WXAPI.getDetailInfo({
+      userId
+    }).then(res => {
       console.log(res)
       that.setData({
         masterDetail: res.data,
-        caseList: res.data.caseList
+        caseList: res.data.caseList,
+        contentlist: res.data.caseList,
       });
+      console.log(res.data.caseList)
 
     })
   },
-  goIntoduce:function(e){
+  goIntoduce: function(e) {
     let value = this.data.masterDetail.personalIntroduce;
     wx.navigateTo({
       url: '/subShopping/pages/masterDetail/introduce?value=' + value

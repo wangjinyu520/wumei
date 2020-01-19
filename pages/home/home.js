@@ -18,6 +18,31 @@ Page({
     currentCity: "",
     masters: null,
     activityList: null,
+    modalName:''
+  },
+  // 点击搜索那里面的加号
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    let id=e.currentTarget.dataset.id;
+    console.log(id);
+    console.log(e)
+    this.setData({
+      modalName: null
+    })
+    if(id==0){
+      wx.navigateTo({
+        url: '/subShopping/pages/publishRequirements/publishRequirements',
+
+      })
+    }else if(id==1){
+    wx.showToast({
+      title: '还在快速开发中',
+    })
+    }
   },
   // 选择城市的动画
   toOpen(e) {
@@ -26,7 +51,7 @@ Page({
     })
   },
   //大师更多页面
-  goLight: function (e) {
+  goLight: function(e) {
     wx.navigateTo({
       url: '/subShopping/pages/popularMaster/popularMaster',
     })
@@ -67,9 +92,7 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    setTimeout(function() {
-      wx.hideLoading()
-    }, 2000)
+
   },
   // 切换大师的选项
   tabSelect(e) {
@@ -81,7 +104,7 @@ Page({
     this.getDateListInfo();
   },
   // 大师详情
-  toDetailsMaster: function (e) {
+  toDetailsMaster: function(e) {
     console.log(e);
     wx.navigateTo({
       url: '/subShopping/pages/masterDetail/masterDetail?id=' + e.currentTarget.dataset.id,
@@ -158,7 +181,7 @@ Page({
   },
   turn_search: function() {
     wx.navigateTo({
-      url: '/subShopping/pages/search/search'
+      url: "/subShopping/pages/search/search?type=commodity"
     })
   },
   //获取经纬度
@@ -238,29 +261,35 @@ Page({
       city: city
     }
     WXAPI.getHomeList(data).then(res => {
-      this.setData({
-        masters: res.data.technologyTask,
-        activityList: res.data.activityTask,
-      })
-      var masters = this.data.masters.map(ele => {
-        if (ele.technologyOccupation == 1) {
-          ele.technologyOccupation = '灯光师'
-        } else if (ele.technologyOccupation == 2) {
-          ele.technologyOccupation = '音响师'
-        } else if (ele.technologyOccupation == 3) {
-          ele.technologyOccupation = '视频师'
-        } else if (ele.technologyOccupation == 4) {
-          ele.technologyOccupation = '项目经理'
-        } else if (ele.technologyOccupation == 5) {
-          ele.technologyOccupation = '搭建'
-        } else if (ele.technologyOccupation == 6) {
-          ele.technologyOccupation = '舞美设计'
-        } else {}
-        return ele;
-      })
-      this.setData({
-        masters
-      })
+      if (res.code == 200) {
+        this.setData({
+          masters: res.data.technologyTask,
+          activityList: res.data.activityTask,
+        })
+        wx.hideLoading()
+        var masters = this.data.masters.map(ele => {
+          if (ele.technologyOccupation == 1) {
+            ele.technologyOccupation = '灯光师'
+          } else if (ele.technologyOccupation == 2) {
+            ele.technologyOccupation = '音响师'
+          } else if (ele.technologyOccupation == 3) {
+            ele.technologyOccupation = '视频师'
+          } else if (ele.technologyOccupation == 4) {
+            ele.technologyOccupation = '项目经理'
+          } else if (ele.technologyOccupation == 5) {
+            ele.technologyOccupation = '搭建'
+          } else if (ele.technologyOccupation == 6) {
+            ele.technologyOccupation = '舞美设计'
+          } else {}
+          return ele;
+        })
+        this.setData({
+          masters
+        })
+      } else {
+
+      }
+
 
     })
   },

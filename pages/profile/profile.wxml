@@ -63,6 +63,11 @@
 
   <!--list-->
   <view class="list-top list">
+    <view class="order-list" bindtap="toDemand" data-type="0">
+      <image class='order-img' src="/assets/images/profile/order.png" />
+      <text>我发布的需求</text>
+      <image class="more" src="/assets/images/profile/more.png" />
+    </view>
     <view class="order-list" bindtap="toOrder" data-type="0">
       <image class='order-img' src="/assets/images/profile/order.png" />
       <text>我的订单</text>

@@ -5,19 +5,36 @@
       <text>{{currentCity}}</text>
       <image class="img" src="/assets/images/home/down.png" />
     </view>
-
   </view>
   <view class="search-left" bindtap="turn_search">
     <icon class="search-icon" type="search" size="11"></icon>请输入
   </view>
   <view class="topub">
-    <image class="img" src="/assets/images/home/add.png" bindtap="toPublish" />
+    <image class="img" src="/assets/images/home/add.png" bindtap="showModal" data-target="model" />
+    <view class="cu-modal {{modalName=='model'?'show':''}}">
+      <view class="cu-dialog">
+        <view class="top-img">
+          <image src="/assets/images/home/top.png"></image>
+        </view>
+        <view class="content-public">
+          <view class="public-line"  bindtap="hideModal" data-id="0">
+            <image class="publici-img" src="/assets/images/home/remand.png"></image>
+            <view class="text">发布需求</view>
+          </view>
+          <view class="public-line"  bindtap="hideModal" data-id="1">
+            <image class="publici-img" src="/assets/images/home/activity.png"></image>
+            <view class="text">发布活动</view>
+          </view>
+        </view>
+
+      </view>
+    </view>
   </view>
 </view>
 <!-- 地址选择的界面 -->
 <view class="quyu {{qyopen ? 'slidown' : 'slidup'}} {{qyshow ? 'disappear':''}}">
   <view class="qy quyu-left">
-    <view class="{{currentId == index ? 'current' : ''}}" wx:for="{{cityData}}" bindtap="toSelectCity" data-name="{{item.name}}" data-index="{{index}}">
+    <view class="{{currentId == index ? 'current' : ''}}" wx:for="{{cityData}}" bindtap="toSelectCity" wx:key="index" data-name="{{item.name}}" data-index="{{index}}">
       {{item.name}}
     </view>
   </view>
@@ -120,14 +137,8 @@
           </view>
         </view>
         <view class="master-img" wx:if="{{item.caseImage}}">
-          <view class="img">
-            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
-          </view>
-          <view class="img">
-            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
-          </view>
-          <view class="img">
-            <!-- <image class="icon-icon" src="/assets/images/home/icon4.png"></image> -->
+          <view class="img" wx:for="{{item.caseImage}}" wx:key="{{index}}">
+            <image src="{{item}}"></image>
           </view>
         </view>
       </view>

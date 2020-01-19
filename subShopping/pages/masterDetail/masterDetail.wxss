@@ -427,6 +427,7 @@ img-nav .taphover {
   width: 160rpx;
   height: 54rpx;
 }
+
 .btn text {
   font-size: 28rpx;
   font-weight: bold;
@@ -573,18 +574,17 @@ image {
 .bottom1 .left {
   margin-top: 20rpx;
   display: flex;
-  width: 40%;
+  width: 60%;
 }
-
 
 .bottom1 .right {
   display: flex;
   margin-top: 20rpx;
-  width:55%;
+  width: 40%;
 }
 
 .collect {
-  width: 224rpx;
+  width: 150rpx;
   font-size: 26rpx;
   color: #676767;
   text-align: center;
@@ -619,22 +619,26 @@ image {
 }
 
 .chat {
-  width: 250rpx;
+  width: 280rpx;
   height: 70rpx;
   line-height: 70rpx;
-  background: linear-gradient(270deg, rgba(74, 118, 255, 1) 0%, rgba(35, 218, 255, 1) 100%);
-  border-radius: 35rpx 0rpx 0rpx 35rpx;
+  background: linear-gradient(270deg, rgba(74, 108, 255, 1) 0%, rgba(35, 218, 255, 1) 100%);
+  border-radius: 35rpx;
   font-size: 28rpx;
   color: #fff;
   margin: 0;
-  text-align: center;
+  text-align: center !important;
   float: right;
-  padding: 0 ;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
-.xiadan {
-  background: rgba(74, 108, 255, 1);
-  border-radius: 0rpx 35rpx 35rpx 0rpx;
+.chat image {
+  width: 20rpx;
+  height: 27rpx;
+  margin-right: 15rpx;
+  margin-left: 75rpx;
 }
 
 .btn-box {
@@ -654,7 +658,8 @@ image {
   background: #2184e3;
   color: #fff;
 }
-.else{
-  position:relative;
+
+.else {
+  position: relative;
   top: 0;
-} 
+}

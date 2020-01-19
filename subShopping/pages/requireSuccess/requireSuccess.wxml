@@ -1,12 +1,12 @@
  <view class="requireSuccess">
  	    <view class="content">
-        <image src="/assets/images/requireSuccess/requirementSuccess.png" class="content-img"></image>
+        <image src="/assets/images/remand/succ.png" class="content-img"></image>
         <text class="title">需求发布成功</text>
         <text class="explain">请等待技术人员联系</text>
         </view>
 
         <view class="confirm">
-        	<button class="confitmBtn">
+        	<button class="confitmBtn" bindtap="submit">
         		好的我知道了
         	</button>
         </view>

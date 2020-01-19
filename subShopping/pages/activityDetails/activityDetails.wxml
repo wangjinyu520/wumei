@@ -64,9 +64,7 @@
   </view>
   <view class="pop-content">
     <view class="active-list">
-
       <scroll-view scroll-x="true" class="">
-
         <view wx:for="{{popularActivity}}" wx:key="{{index}}" bindtap="toDetailsTap">
           <navigator url="/subShopping/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
             <view class="active-desc">

@@ -1,19 +1,26 @@
 /* pages/publish/publish.wxss */
 @import "/assets/iconfont.wxss";
+
+page {
+  background-color: #fff;
+}
+
 .home-page {
   height: 160rpx;
   width: 100%;
   border: 1rpx solid red;
   font-size: 60rpx;
 }
-.return{
+
+.return {
   position: absolute;
-  top:-20px;
-  left:20px;
+  top: -20px;
+  left: 20px;
   width: 47px;
   height: 47px;
   background-color: red;
 }
+
 .picture {
   height: 221px;
   display: flex;
@@ -66,7 +73,7 @@
   color: #999;
   z-index: 2;
 }
- 
+
 /*主题*/
 
 .topic {
@@ -74,46 +81,50 @@
   border-top: 1px solid #eee;
   display: flex;
   background-color: #fff;
-  margin:16px 0 16px 0;
   align-items: center;
   font-size: 30rpx;
+}
+
+.cu-form-group-title {
+  width: 30%;
+}
+
+.cu-form-group picker .picker {
+  text-align: left;
 }
 
 .title {
   margin-left: 12px;
 }
 
+.null {
+  height: 16rpx;
+}
+
 .topic input {
- 	/*background-color: red;*/
+  /*background-color: red;*/
   text-align: left;
   width: 60%;
-  margin-left: 20px;
 }
 
 /*开始时间*/
 
- 
- 
-
 picker {
-  text-align: right;
   margin-right: 12px;
   color: #a7a7a7;
 }
+
 /*模块，联系人，需求*/
-.midBlock,.contact, .required{
-	background-color: #fff;
+
+.midBlock, .contact, .required {
+  background-color: #fff;
 }
- .contact{
- 	margin: 16px 0 16px 0;
- }
- .required{
 
- }
- 
+.required {
+  padding-bottom: 34rpx;
+}
+
 /*费用*/
-
- 
 
 .set {
   margin-left: auto;
@@ -133,58 +144,69 @@ picker {
 
 /*地点*/
 
-.locale  {
+.locale {
   height: 50px;
   border-top: 1px solid #eee;
   display: flex;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
   font-size: 30rpx;
 }
-.contact>.locale{
-	display: flex;
-	justify-content: flex-start;
+
+.contact>.locale {
+  display: flex;
+  justify-content: flex-start;
 }
-.contact>.locale>.locale-input{
-	margin-left: 20px;
+
+.contact>.locale>.locale-input {
+  margin-left: 20px;
 }
+
 .locale-title {
+  width: 30%;
   margin-left: 14px;
 }
 
 .locale-input {
-	/*background-color: red;*/
+  /*background-color: red;*/
   text-align: left;
   width: 60%;
-   
 }
+
 /*需求描述*/
-.required{
-	display: flex;
-    justify-content:space-between;
-   min-height: 240px;
+
+.required {
+  display: flex;
+  justify-content: space-between;
+  /* min-height: 240px; */
 }
- .required-title{
- 	 margin-left: 14px;
- 	 margin-top:17px; 
- }
-.required-body{
-	width: 75%;
+
+.required-title {
+  width: 30%;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+  line-height: 100rpx;
 }
-.textarea{
-    padding: 20rpx;
-    box-sizing: border-box;
-	 max-width:100%;
-     height: 57.14%;
+
+.required-body {
+  width: 75%;
 }
-.uploadImg{
-	width: 100%;
-	 
+
+.textarea {
+  padding: 40rpx 20rpx;
+  box-sizing: border-box;
+  max-width: 100%;
+  /* height: 57.14%; */
+}
+
+.uploadImg {
+  width: 100%;
 }
 
 /*图上传*/
- .picture_list {
- padding-left: 20rpx;
+
+.picture_list {
+  padding-left: 20rpx;
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -197,12 +219,10 @@ picker {
 
 .picture_item {
   position: relative;
- 
   width: 82px;
   height: 82px;
-  
+  margin: 20rpx;
 }
-
 
 .picture_item .del {
   position: absolute;
@@ -217,30 +237,35 @@ picker {
   text-align: center;
   background-color: #f00;
 }
- 
+
 .picture_item image {
   width: 100%;
   height: 100%;
 }
- 
- /*提交*/
- .submit{
- 	display: flex;
- 	justify-content: center;
- 	align-items: center;
- 	padding: 10px;
- }
- .submit>button{
- 	display: flex;
- 	justify-content: center;
- 	align-items: center;
- width:138rpx;
-height:60rpx;
-background:rgba(74,108,255,1);
-border-radius:4px;
-font-size:15px;
- 
-font-weight:bold;
-color:rgba(255,255,255,1);
-line-height:21px;
- }
+
+/*提交*/
+
+.btn-box {
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  height: 88rpx;
+  border-radius: 8px;
+}
+
+.pub-btn {
+  color: #fff;
+  box-sizing: border-box;
+  height: 88rpx;
+  background: linear-gradient(270deg, rgba(74, 108, 255, 1) 0%, rgba(35, 218, 255, 1) 100%);
+  border-radius: 44rpx;
+}
+
+.pub-btn-false {
+  color: #fff;
+  box-sizing: border-box;
+  height: 88rpx;
+  background: rgba(216, 216, 216, 1);
+  border-radius: 44rpx;
+}

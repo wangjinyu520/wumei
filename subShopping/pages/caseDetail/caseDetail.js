@@ -1,22 +1,31 @@
-// pages/requireSuccess/requireSuccess.js
+// subShopping/pages/caseDetail/caseDetail.js
+let WXAPI = require('../../wxapi/main.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    caseDetail:null,
+    banners:null
+  },
 
-  },
-  submit: function () {
-    wx.switchTab({
-      url: '/pages/home/home',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
+   let caseId = options.caseId;
+    // 获取案例详情
+    WXAPI.getTechnologyCaseInfo({ caseId }).then(res => {
+      res.data.caseImageUrl=res.data.caseImageUrl.split(',');
+      console.log(res.data.caseImageUrl)
+      that.setData({
+        caseDetail: res.data,
+        banners: res.data.caseImageUrl
+      });
 
+    })
   },
 
   /**

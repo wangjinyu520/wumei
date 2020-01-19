@@ -1,0 +1,43 @@
+<!--subShopping/pages/caseDetail/caseDetail.wxml-->
+<view class="caseDetail">
+  <view class="swipers-box">
+    <swiper class="swipers" circular autoplay interval="5000" duration="300" indicator-dots indicator-active-color="#fff">
+      <block wx:for="{{banners}}" wx:key="{{index}}">
+        <swiper-item class="swiper-items">
+          <image src="{{item}}" mode="widthFix" class="img"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="top top1">
+    <view class="top-til">{{caseDetail.caseName}}</view>
+    <view class="top-img">
+      <image class="img" src="{{caseDetail.userIcon}}"></image>
+      <text class="text-grey">{{caseDetail.userName}}</text>
+    </view>
+  </view>
+  <view class="top">
+    <view class="line">
+      <text class="text">服务城市</text>
+      <text class="text-grey">{{caseDetail.caseCity}}</text>
+    </view>
+    <view class="line">
+      <text class="text">服务时间</text>
+      <text class="text-grey">{{caseDetail.caseTime}}</text>
+    </view>
+  </view>
+  <view class="top last">
+    <view class="title">
+      案例介绍
+    </view>
+    <view class="cont" wx:if="{{caseDetail.caseIntroduce}}">
+      {{caseDetail.caseIntroduce}}
+    </view>
+    <view wx:else class="else" style="height:250px">
+      <view class="else-img">
+        <image src="/assets/images/404.png" />
+        <view class="else-text"> 暂时还没有介绍哦</view>
+      </view>
+    </view>
+  </view>
+</view>

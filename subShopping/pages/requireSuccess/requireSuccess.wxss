@@ -1,56 +1,69 @@
 /* pages/requireSuccess/requireSuccess.wxss */
-.requireSuccess{
-	height: 100vh;
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
-	justify-content: center;
+
+page {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
 }
-.content{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-content:center;
-	flex:1;
+
+.requireSuccess {
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
 }
-.content-img{
-	width: 190rpx;
-	height: 164rpx;
-    margin-bottom: 54rpx;
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex: 1;
 }
-.title{
-	width: 100%;
-	text-align: center;
-	font-size:46rpx;
- font-weight:bold;
-color:rgba(51,51,51,1);
-line-height:66rpx;
+
+.content-img {
+  width: 190rpx;
+  height: 164rpx;
+  margin-bottom: 54rpx;
 }
-.explain{
-	font-size:32rpx;
-font-family:PingFang-SC-Regular,PingFang-SC;
-font-weight:400;
-color:#333333;
-line-height:46rpx;
+
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: 46rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 66rpx;
+}
+
+.explain {
+  font-size: 32rpx;
+  font-family: PingFang-SC-Regular, PingFang-SC;
+  font-weight: 400;
+  color: #333;
+  line-height: 46rpx;
 }
 
 /*按钮*/
-.confirm{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin-top:360rpx;
-	margin-bottom:66rpx; 
+
+.confirm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 360rpx;
+  margin-bottom: 66rpx;
 }
-.confitmBtn{
-width:640rpx;
-height:88rpx;
-background:linear-gradient(270deg,rgba(74,108,255,1) 0%,rgba(35,218,255,1) 100%);
-border-radius:22px;
- font-size:30rpx;
- display: flex;
- justify-content: center;
- align-items: center;
-color:rgba(255,255,255,1);
-line-height:42rpx;
+
+.confitmBtn {
+  width: 640rpx;
+  height: 88rpx;
+  background: linear-gradient(270deg, rgba(74, 108, 255, 1) 0%, rgba(35, 218, 255, 1) 100%);
+  border-radius: 22px;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 1);
+  line-height: 42rpx;
 }

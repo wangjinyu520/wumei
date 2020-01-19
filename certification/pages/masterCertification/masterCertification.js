@@ -13,13 +13,9 @@ Page({
     isClick:true
   },
 
-
-
   //  表单提交事件
   fromSubmit: function(e) {
     let that = this;
-    console.log(e.detail.value);
-    console.log(globalData)
     let master = e.detail.value;
     master.city = master.city[0] + master.city[1] + master.city[2]
     master.technologyOccupation = Number(master.technologyOccupation) + 1;
@@ -52,6 +48,13 @@ Page({
         duration: 1000
       })
       return
+    } else if (!master.mobile) {
+      wx.showToast({
+        title: '联系方式为必填哦',
+        icon: 'none',
+        duration: 1000
+      })
+      return
     } else if (!master.salary) {
       wx.showToast({
         title: '薪资为必填哦',
@@ -63,9 +66,6 @@ Page({
     globalData.addTechnology = master;
     wx.navigateTo({
       url: '/certification/pages/masterCertification/personal',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
     })
   },
   // 取消

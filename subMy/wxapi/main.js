@@ -145,7 +145,7 @@ module.exports = {
   getRecommendList: (data) => {
     return request("/technology/getTechnologyList", 'get', data)
   },
- 
+
   // 获取我的主页的用户活动列表
   getMyActivityList: (data) => {
     return request("/activity/getUserActivityList", 'get', data)
@@ -197,6 +197,14 @@ module.exports = {
   // 删除地址
   deleteAddress: (data) => {
     return request("/address/deleteAddress", 'get', data)
+  },
+  // 我发布的需求
+  getMyDemand: (data) => {
+    return request("/demand/getMyDemand", 'get', data)
+  },
+  // 删除发布的需求
+  deleteDemand: (data) => {
+    return request("/demand/deleteDemand", 'get', data)
   },
 
 }

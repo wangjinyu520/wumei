@@ -21,6 +21,12 @@ Page({
       url: '/subMy/pages/coupon/coupon'
     })
   },
+  toDemand: function () {
+    wx.navigateTo({
+      url: '/subMy/pages/myPublic/myPublic'
+    })
+  },
+
 
   toCollect: function() {
     wx.navigateTo({

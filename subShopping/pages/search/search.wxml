@@ -10,80 +10,107 @@
     </view>
   </view>
   <scroll-view>
-    <view wx:if="{{contentlist}}">
-      <view class="my-activity" wx:for="{{contentlist}}" wx:key="{{index}}">
-        <navigator url="/subShopping/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
-          <view class="act-top ">
-            <image class="act-img " src="{{item.activityLogo}} " lazy-load />
-            <view class="act-desc ">
-              <view class="act-content ">
-                <view class="content-left ">
-                  <text class="content-loc ">{{item.activityTheme}}</text>
-                  <text class="content-time ">{{item.activityLocation}}</text>
-                  <text class="content-time ">{{item.startTime}}</text>
-                </view>
-                <view class="content-right ">
-                  <text class="content-price ">¥{{item.activityFee}}</text>
-                  <button class="content-btn ">
-                    <text>立即报名</text>
-                  </button>
+    <view>
+      <view wx:if="{{contentlist}}">
+        <view class="my-activity" wx:for="{{contentlist}}" wx:key="{{index}}">
+          <navigator url="/subShopping/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
+            <view class="act-top ">
+              <image class="act-img " src="{{item.activityLogo}} " lazy-load />
+              <view class="act-desc ">
+                <view class="act-content ">
+                  <view class="content-left ">
+                    <text class="content-loc ">{{item.activityTheme}}</text>
+                    <text class="content-time ">{{item.activityLocation}}</text>
+                    <text class="content-time ">{{item.startTime}}</text>
+                  </view>
+                  <view class="content-right ">
+                    <text class="content-price ">¥{{item.activityFee}}</text>
+                    <button class="content-btn ">
+                      <text>立即报名</text>
+                    </button>
+                  </view>
                 </view>
               </view>
             </view>
-          </view>
-        </navigator>
+          </navigator>
 
+        </view>
+        <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
       </view>
-      <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
+      <view wx:else class="else" style="height:250px">
+        <view class="else-img">
+          <image src="/assets/images/404.png" />
+          <view class="else-text"> 暂时还没有内容哦</view>
+        </view>
+      </view>
     </view>
-    <!-- 租赁的商品的列表 -->
-    <view wx:if="{{contentlist1}}">
-      <view class="my-activity" wx:for="{{contentlist1}}" wx:key="{{index}}">
-        <navigator url="/subShopping/pages/product/product?commodityId={{item.commodityId}}">
-          <view class="act-top ">
-            <image class="act-img " src="{{item.commodityIcon}} " lazy-load />
-            <view class="act-desc ">
-              <view class="act-content ">
-                <view class="content-left ">
-                  <text class="content-loc">{{item.commodityName}}</text>
-                  <text class="content-time1">¥{{item.rent}}{{item.unit}}</text>
-                </view>
-                <view class="content-right ">
-                  <button class="content-btn1 ">
-                    <text>立即报名</text>
-                  </button>
+    <view>
+      <!-- 租赁的商品的列表 -->
+      <view wx:if="{{contentlist1}}">
+        <view class="my-activity" wx:for="{{contentlist1}}" wx:key="{{index}}">
+          <navigator url="/subShopping/pages/product/product?commodityId={{item.commodityId}}">
+            <view class="act-top ">
+              <image class="act-img " src="{{item.commodityIcon}} " lazy-load />
+              <view class="act-desc ">
+                <view class="act-content ">
+                  <view class="content-left ">
+                    <text class="content-loc">{{item.commodityName}}</text>
+                    <text class="content-time1">¥{{item.rent}}{{item.unit}}</text>
+                  </view>
+                  <view class="content-right ">
+                    <button class="content-btn1 ">
+                      <text>立即报名</text>
+                    </button>
+                  </view>
                 </view>
               </view>
             </view>
-          </view>
-        </navigator>
+          </navigator>
+        </view>
+        <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
       </view>
-      <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
+      <view wx:else class="else" style="height:250px">
+        <view class="else-img">
+          <image src="/assets/images/404.png" />
+          <view class="else-text"> 暂时还没有内容哦</view>
+        </view>
+      </view>
     </view>
-    <!-- 商城商品的列表 -->
-    <view wx:if="{{contentlist2}}">
-      <view class="my-activity" wx:for="{{contentlist1}}" wx:key="{{index}}">
-        <navigator url="/subShopping/pages/product/product?commodityId={{item.commodityId}}">
-          <view class="act-top ">
-            <image class="act-img " src="{{item.commodityIcon}} " lazy-load />
-            <view class="act-desc ">
-              <view class="act-content ">
-                <view class="content-left ">
-                  <text class="content-loc">{{item.commodityName}}</text>
-                  <text class="content-time1">¥{{item.rent}}{{item.unit}}</text>
-                </view>
-                <view class="content-right ">
-                  <button class="content-btn1 ">
-                    <text>立即报名</text>
-                  </button>
+
+    <view>
+      <!-- 商城商品的列表 -->
+      <view wx:if="{{contentlist2}}">
+        <view class="my-activity" wx:for="{{contentlist1}}" wx:key="{{index}}">
+          <navigator url="/subShopping/pages/product/product?commodityId={{item.commodityId}}">
+            <view class="act-top ">
+              <image class="act-img " src="{{item.commodityIcon}} " lazy-load />
+              <view class="act-desc ">
+                <view class="act-content ">
+                  <view class="content-left ">
+                    <text class="content-loc">{{item.commodityName}}</text>
+                    <text class="content-time1">¥{{item.rent}}{{item.unit}}</text>
+                  </view>
+                  <view class="content-right ">
+                    <button class="content-btn1 ">
+                      <text>立即报名</text>
+                    </button>
+                  </view>
                 </view>
               </view>
             </view>
-          </view>
-        </navigator>
+          </navigator>
+        </view>
+        <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
       </view>
-      <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
+      <view wx:else class="else" style="height:250px">
+        <view class="else-img">
+          <image src="/assets/images/404.png" />
+          <view class="else-text"> 暂时还没有内容哦</view>
+        </view>
+      </view>
     </view>
+
+
   </scroll-view>
 
 </view>

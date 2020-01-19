@@ -18,7 +18,10 @@ Page({
     region: ['请输入地址', '', ''],
     caseList: [], //后台提交的列表
     form_info: '', //设置清空的
-    modalName: ''
+    modalName: '',
+    isClick:true,//完成注册的控制
+    isClick1: true,//添加完成是的控制
+
   },
   // 选择不同的选图方式
   chooseWxImage: function(type) {
@@ -123,7 +126,7 @@ Page({
         "filterName": "technology"
       }
       wx.uploadFile({
-        url: 'http://10.20.11.252:8080/wumei-server/file/imageUpload',
+        url: 'https://www.techwells.com/wumei-server/file/imageUpload',
         header: {
           'content-type': 'multipart/form-data'
         },
@@ -149,20 +152,13 @@ Page({
   },
   //  表单提交事件
   fromSubmit: function(e) {
+    this.setData({
+      isClick1:false
+    })
     let that = this;
     setTimeout(function() {
       let master = e.detail.value;
-      console.log(mulImage.length)
-      console.log(master.caseName)
-      console.log(master.caseIntroduce)
-      console.log(master.caseCity)
-      console.log(master.caseTime)
-      console.log(master.caseIntroduce)
-      console.log(master.caseCity)
-      console.log(master.imageUrlArray)
       if (mulImage.length == 0 && !master.caseName && !master.caseIntroduce && master.caseCity.length == 0 && !master.caseTime) {
-        console.log('失败进来')
-
       } else {
         if (mulImage.length == 0) {
           wx.showToast({
@@ -218,6 +214,9 @@ Page({
         });
         mulImage = []
       }
+      that.setData({
+        isClick1: true
+      })
     }, 1500)
   },
   fromReset: function(e) {
@@ -226,8 +225,12 @@ Page({
     })
   },
   showModal(e) {
-  let  that=this;
+    let that = this;
+    wx.showLoading({
+      title: '正在整理',
+    })
     setTimeout(function() {
+      wx.hideLoading();
       that.setData({
         modalName: e.currentTarget.dataset.target
       })
@@ -243,16 +246,16 @@ Page({
     wx.showLoading({
       title: '正在为您认证',
     })
-    setTimeout(function() {
-      wx.hideLoading()
-    }, 2000)
     globalData.addTechnology.caseList = that.data.caseList;
     let data = globalData.addTechnology;
     data.userId = wx.getStorageSync('token').userId;
     WXAPI.addTechnology(data).then(res => {
+      that.setData({
+        isClick: false
+      })
       console.log(res)
       if (res.code == 200) {
-        console.log('sdfbf');
+        wx.hideLoading()
         wx.setStorageSync("token", res.data)
         wx.navigateTo({
           url: '/certification/pages/masterCertification/finnish',
@@ -262,7 +265,13 @@ Page({
           icon: "none",
           title: res.message,
         })
+        setTimeout(function() {
+          that.setData({
+            isClick: true
+          })
+        }, 2000)
       }
+      console.log(that.data.isClick);
     })
   },
 
@@ -294,7 +303,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.setData({
+      isClick: true
+    })
   },
 
   /**

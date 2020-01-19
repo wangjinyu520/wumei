@@ -7,7 +7,7 @@
         <!-- <icon class="search-icon" type="search" size="13"></icon> -->
         <input type="text" class="search-input" placeholder="搜索您的需求" confirm-type='search' bindinput="inputBind" bindconfirm="getActivityInfo" />
       </view>
-      <view class="topub">
+      <view class="topub" bindtap="toRemand">
         发布需求
         <!-- <image class="img" src="/assets/common/publish.png" bindtap="toPublish" /> -->
       </view>
@@ -56,7 +56,7 @@
     </view>
   </view>
   <view class="temp temp2 contentCenter {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
-    <view wx:for="{{px}}" bindtap='selectPX' data-index="{{index}}" class="pxTable {{pxIndex == index?'current4':''}}" wx:key="{{index}}">
+    <view wx:for="{{px}}" bindtap='selectPX' data-index="{{index}}" class="pxTable {{technologyType == index?'current4':''}}" wx:key="{{index}}">
       {{item}}
     </view>
   </view>

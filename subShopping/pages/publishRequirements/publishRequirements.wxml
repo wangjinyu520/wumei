@@ -1,90 +1,85 @@
 <!--pages/publish/publish.wxml-->
-  
+
 <!-- <view style="height:{{height}}px"></view> -->
 <view class="publishRequirements">
   <form bindsubmit="fromSubmit" id="1" bindreset="fromReset">
     <!--输入框-->
-    <view class="topic">
-      <view class="title">标题</view>
+    <view class="null"></view>
+    <view class="cu-form-group topic">
+      <view class="cu-form-group-title">标题</view>
       <input type="text" name="activityTheme" placeholder="请填写标题" />
     </view>
-
-     <view class="midBlock">
-
-    <view class="locale">
-      <view class="locale-title">开始日期</view>
-       <picker mode="date"  name="startTime" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
-        <view class="picker">
-          {{startDate}}
-        </view>
-      </picker>
-      <image src="/assets/common/master-right.png" class="icon-set" bindchange="DateChange"></image>
+    <view class="null"></view>
+    <view class="midBlock">
+      <view class="cu-form-group">
+        <view class="cu-form-group-title">开始日期</view>
+        <picker mode="date" name="startTime" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+          <view class="picker">
+            {{startDate}}
+          </view>
+        </picker>
+        <!-- <image src="/assets/common/master-right.png" class="icon-set" bindchange="DateChange"></image> -->
+      </view>
+      <view class="cu-form-group">
+        <view class="cu-form-group-title">结束日期</view>
+        <picker mode="date" name="endTime" start="2015-09-01" end="2020-09-01" bindchange="endDateChange">
+          <view class="picker">
+            {{endDate}}
+          </view>
+        </picker>
+        <!-- <image src="/assets/common/master-right.png" class="icon-set" bindchange="DateChange"></image> -->
+      </view>
+      <view class="cu-form-group">
+        <view class="cu-form-group-title">城市</view>
+        <picker mode="region" bindchange="RegionChange" name="caseCity" custom-item="{{customItem}}">
+          <view class="picker">
+            {{region[0]}} {{region[1]}} {{region[2]}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="cu-form-group-title">工种</view>
+        <picker bindchange="bindPickerChange" value="{{index}}" name="technologyTypeId" range="{{technologyTypeList}}" range-key="typeName">
+          <view class="picker">
+            {{selectedType?technologyTypeList[selectedType].typeName:'请选择工种' }}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="cu-form-group-title">薪资/天</view>
+        <input type="number" name="salary" placeholder="请输入薪资/天" class="cu-form-group-input" />
+        <view style="color: grey;margin-right: 10px;">元</view>
+      </view>
     </view>
-
-    <view class="locale">
-      <view class="locale-title">结束日期</view>
-       <picker mode="date"  name="endTime" start="2015-09-01" end="2020-09-01" bindchange="endDateChange">
-        <view class="picker">
-          {{endDate}}
-        </view>
-      </picker>
-      <image src="/assets/common/master-right.png" class="icon-set" bindchange="DateChange"></image>
+    <view class="null"></view>
+    <view class="contact">
+      <view class="cu-form-group">
+        <view class="cu-form-group-title">联系人</view>
+        <input type="text" name="contactPerson" placeholder="请输入联系人" class="cu-form-group-input" />
+      </view>
+      <view class="cu-form-group">
+        <view class="cu-form-group-title">联系电话</view>
+        <input type="text" name="contactPhone" placeholder="请输入联系电话" class="cu-form-group-input" />
+      </view>
     </view>
-  
-    <view class="locale">
-      <view class="locale-title">城市</view>
-       <picker mode="region" bindchange="RegionChange" name="caseCity" custom-item="{{customItem}}">
-        <view class="picker">
-          {{region[0]}} {{region[1]}} {{region[2]}}
-        </view>
-      </picker>
-        <image src="/assets/common/master-right.png" class="icon-set"></image>
-    </view>
-
-    <view class="locale">
-      <view class="locale-title">工种</view>
-       <picker bindchange="bindPickerChange"   value="{{index}}" name="technologyTypeId"   range="{{technologyTypeList}}"  range-key="typeName">
-	    <view class="picker">
-	      {{selectedType?technologyTypeList[selectedType].typeName:'请选择工种' }}
-	    </view>
-	  </picker>
-      <image src="/assets/common/master-right.png" class="icon-set"></image>
-    </view>
-
-    <view class="locale">
-      <view class="locale-title">薪资/天</view>
-      <input type="number" name="salary" placeholder="请输入薪资/天" class="locale-input" />
-      <view style="color: grey;margin-right: 10px;">元</view>
-    </view>
-
-     </view>
-
-	 <view class="contact">
-	 	<view class="locale">
-	      <view class="locale-title">联系人</view>
-	      <input type="text" name="contactPerson" placeholder="请输入联系人" class="locale-input" />
-	    </view>
-	    <view class="locale">
-	      <view class="locale-title">联系电话</view>
-	      <input type="text" name="contactPhone" placeholder="请输入联系电话" class="locale-input" />
-	    </view>
-	 </view>
-
+    <view class="null"></view>
     <view class="required">
       <view class="required-title">
-         需求描述
+        需求描述
       </view>
       <view class="required-body">
-      <textarea class="textarea" name="required">
-      </textarea>
-      <view class="uploadImg">
-      	 <include src="../../components/uploadpic/up-pic.wxml" />
-      </view>
+        <textarea class="textarea" placeholder="请输入描述" name="required">
+        </textarea>
+        <view class="uploadImg">
+          <include src="../../components/uploadpic/up-pic.wxml" />
+        </view>
       </view>
     </view>
 
-    <view class="submit" >
-    	 <button formType="submit"  >提交</button>
+    <view class="btn-box">
+      <button class="{{isClick?'pub-btn':'pub-btn-false'}}" formType="{{isClick?'submit':''}}" >
+        <text>发布</text>
+      </button>
     </view>
 
   </form>

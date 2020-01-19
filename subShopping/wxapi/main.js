@@ -230,5 +230,13 @@ module.exports = {
   getHotTechnologyList: (data) => {
     return request("/technology/getHotTechnologyList", 'get', data)
   },
+  //获取案例详情
+  getTechnologyCaseInfo: (data) => {
+    return request("/technologyCase/getTechnologyCaseInfo", 'get', data)
+  },
+  //获取图片资源那里面的按热度按时间
+  getTechnologyCaseList: (data) => {
+    return request("/technologyCase/getTechnologyCaseList", 'get', data)
+  },
 
 }

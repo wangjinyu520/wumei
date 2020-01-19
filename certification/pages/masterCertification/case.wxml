@@ -79,7 +79,7 @@
     </view>
     <view class="btn-box">
       <button class="pub-btn" bindtap="showModal" data-target="Image" formType="submit">
-        <text>添加完成，去认证</text>
+        <text>全部添加完成，去认证</text>
       </button>
     </view>
     <view class="cu-modal {{modalName=='Image'?'show':''}}">
@@ -92,7 +92,7 @@
      
         </view>
         <view class="cu-bar">
-          <view class="action margin-0 flex-sub  solid-left" bindtap="submitInfo">
+          <view class="action margin-0 flex-sub  solid-left" bindtap="{{isClick?'submitInfo':''}}">
             点击完成注册
           </view>
         </view>

@@ -1,121 +1,139 @@
 // pages/publishRequirements/publishRequirements.js
 const WXAPI = require('../../wxapi/main')
 const app = getApp()
-let data={}
-let mulImage=[];
+let data = {}
+let mulImage = [];
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-     nvabarData: {
+    nvabarData: {
       showCapsule: 1, //是否显示左上角图标   1表示显示    region
       title: '发布需求', //导航栏 中间的标题
     },
-     height: app.globalData.statusBarHeight * 2 + 20,
-     imgs: [],
+    height: app.globalData.statusBarHeight * 2 + 20,
+    imgs: [],
     upload_picture_list: [],
     region: ['请选择地址', '', ''],
     startDate: '请选择开始日期',
-    endDate:'请选择结束日期',
-    technologyTypeList:[ ],
-    selectedType:'',
-    canSubmit:false
+    endDate: '请选择结束日期',
+    technologyTypeList: [],
+    selectedType: '',
+    canSubmit: false,
+    isClick: true
   },
   //提交
-  fromSubmit(e){
+  fromSubmit(e) {
     console.log(e)
-     
-        let userId=wx.getStorageSync('token').userId
-  if(e.detail.value.activityTheme!=""&&e.detail.value.caseCity.length!=0&&
-    e.detail.value.startTime!=""&&e.detail.value.endTime!=""&&
-    e.detail.value.contactPerson!=""&&e.detail.value.contactPhone!=""&&
-    e.detail.value.salary!=""&&e.detail.value.technologyTypeId!=""){
-     
-     if (new Date().getTime() > new Date(e.detail.value.endTime).getTime()) {
-      wx.showModal({
-        title: '结束时间应当在当前时间之后',
-      })
-      return;
-    }else if(e.detail.value.contactPhone.length!=11||!/^1[3456789]\d{9}$/.test(e.detail.value.contactPhone)){
-       wx.showModal({
-        title: '请填写正确的手机号',
-      })
-      return
-    }else{
-       let a=e.detail.value.caseCity.join('');
-       data={
-        userId:userId,
-        demandTitle:e.detail.value.activityTheme,
-        demandLocation:a,
-        startTime:e.detail.value.startTime,
-        endTime:e.detail.value.endTime,
-        technologyType:e.detail.value.technologyTypeId,
-        salary:e.detail.value.salary,
-        contacts:e.detail.value.contactPerson,
-        contact:e.detail.value.contactPhone
-       }
-     if (mulImage.length!=0&&e.detail.value.required!="") {
-       data.demandImage = mulImage.join(',');
-       data.detail=e.detail.value.required;
-       console.log(data)
-    }else if(mulImage.length!=0){
-       data.demandImage = mulImage.join(',');
-    }else if(e.detail.value.required!=""){
-       data.detail=e.detail.value.required;
-    } 
-    console.log(data)
-   this.submitFun(data);
-     } 
+    let userId = wx.getStorageSync('token').userId
+    if (e.detail.value.activityTheme != "" && e.detail.value.caseCity.length != 0 &&
+      e.detail.value.startTime != "" && e.detail.value.endTime != "" &&
+      e.detail.value.contactPerson != "" && e.detail.value.contactPhone != "" &&
+      e.detail.value.salary != "" && e.detail.value.technologyTypeId != "") {
 
-  }else{
-     wx.showToast({
+      if (new Date().getTime() > new Date(e.detail.value.endTime).getTime()) {
+        wx.showModal({
+          title: '结束时间应当在当前时间之后',
+        })
+        return;
+      } else if (e.detail.value.contactPhone.length != 11 || !/^1[3456789]\d{9}$/.test(e.detail.value.contactPhone)) {
+        wx.showModal({
+          title: '请填写正确的手机号',
+        })
+        return
+      } else {
+        let a = e.detail.value.caseCity.join('');
+        data = {
+          userId: userId,
+          demandTitle: e.detail.value.activityTheme,
+          demandLocation: a,
+          startTime: e.detail.value.startTime,
+          endTime: e.detail.value.endTime,
+          technologyType: e.detail.value.technologyTypeId,
+          salary: e.detail.value.salary,
+          contacts: e.detail.value.contactPerson,
+          contact: e.detail.value.contactPhone
+        }
+        if (mulImage.length != 0 && e.detail.value.required != "") {
+          data.demandImage = mulImage.join(',');
+          data.detail = e.detail.value.required;
+          console.log(data)
+        } else if (mulImage.length != 0) {
+          data.demandImage = mulImage.join(',');
+        } else if (e.detail.value.required != "") {
+          data.detail = e.detail.value.required;
+        }
+        console.log(data)
+        this.submitFun(data);
+      }
+
+    } else {
+      wx.showToast({
         title: '请填完每一项',
         icon: 'none',
         duration: 1000
       })
       return false;
-  }
+    }
   },
   //提交表单
-  submitFun(a){
-    WXAPI.addDemand(a).then(res=>{
-        if(res.code==200){
-            wx.showToast({
-              title: '提交成功',
-              icon: 'none',
-              duration: 1000
-            })
-        }
+  submitFun(a) {
+    let that = this;
+    WXAPI.addDemand(a).then(res => {
+      wx.showLoading({
+        title: '正在发布',
       })
-    },
+      this.setData({
+        isClick: false
+      })
+      if (res.code == 200) {
+        wx.hideLoading();
+        console.log(this.data.isClick);
+        wx.navigateTo({
+          url: '/subShopping/pages/requireSuccess/requireSuccess',
+        })
+      } else {
+
+        wx.showToast({
+          title: res.message,
+        })
+        wx.hideLoading();
+        setTimeout(function() {
+          that.setData({
+            isClick: true
+          })
+        }, 2000)
+      }
+    })
+  },
   //选择城市
-    RegionChange: function (e) {
+  RegionChange: function(e) {
     this.setData({
       region: e.detail.value
     })
   },
   //选择日期
-    DateChange(e) {
-      console.log(e)
+  DateChange(e) {
+    console.log(e)
     this.setData({
       startDate: e.detail.value
     })
   },
-  endDateChange(e){
-   this.setData({
-    endDate:e.detail.value
-   })
-  },
-  //选择工种
-  bindPickerChange(e){
-    console.log(e)
+  endDateChange(e) {
     this.setData({
-      selectedType:e.detail.value
+      endDate: e.detail.value
     })
   },
-    //选择图片方法
+  //选择工种
+  bindPickerChange(e) {
+    console.log(e)
+    this.setData({
+      selectedType: e.detail.value
+    })
+  },
+  //选择图片方法
   uploadpic: function(e) {
     let that = this //获取上下文
     let upload_picture_list = that.data.upload_picture_list
@@ -149,14 +167,14 @@ Page({
     }
 
   },
-    uploadFile: function(i) {
+  uploadFile: function(i) {
     return new Promise((resolve, reject) => {
       const app = getApp();
       let filterName = {
         "filterName": "company"
       }
       wx.uploadFile({
-        url: 'http://10.20.11.252:8080/wumei-server/file/imageUpload',
+        url: 'https://www.techwells.com/wumei-server/file/imageUpload',
         header: {
           'content-type': 'multipart/form-data'
         },
@@ -196,23 +214,27 @@ Page({
     })
   },
   //获取工种
-  getTechnologyTypeList(){
-   
-    WXAPI.getTechnologyTypeList({pageNum:1,pageSize:40}).then(res=>{
-      if(res.code==200){
-         this.setData({
-           technologyTypeList:res.data
-         });
-         // res.data.forEach(item=>{
-         //   this.data.technologyTypeList.push(item)
-         // })
-        
-         
+  getTechnologyTypeList() {
+
+    WXAPI.getTechnologyTypeList({
+      pageNum: 1,
+      pageSize: 40
+    }).then(res => {
+      if (res.code == 200) {
+        this.setData({
+          technologyTypeList: res.data
+        });
       }
     })
   },
   onLoad: function() {
     this.getTechnologyTypeList();
+  },
+  onShow: function() {
+    this.setData({
+      isClick: true
+    })
+    console.log(this.data.isClick);
   },
 
 })
