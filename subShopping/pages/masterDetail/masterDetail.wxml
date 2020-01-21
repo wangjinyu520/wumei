@@ -87,7 +87,8 @@
   <view class='top_nav'>
     <view class="nav-name {{index == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{index}}' catchtap='handleTap'>
       <view class="item">
-        <view class="number">32</view>
+        <view class="number">{{item.num?item.num:0}}</view>
+
         <view class="name">{{item.name}}</view>
       </view>
     </view>
@@ -107,9 +108,9 @@
       </view>
       <view class="img-list">
         <view class="img-left">
-          <view wx:for="{{contentlist}}" wx:key="{{index}}">
+          <view wx:for="{{caseImage}}" wx:key="{{index}}">
             <view class="img-item" wx:if="{{index%2==0}}">
-              <image src="{{item.imageCover}}"></image>
+              <image src="{{item}}"></image>
               <view class="img-item-bot">
                 <view class="xinxin">
                   <image src="/assets/images/master/xinxin.png"></image>
@@ -120,9 +121,9 @@
           </view>
         </view>
         <view class="img-right">
-          <view wx:for="{{contentlist}}" wx:key="{{index}}">
+          <view wx:for="{{caseImage}}" wx:key="{{index}}">
             <view class="img-item" wx:if="{{index%2==1}}">
-              <image src="{{item.imageCover}}"></image>
+              <image src="{{item}}"></image>
               <view class="img-item-bot">
                 <view class="xinxin">
                   <image src="/assets/images/master/xinxin.png"></image>
@@ -273,6 +274,14 @@
       </view>
       <view>
         <text>{{isCollect?'已收藏':'收藏'}}</text>
+      </view>
+    </view>
+    <view class='collect' bindtap="goPhone">
+      <view>
+        <image class="collect-img" src="/assets/images/master/xiaoxi.png"></image>
+      </view>
+      <view>
+        <text>联系TA</text>
       </view>
     </view>
   </view>

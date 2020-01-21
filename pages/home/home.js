@@ -53,7 +53,7 @@ Page({
   //大师更多页面
   goLight: function(e) {
     wx.navigateTo({
-      url: '/subShopping/pages/popularMaster/popularMaster',
+      url: '/subShopping/pages/popularMaster/popularMaster?selectCate=' + this.data.TabCur,
     })
   },
   // 大师类型

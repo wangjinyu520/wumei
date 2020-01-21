@@ -19,8 +19,9 @@ Page({
     caseList: [], //后台提交的列表
     form_info: '', //设置清空的
     modalName: '',
-    isClick:true,//完成注册的控制
-    isClick1: true,//添加完成是的控制
+    isClick: true, //完成注册的控制
+    isClickLast: true, //添加全部添加完成之后
+    imgSuccess: false,
 
   },
   // 选择不同的选图方式
@@ -128,6 +129,9 @@ Page({
           let str = JSON.parse(res.data);
           if (str.code == 200) {
             mulImage.push(str.data);
+            that.setData({
+              imgSuccess: true
+            })
           } else {
             wx.showToast({
               title: str.message,
@@ -143,76 +147,209 @@ Page({
   },
   //  表单提交事件
   fromSubmit: function(e) {
-    this.setData({
-      isClick1:false
-    })
-    let that = this;
-    setTimeout(function() {
-      let master = e.detail.value;
-      if (mulImage.length == 0 && !master.caseName && !master.caseIntroduce && master.caseCity.length == 0 && !master.caseTime) {
-      } else {
-        if (mulImage.length == 0) {
-          wx.showModal({
-            title: '',
-            content: '',
-          })({
-            title: '案例图片不能为空',
-            icon: 'none',
-            image: '',
-            duration: 1000
-          })
-          return;
-        } else if (master.caseName.length == 0) {
-          wx.showToast({
-            title: '案例名称不能为空',
-            icon: 'none',
-            image: '',
-            duration: 1000
-          })
-          return;
-        } else if (!master.caseTime) {
-          wx.showToast({
-            title: '日期还没有选择',
-            icon: 'none',
-            duration: 1000
-          })
-          return
-        } else if (master.caseCity.length == 0) {
-          wx.showToast({
-            title: '请选择服务城市',
-            icon: 'none',
-            duration: 1000
-          })
-          return
-        } else if (!master.caseIntroduce) {
-          wx.showToast({
-            title: '案例介绍必填',
-            icon: 'none',
-            duration: 1000
-          })
-          return
-        }
-        master.technologyId = wx.getStorageSync('token').userId
-        master.caseCity = master.caseCity[0] + master.caseCity[1] + master.caseCity[2];
-        master.imageUrlArray = mulImage;
-        let caseList = that.data.caseList;
-        caseList.push(master);
 
+    let that = this;
+    if (e.detail.target.dataset.tag != 'last') {
+      console.log('nolast')
+      if (that.data.imgSuccess) {
+        let master = e.detail.value;
+        if (mulImage.length == 0 && !master.caseName && !master.caseIntroduce && master.caseCity.length == 0 && !master.caseTime) {} else {
+          if (mulImage.length == 0) {
+            wx.showToast({
+              title: '图片不能为空',
+              icon: 'none',
+              image: '',
+              duration: 1000
+            })
+            return;
+          } else if (master.caseName.length == 0) {
+            wx.showToast({
+              title: '案例名称不能为空',
+              icon: 'none',
+              image: '',
+              duration: 1000
+            })
+            return;
+          } else if (!master.caseTime) {
+            wx.showToast({
+              title: '日期还没有选择',
+              icon: 'none',
+              duration: 1000
+            })
+            return
+          } else if (master.caseCity.length == 0) {
+            wx.showToast({
+              title: '请选择服务城市',
+              icon: 'none',
+              duration: 1000
+            })
+            return
+          } else if (!master.caseIntroduce) {
+            wx.showToast({
+              title: '案例介绍必填',
+              icon: 'none',
+              duration: 1000
+            })
+            return
+          }
+          master.technologyId = wx.getStorageSync('token').userId
+          master.caseCity = master.caseCity[0] + master.caseCity[1] + master.caseCity[2];
+          master.imageUrlArray = mulImage;
+          let caseList = that.data.caseList;
+          caseList.push(master);
+          that.setData({
+            caseList: caseList,
+            showTitle: false,
+            form_info: '',
+            upload_picture_list: [],
+            isShowPic: true,
+            date: '请输入日期',
+            region: ['请输入地址', '', ''],
+            imgSuccess: false
+          });
+          mulImage = []
+        }
         that.setData({
-          caseList: caseList,
-          showTitle: false,
-          form_info: '',
-          upload_picture_list: [],
-          isShowPic: true,
-          date: '请输入日期',
-          region: ['请输入地址', '', ''],
-        });
-        mulImage = []
+          isClick1: true
+        })
       }
+    } else {
+      console.log('last')
       that.setData({
-        isClick1: true
+        isClickLast: false
       })
-    }, 1500)
+      if (that.data.imgSuccess) {
+        let master = e.detail.value;
+        if (mulImage.length == 0 && !master.caseName && !master.caseIntroduce && master.caseCity.length == 0 && !master.caseTime) {
+          wx.showToast({
+            title: '案例还没有添加',
+            icon: '',
+
+          })
+        } else {
+          if (mulImage.length == 0) {
+            wx.showModal({
+              content: '你的新案例信息不完整，是否放弃',
+              confirmText: '放弃',
+              cancelText: '继续添写',
+              success(res) {
+                if (res.confirm) {
+                  that.showModal();
+                } else if (res.cancel) {
+                  that.setData({
+                    isClickLast: true
+                  })
+                }
+              }
+            })
+            return;
+          } else if (master.caseName.length == 0) {
+            wx.showModal({
+              title: '',
+              content: '你的新案例信息不完整，是否放弃',
+              confirmText: '放弃',
+              cancelText: '继续添写',
+              success(res) {
+                if (res.confirm) {
+                  that.showModal();
+                } else if (res.cancel) {
+                  that.setData({
+                    isClickLast: true
+                  })
+                }
+              }
+            })
+            return;
+          } else if (!master.caseTime) {
+            wx.showModal({
+              content: '你的新案例信息不完整，是否放弃',
+              confirmText: '放弃',
+              cancelText: '继续添写',
+              success(res) {
+                if (res.confirm) {
+                  that.showModal();
+                } else if (res.cancel) {
+                  that.setData({
+                    isClickLast: true
+                  })
+                }
+              }
+            })
+            return
+          } else if (master.caseCity.length == 0) {
+            wx.showModal({
+              content: '你的新案例信息不完整，是否放弃',
+              confirmText: '放弃',
+              cancelText: '继续添写',
+              success(res) {
+                if (res.confirm) {
+                  that.showModal();
+                } else if (res.cancel) {
+                  that.setData({
+                    isClickLast: true
+                  })
+                }
+              }
+            })
+            return
+          } else if (!master.caseIntroduce) {
+            wx.showModal({
+              content: '你的新案例信息不完整，是否放弃',
+              confirmText: '放弃',
+              cancelText: '继续添写',
+              success(res) {
+                if (res.confirm) {
+                  that.showModal();
+                } else if (res.cancel) {
+                   that.setData({
+                     isClickLast:true
+                   })
+                }
+              }
+            })
+            return
+          }
+          master.technologyId = wx.getStorageSync('token').userId
+          master.caseCity = master.caseCity[0] + master.caseCity[1] + master.caseCity[2];
+          master.imageUrlArray = mulImage;
+          let caseList = that.data.caseList;
+          caseList.push(master);
+          that.showModal();
+          that.setData({
+            caseList: caseList,
+            showTitle: false,
+            form_info: '',
+            upload_picture_list: [],
+            isShowPic: true,
+            date: '请输入日期',
+            region: ['请输入地址', '', ''],
+            imgSuccess: false,
+            isClickLast:true
+          });
+          mulImage = []
+        }
+        that.setData({
+          isClick1: true
+        })
+      }else{
+        wx.showModal({
+          content: '你还没有选择图片，是否放弃该案例',
+          confirmText: '放弃',
+          cancelText: '继续添写',
+          success(res) {
+            if (res.confirm) {
+              that.showModal();
+            } else if (res.cancel) {
+              that.setData({
+                isClickLast: true
+              })
+            }
+          }
+        })
+     
+      }
+    }
+
   },
   fromReset: function(e) {
     wx.navigateBack({
@@ -227,7 +364,7 @@ Page({
     setTimeout(function() {
       wx.hideLoading();
       that.setData({
-        modalName: e.currentTarget.dataset.target
+        modalName: 'Image'
       })
     }, 1800)
   },

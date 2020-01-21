@@ -1,6 +1,7 @@
 // pages/popularMaster/popularMaster.js
 //var cityData = require('../../../utils/city.js'); //引入自己定义的深圳地铁区域及号线数据信息
 const WXAPI = require('../../wxapi/main');
+let selectCate=0;
 const params = {
   pageNum: 1,
   pageSize: 100
@@ -41,6 +42,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    selectCate=options.selectCate;
     wx.showLoading({
       title: '正在加载',
     })
@@ -293,6 +295,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    // 获取大师的详情
+    params.technologyOccupation=selectCate;
+    console.log(params.technologyOccupation);
     this.getHotTechnologyList();
   },
 

@@ -78,7 +78,7 @@
       </button>
     </view>
     <view class="btn-box">
-      <button class="pub-btn" bindtap="showModal" data-target="Image" formType="submit">
+      <button class="pub-btn" data-tag="last" formType="submit">
         <text>全部添加完成，去认证</text>
       </button>
     </view>

@@ -1,5 +1,6 @@
 // subShopping/pages/masterDetail/masterDetail.js
 let userId = '';
+let caseImage = [];  //收集图片资源
 let WXAPI = require('../../wxapi/main.js');
 Page({
 
@@ -10,13 +11,14 @@ Page({
     currentId: '0',
     section: [{
       name: '图片资源',
+      num: 0
 
     }, {
       name: '服务案例',
-
+      num: 0
     }, {
       name: '用户评价',
-
+      num: 0
     }],
     masterDetail: null, //大师详情
     isCollect: false,
@@ -28,6 +30,8 @@ Page({
     page: 1,
     pageSize: 50,
     contentlist: null, //图片列表
+    caseImage: [], //图片资源
+
 
 
 
@@ -75,7 +79,7 @@ Page({
       })
     } else {
       wx.showToast({
-        icon:'none',
+        icon: 'none',
         title: '开始时间应该在结束时间之前',
       })
     }
@@ -333,11 +337,44 @@ Page({
     WXAPI.getDetailInfo({
       userId
     }).then(res => {
-      console.log(res)
+
+      let section = that.data.section.map((ele, i) => {
+        if (i == 0) {
+          return {
+            name: "图片资源",
+            num: res.data.caseImageCount
+          }
+        } else if (i == 1) {
+          return {
+            name: "服务案例",
+            num: res.data.caseCount
+          }
+        } else if (i == 2) {
+          return {
+            name: "用户评论",
+            num: res.data.evaluateCount
+          }
+        }
+      })
+      // 处理资源图片
+      if (res.data.caseList) {
+        res.data.caseList.forEach(ele => {
+          return ele.imageUrl=ele.imageUrl.split(',');
+        })
+        console.log(res.data.caseList);
+
+      
+        res.data.caseList.forEach(ele => {
+          return  caseImage=caseImage.concat(ele.imageUrl);
+        })
+        console.log(caseImage);
+      }
       that.setData({
         masterDetail: res.data,
         caseList: res.data.caseList,
         contentlist: res.data.caseList,
+        section: section,
+        caseImage: caseImage
       });
       console.log(res.data.caseList)
 
