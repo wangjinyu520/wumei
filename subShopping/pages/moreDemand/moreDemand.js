@@ -110,6 +110,13 @@ Page({
   // 大师申请订单
   toApply: function(e) {
     console.log(e.currentTarget.dataset.id);
+    if(wx.getStorageSync('token').userType!=3){
+      wx.showToast({
+        icon:"none",
+        title: '你还不是大师不能申请接单',
+      })
+      return
+    }
     wx.navigateTo({
       url: '/subShopping/pages/commandDetail/commandDetail?demandId=' + e.currentTarget.dataset.id,
     })

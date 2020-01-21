@@ -9,7 +9,9 @@ page {
 .bg-img {
   background-color: #fff;
 }
-
+.action{
+  margin: 0 auto;
+}
 .bg-img image {
   margin-top: 40rpx;
   width: 287rpx;

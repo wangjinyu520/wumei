@@ -1,15 +1,6 @@
 
 <view class="containers">
   <form bindsubmit="goPay" report-submit="true">
-    <!-- <view class="address-box" wx:if="{{isNeedLogistics > 0}}">
-      <view class="add-address" hidden="{{curAddressData}}">
-        <view class="title" bindtap="addAddress">新增收货地址</view>
-      </view>
-      <view class="show-address" hidden="{{!curAddressData}}" bindtap="selectAddress">
-        <view class="name-tel">{{curAddressData.linkMan}} {{curAddressData.mobile}}</view>
-        <view class="addr-text">{{curAddressData.address}}</view>
-      </view>
-    </view> -->
     <view class="goods-list">
       <view class="list-title">大师信息</view>
       <view class="a-goods">
@@ -23,11 +14,11 @@
           </view>
           <view class="arow">
             <view class="goods-label">开始时间</view>
-            <view class="goods-num">x {{buyNowInfo.startDate}}</view>
+            <view class="goods-num"> {{buyNowInfo.startDate}}</view>
           </view>
           <view class="arow">
             <view class="goods-label">结束时间</view>
-            <view class="goods-num">x {{buyNowInfo.endDate}}</view>
+            <view class="goods-num">{{buyNowInfo.endDate}}</view>
           </view>
           <view class="arow">
             <view class="goods-num">共{{buyNowInfo.amount}}天</view>

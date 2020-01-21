@@ -34,7 +34,7 @@
         <view class="title">案例介绍</view>
       </view>
       <view class="line">
-        <textarea placeholder="请输入案例介绍..." name="personalIntroduce" value="{{item.caseIntroduce}}"></textarea>
+        <view>{{item.caseIntroduce}}</view>
       </view>
     </view>
   </view>
@@ -69,7 +69,7 @@
       <view class="title">案例介绍</view>
     </view>
     <view class="line">
-      <textarea placeholder="请输入案例介绍..." value='{{form_info}}' auto-focus name="caseIntroduce"></textarea>
+      <textarea placeholder="请输入案例介绍..." value='{{form_info}}' name="caseIntroduce"></textarea>
     </view>
     <view class="btn-more">
       <button class="more-btn" formType="submit">
@@ -85,11 +85,10 @@
     <view class="cu-modal {{modalName=='Image'?'show':''}}">
       <view class="cu-dialog">
         <view class="bg-img" style="height:200px;">
-         <text class="cuIcon-close" bindtap="hideModal"></text>
+          <text class="cuIcon-close" bindtap="hideModal"></text>
           <image src="/assets/images/master/pic.png">
           </image>
           <view class="hs">辛苦了，赶快点击注册吧</view>
-     
         </view>
         <view class="cu-bar">
           <view class="action margin-0 flex-sub  solid-left" bindtap="{{isClick?'submitInfo':''}}">

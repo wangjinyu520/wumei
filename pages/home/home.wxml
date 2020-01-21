@@ -26,7 +26,6 @@
             <view class="text">发布活动</view>
           </view>
         </view>
-
       </view>
     </view>
   </view>
@@ -50,19 +49,19 @@
 <view class="icons">
   <view class="icon-classify">
     <view class="icon-top">
-      <view class="icon-item" bindtap="goLight" data-type="1">
+      <view class="icon-item">
         <image class="icon-icon" src="/assets/images/home/icon1.png"></image>
         <view class="text">直播</view>
       </view>
-      <view class="icon-item" bindtap="goLight" data-type="2">
+      <view class="icon-item">
         <image class="icon-icon" src="/assets/images/home/icon2.png"></image>
         <view class="text">社区</view>
       </view>
-      <view class="icon-item" bindtap="goLight" data-type="3">
+      <view class="icon-item">
         <image class="icon-icon" src="/assets/images/home/icon3.png"></image>
         <view class="text">培训</view>
       </view>
-      <view class="icon-item" bindtap="goLight" data-type="4">
+      <view class="icon-item">
         <image class="icon-icon" src="/assets/images/home/icon4.png"></image>
         <view class="text">活动</view>
       </view>
@@ -117,7 +116,7 @@
   <view>
     <view class="master-info" wx:for="{{masters}}" wx:key="{{index}}" data-id="{{item.userId}}" bindtap="toDetailsMaster">
       <view class="left">
-        <image class="img" src="/assets/images/home/icon3.png"></image>
+        <image class="img" src="{{item.userIcon}}"></image>
       </view>
       <view class="middle">
         <view class="top">

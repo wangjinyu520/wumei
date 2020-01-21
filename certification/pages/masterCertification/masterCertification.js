@@ -17,6 +17,7 @@ Page({
   fromSubmit: function(e) {
     let that = this;
     let master = e.detail.value;
+    let str = /^1\d{10}$/
     master.city = master.city[0] + master.city[1] + master.city[2]
     master.technologyOccupation = Number(master.technologyOccupation) + 1;
     if (!master.technologyOccupation) {
@@ -55,7 +56,14 @@ Page({
         duration: 1000
       })
       return
-    } else if (!master.salary) {
+    } else if (!str.test(master.mobile)) {
+      wx.showToast({
+        title: '联系方式格式不正确',
+        icon: 'none',
+        duration: 1000
+      })
+      return
+    }else if (!master.salary) {
       wx.showToast({
         title: '薪资为必填哦',
         icon: 'none',

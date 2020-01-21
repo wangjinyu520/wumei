@@ -4,7 +4,6 @@
     <view class="text">{{item.demandTime}}</view>
     <view class="text">{{item.demandCity}}</view>
     <view class="text">{{item.technologyType}}</view>
-
     <view class="btn">
       <view class="edit btn-item" bindtap="toEditer" data-id="{{item.demandId}}">
         编辑

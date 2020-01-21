@@ -95,6 +95,7 @@ Page({
   onLoad: function (options) {
    demandId = options.demandId;
     WXAPI.getRemandInfo({ demandId }).then(res => {
+      res.data.demandImage=res.data.demandImage.split(',');
       this.setData({
         demandDetail: res.data,
       });

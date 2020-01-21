@@ -25,6 +25,7 @@
         <input type="number" name="workExperience" class="yearWork" placeholder="请输入年限"></input>
       </view>
     </view>
+    
     <view class="work">
       <view class="refund-title">年龄</view>
       <view class="refund-input">

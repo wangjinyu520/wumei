@@ -36,18 +36,10 @@ Page({
     if (that.data.upload_picture_list.length > 0) {
       len = that.data.upload_picture_list.length;
     };
-    // if (that.data.upload_picture_list.length = 0) {
-    //   this.setData({
-    //     isShowPic1: true
-    //   })
-    // };
     if (that.data.upload_picture_list.length > 5) {
       wx.showToast({
         title: '图片最多6张',
         icon: 'none'
-      })
-      this.setData({
-        isShowPic1: false
       })
       return;
     };
@@ -92,7 +84,6 @@ Page({
         }
       }
     })
-
   },
   // 点击删除图片
   deleteImg(e) {
@@ -123,7 +114,7 @@ Page({
     var that = this;
     for (let i = 0; i < tempFiles.length; i++) {
       let filterName = {
-        "filterName": "technology"
+        "filterName": "case"
       }
       wx.uploadFile({
         url: 'https://www.techwells.com/wumei-server/file/imageUpload',
@@ -161,7 +152,10 @@ Page({
       if (mulImage.length == 0 && !master.caseName && !master.caseIntroduce && master.caseCity.length == 0 && !master.caseTime) {
       } else {
         if (mulImage.length == 0) {
-          wx.showToast({
+          wx.showModal({
+            title: '',
+            content: '',
+          })({
             title: '案例图片不能为空',
             icon: 'none',
             image: '',
@@ -203,6 +197,7 @@ Page({
         master.imageUrlArray = mulImage;
         let caseList = that.data.caseList;
         caseList.push(master);
+
         that.setData({
           caseList: caseList,
           showTitle: false,

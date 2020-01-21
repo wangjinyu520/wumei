@@ -1,6 +1,6 @@
 <!--certification/pages/masterCertification/personal.wxml-->
 <view class="box">
-  <view class="titles">基本信息</view>
+  <view class="titles">个人介绍</view>
   <!--输入框-->
   <view class="area">
     <textarea placeholder="请输入" bindinput="saveInfo"></textarea>

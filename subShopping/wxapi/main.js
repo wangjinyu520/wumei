@@ -1,7 +1,6 @@
 // const API_BASE_URL = "http://10.20.11.252:8080/wumei-server"
 // const API_BASE_URL = "http://101.133.164.180:8080/wumei-server"
 const API_BASE_URL = "https://www.techwells.com/wumei-server";
-
 const request = (url, method, data) => {
   let _url = API_BASE_URL + url
   return new Promise((resolve, reject) => {
@@ -230,6 +229,10 @@ module.exports = {
   getHotTechnologyList: (data) => {
     return request("/technology/getHotTechnologyList", 'get', data)
   },
+  //获取更多大师
+  getTechnologyList: (data) => {
+    return request("/technology/getTechnologyList", 'get', data)
+  },
   //获取案例详情
   getTechnologyCaseInfo: (data) => {
     return request("/technologyCase/getTechnologyCaseInfo", 'get', data)
@@ -238,6 +241,9 @@ module.exports = {
   getTechnologyCaseList: (data) => {
     return request("/technologyCase/getTechnologyCaseList", 'get', data)
   },
- 
+  //用户下单支付接口
+  getTechnologyPrePayId: (data) => {
+    return request("/weChat/getTechnologyPrePayId", 'get', data)
+  },
 
 }

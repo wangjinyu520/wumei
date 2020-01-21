@@ -52,8 +52,9 @@ Page({
       technologyId: that.data.buyNowInfo.technologyInfo.userId,
       startDate: that.data.buyNowInfo.startDate,
       endDate: that.data.buyNowInfo.endDate,
-      amount: that.data.buyNowInfo.totalDay,
-      totalPrice: that.data.buyNowInfo.totalPrice
+      amount: that.data.buyNowInfo.amount,
+      totalPrice: 0.01,
+      remark:e.detail.value.remark
     }
     dataInfo=JSON.stringify(dataInfo);
     console.log(dataInfo);
@@ -64,7 +65,7 @@ Page({
             "code": res.code,
             "jsonTechnologyOrder": dataInfo
           };
-          WXAPI.getweChatOpenid(data).then(res => {
+          WXAPI.getTechnologyPrePayId(data).then(res => {
             console.log(res.data);
             if (res.code == 200) {
               that.setData({
@@ -81,7 +82,7 @@ Page({
                   let activityOrderId = that.data.activityOrderId;
                   if (res.errMsg == "requestPayment:ok") {
                     wx.navigateTo({
-                      url: '/subShopping/pages/orderdetil/orderdetil?activityOrderId=' + activityOrderId,
+                      url: '/subShopping/pages/ordersuccess/ordersuccess'
                     })
                   } else {
                     wx.showToast({

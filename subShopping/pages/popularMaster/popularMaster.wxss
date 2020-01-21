@@ -1,5 +1,11 @@
 /*总页面*/
-
+page{
+  background-color: #fff;
+  width: 100%;
+}
+.else {
+top: 68rpx;
+}
 .popularMaster {
   background-color: #fff;
 }
@@ -103,9 +109,10 @@
 }
 
 .imgList {
+  margin-left: 120rpx;
   height: 220rpx;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 }
 

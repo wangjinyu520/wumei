@@ -38,7 +38,13 @@ Page({
           title: '结束时间应当在当前时间之后',
         })
         return;
-      } else if (e.detail.value.contactPhone.length != 11 || !/^1[3456789]\d{9}$/.test(e.detail.value.contactPhone)) {
+      } else if (new Date(e.detail.value.startTime).getTime() >new Date(e.detail.value.endTime).getTime()) {
+        wx.showModal({
+          title: '结束时间应该在开始时间之后',
+        })
+        return;
+      }
+       else if (e.detail.value.contactPhone.length != 11 || !/^1[3456789]\d{9}$/.test(e.detail.value.contactPhone)) {
         wx.showModal({
           title: '请填写正确的手机号',
         })
@@ -51,11 +57,12 @@ Page({
           demandLocation: a,
           startTime: e.detail.value.startTime,
           endTime: e.detail.value.endTime,
-          technologyType: e.detail.value.technologyTypeId,
+          technologyType: Number(e.detail.value.technologyTypeId)+1,
           salary: e.detail.value.salary,
           contacts: e.detail.value.contactPerson,
           contact: e.detail.value.contactPhone
         }
+        console.log(data.technologyType);
         if (mulImage.length != 0 && e.detail.value.required != "") {
           data.demandImage = mulImage.join(',');
           data.detail = e.detail.value.required;
@@ -95,12 +102,13 @@ Page({
           url: '/subShopping/pages/requireSuccess/requireSuccess',
         })
       } else {
-
+        console.log(res.message);
         wx.showToast({
+          icon: 'none',
           title: res.message,
         })
-        wx.hideLoading();
-        setTimeout(function () {
+        setTimeout(function() {
+          wx.hideLoading();
           that.setData({
             isClick: true
           })
@@ -109,7 +117,7 @@ Page({
     })
   },
   //选择城市
-  RegionChange: function (e) {
+  RegionChange: function(e) {
     this.setData({
       region: e.detail.value
     })
@@ -132,9 +140,10 @@ Page({
     this.setData({
       selectedType: e.detail.value
     })
+    console.log(Number(e.detail.value) + 1);
   },
   //选择图片方法
-  uploadpic: function (e) {
+  uploadpic: function(e) {
     let that = this //获取上下文
     let upload_picture_list = that.data.upload_picture_list
     //选择图片
@@ -142,7 +151,7 @@ Page({
       count: 8, // 默认9，这里显示一次选择相册的图片数量 
       sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有  
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) { // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片 
+      success: function(res) { // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片 
         let tempFiles = res.tempFiles
         //把选择的图片 添加到集合里
         for (let i in tempFiles) {
@@ -157,7 +166,7 @@ Page({
     })
   },
   // 点击上传图片
-  uploadimage: function () {
+  uploadimage: function() {
     // console.log(this.data.upload_picture_list.length);
     var that = this;
     for (let i = 0; i < this.data.upload_picture_list.length; i++) {
@@ -167,11 +176,11 @@ Page({
     }
 
   },
-  uploadFile: function (i) {
+  uploadFile: function(i) {
     return new Promise((resolve, reject) => {
       const app = getApp();
       let filterName = {
-        "filterName": "company"
+        "filterName": "demand"
       }
       wx.uploadFile({
         url: 'https://www.techwells.com/wumei-server/file/imageUpload',
@@ -181,12 +190,12 @@ Page({
         filePath: this.data.upload_picture_list[i].path,
         formData: filterName,
         name: 'file', //name是后台接收到字段
-        success: function (result) {
+        success: function(result) {
           console.log(result);
           const res = JSON.parse(result.data);
           res.status === -1 ? reject(res) : resolve(res);
         },
-        fail: function (res) { }
+        fail: function(res) {}
       })
     });
   },
@@ -227,10 +236,19 @@ Page({
       }
     })
   },
-  onLoad: function () {
+  onLoad: function() {
+    if (!wx.getStorageSync('token').userId) {
+      wx.showToast({
+        title: '请先去登录',
+      })
+      wx.switchTab({
+        url: '/pages/profile/profile',
+      })
+      return;
+    }
     this.getTechnologyTypeList();
   },
-  onShow: function () {
+  onShow: function() {
     this.setData({
       isClick: true
     })

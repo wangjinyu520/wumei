@@ -1,0 +1,19 @@
+<!--subShopping/pages/ordersuccess/ordersuccess.wxml-->
+<!--certification/pages/masterCertification/finnish.wxml-->
+<view class="finnish">
+  <view class="top">
+    <image src="/assets/images/remand/success.png">
+    </image>
+  </view>
+  <view class="hd">
+    支付成功
+  </view>
+  <view class="hs">
+    麻烦请等待对方接受聘用
+  </view>
+    <view class="btn-box">
+      <button class="pub-btn" bindtap="submit">
+        <text>返回首页</text>
+      </button>
+    </view>
+</view>

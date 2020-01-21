@@ -108,7 +108,9 @@ button:after {
   display: flex;
   align-items: baseline;
 }
-
+else{
+  top: 0;
+}
 .price .rent {
   font-size: 40rpx;
   font-weight: bold;

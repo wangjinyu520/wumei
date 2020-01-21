@@ -68,7 +68,8 @@
         "pages/commandDetail/success",
         "pages/masterDetail/masterDetail",
         "pages/masterDetail/introduce",
-        "pages/caseDetail/caseDetail"
+        "pages/caseDetail/caseDetail",
+        "pages/ordersuccess/ordersuccess"
       ],
       "name": "subShopping"
     },
@@ -156,5 +157,6 @@
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-  }
+  },
+  "enablePullDownRefresh": false
 }

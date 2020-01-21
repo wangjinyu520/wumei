@@ -15,10 +15,7 @@
         <view class="rongyao">{{masterDetail.glory}}</view>
         <!-- </image> -->
       </view>
-
     </view>
-
-
   </view>
   <view class="content-bot">
     <view class="left">
@@ -62,13 +59,11 @@
       </view>
     </view>
     <view class="right">
-
       <view class="price">
         <view>
           <text class="text-price rent">{{masterDetail.salary}}</text>
           <text class="unit">/天</text>
         </view>
-
       </view>
     </view>
   </view>
@@ -116,9 +111,6 @@
             <view class="img-item" wx:if="{{index%2==0}}">
               <image src="{{item.imageCover}}"></image>
               <view class="img-item-bot">
-                <!-- <view class="text overhidden">
-               {{item.caseName}}
-              </view> -->
                 <view class="xinxin">
                   <image src="/assets/images/master/xinxin.png"></image>
                   {{item.pvCount}}
@@ -132,9 +124,6 @@
             <view class="img-item" wx:if="{{index%2==1}}">
               <image src="{{item.imageCover}}"></image>
               <view class="img-item-bot">
-                <!-- <view class="text overhidden">
-               {{item.caseName}}
-              </view> -->
                 <view class="xinxin">
                   <image src="/assets/images/master/xinxin.png"></image>
                   {{item.pvCount}}
@@ -274,6 +263,8 @@
   </view>
 
 </view>
+<view class="null-last" style="height:112rpx">
+</view>
 <view class="bottom1">
   <view class="left">
     <view class='collect'>
@@ -294,45 +285,41 @@
 <view class="show-popup" hidden="{{hideShopPopup}}">
   <view class="popup-mask" bindtap="closePopupTap"></view>
   <view class="popup-contents">
-    <!-- <view class="pop-goods-info">
+    <view class="pop-goods-info">
       <view class="pop-img-box">
-        <image src="{{goodsDetail.basicInfo.pic}}" class="goods-thumbnail" />
-      </view>
-      <view class="pop-goods-des">
-        <view class="pop-goods-title">{{goodsDetail.basicInfo.name}}</view>
-        <view class="pop-goods-price" wx:if="{{shopType =='addShopCar' || shopType =='tobuy'}}">¥ {{selectSizePrice}}</view>
-        <view class="pop-goods-price" wx:if="{{shopType =='pingtuan'}}">¥ {{selectptPrice}}</view>
-      </view>
-      <view class="pop-goods-close" bindtap="closePopupTap"></view>
-    </view>
-    <view class="size-label-box">
-      <block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">
-        <view class="label">{{property.name}}</view>
-        <view class="label-item-box">
-          <view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" wx:key="id" bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.id}}" data-propertyname="{{property.name}}" data-propertychildindex="{{index}}"
-            data-propertychildid="{{item.id}}" data-propertychildname="{{item.name}}">
-            {{item.name}}
+        <view class="icon-img">
+          <image class="" src="/assets/images/home/icon4.png"></image>
+        </view>
+        <view class="introduce-buy">
+          <text class="name">{{masterDetail.realName}}</text>
+          <text class="tag">{{masterDetail.typeName}}</text>
+          <view class="price">
+            <text class="text-price rent">{{masterDetail.salary}}</text>
+            <text class="unit">/天</text>
           </view>
         </view>
-      </block>
-    </view> -->
-    <view class="buy-num-box">
-      <view class="num-label">购买数量</view>
-      <view class="num-box">
-        <picker mode="date" value="{{startDate}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
-          <view class="picker">
-            {{startDate?startDate:'开始时间'}}
-          </view>
-        </picker>----
-        <view class="totalDay">{{totalDay}}</view>----
-        <picker  mode="date" value="{{endDate}}" start="2015-09-01" end="2020-09-01" bindchange="endDateChange">
-          <view class="picker">
-            {{endDate?endDate:'结束时间'}}
-          </view>
-        </picker>
       </view>
+      <view class="buy-num-box">
+        <view class="buy-num-box-top">
+          <view class="num-label">购买数量</view>
+          <view class="totalDay">{{totalDay}}</view>
+        </view>
+        <view class="num-box">
+          <picker class="pickerDate" mode="date" value="{{startDate}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+            <view class="picker">
+              {{startDate?startDate:'开始时间'}}
+            </view>
+          </picker>
+          <view class="num-box-line"></view>
+          <picker class="pickerDate" mode="date" value="{{endDate}}" start="2015-09-01" end="2020-09-01" bindchange="endDateChange">
+            <view class="picker">
+              {{endDate?endDate:'结束时间'}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="popup-join-btn" wx:if="{{shopType =='addShopCar'}}" bindtap="addShopCar">加入购物车</view>
+      <view class="popup-join-btn" wx:if="{{shopType =='tobuy'}}" bindtap="buyNow"> 立即购买</view>
     </view>
-    <view class="popup-join-btn" wx:if="{{shopType =='addShopCar'}}" bindtap="addShopCar">加入购物车</view>
-    <view class="popup-join-btn" wx:if="{{shopType =='tobuy'}}" bindtap="buyNow"> 立即购买</view>
   </view>
 </view>

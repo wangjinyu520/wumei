@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -794,8 +794,8 @@
 				},
 				{
 					"id": 105,
-					"name": "subShopping/pages/masterModify/masterModify",
-					"pathName": "subShopping/pages/masterModify/masterModify",
+					"name": "subShopping/pages/ordersuccess/ordersuccess",
+					"pathName": "subShopping/pages/ordersuccess/ordersuccess",
 					"query": "",
 					"scene": null
 				},

@@ -1,90 +1,85 @@
 <view class="popularMaster">
-	<view class="nav">
-		<view class="nav-son " bindtap="showSalary" data-nav="1">
-	      <view class="content">薪资
-	      <view class="icon"></view>
-	      </view>
-       </view>
-       <view class="nav-son " bindtap="listqy"   data-nav="2">
-	      <view class="content">{{selectName2!=''?(selectName3!=''?selectName3:selectName2):'地区'}}
-	      <view class="icon"></view>
-	      </view>
-       </view>
-       <view class="nav-son "  bindtap="showTechnologyType" data-nav="3">
-	      <view class="content">{{selectedTechnologyName!=''?selectedTechnologyName:'工种'}}
-	      <view class="icon"></view>
-	      </view>
-       </view>
-	</view>
-	<view class="popdown {{showSalaryVal?'showSalary':''}}">
-		<view class="salary" hover-class="salaryHover" bindtap="fromHightoLow">由高到低</view>
-		<view class="salary" hover-class="salaryHover" bindtap="fromLowtoHigh">由低到高</view>
-	</view>
-	 
-	 <view class="quyu {{qyopen ? 'slidown' : 'slidup'}} {{qyshow ? 'disappear':''}}">
-	    <view class="qy quyu-left">
-	      <view class="{{reimenflag? 'current' : ''}}">
-	        热门
-	      </view>
-	      <view class="{{select1 == index ? 'current' : ''}}" wx:for="{{cityleft}}" bindtap="selectleft" data-city='{{index}}' data-code="{{item.code}}" data-name="{{item.name}}">
-	        {{item.name}}
-	      </view>
-	    </view>
-	    <view class="qy quyu-center">
-	      <view class="{{select2 == index ? 'current2' : ''}}" wx:for="{{citycenter}}" bindtap="selectcenter" data-city='{{index}}' data-code="{{item.code}}" data-name="{{item.name}}">
-	        {{item.name}}
-	      </view>
-	    </view>
-	    <view class="qy quyu-right">
-	     
-	      <view wx:for="{{cityright}}" class="{{select3 == index?'current3':''}}" bindtap='selectright' data-city="{{index}}" data-code="{{item.code}}" data-name="{{item.name}}">
-	        <label> {{item.name}}</label>
-	        
-	      </view>
-	    </view>
-	 </view>
-	
-	<view class="popdown {{showTechnologyTypeVal?'showTechnology':''}}">
-		<view class="technologyType" wx:for="{{technologyTypeList}}"  bindtap="technologyOccupation" data-id="{{item.typeId}}" data-typeName="{{item.typeName}}" >
-		{{item.typeName}}
-	   </view>
-	</view>
-	<view class="section" wx:if="{{haveData}}">
-			<view class="singleContent" wx:for="{{list}}">
-				<view class="masterInfo">
-				<view class="avatar">
-			      <image src="{{item.userIcon}}" />
-		        </view>
-				<view class="masterdetail">
-					<view class="masterTopInfo">
-					<text class="realName">{{item.realName}}</text>
-					<view class="masterType">
-					  {{item.typeName}}  
-				    </view>
-					</view>
-					<view class="location">{{item.city}}|从业{{item.workExperience}}年</view>
-					<view class="salaryInfo">薪资：￥{{item.salary}}/天</view>
-				</view>
-				 <view class="gloryVal">
-				 	<view class="gloryNum">
-				 	<view>{{item.glory}} </view>
-				 	<view class="gloryText">荣耀值</view>
-				 	</view>
-				 	<image src="/assets/images/master/gloryVal.png"  />
-				 </view>
-				</view>
-				<view class="imgList"  wx:if="{{item.caseImage}}">
-					<image src="{{item}}"  wx:for="{{item.caseImage}}"/>
-				</view>
-	
-			</view>
-		</view>	 
-		 
-			<view wx:else class="else">
-			<view class="else-img" >
-			<image src="/assets/images/404.png" />
-			<view class="else-text"> 暂时还没有内容哦</view>
-			</view>
-			</view>
-		 
+  <view class="nav">
+    <view class="nav-son " bindtap="showSalary" data-nav="1">
+      <view class="content">薪资
+        <view class="icon"></view>
+      </view>
+    </view>
+    <view class="nav-son " bindtap="listqy" data-nav="2">
+      <view class="content">{{selectName2!=''?(selectName3!=''?selectName3:selectName2):'地区'}}
+        <view class="icon"></view>
+      </view>
+    </view>
+    <view class="nav-son " bindtap="showTechnologyType" data-nav="3">
+      <view class="content">{{selectedTechnologyName!=''?selectedTechnologyName:'工种'}}
+        <view class="icon"></view>
+      </view>
+    </view>
+  </view>
+  <view class="popdown {{showSalaryVal?'showSalary':''}}">
+    <view class="salary" hover-class="salaryHover" bindtap="fromHightoLow">由高到低</view>
+    <view class="salary" hover-class="salaryHover" bindtap="fromLowtoHigh">由低到高</view>
+  </view>
+
+  <view class="quyu {{qyopen ? 'slidown' : 'slidup'}} {{qyshow ? 'disappear':''}}">
+    <view class="qy quyu-left">
+      <view class="{{select1 == index ? 'current' : ''}}" wx:for="{{cityleft}}" bindtap="selectleft" data-city='{{index}}' data-code="{{item.code}}" data-name="{{item.name}}">
+        {{item.name}}
+      </view>
+    </view>
+    <view class="qy quyu-center">
+      <view class="{{select2 == index ? 'current2' : ''}}" wx:for="{{citycenter}}" bindtap="selectcenter" data-city='{{index}}' data-code="{{item.code}}" data-name="{{item.name}}">
+        {{item.name}}
+      </view>
+    </view>
+    <view class="qy quyu-right">
+
+      <view wx:for="{{cityright}}" class="{{select3 == index?'current3':''}}" bindtap='selectright' data-city="{{index}}" data-code="{{item.code}}" data-name="{{item.name}}">
+        <label> {{item.name}}</label>
+
+      </view>
+    </view>
+  </view>
+
+  <view class="popdown {{showTechnologyTypeVal?'showTechnology':''}}">
+    <view class="technologyType" wx:for="{{technologyTypeList}}" bindtap="technologyOccupation" data-id="{{item.typeId}}" data-typeName="{{item.typeName}}">
+      {{item.typeName}}
+    </view>
+  </view>
+  <view class="section" wx:if="{{haveData}}">
+    <view class="singleContent" wx:for="{{list}}"  wx:key="{{index}}" data-id="{{item.userId}}" bindtap="toDetailsMaster">
+      <view class="masterInfo">
+        <view class="avatar">
+          <image src="{{item.userIcon}}" />
+        </view>
+        <view class="masterdetail">
+          <view class="masterTopInfo">
+            <text class="realName">{{item.realName}}</text>
+            <view class="masterType">
+              {{item.typeName}}
+            </view>
+          </view>
+          <view class="location">{{item.city}}|从业{{item.workExperience}}年</view>
+          <view class="salaryInfo">薪资：￥{{item.salary}}/天</view>
+        </view>
+        <view class="gloryVal">
+          <view class="gloryNum">
+            <view>{{item.glory}} </view>
+            <view class="gloryText">荣耀值</view>
+          </view>
+          <image src="/assets/images/master/gloryVal.png" />
+        </view>
+      </view>
+      <view class="imgList" wx:if="{{item.caseImage}}">
+        <image src="{{item}}" wx:for="{{item.caseImage}}" />
+      </view>
+    </view>
+  </view>
+  <view wx:else class="else">
+    <view class="else-img">
+      <image src="/assets/images/404.png" />
+      <view class="else-text"> 暂时还没有内容哦</view>
+    </view>
+  </view>
+
 </view>

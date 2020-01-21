@@ -142,7 +142,7 @@ Page({
     let that = this;
     let tokens = wx.getStorageSync('token');
     tokens.avatarUrl = tokens.userIcon;
-    if (tokens.nickName) {
+    if (tokens.userIcon && tokens.nickNames) {
       this.setData({
         userInfo: tokens
       });

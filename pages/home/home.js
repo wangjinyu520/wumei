@@ -203,7 +203,7 @@ Page({
   loadCity: function(longitude, latitude) {
     var page = this
     wx.request({
-      url: 'http://api.map.baidu.com/reverse_geocoding/v3/?ak=xlgfUBXvHyF9qcUlY80fUCBa531152xP&output=json&coordtype=wgs84ll&location=' + latitude + ',' + longitude,
+      url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=xlgfUBXvHyF9qcUlY80fUCBa531152xP&output=json&coordtype=wgs84ll&location=' + latitude + ',' + longitude,
       data: {},
       header: {
         'Content-Type': 'application/json'
@@ -216,8 +216,12 @@ Page({
         });
       },
       fail: function() {
+        wx.showToast({
+          title: '获取定位失败',
+          icon: 'none',
+        })
         page.setData({
-          currentCity: "获取定位失败"
+          currentCity: "上海省"
         });
       },
 
