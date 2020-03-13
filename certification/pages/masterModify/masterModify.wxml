@@ -1,67 +1,63 @@
 <view class="masterModify">
-  <view class="head">
-    <image src="/assets/images/master/masterhead.png" />
-  </view>
-  <view class="section">
-    <view class="masterPersoninfo">
-      <view class="infoContent">
-        <view class="contentTop">
-          <text class="realName">{{userInfo.realName}}</text>
-          <view class="masterAge">
-            <image src="{{genderImg}}" class="genderImg" /> {{userInfo.technologyAge}}
-          </view>
-        </view>
-        <view class="contentMid">
-          {{userInfo.city}} | {{userInfo.typeName}} | 从业{{userInfo.workExperience}}年 | 入驻{{userInfo.workExperience}}年
-        </view>
-        <view class="contentBottom">
-          薪资：￥{{userInfo.salary}}/天
-        </view>
-      </view>
-      <view class="edit">
-        <image src="/assets/images/master/edit.png" class="editImg" />
-      </view>
+	<view class="head">
+		<image src="/assets/images/master/masterhead.png" />
+	</view>
+	<view class="section">
+		<view class="masterPersoninfo">
+			<view class="infoContent">
+				<view class="contentTop">
+					<text class="realName">{{userInfo.realName}}</text>
+					<view class="masterAge">
+						<image src="{{genderImg}}" class="genderImg" />
+						{{userInfo.technologyAge}}
+					</view>
+				</view>
+				<view class="contentMid">
+					{{city}} | {{userInfo.typeName}} | 从业{{userInfo.workExperience}}年 | 入驻{{userInfo.enterDay}}天
+				</view>
+				<view class="contentBottom">
+					薪资：￥{{userInfo.salary}}/天
+				</view>
+			</view>
+			<view class="edit" bindtap="modifyBasic">
+				<image src="/assets/images/master/edit.png" class="editImg" />
+			</view>
 
-    </view>
-    <view class="bottomLine"></view>
-    <view class="profile">
-      <view class="profileContent">
-        <view class="profileTitle">个人介绍</view>
-        <image src="/assets/images/master/edit.png" class="editImg" />
-      </view>
-      <view class="profileText">{{userInfo.personalIntroduce}}</view>
-    </view>
-    <view class="bottomLine"></view>
-    <view class="myCase">
-      <view class="myCasecontent">
-        <view class="myCasetitle">我的案例</view>
-        <image src="/assets/images/master/add.png" class="editImg" />
-      </view>
-      <view class="master-content" hidden='{{currentId!=1}}'>
-        <view wx:if="{{caseList}}">
-          <view class="activity-info" wx:for="{{caseList}}" wx:key="{{index}}">
-            <view class="img">
-              <image src="{{item.imageUrl}}"></image>
-            </view>
-            <view class="bottom">
-              <view class="title overhidden1">
-                {{item.caseName}}
-              </view>
-              <view class="area">
-                {{item.caseCity}}
-              </view>
-            </view>
-          </view>
-        </view>
-        <view wx:else class="else" style="height:250px">
-          <view class="else-img">
-            <image src="/assets/images/404.png" />
-            <view class="else-text"> 暂时还没有内容哦</view>
-          </view>
-        </view>
-      </view>
+		</view>
+		<view class="bottomLine"></view>
+		<view class="profile">
+			<view class="profileContent">
+				<view class="profileTitle">个人介绍</view>
+				<image src="/assets/images/master/edit.png" bindtap="goIntroduce" class="editImg" />
+			</view>
+			<view class="profileText">{{userInfo.personalIntroduce}}</view>
+		</view>
+		<view class="bottomLine"></view>
+		<view class="myCase">
+			<view class="myCasecontent">
+				<view class="myCasetitle">我的案例</view>
+				<image src="/assets/images/master/add.png" class="addImg" bindtap="addCase" />
+			</view>
+			<view class="master-content">
+				<view wx:if="{{caseList}}">
+					<view class="activity-info" wx:for="{{caseList}}" wx:key="{{index}}">
+						<view class="img">
+							<image src="{{item.imageCover}}"></image>
+						</view>
+						<view class="bottom">
+							<view class="title overhidden1">
+								{{item.caseName}}
+							</view>
+							<view class="area">
+								{{item.caseCity}}
+								<image src="/assets/images/master/edit.png" bindtap="goEditor" data-id="{{item.caseId}}" class="editImg" />
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
 
-    </view>
+		</view>
 
-  </view>
+	</view>
 </view>

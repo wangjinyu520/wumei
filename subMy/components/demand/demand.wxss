@@ -1,0 +1,189 @@
+/* subMy/components/demand/demand.wxss */
+page {
+  width: 100%;
+  background-color: #fff;
+}
+
+.null {
+  width: 100%;
+  height: 16rpx;
+  background: rgba(246, 246, 246, 1);
+}
+
+.box {
+  width: 100%;
+  background-color: #fff;
+}
+.box.last{
+  overflow: hidden;
+  margin-bottom: 100rpx;
+}
+.nav {
+  margin: 0 32rpx;
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1rpx solid #f4f4f4;
+  border-top: 1rpx solid #f4f4f4;
+  background: #fff;
+}
+
+.nav-son {
+  margin-right: 70rpx;
+  display: flex;
+  /* flex: 1; */
+  text-align: center;
+  height: 80rpx;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+}
+
+/* 活动介绍 */
+
+.content {
+  width: 100%;
+  overflow: hidden;
+}
+
+.content-item {
+  margin: 0 32rpx;
+  margin-top: 32rpx;
+}
+
+.title {
+  margin: 20rpx 0;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 45rpx;
+}
+
+.content-item .text {
+  margin: 0 0 10rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 40rpx;
+}
+
+.content-item .text .img {
+  margin-right: 10rpx;
+  width: 22rpx;
+  height: 22rpx;
+}
+
+.btn {
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.btn-img {
+  width: 104rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  text-align: center;
+  border-radius: 4rpx;
+  border: 1px solid rgba(255, 94, 39, 1);
+  background-color: #fff;
+  color: #ff5e27;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+}
+
+.price .rent {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: rgba(255, 94, 39, 1);
+  line-height: 40rpx;
+}
+
+.price .unit {
+  color: rgba(255, 94, 39, 1);
+  font-size: 30rpx;
+  line-height: 34rpx;
+  font-weight: 600;
+}
+
+.detail {
+  padding-bottom: 32rpx;
+}
+
+.cu-item {
+  margin-top: 32rpx;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.con-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.con-left .img {
+  width: 106rpx;
+  height: 106rpx;
+  margin-right: 22rpx;
+  border-radius: 50%;
+}
+
+.action .img {
+  width: 20rpx;
+  height: 27rpx;
+}
+
+.action .text {
+  font-size: 30rpx;
+  font-weight: 400;
+  color: rgba(127, 136, 173, 1);
+  line-height: 42rpx;
+}
+
+.til {
+  margin: 0 32rpx;
+  border-bottom: 1rpx solid #f4f4f4;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+}
+
+/* 需求描述 */
+
+.des {
+  margin: 32rpx;
+  margin-bottom: 180rpx;
+}
+
+.des-top {
+  width: 100%;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 42rpx;
+}
+
+.des-img {
+  margin-top: 32rpx;
+  width: 100%;
+  height: 360rpx;
+  background: rgba(216, 216, 216, 1);
+  border-radius: 10px;
+}
+
+image {
+  width: 100%;
+  height: 100%;
+}

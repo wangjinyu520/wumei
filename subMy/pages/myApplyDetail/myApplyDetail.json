@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "w-switch":"/components/wx-switch/wx-switch"
+  },
+  "navigationBarTitleText": "我的申请"
+}

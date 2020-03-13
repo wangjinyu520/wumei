@@ -346,12 +346,10 @@ page {
 .master-nav {
   margin-top: 20rpx;
 }
-
 .nav .cu-item {
   margin: 0 30rpx;
   padding: 0;
 }
-
 .nav .cu-item.cur {
   border-bottom: 6rpx solid rgba(74, 108, 255, 1);
   font-weight: bold;

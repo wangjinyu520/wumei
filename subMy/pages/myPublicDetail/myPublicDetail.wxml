@@ -1,0 +1,39 @@
+<!--subMy/pages/myPublicDetail/myPublicDetail.wxml-->
+<!-- 我的发布需求的列表详情 -->
+<w-switch orderType="{{orderType}}" bindTabevent="tabItem"></w-switch>
+<view class="null"></view>
+<view hidden="{{currentId!=0}}">
+	<view class="master-info" data-id="{{item.userId}}" bindtap="toDetailsMaster">
+		<view class="left">
+			<image class="img" src="{{item.userIcon}} /assets/images/home/rongyao.png"></image>
+		</view>
+		<view class="middle">
+			<view class="top">
+				<view class="center">
+					<view>
+						<text class="name">{{item.realName}}王金玉</text>
+						<text class="tag">{{item.technologyOccupation}}音频师</text>
+						<text class="botm">
+							<text class="text">{{item.glory}}20</text>
+							<text class="rongyao">荣耀值</text>
+						</text>
+					</view>
+					<view class="order-info-area introduce">{{item.city}} 浙江杭州| 从业{{item.workExperience}}2年</view>
+				</view>
+				<view class="bot-phone">
+					<image class="img" src="/assets/images/master/calls.png">
+					</image>
+				</view>
+			</view>
+			<view class="master-img" wx:if="{{item.caseImage}}">
+				<view class="img" wx:for="{{item.caseImage}}" wx:key="{{index}}">
+					<image src="{{item}}"></image>
+				</view>
+			</view>
+		</view>
+	</view>
+
+</view>
+<view hidden="{{currentId!=1}}">
+	<demand demandDetail="{{demandDetail}}"></demand>
+</view>

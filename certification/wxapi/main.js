@@ -44,5 +44,25 @@ module.exports = {
   getDetailInfo: (data) => {
     return request("/technology/getTechnologyInfo", 'get', data)
   },
+  // 编辑大师的详细信息
+  modifyTechnology: (data) => {
+    return request("/technology/modifyTechnology", 'post', data)
+  },
+  // 获取编辑大师的详细信息
+  getTechnologyCaseInfo: (data) => {
+    return request("/technologyCase/getTechnologyCaseInfo", 'get', data)
+  },
+  // 编辑大师案例的详细信息
+  modifyTechnologyCase: (data) => {
+    return request("/technologyCase/modifyTechnologyCase", 'post', data)
+  },
+  // 删除技术人员工作案例
+  deleteTechnologyCase: (data) => {
+    return request("/technologyCase/deleteTechnologyCase", 'get', data)
+  },
+  // 添加技术人员工作案例
+  addTechnologyCase: (data) => {
+    return request("/technologyCase/addTechnologyCase", 'post', data)
+  },
 
 }

@@ -1,0 +1,87 @@
+<!--subMy/components/demand/demand.wxml-->
+<view class="null"></view>
+<view class="box">
+  <view class="content">
+    <view class="content-item">
+      <view class="title overhidden1">{{demandDetail.demandTitle}}</view>
+      <view class="btn">
+        <view class="price">
+          <text class="rent">¥{{demandDetail.salary}}</text>
+          <text class="unit">/天</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="nav">
+    <view class="nav-son">
+      更新：{{demandDetail.startTime}}
+    </view>
+    <view class="nav-son">
+      浏览：{{demandDetail.pvCount}}人
+    </view>
+    <view class="nav-son">
+      申请： {{demandDetail.applyCount}}人
+    </view>
+  </view>
+  <view class="content detail">
+    <view class="content-item">
+      <view class="text overhidden1">
+        <image class="img" src="/assets/images/remand/zhong.png "></image>
+        {{demandDetail.demandTime}}
+      </view>
+      <view class="text">
+        <image class="img" src="/assets/images/remand/map.png "></image>
+        {{demandDetail.demandLocation}}</view>
+      <view class="text">
+        <image class="img" src="/assets/images/remand/pel.png "></image>
+        {{demandDetail.technologyType}}</view>
+
+    </view>
+
+  </view>
+
+</view>
+<view class="null"></view>
+<view class="box">
+  <!-- 需求发布人 -->
+  <view class="til">
+    需求发布人
+  </view>
+  <view class="cu-item">
+    <view class="con-left">
+      <image class="img " src="{{demandDetail.userIcon}}"></image>
+      <text class="text-grey">{{demandDetail.contacts}}</text>
+    </view>
+    <view class="action" bindtap="goPhone">
+      <view class="cu-avatar-group">
+        <image class="img " src="/assets/images/remand/phone.png"></image>
+      </view>
+      <text class="text">{{demandDetail.contact}}</text>
+    </view>
+  </view>
+  <!-- 需求发布人 -->
+</view>
+<view class="null"></view>
+<view class="box last">
+  <!-- 需求发布人 -->
+  <view>
+    <view class="til">
+      需求描述
+    </view>
+    <view class="des" wx:if="{{demandDetail.detail||demandDetail.demandImage}}">
+      <view class="des-top">
+        {{demandDetail.detail}}
+      </view>
+      <view class="des-img" wx:for="{{demandDetail.demandImage}}" wx:key="{{index}}">
+        <image class="img " src="{{item}}"></image>
+      </view>
+    </view>
+      <view wx:else class="else" style="height:250px">
+    <view class="else-img">
+      <image src="/assets/images/404.png" />
+      <view class="else-text"> 暂时还没有内容哦</view>
+    </view>
+  </view>
+  </view>
+  <!-- 需求发布人 -->
+</view>

@@ -202,6 +202,10 @@ module.exports = {
   getMyDemand: (data) => {
     return request("/demand/getMyDemand", 'get', data)
   },
+  // 我申请的需求
+  getMyApply: (data) => {
+    return request("/demandApply/getMyApply", 'get', data)
+  },
   // 删除发布的需求
   deleteDemand: (data) => {
     return request("/demand/deleteDemand", 'get', data)

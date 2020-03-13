@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "w-tab-control": "./childCpns/w-tab-control/w-tab-control",
-    "w-select": "./childCpns/w-select/w-select"
-  },
-  "navigationBarTitleText": "视频列表"
-}

@@ -117,7 +117,6 @@ page {
   color: #666;
   font-size: 16px;
   padding:20px 0;
-  margin-top:200px;
 }
 .tip{
   margin-top: 10px;

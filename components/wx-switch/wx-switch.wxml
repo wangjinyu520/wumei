@@ -1,0 +1,7 @@
+<!--components/wx-switch/wx-switch.wxml-->
+<!-- 切换组件的 -->
+	<view class="order-box">
+		<view class="order-label {{index== currentType?'active':''}}" wx:for="{{orderType}}" wx:key="{{index}}" data-index="{{index}}" bindtap="tabClick">
+			{{item}}
+		</view>
+	</view>

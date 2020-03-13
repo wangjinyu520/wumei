@@ -1,6 +1,6 @@
 // subShopping/pages/masterDetail/masterDetail.js
 let userId = '';
-let caseImage = [];  //收集图片资源
+//收集图片资源
 let WXAPI = require('../../wxapi/main.js');
 Page({
 
@@ -44,7 +44,7 @@ Page({
   },
   // 打电话
 
-  goPhone: function(e) {
+  goPhone: function (e) {
     wx.makePhoneCall({
       phoneNumber: this.data.masterDetail.phone,
     })
@@ -64,7 +64,7 @@ Page({
     })
     this.checkDate(this.data.startDate, this.data.endDate)
   },
-  checkDate: function(startTime, endTime) {
+  checkDate: function (startTime, endTime) {
     //日期格式化
     var start_date = new Date(startTime.replace(/-/g, "/"));
     var end_date = new Date(endTime.replace(/-/g, "/"));
@@ -86,7 +86,7 @@ Page({
 
   },
   // 立即下单
-  tobuy: function() {
+  tobuy: function () {
     if (wx.getStorageSync('token')) {
       this.setData({
         shopType: "tobuy"
@@ -105,7 +105,7 @@ Page({
   /**
    * 立即购买
    */
-  buyNow: function() {
+  buyNow: function () {
     let that = this;
     if (!that.data.startDate && !that.data.endDate) {
       wx.showToast({
@@ -113,7 +113,7 @@ Page({
       })
       return;
     }
-    setTimeout(function() {
+    setTimeout(function () {
       wx.hideLoading();
       //组建立即购买信息
       let totalPrice = that.data.totalDay * that.data.masterDetail.salary;
@@ -139,7 +139,7 @@ Page({
 
   },
   // 显示弹窗
-  bindGuiGeTap: function() {
+  bindGuiGeTap: function () {
     this.setData({
       hideShopPopup: false
     })
@@ -147,13 +147,13 @@ Page({
   /**
    * 规格选择弹出框隐藏
    */
-  closePopupTap: function() {
+  closePopupTap: function () {
     this.setData({
       hideShopPopup: true
     })
   },
   //按热度排名
-  huoSort: function(e) {
+  huoSort: function (e) {
     let that = this;
     if (this.data.imgHuo) {
       this.setData({
@@ -211,7 +211,7 @@ Page({
 
   },
   //按热度排名
-  timeSort: function(e) {
+  timeSort: function (e) {
     let that = this;
     if (this.data.imgTime) {
       this.setData({
@@ -267,13 +267,13 @@ Page({
 
   },
   //联系大师
-  goPhone: function(e) {
+  goPhone: function (e) {
     wx.makePhoneCall({
       phoneNumber: this.data.masterDetail.phone,
     })
   },
   // 收藏
-  haveSave: function() {
+  haveSave: function () {
     let data = {
       userId: wx.getStorageSync('token').userId,
       relationId: this.data.masterDetail.userId,
@@ -296,7 +296,7 @@ Page({
 
   },
   // 取消收藏
-  noSave: function() {
+  noSave: function () {
     let data = {
       userId: wx.getStorageSync('token').userId,
       relationId: this.data.masterDetail.userId,
@@ -320,7 +320,7 @@ Page({
   },
 
   //点击每个导航的点击事件
-  handleTap: function(e) {
+  handleTap: function (e) {
     let id = e.currentTarget.id;
     if (id) {
       this.setData({
@@ -331,13 +331,30 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let that = this;
-    userId = options.id;
-    WXAPI.getDetailInfo({
-      userId
-    }).then(res => {
+    let caseImage = [];
+    let technologyId = options.id;
+    userId = wx.getStorageSync('token').userId;
+    if (!userId) {
+      wx.showToast({
+        title: '您还没有登录，不可以查看',
+        icon: "none",
+        success: (res) => {
+          console.log("sds");
+          wx.switchTab({
+            url: '/pages/profile/profile',
+          })
+        },
+      })
+      return;
 
+    }
+    let data = {
+      technologyId,
+      userId
+    }
+    WXAPI.getDetailInfo(data).then(res => {
       let section = that.data.section.map((ele, i) => {
         if (i == 0) {
           return {
@@ -359,13 +376,11 @@ Page({
       // 处理资源图片
       if (res.data.caseList) {
         res.data.caseList.forEach(ele => {
-          return ele.imageUrl=ele.imageUrl.split(',');
+          return ele.imageUrl = ele.imageUrl.split(',');
         })
         console.log(res.data.caseList);
-
-      
         res.data.caseList.forEach(ele => {
-          return  caseImage=caseImage.concat(ele.imageUrl);
+          return caseImage = caseImage.concat(ele.imageUrl);
         })
         console.log(caseImage);
       }
@@ -376,11 +391,15 @@ Page({
         section: section,
         caseImage: caseImage
       });
-      console.log(res.data.caseList)
-
+      let collectId = res.data.collectId;
+      if (collectId) {
+        this.setData({
+          isCollect: true
+        })
+      }
     })
   },
-  goIntoduce: function(e) {
+  goIntoduce: function (e) {
     let value = this.data.masterDetail.personalIntroduce;
     wx.navigateTo({
       url: '/subShopping/pages/masterDetail/introduce?value=' + value
@@ -389,49 +408,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-   "dropdownmenu": "./childCpns/dropdownmenu/dropdownmenu"
-  },
-  "navigationBarTitleText": "活动管理"
-}

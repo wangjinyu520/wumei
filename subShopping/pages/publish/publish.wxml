@@ -1,4 +1,5 @@
 <!--pages/publish/publish.wxml-->
+<!-- 发布活动 -->
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view style="height:{{height}}px"></view>
 <view class="publish">

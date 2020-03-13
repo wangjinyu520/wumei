@@ -15,14 +15,7 @@ Page({
     this.setData({
       value: e.detail.value
     })
-    // globalData.addTechnology.personalIntroduce = e.detail.value;
-    // console.log(globalData.addTechnology.personalIntroduce)
-    // wx.navigateTo({
-    //   url: '/certification/pages/masterCertification/case',
-    //   success: function (res) { },
-    //   fail: function (res) { },
-    //   complete: function (res) { },
-    // })
+
   },
   saveGlobal:function(e){
     if (this.data.value){

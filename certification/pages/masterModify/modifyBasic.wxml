@@ -1,0 +1,57 @@
+<!--certification/pages/masterModify/modifyBasic.wxml-->
+<!--certification/pages/bossCertification/bossCertification.wxml-->
+<view>
+	<view class="titles">基本信息</view>
+	<form bindsubmit="fromSubmit" id="1" bindreset="fromReset">
+		<!--输入框-->
+		<view class="cu-form-group margin-top">
+			<view class="title">大师类型</view>
+			<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}" name="technologyOccupation">
+				<view class="picker">
+					{{index?picker[index]:masterDetail.typeName}}
+				</view>
+			</picker>
+		</view>
+		<view class="cu-form-group">
+			<view class="title">地址选择</view>
+			<picker mode="region" bindchange="RegionChange" name="city" value="{{region}}" custom-item="{{customItem}}">
+				<view class="picker">
+					{{showRegionStr}}
+				</view>
+			</picker>
+		</view>
+		<view class="work">
+			<view class="refund-title">工作年长</view>
+			<view class="refund-input">
+				<input type="number" name="workExperience" value="{{masterDetail.workExperience}}" class="yearWork" placeholder="请输入年限">
+				</input>
+			</view>
+		</view>
+		<view class="work">
+			<view class="refund-title">年龄</view>
+			<view class="refund-input">
+				<input type="number" name="technologyAge" value="{{masterDetail.technologyAge}}" class="yearWork" placeholder="请输入年龄">
+			</input>
+			</view>
+		</view>
+		<view class="work">
+			<view class="refund-title">联系方式</view>
+			<view class="refund-input">
+				<input type="number" name="mobile" value="{{masterDetail.phone}}" class="yearWork" placeholder="请输入联系方式">
+				</input>
+			</view>
+		</view>
+		<view class="work">
+			<view class="refund-title">薪资/天</view>
+			<view class="refund-input">
+				<input type="number" name="salary" value="{{masterDetail.salary}}" class="yearWork" placeholder="请输入价格">
+				</input>
+			</view>
+		</view>
+		<view class="btn-box">
+			<button class="pub-btn" formType="submit">
+				<text>编辑</text>
+			</button>
+		</view>
+	</form>
+</view>

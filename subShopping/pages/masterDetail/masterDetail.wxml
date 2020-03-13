@@ -31,7 +31,7 @@
         <view class="cut"></view>
         <view class="experience">从业{{masterDetail.workExperience}}年</view>
         <view class="cut"></view>
-        <view class="settled">入驻2年</view>
+        <view class="settled">入驻{{masterDetail.enterDay}}天</view>
       </view>
       <view class="line evalute-box">
         <view class="evaluate">
@@ -297,7 +297,7 @@
     <view class="pop-goods-info">
       <view class="pop-img-box">
         <view class="icon-img">
-          <image class="" src="/assets/images/home/icon4.png"></image>
+          <image class="" src="{{masterDetail.userIcon}}"></image>
         </view>
         <view class="introduce-buy">
           <text class="name">{{masterDetail.realName}}</text>

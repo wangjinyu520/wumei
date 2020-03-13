@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "w-select": "./childCpns/w-select/w-select"
-  },
-  "navigationBarTitleText": "个人信息"
-}

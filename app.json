@@ -4,7 +4,8 @@
     "pages/rent/rent",
     "pages/mall/mall",
     "pages/profile/profile",
-    "pages/publish/publish"
+    "components/drop-down/drop-down",
+    "components/wx-switch/wx-switch"
   ],
   "subPackages": [
     {
@@ -14,7 +15,7 @@
         "pages/popularMaster/popularMaster",
         "pages/requireSuccess/requireSuccess",
         "pages/publishRequirements/publishRequirements",
-        "pages/masterEditor/masterEditor",
+        "pages/publish/publish",
         "pages/activityDetails/activityDetails",
         "pages/buyticket/buyticket",
         "pages/orderconfirm/orderconfirm",
@@ -60,7 +61,6 @@
         "pages/sqlogin/sqlogin",
         "pages/bossCertification/bossCertification",
         "pages/boss/boss",
-        "pages/masterRegister/masterRegister",
         "components/header/header",
         "pages/goodsList/goodsList",
         "pages/moreDemand/moreDemand",
@@ -91,7 +91,11 @@
         "pages/userActivity/userActivity",
         "pages/myPublic/myPublic",
         "pages/editorRemad/editorRemad",
-        "pages/editorRemad/success"
+        "pages/editorRemad/success",
+        "pages/public/public",
+        "components/demand/demand",
+        "pages/myApplyDetail/myApplyDetail",
+        "pages/myPublicDetail/myPublicDetail"
       ],
       "name": "subMy"
     },
@@ -103,7 +107,11 @@
         "pages/masterCertification/personal",
         "pages/masterCertification/case",
         "pages/masterCertification/finnish",
-        "pages/masterModify/masterModify"
+        "pages/masterModify/masterModify",
+        "pages/masterModify/modifyBasic",
+        "pages/masterModify/introduce",
+        "pages/masterModify/case",
+        "pages/masterModify/editorCase"
       ],
       "name": "certification"
     }

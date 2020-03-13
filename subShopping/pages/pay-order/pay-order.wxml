@@ -1,4 +1,4 @@
-
+<!-- 大师下单订单确认 -->
 <view class="containers">
   <form bindsubmit="goPay" report-submit="true">
     <view class="goods-list">

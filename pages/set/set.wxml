@@ -1,3 +1,0 @@
-<!--pages/set/set.wxml-->
-<w-list-view infos="{{orderList}}"/>
-<button class="btn" bindtap="goToReg">退出登录</button>

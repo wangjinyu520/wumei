@@ -1,9 +1,0 @@
-  <view class="search">
-    <view class="search-left">
-      <icon class="search-icon" type="search" size="13"></icon>
-      <input type="text" class="search-input" placeholder="搜索" bindtap="turn_search" disabled/>
-    </view>
-    <view class="topub">
-      <image class="img" src="/assets/common/publish.png" bindtap="toPublish" />
-    </view>
-  </view>

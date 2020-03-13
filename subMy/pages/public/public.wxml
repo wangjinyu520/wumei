@@ -1,0 +1,50 @@
+<!-- 我发布的需求和我申请的 -->
+<w-switch orderType="{{orderType}}" bindTabevent="tabItem"></w-switch>
+<view class="content" wx:if="{{contentlist}}">
+	<view class="content-item" wx:for="{{contentlist}}" wx:key="{{index}}" data-id="{{item.demandId}}" bindtap="goDemandDetail">
+		<view class="title">{{item.demandTitle}}</view>
+		<view class="text">{{item.demandTime}}</view>
+		<view class="text">{{item.demandCity}}</view>
+		<view class="text">{{item.technologyType}}</view>
+		<view class="text-last">{{item.activated}}</view>
+		<!-- 我的发布显示编辑删除分享 -->
+		<view class="btn" hidden="{{myPublic}}">
+			<view class="edit btn-item" bindtap="toEditer" data-id="{{item.demandId}}">
+				编辑
+			</view>
+			<button class="share btn-item" open-type='share'>
+				分享
+			</button>
+			<view class="btn-img btn-item" bindtap="showModal" data-target="DialogModal1" data-id="{{item.demandId}}">
+				删除
+			</view>
+		</view>
+		<view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
+			<view class="cu-dialog">
+				<!-- <view class="cu-bar bg-white justify-end">
+          <view class="content">确定删除该条需求</view>
+          <view class="action" bindtap="hideModal">
+            <text class="cuIcon-close text-red"></text>
+          </view>
+        </view> -->
+				<view class="dialog-box">
+					<view class="tit">确定删除该条需求吗</view>
+					删除该信息之后将无法回去确定删除吗
+				</view>
+				<view>
+					<view class="action bg-white">
+						<button class="cu-btn btn-default" bindtap="hideModal">取消</button>
+						<button class="cu-btn btn-active" bindtap="submitDelete" data-index="{{index}}">确定</button>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="tip">{{hasMoreData?'暂无更多数据':''}}</view>
+</view>
+<view wx:else class="else">
+	<view class="else-img">
+		<image src="/assets/images/404.png" />
+		<view class="else-text"> 暂时还没有内容哦</view>
+	</view>
+</view>

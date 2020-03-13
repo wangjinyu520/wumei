@@ -92,7 +92,6 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-
   },
   // 切换大师的选项
   tabSelect(e) {
@@ -247,8 +246,6 @@ Page({
       qyshow: !this.data.qyshow,
       isfull: !this.data.isfull,
     })
-
-
   },
 
   // 点击灰色背景隐藏所有的筛选内容

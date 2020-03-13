@@ -23,7 +23,7 @@ Page({
   },
   toDemand: function () {
     wx.navigateTo({
-      url: '/subMy/pages/myPublic/myPublic'
+      url: '/subMy/pages/public/public'
     })
   },
 
@@ -78,15 +78,15 @@ Page({
     if (token.userType == 3) {
       wx.showModal({
         title: '',
-        content: '您已经是大师了，请勿重复编辑',
+        content: '您已经是大师了，是否前去编辑',
         success(res) {
-          // if (res.confirm) {
-          //   wx.navigateTo({
-          //     url: '/subShopping/pages/masterEditor/masterEditor',
-          //   })
-          // } else if (res.cancel) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/certification/pages/masterModify/masterModify',
+            })
+          } else if (res.cancel) {
 
-          // }
+          }
         }
       })
       return;
@@ -96,6 +96,14 @@ Page({
       wx.showToast({
         icon: 'none',
         title: '你已经是主办方身份，不能再申请大师身份',
+      })
+      return
+    }
+    let userIcon = wx.getStorageSync('token').userIcon;
+    if (!userIcon) {
+      wx.showToast({
+        icon: 'none',
+        title: '您还没有获取头像，请点击上方获取',
       })
       return
     }
@@ -142,7 +150,7 @@ Page({
     let that = this;
     let tokens = wx.getStorageSync('token');
     tokens.avatarUrl = tokens.userIcon;
-    if (tokens.userIcon && tokens.nickNames) {
+    if (tokens.userIcon && tokens.nickName) {
       this.setData({
         userInfo: tokens
       });
@@ -187,13 +195,15 @@ Page({
               that.setData({
                 title: res.data.userName,
                 openDisplay: true,
-
               })
-              console.log(res.data);
+              console.log(res.data)
+              ;
               if (res.data.nickName) {
                 if (res.data.userIcon) {
+                  console.log('usericon为真')
                   res.data.avatarUrl = res.data.userIcon;
                 }
+                console.log(res.data);
                 that.setData({
                   userInfo: res.data
                 });
@@ -260,6 +270,7 @@ Page({
     WXAPI.getDiscount({
       userId
     }).then(res => {
+      console.log(res.data);
       this.setData({
         userIdDiscount: res.data
       })
@@ -276,7 +287,6 @@ Page({
         openDisplay: true
       })
       let tokens = wx.getStorageSync('token');
-
       if (tokens.nickName) {
         if (tokens.userIcon) {
           tokens.avatarUrl = tokens.userIcon;
@@ -300,10 +310,20 @@ Page({
    */
   onShow: function() {
     wx.showTabBar({})
-    let token = wx.getStorageSync('token').userName;
-    if (token) {
+    let token = wx.getStorageSync('token');
+    if (token.userName) {
+   
       this.setData({
-        title: token
+        title: token.userName,
+      })
+      this.getDiscount();
+    }
+    if (token.nickName) {
+      if (token.userIcon) {
+        token.avatarUrl = token.userIcon;
+      }
+      this.setData({
+        userInfo: token,
       })
       this.getDiscount();
     }

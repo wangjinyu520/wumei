@@ -1,5 +1,7 @@
 // pages/masterModify/materModify.js
 const WXAPI = require('../../wxapi/main');
+const app = getApp();
+let globalData = app.globalData;
 const params={
   pageNum:1,
   pageSize:20
@@ -12,30 +14,38 @@ Page({
   data: {
        userInfo:'',
        genderImg:'',
-      caseList:null
+      caseList:null,
+      city:""
   },
-
+  // 编辑个人情况
+  modifyBasic(){
+   wx.navigateTo({
+      url: '/certification/pages/masterModify/modifyBasic'
+   })
+  },
+  goIntroduce(){
+    wx.navigateTo({
+      url: '/certification/pages/masterModify/introduce'
+    })
+  },
+  addCase(){
+    wx.navigateTo({
+      url: '/certification/pages/masterModify/case'
+   })
+  },
+  goEditor(e){
+    console.log(e)
+    let id=e.currentTarget.dataset.id;
+    console.log(id);
+    wx.navigateTo({
+      url: '/certification/pages/masterModify/editorCase?id='+id,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let userId=wx.getStorageSync('token').userId;
-    console.log(userId)
-    WXAPI.getDetailInfo({userId}).then(res=>{
-     if(res.data.technologyGender==1){
-      this.setData({
-        genderImg:'/assets/images/master/men.png'
-      })
-     }else{
-       this.setData({
-        genderImg:'/assets/images/master/wumen.png'
-      })
-     }
-      this.setData({
-        userInfo:res.data,
-        caseList: res.data.caseList
-      })
-   })
+
   },
 
   /**
@@ -49,7 +59,37 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let userId=wx.getStorageSync('token').userId;
+    let data={
+      technologyId:userId,
+      userId
+    }
+    WXAPI.getDetailInfo(data).then(res=>{
+      globalData.editorMaster=res.data
+     if(res.data.technologyGender==1){
+      this.setData({
+        genderImg:'/assets/images/master/men.png'
+      })
+     }else{
+       this.setData({
+        genderImg:'/assets/images/master/wumen.png'
+      })
+     }
+     let startCode=res.data.city.indexOf('省');
+     let endCode=res.data.city.indexOf('市');
+     let city=res.data.city;
+     if(startCode){
+      city=city.slice(startCode+1,endCode);
+     }else{
+       city=city.slice(0,endCode)
+     }
+    
+      this.setData({
+        city:city,
+        userInfo:res.data,
+        caseList: res.data.caseList
+      })
+   })
   },
 
   /**

@@ -41,10 +41,7 @@ Page({
         })
         break
     }
-   
-  
     console.log(this.data.curType);
-
     this.getMyCollectList();
 
   },

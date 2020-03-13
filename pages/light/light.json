@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "w-tab-control": "./childCpns/w-tab-control/w-tab-control",
-    "w-gaffers": "./childCpns/w-gaffers/w-gaffers"
-  },
-  "navigationBarTitleText": "灯光师"
-}

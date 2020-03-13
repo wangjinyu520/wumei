@@ -1,9 +1,8 @@
 /* pages/sqlogin/sqlogin.wxss */
 /* pages/login/login.wxss */
 page{
-  width: 100%;
   height:100%;
-  /* background-color: #fcfcfc; */
+  background-color: #fcfcfc;
   margin: 0 24rpx;
   
 }

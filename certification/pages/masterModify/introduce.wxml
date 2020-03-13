@@ -1,0 +1,13 @@
+<!--certification/pages/masterCertification/personal.wxml-->
+<view class="box">
+  <view class="titles">个人介绍</view>
+  <!--输入框-->
+  <view class="area">
+    <textarea placeholder="" bindinput="saveInfo" value="{{masterDetail.personalIntroduce}}"></textarea>
+  </view>
+  <view class="btn-box">
+    <view class="pub-btn" bindtap="saveGlobal">
+      编辑
+    </view>
+  </view>
+</view>

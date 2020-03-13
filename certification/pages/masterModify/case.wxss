@@ -1,0 +1,79 @@
+/* certification/pages/masterModify/editorCase.wxss */
+@import "../../components/uploadpic/.wxss";
+
+/* 上传图片 */
+page {
+  width: 100%;
+  background-color: #fff;
+}
+
+.picture {
+  padding: 40rpx 30rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  background-color: #fff;
+}
+
+/* 地址选择器 */
+
+.cu-form-group picker .picker {
+  text-align: left;
+  color: #555;
+}
+
+.line {
+  font-size: 30rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  border: 1px solid #fcfcfc;
+}
+
+.line textarea {
+  width: 100%;
+  min-height: 100rpx;
+  height: auto;
+}
+
+image {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-box {
+  width: 100%;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  height: flex;
+  justify-content: space-between;
+}
+
+.more-btn image {
+  margin-left: 12rpx;
+  width: 14rpx;
+  height: 14rpx;
+}
+
+.pub-btn,
+.btn-delete {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.pub-btn {
+  background: rgba(33, 132, 227, 1);
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  height: 70rpx;
+  background: linear-gradient(270deg, rgba(74, 108, 255, 1) 0%, rgba(35, 218, 255, 1) 100%);
+  border-radius: 44rpx;
+  line-height: 70rpx;
+}
+
+.btn-delete {
+  width: 181rpx;
+  height: 70rpx;
+  background: rgba(244, 244, 244, 1);
+  border-radius: 35rpx;
+  line-height: 70rpx;
+}

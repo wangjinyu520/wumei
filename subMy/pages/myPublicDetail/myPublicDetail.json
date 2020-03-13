@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "w-switch":"/components/wx-switch/wx-switch",
+    "demand":"../../components/demand/demand"
+
+  },
+  "navigationBarTitleText": "我的发布"
+}

@@ -1,0 +1,64 @@
+/* certification/pages/masterModify/introduce.wxss *//* certification/pages/masterCertification/personal.wxss */
+
+page {
+  background: rgba(255, 255, 255, 1);
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+form {
+  width: 100%;
+  height: 100%;
+}
+
+.titles {
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  height: 100rpx;
+  margin-top: 30rpx;
+  font-size: 38rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 100rpx;
+  /* border-bottom: 2rpx solid rgba(241, 241, 241, 1); */
+}
+
+.area {
+  height: 500rpx;
+  margin: 0 32rpx;
+}
+
+.area textarea {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-box {
+  position: fixed;
+  z-index: 99;
+  bottom: 32rpx;
+  width: 100%;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  height: 88rpx;
+  border-radius: 8px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 88rpx;
+}
+
+
+.pub-btn {
+  background: rgba(33, 132, 227, 1);
+  color: #fff;
+  box-sizing: border-box;
+  height: 88rpx;
+  background: linear-gradient(270deg, rgba(74, 108, 255, 1) 0%, rgba(35, 218, 255, 1) 100%);
+  border-radius: 44rpx;
+}

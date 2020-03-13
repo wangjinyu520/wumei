@@ -40,7 +40,7 @@ Page({
     if (that.data.upload_picture_list.length > 5) {
       wx.showToast({
         title: '图片最多6张',
-        icon: 'none'
+        icon: 'none' 
       })
       return;
     };
@@ -422,7 +422,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {},
+  onLoad: function(options) {
+    
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

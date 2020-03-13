@@ -1,0 +1,141 @@
+/* subMy/pages/myPublicDetail/myPublicDetail.wxss */
+/* *大师介绍 开始 */
+
+.master-info {
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  margin-top: 32rpx;
+  margin-bottom: 64rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.master-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 50rpx;
+}
+
+.more {
+  height: 32rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.more>text {
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #999;
+  line-height: 36rpx;
+}
+
+.icon-more {
+  width: 12rpx;
+  height: 24rpx;
+  padding-top: 8rpx;
+  /* padding-right: 40rpx; */
+}
+
+.master-info .left {
+  margin-right: 26rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.master-info .left .img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.master-info .middle {
+  width: calc(100% - 126rpx);
+}
+
+image {
+  width: 100%;
+  height: 100%;
+}
+
+.master-info .top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.master-img {
+  margin-top: 24rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.master-img image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.center {
+  color: rgba(102, 102, 102, 1);
+}
+
+.center .tag {
+  margin-left: 10rpx;
+  height: 40rpx;
+  box-sizing: border-box;
+  padding: 5rpx 11rpx;
+  background: rgba(74, 108, 255, 0.14);
+  border-radius: 8rpx;
+  color: rgba(74, 108, 255, 1);
+}
+
+.center .name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 45rpx;
+}
+
+.botm {
+  padding: 5rpx 11rpx;
+  margin-left: 10rpx;
+  box-sizing: border-box;
+  background-image: url('data:image/png;base64,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');
+  background-size: cover;
+  background-position: center center;
+  width: 148rpx;
+  height: 40rpx;
+  text-align: center;
+}
+
+.bot-phone {
+  width: 66rpx;
+  height: 66rpx;
+}
+
+.botm >text {
+  width: 50rpx;
+  height: 50rpx;
+  font-size:22rpx;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+  line-height:30rpx;
+}
+
+
+
+.introduce {
+  margin-top: 24rpx;
+}
+
+.master-img .img {
+  width: 180rpx;
+  height: 179rpx;
+  background: rgba(216, 216, 216, 1);
+  border-radius: 8px;
+}
+
+.master-img .img:nth-child(2) {
+  margin: 0 10rpx;
+}

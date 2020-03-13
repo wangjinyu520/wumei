@@ -1,0 +1,12 @@
+<!--components/drop-down/drop-down.wxml-->
+<!-- 分类下拉列表的组件 -->
+	<view class="nav">
+		<view class="nav-son {{shownavindex == 1? 'active' : ''}}" bindtap="listqy" data-nav="1">
+			<view class="content1">地区</view>
+			<view class="icon"></view>
+		</view>
+		<view class="nav-son {{shownavindex == 3? 'active' : ''}}" bindtap="listpx" data-nav="3">
+			<view class="content1">分类</view>
+			<view class="icon"></view>
+		</view>
+	</view>

@@ -1,7 +1,0 @@
-/* pages/light/childCpns/w-gaffers/w-gaffers.wxss */
-.gaffers {
-  
-}
-.gaffers-item{
-  align-items: center;
-}

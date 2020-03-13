@@ -1,79 +1,87 @@
 <!--pages/myactivity/myactivity.wxml-->
 <view class="order-box">
-  <view class="order-label{{index== currentType?'.active':''}}" wx:for-items="{{orderType}}" wx:key="{{index}}" data-index="{{index}}" bindtap="orderTap">
-    {{item}}
-  </view>
+	<view class="order-label{{index== currentType?'.active':''}}" wx:for-items="{{orderType}}" wx:key="{{index}}" data-index="{{index}}" bindtap="orderTap">
+		{{item}}
+	</view>
 </view>
+<view style="height:40rpx;background-color: #f9f9f9;"></view>
 <view wx:if="{{displayList}}">
-  <view wx:if="{{contentlist}}">
-    <view class="my-activity" wx:for="{{contentlist}}" wx:key="{{index}}">
-      <navigator url="/subShopping/pages/orderdetil/orderdetil?activityId={{item.activityId}}">
-        <view class="act-top ">
-          <image class="act-img " src="{{item.activityLogo}} " />
-          <view class="act-desc ">
-            <view class="act-tltle ">{{item.activityName}}</view>
-            <view class="act-content ">
-              <view class="content-left ">
-                <text class="content-loc ">{{item.activityTheme}}</text>
-                <text class="content-time ">{{item.activityLocation}}</text>
-                <text class="content-time ">{{item.startTime}}</text>
-              </view>
-              <view class="content-right ">
-                <view class="content-price ">¥{{item.activityFee}}</view>
-                <button class="content-btn ">
-                  <text>查看详情</text>
-                </button>
-              </view>
-            </view>
-          </view>
-        </view>
-      </navigator>
+	<view wx:if="{{contentlist}}">
+		<view class="my-activity" wx:for="{{contentlist}}" wx:key="{{index}}">
+			<navigator url="/subShopping/pages/orderdetil/orderdetil?activityId={{item.activityId}}">
+				<view class="act-top ">
+					<image class="act-img " src="{{item.activityLogo}} " />
+					<view class="act-desc ">
+						<view class="act-tltle ">{{item.activityName}}</view>
+						<view class="act-content ">
+							<view class="content-left ">
+								<text class="content-loc ">{{item.activityTheme}}</text>
+								<text class="content-time ">{{item.activityLocation}}</text>
+								<text class="content-time ">{{item.startTime}}</text>
+							</view>
+							<view class="content-right ">
+								<view class="content-price ">¥{{item.activityFee}}</view>
+								<button class="content-btn ">
+									<text>查看详情</text>
+								</button>
+							</view>
+						</view>
+					</view>
+				</view>
+			</navigator>
 
-    </view>
-    <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
-  </view>
-  <view wx:else class="else">暂无相应的活动</view>
+		</view>
+		<view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
+	</view>
+	<view wx:else class="else" style="height:250px">
+		<view class="else-img">
+			<image src="/assets/images/404.png" />
+			<view class="else-text"> 暂时还没有内容哦</view>
+		</view>
+	</view>
 </view>
 <view wx:else>
-  <view wx:if="{{unpaidList}}">
-      <view class="my-activity" wx:for="{{unpaidList}}" wx:key="{{index}}">
-        <view class="orderNum">
-          订单号:{{item.activityOrderId}}
-        </view>
-        <navigator url="/subShopping/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
+	<view wx:if="{{unpaidList}}">
+		<view class="my-activity" wx:for="{{unpaidList}}" wx:key="{{index}}">
+			<view class="orderNum">
+				订单号:{{item.activityOrderId}}
+			</view>
+			<navigator url="/subShopping/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
+				<view class="act-top ">
+					<image class="act-img " src="{{item.activityLogo}}" />
+					<view class="act-desc ">
+						<!-- <view class="act-tltle ">我的订单</view> -->
+						<view class="act-content ">
+							<view class="content-left">
+								<text class="content-loc">{{item.activityTheme}}</text>
+								<text class="content-time">{{item.activityStartTime}}</text>
+							</view>
+							<view class="content-right">
+								<text class="content-loc">X2</text>
+								<view class="content-time">¥{{item.activityFee}}</view>
+							</view>
 
-          <view class="act-top ">
-            <image class="act-img " src="{{item.activityLogo}}" />
-            <view class="act-desc ">
-              <!-- <view class="act-tltle ">我的订单</view> -->
-              <view class="act-content ">
-                <view class="content-left">
-                  <text class="content-loc">{{item.activityTheme}}</text>
-                  <text class="content-time">{{item.activityStartTime}}</text>
-                </view>
-                <view class="content-right">
-                  <text class="content-loc">X2</text>
-                  <view class="content-time">¥{{item.activityFee}}</view>
-                </view>
+						</view>
+						<view>
+							<button class="content-btn">
+								<text>查看详情</text>
+							</button>
+						</view>
+					</view>
+				</view>
+			</navigator>
+			<view class="order-btn">
+				<button bindtap="goPay" data-id="{{index}}">付款</button>
+				<button bindtap="cancalOrder" data-id="{{index}}">取消订单</button>
 
-              </view>
-              <view>
-                <button class="content-btn">
-                  <text>查看详情</text>
-                </button>
-              </view>
-            </view>
-          </view>
-        </navigator>
-        <view class="order-btn">
-          <button bindtap="goPay" data-id="{{index}}">付款</button>
-          <button bindtap="cancalOrder" data-id="{{index}}">取消订单</button>
-
-        </view>
-      </view>
-      <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
-  </view>
-  <view wx:else class="else">暂无相应的活动</view>
-
-
+			</view>
+		</view>
+		<view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
+	</view>
+	<view wx:else class="else" style="height:250px">
+		<view class="else-img">
+			<image src="/assets/images/404.png" />
+			<view class="else-text"> 暂时还没有内容哦</view>
+		</view>
+	</view>
 </view>

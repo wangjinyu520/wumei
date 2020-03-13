@@ -1,6 +1,6 @@
 <view class="picture_list">
   <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
-    <image src="{{item.path}}" mode="aspectFill" data-src="{{item.path}}" data-index="{{index}}" bindtap='previewImg'></image>
+    <image src="{{item.path?item.path:item}}" mode="aspectFill" data-src="{{item.path}}" data-index="{{index}}" bindtap='previewImg'></image>
     <view class='del' bindtap='deleteImg' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">
     <image src="/assets/images/master/delete.png" ></image>
     </view> 

@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "qrcode": "../../components/qrcode/index"
-  },
-  "navigationBarTitleText": "订单详情"
-}

@@ -1,7 +1,0 @@
-<!--pages/light/childCpns/w-gaffers/w-gaffers.wxml-->
-<view class='gaffers'>
-  <block wx:for="{{gafferslist}}" wx:key="index">
-    <w-gaffers-item class="gaffers-item" gaffersitem="{{item}}"/>
-  </block>
-</view>
-

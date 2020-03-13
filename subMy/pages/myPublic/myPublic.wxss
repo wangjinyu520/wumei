@@ -108,7 +108,7 @@ button:after {
   display: flex;
   align-items: baseline;
 }
-else{
+.else{
   top: 0;
 }
 .price .rent {

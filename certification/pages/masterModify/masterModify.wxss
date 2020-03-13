@@ -3,7 +3,10 @@
 .masterModify {
   background-color: #fff;
 }
-
+page{
+  width: 100%;
+  background-color: #fff;
+}
 /*头部*/
 
 .head image {
@@ -43,9 +46,11 @@
 }
 
 .realName {
-  font-size: 22px;
-  color: #333;
-  line-height: 31px;
+  font-size: 44rpx;
+  color: rgba(51, 51, 51, 1);
+  line-height: 62rpx;
+  font-weight: bold;
+  margin-right: 16rpx;
 }
 
 .masterAge {
@@ -63,13 +68,16 @@
 .genderImg {
   width: 10px;
   height: 10px;
+  margin-right: 5rpx;
 }
 
-.contentMid, .contentBottom {
+.contentMid,
+.contentBottom {
   width: 656rpx;
-  font-size: 15px;
+  font-size: 30rpx;
   color: rgba(51, 51, 51, 1);
-  line-height: 21px;
+  line-height: 50rpx;
+  font-weight: 400;
 }
 
 .bottomLine {
@@ -90,20 +98,28 @@
   height: 16px;
 }
 
+.addImg {
+  width: 40rpx;
+  height: 36rpx;
+}
+
 /*简介*/
 
-.profile, .myCase {
+.profile,
+.myCase {
   padding: 42rpx 32rpx 54rpx 32rpx;
   width: 100%;
 }
 
-.profileContent, .myCasecontent {
+.profileContent,
+.myCasecontent {
   display: flex;
   align-items: center;
   margin-bottom: 30rpx;
 }
 
-.profileTitle, .myCasetitle {
+.profileTitle,
+.myCasetitle {
   width: 720rpx;
   text-align: left;
   font-weight: bold;
@@ -113,14 +129,15 @@
 }
 
 .profileText {
-  font-size: 15px;
-  line-height: 21px;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 42rpx;
 }
 
 /*案例*/
 
 /* 服务案例 */
-
 .activity {
   padding: 0 32rpx;
   padding-bottom: 30rpx;
@@ -145,6 +162,11 @@
   border-radius: 8px;
 }
 
+.activity-info .img image {
+  height: 100%;
+  width: 100%;
+}
+
 .activity-info .title {
   margin-top: 21rpx;
   font-size: 30rpx;
@@ -159,6 +181,8 @@
   font-weight: 400;
   color: rgba(153, 153, 153, 1);
   line-height: 37rpx;
+  display: flex;
+  justify-content: space-between;
 }
 
 .activity-info .bottom {

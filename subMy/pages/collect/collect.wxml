@@ -1,55 +1,61 @@
 <!--pages/collect/collect.wxml-->
 <view>
-  <view class="order-box">
-    <view class="order-label {{index== currentType?'active':''}}" wx:for-items="{{orderType}}" wx:key="{{index}}" data-index="{{index}}" bindtap="tabClick">
-      {{item}}
-    </view>
-  </view>
-  <!-- 活动下面的列表 -->
-  <view wx:if="{{contentlist}}">
-    <view class="my-activity" wx:for="{{contentlist}}" wx:key="{{index}}">
-      <navigator url="/subShopping/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
-        <view class="act-top">
-          <image class="act-img " src="{{item.activityLogo}} " />
-          <view class="act-desc ">
-            <view class="act-tltle ">{{item.activityName}}</view>
-            <view class="act-content ">
-              <view class="content-left ">
-                <text class="content-loc ">{{item.activityTheme}}</text>
-                <text class="content-time ">{{item.activityLocation}}</text>
-                <text class="content-time ">{{item.activityTime}}</text>
-              </view>
-              <view class="content-right ">
-                <view class="content-price ">¥{{item.activityFee}}</view>
-                <button class="content-btn ">
-                  <text>查看详情</text>
-                </button>
-              </view>
-            </view>
-          </view>
-        </view>
-      </navigator>
-    </view>
-    <view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
-  </view>
+	<view class="order-box">
+		<view class="order-label {{index== currentType?'active':''}}" wx:for-items="{{orderType}}" wx:key="{{index}}" data-index="{{index}}" bindtap="tabClick">
+			{{item}}
+		</view>
+	</view>
+<view style="height:40rpx;background-color: #f9f9f9;"></view>
+	<!-- 活动下面的列表 -->
+	<view wx:if="{{contentlist}}">
+		<view class="my-activity" wx:for="{{contentlist}}" wx:key="{{index}}">
+			<navigator url="/subShopping/pages/activityDetails/activityDetails?activityId={{item.activityId}}">
+				<view class="act-top">
+					<image class="act-img " src="{{item.activityLogo}} " />
+					<view class="act-desc ">
+						<view class="act-tltle ">{{item.activityName}}</view>
+						<view class="act-content ">
+							<view class="content-left ">
+								<text class="content-loc ">{{item.activityTheme}}</text>
+								<text class="content-time ">{{item.activityLocation}}</text>
+								<text class="content-time ">{{item.activityTime}}</text>
+							</view>
+							<view class="content-right ">
+								<view class="content-price ">¥{{item.activityFee}}</view>
+								<button class="content-btn ">
+									<text>查看详情</text>
+								</button>
+							</view>
+						</view>
+					</view>
+				</view>
+			</navigator>
+		</view>
+		<view class="tip ">{{hasMoreData?'暂无更多数据':''}}</view>
+	</view>
 
-  <!-- 商品下面的列表 -->
-  <view wx:elif="{{contentlist1}}">
-    <block wx:for="{{contentlist1}}" wx:key="{{index}}">
-      <view class="content">
-      <image class="img" src="{{item.commodityIcon}}"></image>
-        <view class="goods">
-          <view class="title">{{item.commodityName}}</view>
-          <view class="goods-bottom">
-            <view class="price">¥{{item.rent}}/{{item.unit}}</view>
-            <button class="goods-bottom-btn">
-              查看详情
-            </button>
-          </view>
-        </view>
-      </view>
-    </block>
-    <view class="tip">{{hasMoreData?'暂无更多数据':''}}</view>
-  </view>
-  <view wx:else class="else">暂无相应的活动</view>
+	<!-- 商品下面的列表 -->
+	<view wx:elif="{{contentlist1}}">
+		<block wx:for="{{contentlist1}}" wx:key="{{index}}">
+			<view class="content">
+				<image class="img" src="{{item.commodityIcon}}"></image>
+				<view class="goods">
+					<view class="title">{{item.commodityName}}</view>
+					<view class="goods-bottom">
+						<view class="price">¥{{item.rent}}/{{item.unit}}</view>
+						<button class="goods-bottom-btn">
+							查看详情
+						</button>
+					</view>
+				</view>
+			</view>
+		</block>
+		<view class="tip">{{hasMoreData?'暂无更多数据':''}}</view>
+	</view>
+	<view wx:else class="else" style="height:250px">
+		<view class="else-img">
+			<image src="/assets/images/404.png" />
+			<view class="else-text"> 暂时还没有内容哦</view>
+		</view>
+	</view>
 </view>

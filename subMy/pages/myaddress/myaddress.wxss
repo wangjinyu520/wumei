@@ -23,7 +23,6 @@ page {
   display: flex;
   background: #fff;
   margin-top: 2rpx;
-  height: 150rpx;
   line-height: 22px;
   margin-right: 0;
   -webkit-transition: all 0.4s;

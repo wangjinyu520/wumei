@@ -181,6 +181,10 @@ module.exports = {
   getHotTechnologyList: (data) => {
     return request("/technology/getHotTechnologyList", 'get', data)
   },
+  // 获取技术人员类型
+  getDemandList: (data) => {
+    return request("/demand/getDemandList", 'get', data)
+  },
 
 
 }

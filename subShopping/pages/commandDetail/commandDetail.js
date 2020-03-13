@@ -12,10 +12,8 @@ Page({
     phoneNumber:'',
   },
   //联系发布人
-  goPhone: function (e) {
-    wx.makePhoneCall({
-      phoneNumber: this.data.demandDetail.contact,
-    })
+  goApply: function (e) {
+    
   },
   // 收藏
   haveSave: function () {

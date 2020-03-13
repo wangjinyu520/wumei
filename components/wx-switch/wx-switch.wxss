@@ -1,0 +1,26 @@
+/* components/wx-switch/wx-switch.wxss */
+.order-box {
+  background: #fff;
+  width: 100vw;
+  height: 88rpx;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border-top: 2rpx;
+}
+.order-label {
+  width: 120rpx;
+  height: 82rpx;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  color: #222;
+  margin-left: 160rpx;
+}
+
+.order-label.active {
+  color: #2184e3;
+  border-bottom: 6rpx solid #2184e3;
+}

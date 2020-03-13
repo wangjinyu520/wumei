@@ -814,9 +814,51 @@
 					"scene": null
 				},
 				{
+					"id": 108,
+					"name": "subMy/pages/public/public",
+					"pathName": "subMy/pages/public/public",
+					"query": "",
+					"scene": null
+				},
+				{
 					"id": -1,
-					"name": "subMy/pages/myPublic/myPublic",
-					"pathName": "subMy/pages/myPublic/myPublic",
+					"name": "subShopping/pages/masterEditor/masterEditor",
+					"pathName": "subShopping/pages/masterEditor/masterEditor",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "certifition/pages/masterModify/materModify",
+					"pathName": "certifition/pages/masterModify/materModify",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 111,
+					"name": "certification/pages/masterModify/materModify",
+					"pathName": "certification/pages/masterModify/materModify",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "certification/pages/masterModify/masterModify",
+					"pathName": "certification/pages/masterModify/masterModify",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "components/wx-switch/wx-switch",
+					"pathName": "components/wx-switch/wx-switch",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "subMy/pages/myPublicDetail/myPublicDetail",
+					"pathName": "subMy/pages/myPublicDetail/myPublicDetail",
 					"query": "",
 					"scene": null
 				}

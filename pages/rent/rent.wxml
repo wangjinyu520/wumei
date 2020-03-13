@@ -1,27 +1,63 @@
-<!--pages/rent/rent.wxml-->
-<view class="rent">
-  <!--背景图-->
-  <block class="background-position">
-    <image class="background" src="/assets/common/rectangle.png"></image>
-  </block>
-  <!--搜索框-->
-  <view class="search">
-    <view class="search-left">
-      <icon class="search-icon" type="search" size="13"></icon>
-      <input type="text" class="search-input" placeholder="搜索" bindtap="turn_search" disabled/>
-    </view>
-  </view>
-  <!--展示轮播图-->
-  <view class="swipers">
-    <w-swiper list="{{banners}}" />
-  </view>
-  <!--推荐数据-->
-  <view class="recommend">
-    <view class="tab-control">
-      <w-tab-control class='tab-control' titles="{{titles}}" bind:tabclick="tabClick" />
-    </view>
-    <w-select prop-array='{{selectArray}}' class="w-select" bind:selectedItem="selectedItem" />
-    <w-select1 prop-array='{{selectArray1}}' class="w-select1" bind:selectedItem1="selectedItem1" />
-  </view>
-  <commodity commoditylist="{{contentlist}}" />
+<!-- 下拉筛选框 -->
+<view class="page">
+	<view class="search-box">
+		<view class="search">
+			<view class="map">
+				<view class="text" bindtap="listqys">
+					<text>{{currentCity}}</text>
+					<image class="img" src="/assets/images/home/down.png" />
+				</view>
+			</view>
+			<view class="search-left">
+				<image class="img" src="/assets/images/home/search.png" />
+				<!-- <icon class="search-icon" type="search" size="13"></icon> -->
+				<input type="text" class="search-input" placeholder="搜索您的需求" confirm-type='search' bindinput="inputBind" bindconfirm="getActivityInfo" />
+			</view>
+		</view>
+	</view>
+	<view class="quyu {{qyopen ? 'slidown' : 'slidup'}} {{qyshow ? 'disappear':''}}">
+		<view class="qy quyu-left">
+			<view class="{{currentId == index ? 'current' : ''}}" wx:for="{{cityData}}" bindtap="toSelectCity" wx:key="index" data-name="{{item.name}}" data-index="{{index}}">
+				{{item.name}}
+			</view>
+		</view>
+	</view>
+	<view class="nav">
+		<view class="nav-son {{shownavindex == 3? 'active' : ''}}" bindtap="listpx" data-nav="3">
+			<view class="content1">分类</view>
+			<view class="icon"></view>
+		</view>
+	</view>
+	<!-- 地址选择的界面 -->
+	<view class="temp temp2 contentCenter {{pxopen ? 'slidown' : 'slidup'}} {{pxshow ? 'disappear':''}}">
+		<view wx:for="{{px}}" bindtap='selectPX' data-index="{{index}}" class="pxTable {{technologyType == index?'current4':''}}" wx:key="{{index}}">
+			{{item}}
+		</view>
+	</view>
+	<view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>
+	<view class="content" wx:if="{{contentlist}}">
+		<view class="content-item" wx:for="{{contentlist}}" wx:key="{{index}}">
+			<view class="title">{{item.demandTitle}}</view>
+			<view class="text">{{item.demandTime}}</view>
+			<view class="text">{{item.activityTheme}}</view>
+			<view class="text">{{item.technologyType}}</view>
+
+			<view class="btn">
+				<view class="price">
+					<text class="rent">¥{{item.salary}}</text>
+					<text class="unit">/天</text>
+				</view>
+				<view class="btn-img" bindtap="toApply" data-id="{{item.demandId}}">
+					申请
+				</view>
+			</view>
+		</view>
+		<view class="tip">{{hasMoreData?'暂无更多数据':''}}</view>
+	</view>
+	<view wx:else class="else">
+		<view class="else-img">
+			<image src="/assets/images/404.png" />
+			<view class="else-text"> 暂时还没有内容哦</view>
+		</view>
+	</view>
 </view>

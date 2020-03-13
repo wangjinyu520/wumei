@@ -1,11 +1,5 @@
 {
   "usingComponents": {
-    "w-search":"./childCpns/w-search/w-search",
-    "w-select": "./childCpns/w-select/w-select",
-    "w-select1": "./childCpns/w-select1/w-select1",
-    "w-tab-control": "./childCpns/w-tab-control/w-tab-control",
-    "commodity": "./childCpns/commodity/commodity",
-    "w-swiper": "/components/w-swiper/w-swiper"
   },
   "navigationBarTitleText": "严选租赁"
 }

@@ -9,6 +9,6 @@
   </view>
   <view class="picture_item">
 
-    <image src="/assets/images/bossregister/add.png" bindtap="uploadpic"></image>
+    <image src="/assets/images/remand/addpic.png" bindtap="uploadpic"></image>
   </view>
 </view>
